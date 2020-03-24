@@ -1,0 +1,11 @@
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    .title-section {
+        display: block;
+        flex-direction: column;
+        margin-bottom: 10vh;
+        /* margin-top: 10vh; */
+        background-color: white;
+        width: 70vw;
+        transition: all 0.5s;
+    }
+}
