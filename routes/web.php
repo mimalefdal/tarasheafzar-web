@@ -13,6 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    $companyData = file_get_contents('../storage/data/company.json');
+    // dd($companyData);
+
+    $companyData = json_decode($companyData, true);
+
+    // dd($companyData["brands"]["settings"]["status"]);
+
+    return view('welcome')->with('companyData', $companyData);
+    
 });
+
+Route::get('/cms', function () {
+    return view('cms.index');
+    
+})->name('cms');
+
+
+
+Route::get('/devarch', function () {
+    return view('devarch');
+});
+
+Route::get('/ContactUs', function () {
+    return view('contact-us');
+})->name('contacts');

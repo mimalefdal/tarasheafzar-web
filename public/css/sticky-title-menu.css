@@ -1,0 +1,337 @@
+.sticky-top {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+.pre-title {
+    font-size: 12px;
+}
+
+.title-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 65vw;
+    height: 100vh;
+    /* margin-top: 10vh; */
+    margin-bottom: 5vh;
+
+    background-color: white;
+
+    transition: all 0.5s;
+}
+
+.title-section.stucked {
+    display: flex;
+    flex-direction: row;
+    background-color: #fafafa;
+    width: 100vw;
+    height: 8vh;
+    margin-bottom: inherit;
+    transition: all 0.5s;
+}
+
+.title-ribbon {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.title-ribbon.stucked {
+    align-items: center;
+    margin: auto;
+    width: 60vw;
+}
+
+.expander {
+    width: 35px;
+    fill: #444;
+    transition: all 0.5s;
+}
+
+.expander:hover {
+    /* width: 40px; */
+    fill: #666;
+}
+
+.expander#contact-btn {
+    width: 30px;
+}
+
+.large-title {
+    flex: 1;
+    font-size: 48px;
+    transition: all 0.5s;
+}
+
+.large-title.stucked {
+    font-size: 18px;
+    text-align: start;
+    margin-right: 20px;
+    align-self: flex-start;
+    /* padding: 20px; */
+    /* margin-right: initial; */
+    /* color: white; */
+}
+
+.logo-main {
+    width: 180px;
+    /* margin: auto; */
+    margin-bottom: 5vh;
+    transition: all 0.2s;
+}
+
+.logo-main:hover {
+    /* width: 200px; */
+}
+
+.logo-main.stucked {
+    /* display: block; */
+    flex: 1;
+    width: auto;
+    height: 2vh;
+
+    padding: 10px;
+}
+
+.company-description {
+    margin-top: 5vh;
+    text-align: justify;
+    font-size: 12px;
+    width: 35%;
+
+}
+
+#main-container {
+    width: 100%;
+}
+
+#company-info {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#arrow-container {
+    margin-bottom: 3vh;
+
+}
+
+#arrow-down {
+    fill: #444;
+    width: 30px;
+    height: 30px;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#arrow-down:hover {
+    fill: #666;
+    width: 26px;
+    height: 26px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1281px) {
+
+
+    .title-section {
+        width: 75vw;
+        margin-bottom: 8vh;
+    }
+
+    .logo-main {
+        width: 150px;
+    }
+
+    .large-title {
+        font-size: 36px;
+    }
+
+    .large-title.stucked {
+        font-size: 18px;
+    }
+
+
+    .title-section.stucked {
+        height: 9vh;
+    }
+
+    .title-ribbon.stucked {
+        width: 75vw;
+    }
+
+    #arrow-down {
+        width: 25px;
+        height: 25px;
+    }
+
+    .expander {
+        width: 25px;
+    }
+
+    .expander#contact-btn {
+        width: 25px;
+    }
+
+    .company-description {
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+
+    .page-title {
+        font-size: 2.5vw;
+        width: 70vw;
+    }
+
+    .large-title {
+        font-size: 5vw;
+    }
+
+    .expander {
+        width: 25px;
+    }
+
+    .expander#contact-btn {
+        width: 25px;
+    }
+
+    .title-section {
+        width: 80vw;
+        margin-bottom: 5vh;
+    }
+
+    .title-section.stucked {
+        height: 8vh;
+    }
+
+    .title-ribbon.stucked {
+        width: 80vw;
+    }
+
+    .large-title.stucked {
+        font-size: 16px;
+        text-align: start;
+        /* margin-right: inherit; */
+        /* background-color: #eee; */
+    }
+
+    .company-description {
+        width: 45%;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+
+    .page-title {
+        font-size: 2.5vw;
+        width: 80vw;
+    }
+
+    .logo-main {
+        width: 40vw;
+    }
+
+    .large-title {
+        font-size: 6vw;
+    }
+
+    .section {
+        width: 80vw;
+    }
+
+    .section-items {
+        flex-direction: column;
+        height: inherit;
+    }
+
+    .section-item {
+        margin: 1px;
+    }
+
+    .expander {
+        width: 25px;
+    }
+
+    .expander#contact-btn {
+        width: 25px;
+    }
+
+
+    .title-section {
+        width: 90vw;
+        margin-bottom: 15vh;
+    }
+
+    .title-section.stucked {
+        height: 12vh;
+    }
+
+    .title-ribbon.stucked {
+        width: 90vw;
+    }
+
+    .large-title.stucked {
+        font-size: 16px;
+        text-align: start;
+        /* margin-right: inherit; */
+        /* background-color: #eee; */
+    }
+
+    .company-description {
+        font-size: 10px;
+        width: 60%;
+        margin-bottom: 5vh;
+    }
+
+    #arrow-container {
+        margin-bottom: 6vh;
+
+    }
+
+
+
+
+}
+
+@media screen and (max-width: 767px) and (orientation:landscape) {
+
+    .company-description {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .title-section.stucked {
+        height: 20vh;
+    }
+
+    .logo-main {
+        width: 25vw;
+    }
+}

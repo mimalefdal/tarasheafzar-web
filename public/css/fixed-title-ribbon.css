@@ -1,0 +1,45 @@
+.title-section.stucked {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    /* background-color: darkblue; */
+}
+
+.dimmed {
+    opacity: 0 !important;
+}
+
+#menu-collapser {
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+#menu-expander {
+    opacity: 1;
+    transition: all 0.5s;
+
+}
+
+.hidden {
+    display: none;
+}
+
+
+menu-title {
+    align-self: flex-start;
+
+    font-size: 16px;
+    margin-right: 20px;
+    font-weight: 300;
+}
+
+.title-ribbon.stucked {
+    /* justify-content: flex-start; */
+}
+
+@media screen and (min-width: 992px) and (max-width: 1281px) {}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {}
+
+@media screen and (max-width: 767px) {}
