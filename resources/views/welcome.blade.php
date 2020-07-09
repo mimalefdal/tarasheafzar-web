@@ -9,20 +9,21 @@
 @endpush
 
 @push('scripts')
-    <script>
+    <!-- <script>
         window.onscroll = function () {
             scrollFunction(document.documentElement.scrollTop,
                 "{{ $companyData['company-info']['name'] }}");
         };
 
-    </script>
+    </script> -->
 @endpush
 
 @section('pre-content')
+
 @endsection
 
 @section('content')
-<x-sticky-title-menu :data="$companyData['company-info']" />
+<x-sticky-welcome :data=" $companyData['company-info']" />
 
 @if( $companyData['settings']['show-brands'] )
 
@@ -48,5 +49,7 @@
         @endforeach
     </x-section>
 @endif
+
+
 
 @endsection

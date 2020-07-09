@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -8,18 +8,22 @@
 
     <link href="{{ asset('css/base.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/inner.css') }}" rel="stylesheet" />
+    @if(Config::get('app.locale') == 'fa')
+        <link href="{{ asset('css/appfa.css') }}" rel="stylesheet" />
+    @endif
+
     @stack('scripts')
     @stack('styles')
 </head>
 
 <body>
     <div class="flex-center position-ref ">
-        <x-site-menu />
+        <x-mobile-menu />
         <x-fixed-title-ribbon />
 
 
         @yield('pre-content')
-        <div class="content">
+        <div class="inner-content flex-center position-ref">
             @yield('content')
         </div>
     </div>

@@ -203,8 +203,6 @@ body {
     font-weight: 300;
     height: 100vh;
     margin: 0;
-    direction: rtl;
-
 }
 
 body {
@@ -227,6 +225,35 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
+}
+
+input,
+textarea {
+    flex: 1;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #01579b;
+    font-family: iranyekanfa;
+    padding: 10px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+p {
+    margin: 0;
+
+}
+
+a {
+    text-decoration: none;
+    /* color: inherit; */
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .full-height {
@@ -271,3 +298,32 @@ body::-webkit-scrollbar-thumb {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.responsive-inner-width {
+    width: 60%;
+}
+
+.wrap-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-func-item {}
+
+@media screen and (max-width: 1281px) {
+    .responsive-inner-width {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1281px) {}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {}
+
+@media screen and (max-width: 767px) {
+    .responsive-inner-width {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 767px) and (orientation:landscape) {}

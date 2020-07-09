@@ -1,5 +1,5 @@
 <head>
-    <!-- <link href="{{ asset('css/sticky-title-menu.css') }}" rel="stylesheet" /> -->
+    <link href="{{ asset('css/sticky-welcome.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/fixed-title-ribbon.css') }}" rel="stylesheet" />
     <script src=" {{ URL::asset('js/title-ribbon.js') }} "></script>
 
@@ -8,37 +8,38 @@
     <!-- <img id="company-logo" class="logo-main" src="{{ asset('image/talogo-nocap.png') }}"
         alt="company logo" /> -->
 
-
-
     <div id="title-ribbon" class="title-ribbon stucked">
+        <div class="menu-btn-box">
+            <svg onclick="togglemenu()" id="menu-expander" class="expander" enable-background="new 0 0 515.555 515.555"
+                viewBox="0 0 515.555 515.555" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m496.679 212.208c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138 65.971-25.167 91.138 0" />
+                <path
+                    d="m303.347 212.208c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138 65.971-25.167 91.138 0" />
+                <path
+                    d="m110.014 212.208c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138 65.971-25.167 91.138 0" />
+            </svg>
 
-        <svg onclick="togglemenu()" id="menu-expander" class="expander" enable-background="new 0 0 515.555 515.555"
-            viewBox="0 0 515.555 515.555" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="m496.679 212.208c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138 65.971-25.167 91.138 0" />
-            <path
-                d="m303.347 212.208c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138 65.971-25.167 91.138 0" />
-            <path
-                d="m110.014 212.208c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138 65.971-25.167 91.138 0" />
-        </svg>
-
-        <svg onclick="togglemenu(false)" id="menu-collapser" class="collapser hidden dimmed"
-            enable-background="new 0 0 515.555 515.555" viewBox="0 0 515.555 515.555"
-            xmlns="http://www.w3.org/2000/svg">
-            <g>
+            <svg onclick="togglemenu()" id="menu-collapser" class="collapser hidden dimmed"
+                enable-background="new 0 0 515.555 515.555" viewBox="0 0 515.555 515.555"
+                xmlns="http://www.w3.org/2000/svg">
                 <g>
-                    <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717
+                    <g>
+                        <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717
                 L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859
                 c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287
                 l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285
                 L284.286,256.002z" />
+                    </g>
                 </g>
-            </g>
-        </svg>
+            </svg>
+        </div>
         <div id='company-info'>
-            <div id="menu-title" class="large-title stucked">
+            <a id="menu-title" class="large-title stucked" href="/">
                 تراشه افزار سامانه ایرانیان
-            </div>
+            </a>
+            <x-web-menu />
+
         </div>
         <svg onclick="showContacts()" version="1.1" id="contact-btn" class="expander" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 405.333 405.333"

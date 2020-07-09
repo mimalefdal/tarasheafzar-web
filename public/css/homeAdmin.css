@@ -1,0 +1,12 @@
+.nav-items-container {
+    background-color: #283593;
+}
+
+#btn-logout {
+    background-color: inherit;
+    border-color: #4FC3F7;
+}
+
+.staff-name {
+    color: white;
+}

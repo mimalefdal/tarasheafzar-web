@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class stickyTitleMenu extends Component
 {
     public $data;
-    
+
     /**
      * Create a new component instance.
      *
@@ -28,6 +28,6 @@ class stickyTitleMenu extends Component
      */
     public function render()
     {
-        return view('components.sticky-title-menu');
+        return view('components.sticky-welcome');
     }
 }

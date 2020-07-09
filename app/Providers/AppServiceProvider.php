@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,14 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        Blade::component('site-menu', sitemenu::class);   
-        Blade::component('sticky-title-menu', stickyTitleMenu::class);   
-        Blade::component('fixed-title-ribbon', fixedTitleRibbon::class);   
-        Blade::component('sitefooter', sitefooter::class);   
 
-        Blade::component('section', section::class);   
-        Blade::component('section-item', sectionitem::class);   
-        Blade::component('contact-card', contactCard::class);   
-        Blade::component('contact-item', contactItem::class);   
-     }
+        Schema::defaultStringLength(191);
+    }
 }

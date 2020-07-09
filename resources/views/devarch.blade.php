@@ -9,6 +9,5 @@
 @endsection
 
 @section('content')
-
-<div style="width: 100vw; background-color: red; ">استودیو دوارک</div>
+<div style="width: 90%; height: 90%; background-color: azure; ">استودیو دوارک</div>
 @endsection

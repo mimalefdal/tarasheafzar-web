@@ -17,5 +17,10 @@
         <x-contact-card />
     </div>
 </div>
+<style>
+    .expander#contact-btn {
+        display: none;
+    }
 
+</style>
 @endsection

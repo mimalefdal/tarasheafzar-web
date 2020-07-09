@@ -53,6 +53,7 @@
     align-items: flex-start;
 }
 
+
 .form-body {
     flex: 5;
     display: flex;
@@ -72,6 +73,79 @@
     margin-bottom: 1vh;
     /* align-items: center; */
 }
+
+.alert-danger {
+    color: orangered;
+    font-size: 10px;
+    font-weight: 800;
+    /* background-color: coral; */
+    border: none;
+}
+
+.alert-success {
+    color: green;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+}
+
+#sent-alert {
+    /* display: none; */
+    background-color: lightgreen;
+    visibility: hidden;
+    /* border-radius: 5px; */
+    margin-top: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+
+    transition: all 1s;
+}
+
+#sent-alert.shown {
+    visibility: visible;
+    /* display: block; */
+    padding: 2vh;
+    height: fit-content;
+    opacity: 1;
+    margin-top: 5vh;
+}
+
+.alert-failure {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+}
+
+#failure-alert {
+    /* display: none; */
+    background-color: lightcoral;
+    visibility: hidden;
+    /* border-radius: 5px; */
+    margin-top: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+
+    transition: all 1s;
+}
+
+#failure-alert.shown {
+    visibility: visible;
+    /* display: block; */
+    padding: 2vh;
+    height: fit-content;
+    opacity: 1;
+    margin-top: 5vh;
+}
+
+
+
 
 textarea:focus,
 input:focus {
@@ -99,17 +173,40 @@ textarea {
     font-size: 10px;
 }
 
-input.btn {
+
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 10px;
+    text-align: center;
     border: 1px solid #01579b;
     background-color: white;
     color: #01579b;
     border-radius: 5px;
-    width: 25%;
+    /* width: 25%; */
     cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
 }
 
+
+
 .submit-btn {
-    width: 25%;
+    width: 20%;
+    float: left;
+    margin-top: 1vh;
+}
+
+
+
+#sendBtnLoading,
+#sendBtnIcon {
+    position: relative;
+    max-height: 50%;
+    max-width: 16%;
 }
 
 label {
@@ -133,10 +230,11 @@ label {
 }
 
 .socials {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     flex-direction: row;
-    margin-top: 10vh;
+    justify-content: flex-end;
+    margin-top: 8vh;
 
 }
 
@@ -145,6 +243,7 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 20%;
     /* border: 1px solid gray; */
 }
 
@@ -155,8 +254,18 @@ label {
 
 }
 
+@media screen and (min-width: 992px) and (max-width: 1281px) {}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .form-body {
+        margin-top: 2vh;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .main-container {
         flex-direction: column;
     }
 }
+
+@media screen and (max-width: 767px) and (orientation:landscape) {}

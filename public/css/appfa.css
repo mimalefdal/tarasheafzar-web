@@ -1,0 +1,19 @@
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+.ml-auto,
+.mx-auto {
+    margin-left: inherit !important;
+}
+
+@media (min-width: 768px) {
+    .offset-md-4 {
+        margin-right: 33.3333333333%;
+    }
+
+    .text-md-right {
+        text-align: left !important;
+    }
+}

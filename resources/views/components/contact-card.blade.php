@@ -1,34 +1,63 @@
 <head>
     <link href="{{ asset('css/contact-card.css') }}" rel="stylesheet" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
 </head>
 <div class="main-container">
+
     <div class="card-box contact-form">
         <div class="title form-title">برای ما پیام بگذارید <div id="callyou"> ما با شما تماس می‌گیریم</div>
         </div>
+        <div id="sent-alert" onclick="hideSentAlert()">
+
+            <div id="messageSuccessSender" class="response alert alert-success">نام فرستنده</div>
+            <div id="messageSuccess" class="response alert alert-success"></div>
+
+        </div>
+
+        <div id="failure-alert" onclick="hideSentAlert()">
+
+            <!-- <div id="messageSuccessSender" class="response alert alert-success">نام فرستنده</div> -->
+            <div id="messageFailure" class="response alert alert-failure"></div>
+
+        </div>
+
         <div class="form-body">
-            <form class="message-form" method="POST" action="/profile">
-                @csrf
-                @method('POST')
-                <div class="input-block">
+            <form class="message-form" id="message-form">
+                <!-- @csrf -->
+                <div class=" input-block">
                     <label for="name">نام <span class="shoma">شما</span> </label>
-                    <input id="name" type="text">
+                    <input id="name" name="sender" type="text" autocomplete="off"
+                        value="{{ old('sender') }}" />
+
                 </div>
+                <div id="sender-error" class="alert alert-danger"></div>
 
                 <div class="input-block">
                     <label for="contact">تماس <span class="shoma">شما</span></label>
-                    <input id="contact" type="text" placeholder="ایمیل، موبایل یا تلفن ثابت">
+                    <input id="contact" name="contact" type="text" autocomplete="off"
+                        value="{{ old('contact') }}" placeholder="ایمیل، موبایل یا تلفن ثابت">
                 </div>
+                <div id="contact-error" class="alert alert-danger"></div>
+
+
                 <div class="input-block">
                     <label for="message">پیام <span class="shoma">شما</span></label>
-                    <textarea name="messsage"></textarea>
+                    <textarea id="message" name="message">{{ old('message') }}</textarea>
                 </div>
+                <div id="message-error" class="alert alert-danger"></div>
 
-                <div class="input-block submit-btn ">
-
+                <div class="btn submit-btn" id="submitBtn" onclick="sendNewMessage()">
+                    <p id="sendBtnText">ارسال</p>
+                    <img src="{{ asset('image/loading.png') }}" alt="loading" id="sendBtnLoading"
+                        style="display: none;">
+                    <img src="{{ asset('image/send.svg') }}" alt="loading" id="sendBtnIcon"
+                        style="display: block;">
                 </div>
-                <input class="btn " type="submit" value="ارسال" />
 
             </form>
+
         </div>
     </div>
     <div class="card-box contact-info">
@@ -75,3 +104,107 @@
 
     </div>
 </div>
+
+<script>
+    var clicked = false;
+
+    $("input").change(function () {
+        // console.log('input changed')
+        hideAllAlerts();
+
+    })
+
+    function sendNewMessage() {
+        if (clicked) return
+        clicked = true
+
+        hideAllAlerts();
+        enableSendingMode();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        jQuery.ajax({
+            url: "{{ url('newMessage') }}",
+            method: 'post',
+            data: {
+                sender: $("input[name='sender']").val(),
+                contact: $("input[name='contact']").val(),
+                message: $("textarea[name='message']").val(),
+            },
+            success: function (response) {
+                console.log('sucessResponse->', response)
+                resetValidation();
+                showSentAlert(response.sender, response.message);
+                resetForm();
+                disableSendingMode();
+            },
+            error: function (reject) {
+                console.log('errorResponse->', reject);
+                resetValidation();
+
+                if (reject.status === 422) {
+                    $.each(reject.responseJSON.errors, function (error, message) {
+                        $("#" + error + "-error").text(message);
+                    })
+                } else {
+                    showFailureAlert(reject.responseJSON.message);
+                }
+
+                disableSendingMode();
+            }
+        });
+    }
+
+    function showSentAlert(title, message) {
+        $("#messageSuccessSender").text(title + " محترم")
+        splittedMessage = String(message).replace('\\n', '<br />');
+        $("#messageSuccess").html(splittedMessage)
+        $("#sent-alert").addClass('shown')
+    }
+
+    function showFailureAlert(message) {
+        $("#failure-alert").addClass('shown')
+        splittedMessage = String(message).replace('\\n', '<br />');
+        $("#messageFailure").html(splittedMessage)
+    }
+
+    function enableSendingMode() {
+
+        $("#sendBtnLoading").css('display', 'block');
+        $("#sendBtnIcon").css('display', 'none')
+
+    }
+
+    function disableSendingMode() {
+        clicked = false;
+        $("#sendBtnLoading").css('display', 'none')
+        $("#sendBtnIcon").css('display', 'block')
+    }
+
+    function resetForm() {
+        $("#message-form")[0].reset();
+        $("#name").focus();
+    }
+
+    function hideSentAlert() {
+        $("#sent-alert").removeClass('shown')
+        $("#failure-alert").removeClass('shown')
+    }
+
+    function hideAllAlerts() {
+        hideSentAlert();
+        // hideFailureAlert();
+    }
+
+    function resetValidation() {
+        $("[id*='-error']").each(function () {
+            $(this).text('');
+        })
+    }
+
+</script>

@@ -1,3 +1,11 @@
+.hidden {
+    display: none;
+}
+
+.dimmed {
+    opacity: 0 !important;
+}
+
 .sticky-top {
     position: sticky;
     position: -webkit-sticky;
@@ -6,6 +14,8 @@
 
 .pre-title {
     font-size: 12px;
+    opacity: 1;
+    transition: all 0.5s;
 }
 
 .title-section {
@@ -36,7 +46,7 @@
 .title-ribbon {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 }
@@ -47,15 +57,33 @@
     width: 60vw;
 }
 
-.expander {
+.btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 35px;
+    height: 35px;
+
+}
+
+.expander {
+    width: 100%;
     fill: #444;
     transition: all 0.5s;
+    opacity: 1;
 }
 
 .expander:hover {
     /* width: 40px; */
     fill: #666;
+}
+
+#menu-collapser {
+    opacity: 1;
+    transition: all 0.5s;
+    width: 20px;
+    fill: #aaa;
+
 }
 
 .expander#contact-btn {
@@ -98,15 +126,28 @@
     padding: 10px;
 }
 
+#company-name {
+    opacity: 1;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .company-description {
+    opacity: 1;
     margin-top: 5vh;
     text-align: justify;
     font-size: 12px;
     width: 35%;
+    transition: all 0.5s;
 
 }
 
 #main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
 }
 
@@ -185,6 +226,11 @@
         height: 25px;
     }
 
+    .btn-box {
+        width: 25px;
+        height: 25px;
+    }
+
     .expander {
         width: 25px;
     }
@@ -209,6 +255,11 @@
 
     .large-title {
         font-size: 5vw;
+    }
+
+    .btn-box {
+        width: 25px;
+        height: 25px;
     }
 
     .expander {
@@ -272,6 +323,11 @@
 
     .section-item {
         margin: 1px;
+    }
+
+    .btn-box {
+        width: 25px;
+        height: 25px;
     }
 
     .expander {
