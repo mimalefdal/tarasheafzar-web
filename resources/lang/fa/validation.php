@@ -113,7 +113,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid zone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attribute نباید تکراری باشد.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -156,7 +156,8 @@ return [
         'contact' => 'اطلاعات تماس',
         'message' => 'متنی برای پیام',
         'username' => 'نام کاربری',
-        'password' => 'گذرواژه'
+        'password' => 'گذرواژه',
+        'slug' => "تگ سیستمی"
     ],
 
 ];

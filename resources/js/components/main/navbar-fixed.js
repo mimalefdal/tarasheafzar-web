@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../../../public/css/fixed-title-ribbon.css";
+import "../../../../public/css/fixed-title-ribbon.css";
 import WebMenu from "./webmenu";
 
 export default class FixedNavbar extends Component {

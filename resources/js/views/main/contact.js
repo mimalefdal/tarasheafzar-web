@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import FixedNavbar from "../components/navbar-fixed";
-import "../../../public/css/contact-us.css";
-import ContactCard from "../components/contact-card";
+import "../../../../public/css/contact-us.css";
+import FixedNavbar from "../../components/main/navbar-fixed";
+import ContactCard from "../../components/main/contact-card";
 
 export default class Contact extends Component {
     render() {

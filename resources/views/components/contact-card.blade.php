@@ -27,7 +27,7 @@
             <form class="message-form" id="message-form">
                 <!-- @csrf -->
                 <div class=" input-block">
-                    <label for="name">نام <span class="shoma">شما</span> </label>
+                    <label for="name" class='contact-card-input-label'>نام <span class="shoma">شما</span> </label>
                     <input id="name" name="sender" type="text" autocomplete="off"
                         value="{{ old('sender') }}" />
 
@@ -35,7 +35,7 @@
                 <div id="sender-error" class="alert alert-danger"></div>
 
                 <div class="input-block">
-                    <label for="contact">تماس <span class="shoma">شما</span></label>
+                    <label for="contact" class='contact-card-input-label'>تماس <span class="shoma">شما</span></label>
                     <input id="contact" name="contact" type="text" autocomplete="off"
                         value="{{ old('contact') }}" placeholder="ایمیل، موبایل یا تلفن ثابت">
                 </div>
@@ -43,12 +43,12 @@
 
 
                 <div class="input-block">
-                    <label for="message">پیام <span class="shoma">شما</span></label>
+                    <label for="message" class='contact-card-input-label'>پیام <span class="shoma">شما</span></label>
                     <textarea id="message" name="message">{{ old('message') }}</textarea>
                 </div>
                 <div id="message-error" class="alert alert-danger"></div>
 
-                <div class="btn submit-btn" id="submitBtn" onclick="sendNewMessage()">
+                <div class="btn send-btn" id="submitBtn" onclick="sendNewMessage()">
                     <p id="sendBtnText">ارسال</p>
                     <img src="{{ asset('image/loading.png') }}" alt="loading" id="sendBtnLoading"
                         style="display: none;">

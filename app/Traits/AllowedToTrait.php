@@ -55,6 +55,16 @@ trait AllowedToTrait
 
     public function hasRole(...$roles)
     {
+        foreach ($roles as $role) {
+            if ($this->roles->contains('slug', $role)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasAnyOfRoles($roles)
+    {
 
         foreach ($roles as $role) {
             if ($this->roles->contains('slug', $role)) {
@@ -62,6 +72,22 @@ trait AllowedToTrait
             }
         }
         return false;
+
+
+        // // dump($roles);
+        // $check = false;
+        // foreach ($roles as $role) {
+        //     dump($role);
+
+        //     foreach ($this->roles as $mainrole) {
+        //         dump($mainrole->slug);
+        //         if ($mainrole->slug == $role) {
+        //             $check = true;
+        //         }
+        //     }
+        // }
+        // dd($check);
+        // return $check;
     }
 
 

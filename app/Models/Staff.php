@@ -5,12 +5,13 @@ namespace App\Models;
 use App\Traits\AllowedToTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Laravel\Sanctum\HasApiTokens;
 
 class Staff extends Authenticatable
 {
     use Notifiable;
     use AllowedToTrait;
+    use HasApiTokens;
 
     protected $guard = 'staff';
 

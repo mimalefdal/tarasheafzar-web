@@ -7,6 +7,7 @@ use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class StaffController extends Controller
 {
 
@@ -19,14 +20,6 @@ class StaffController extends Controller
 
     public function showHome()
     {
-        // $staff = Auth::user();
-        // dump('Staff has Role Enterprise Admin?', $staff->hasRole('enterprise-admin'));
-        // dump('Staff can add Staff?', $staff->can('add-staff'));
-        // dd($staff->roles->toArray(), $staff->rights->toArray());
-
-        // $accessRights = $staff->allRights();
-        // dd(compact($accessRights));
-
         return view('staff.home');
     }
 

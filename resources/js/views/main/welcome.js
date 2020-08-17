@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import StickyWelcome from "../components/StickyWelcome";
+import StickyWelcome from "../../components/main/StickyWelcome";
 
-export default class Index extends Component {
+export default class Welcome extends Component {
     render() {
         return (
             <div className="App">

@@ -45,5 +45,13 @@ class AccessServiceProvider extends ServiceProvider
         Blade::directive('endrole', function () {
             return "<?php endif; ?>";
         });
+
+        Blade::directive('roles', function ($roles) {
+            return "<?php if(auth()->check() && auth()->user()->hasAnyOfRoles({$roles})) : ?>";
+        });
+
+        Blade::directive('endroles', function () {
+            return "<?php endif; ?>";
+        });
     }
 }

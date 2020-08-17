@@ -31,32 +31,31 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
 
 
-        Route::macro('adminRoutes', function () {
-            Route::group(['domain' => 'admin.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
+        Route::macro('cmsRoutes', function () {
+            Route::group(['domain' => 'cms.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
 
-                Route::get('/home', 'AdminController@showHome')->name('admin.home');
+                Route::get('/home', 'AdminController@showHome')->name('amdin.home');
                 Route::get('/', 'AdminController@showHome')->name('admin.home');
 
-                Route::get('/login', 'AuthAdmin\\AdminLoginController@showLoginForm')->name('admin.login');
-                Route::post('/login', 'AuthAdmin\\AdminLoginController@adminLogin')->name('admin.login');
+                Route::get('/auth', 'AuthAdmin\\AdminLoginController@showLoginForm')->name('admin.login');
+                Route::post('/login', 'AuthAdmin\\AdminLoginController@adminLogin')->name('admin.login.submit');
 
                 Route::get('/logout', 'AuthAdmin\\AdminloginController@adminLogout')->name('admin.logout');
             });
         });
 
-        Route::macro('staffRoutes', function () {
-            Route::group(['domain' => 'staff.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
-                Route::get('/home', 'StaffController@showHome')->name('staff.home');
-                Route::get('/profile', 'StaffController@show')->name('staff.profile');
+        Route::macro('panelRoutes', function () {
+            Route::group(['domain' => 'panels.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
 
-                Route::get('/', 'StaffController@showHome')->name('staff.index');
-
-                Route::get('/login', 'AuthStaff\\StaffLoginController@showLoginForm')->name('staff.login');
-                Route::post('/login', 'AuthStaff\\StaffLoginController@staffLogin')->name('staff.login');
+                Route::get('/auth', 'AuthStaff\\StaffLoginController@showLoginForm')->name('staff.login');
+                Route::post('/login', 'AuthStaff\\StaffLoginController@staffLogin')->name('staff.login.submit');
                 Route::get('/logout', 'AuthStaff\\StaffLoginController@staffLogout')->name('staff.logout');
+
+                Route::get('/profile', 'StaffController@show')->name('staff.profile');
+                Route::get('/home', 'StaffController@showHome')->name('staff.home');
+                Route::get('/{path?}', 'StaffController@showHome')->name('staff.index');
             });
         });
 
@@ -120,7 +119,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        Route::domain('api.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL')))
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));

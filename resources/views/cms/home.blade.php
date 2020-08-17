@@ -6,22 +6,14 @@
 پنل مدیریت سایت شرکت تراشه‌افزار
 @endsection
 
-
+@section('panel-title')
+پنل مدیریت سایت شرکت تراشه‌افزار
+@endsection
 
 @section('content')
-<div>
-    @section('panel-title')
-    پنل مدیریت سایت شرکت تراشه‌افزار
-    @endsection
-
-    <div class='wrap-box'>
-        <div class="btn-func-item">
-            @lang('items.manage-roles')
-        </div>
-    </div>
-
-
-
+<div class='responsive-inner-width'>
+    <div id="cmsApp"></div>
+    <script src="{{ asset('js/app.js') }}"></script>
 
 </div>
 

@@ -19,7 +19,7 @@ class CreateRightsTable extends Migration
             $table->string('title'); // Display Name like Create User
             $table->string('slug'); // System-slug lige create-user
             $table->string('description')->nullable(); // Description for right
-            $table->string('activation')->nullable(); // activation state of right
+            $table->boolean('activation'); // activation state of right
 
             $table->timestamps();
         });

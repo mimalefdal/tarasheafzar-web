@@ -19,7 +19,7 @@
     <div id="main-container">
         <!-- <img id="company-logo" class="logo-main" src="{{ asset('image/ta-logo-gold.svg') }}"
             alt="company logo" /> -->
-        <a href="{{ route('staff.index') }}" style="cursor: default;">
+        <a href="{{ route('staff.login') }}" style="cursor: default;">
             <img id="company-logo" class="logo-main" src="{{ asset('image/talogo-nocap.png') }}"
                 alt="company logo" />
         </a>

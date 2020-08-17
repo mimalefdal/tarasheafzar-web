@@ -17,12 +17,13 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::adminRoutes();
-Route::staffRoutes();
-// Route::reactAppVersionRoutes();
+
+// Route::cmsRoutes();
+Route::panelRoutes();
+Route::reactAppVersionRoutes();
+
 
 Route::domain(env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))->group(function () {
-
     Route::get('/', function () {
         $path = Storage::disk('public')->path('company.json');
         $companyData = file_get_contents($path);
@@ -42,16 +43,6 @@ Route::domain(env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))->group(f
     })->name('contacts');
 
     Route::post('newMessage', 'VisitorMessageController@store')->name('visitorMessage.store');
+
+    Auth::routes();
 });
-Auth::routes();
-
-// Route::domain('cms.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL')))->group(function () {
-
-//     Route::get('/', function () {
-//         return view('cms.index');
-//     })->middleware('auth');
-
-//     Route::get('/login', function () {
-//         return view('cms.login');
-//     })->name('cms.login');
-// });

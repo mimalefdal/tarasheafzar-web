@@ -13,4 +13,6 @@ require("./bootstrap");
  */
 
 require("./components/Example");
-require("./components/App");
+
+require("./apps/Main");
+require("./apps/PanelsApp");

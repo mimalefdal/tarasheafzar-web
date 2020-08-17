@@ -14,7 +14,8 @@
         <link href="{{ asset('css/panelfa.css') }}" rel="stylesheet" />
     @endif
 
-
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @stack('scripts')
     @stack('styles')
@@ -29,9 +30,10 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
-                <div class="panel-title">
-                    <p class="panel-title-text">@yield('panel-title')</p>
-                </div>
+                @if(Route::current()->getName() != 'staff.index')
+                    <a href="/home" class="navbar-item-text">خانه</a>
+                @endif
+
                 @auth('staff')
                     <div class="staff-info">
                         <a href="{{ route('staff.profile') }}"
@@ -57,13 +59,16 @@
 
     @endauth
 
-    <div class="flex-center position-ref">
+    <div class="flex-center position-ref ">
+        <!-- 
+            <div class="panel-title">
+                <p class="panel-title-text">@yield('panel-title')</p>
+            </div> -->
 
         @yield('pre-content')
         <div class="content">
             @yield('content')
         </div>
-
 
     </div>
 

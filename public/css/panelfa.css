@@ -7,11 +7,11 @@
 }
 
 .panel-title {
-    margin-right: 15px;
-
+    /* margin-right: 15px; */
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
 }
-
-
 
 .staff-name {
     font-weight: 400;

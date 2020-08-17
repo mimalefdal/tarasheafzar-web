@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('title')
-تراشه افزار | ورود کارکنان
+تراشه افزار | ورود همکاران
 @endsection
 
 @push('styles')
@@ -33,7 +33,7 @@
             <div id="company-name" class="large-title">
                 شرکت تراشه افزار سامانه ایرانیان
             </div>
-            <div id='panel-name' class="">پنل ورود کارکنان</div>
+            <div id='panel-name' class="">پنل ورود همکاران</div>
 
         </div>
         <div class="sub-container" style="flex-direction: row;">
@@ -68,14 +68,14 @@
                     <label class="input-label"
                         for="personnelId">{{ __('auth.enterpersonnelId') }}</label>
                     <input class="input-auth" id="personnelId" type="text" name="personnelId"
-                        value="{{ old('personnelId') }}" autocomplete="off" autofocus>
+                        value="{{ old('personnelId') }}" autocomplete="off" autofocus />
 
                 </div>
 
                 <div id="passBlock" class="input-block hidden">
 
                     <label class="input-label" for="password">{{ __('auth.enterpassword') }}</label>
-                    <input class="input-auth" id="password" type="password" name="password" autofocus>
+                    <input class="input-auth" id="password" type="password" name="password" autofocus />
                 </div>
                 <div id='auth-error' class="invisible error-block">
                     <p id='error-message' class="error-message"></p>
@@ -103,9 +103,7 @@
         <div class="sub-container" id="bottom-container">
             <div style="display: flex;flex-direction: column;">
                 <a href="{{ url('password.reset') }}">گذرواژه/کد پرسنلی را فراموش کرده‌ام</a>
-                <a class="link-icon" href="{{ route('admin.login') }}">پنل
-                    مدیریت
-                    سایت</a>
+
             </div>
         </div>
     </div>
@@ -123,14 +121,13 @@
     };
 
     function identifyPesonnelId() {
-        console.log();
+        // console.log($('meta[name="csrf-token"]').attr('content'));
         $("#error-message").text('');
         $("#auth-error").addClass('invisible');
         $("#loader").removeClass('hidden');
         $("#staff-name").addClass('hidden');
         $("#dear-colleague").addClass('hidden');
         $(".input-label").removeClass('error-message');
-
 
         $.ajaxSetup({
             headers: {
@@ -139,8 +136,8 @@
         });
 
 
-        jQuery.ajax({
-            url: "{{ route('staff.login') }}",
+        $.ajax({
+            url: "{{ route('staff.login.submit') }}",
             method: 'post',
             data: {
                 state: loginstate,
@@ -153,7 +150,8 @@
                 $("#staff-name").removeClass('hidden');
                 $("#dear-colleague").removeClass('hidden');
 
-                if (!response.redirect_to) {
+
+                if (loginstate == 0) {
                     loginstate = 1
                     $("#passBlock").removeClass('hidden');
                     $("#idBlock").addClass('hidden');
@@ -176,10 +174,14 @@
                     var fullname = title.concat(' ', firstname, ' ', lastname);
                     $('#staff-name').text(fullname);
                     $("#not-you").removeClass("invisible")
-                }
-
-                if (response.redirect_to) {
-                    window.location = response.redirect_to
+                } else {
+                    $('#staff-name').text("در حال هدایت هستید ...");
+                    console.log(response)
+                    if (response.mode = 'dubug') {
+                        console.log(response.data)
+                    } else {
+                        window.location = response.redirect_to
+                    }
                 }
             },
             error: function (reject) {
@@ -188,24 +190,22 @@
                 $("#loader").addClass('hidden');
                 $("#staff-name").removeClass('hidden');
                 $("#dear-colleague").removeClass('hidden');
-
+                console.log(reject.responseJSON)
 
                 if (reject.status === 422) {
-                    console.log(reject.status)
+                    // console.log(reject.responseJSON)
                     var message = reject.responseJSON.message
                     $(".input-label").addClass('error-message');
-                    // $("#error-message").text(translations.wrongPersonnelId);
-
                 }
 
                 if (reject.status === 404) {
-                    console.log(reject.status)
+                    // console.log(reject.status)
                     var message = reject.responseJSON.message
-                    $("#error-message").text(translations.wrongPersonnelId);
-
+                    $("#error-message").text(message);
+                    $("#password").val("");
                 }
                 if (reject.status === 500) {
-                    console.log(reject.responseJSON.status)
+                    // console.log(reject.responseJSON.status)
                     var message = reject.responseJSON.message
                     $("#error-message").text(translations.serverError);
 
@@ -213,11 +213,8 @@
                 if (reject.status === 401) {
                     console.log(reject)
                     var message = reject.responseJSON.message
-                    $("#error-message").text(translations.wrongPassword);
+                    $("#error-message").text(message);
                 }
-
-
-
             }
         });
     }

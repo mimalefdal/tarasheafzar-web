@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Staff;
+use App\Traits\AuthenticatesStaff;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
 
@@ -23,6 +25,7 @@ class StaffLoginController extends Controller
     |
     */
 
+    use AuthenticatesStaff;
 
     /**
      * Where to redirect users after login.
@@ -38,7 +41,7 @@ class StaffLoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:staff')->except('staffLogout');
+        $this->middleware('guest:staff')->except(['staffLogout', 'getToken']);
     }
 
 
@@ -56,36 +59,29 @@ class StaffLoginController extends Controller
                 $validatedRequest = $request->validate(['personnel_id' => 'required']);
 
                 $pid = $request->get('personnel_id');
-                $user = Staff::where('personnel_id', $pid)->firstOrFail();
+                $user = Staff::where('personnel_id', $pid)->first();
 
-                return $user;
+                if ($user)
+                    return $user;
+                else {
+                    return response()->json(['response' => 'failed', 'message' => Lang::get('auth.wrongPersonnelId')], 404);
+                }
+
                 break;
             case '1':
-
                 $validatedRequest = $request->validate(['password' => 'required']);
-
-                $personnel_id = $request->get('personnel_id');
-                $password = $request->get('password');
-                if (Auth::guard('staff')->attempt(['personnel_id' => $personnel_id, 'password' => $password])) {
-                    // redirect(RouteServiceProvider::HOME);
-                    return response()->json([
-                        'redirect_to' => URL::route('staff.home'),
-                        'intended' => URL::previous(),
-                    ]);
-                }
-                return response()->json([
-                    'message' => 'wrongPassword'
-                ], 401);
+                return $this->login($request);
                 break;
         }
         return $request;
     }
 
+
     public function staffLogout(Request $request)
     {
-        // dump($request->all());
-
+        $user = Auth::guard('staff')->user();
+        $request->session()->flush();
         Auth::guard('staff')->logout();
-        return redirect()->route('staff.index');
+        return redirect()->route('staff.login');
     }
 }

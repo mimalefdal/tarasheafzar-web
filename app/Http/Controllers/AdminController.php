@@ -14,6 +14,6 @@ class AdminController extends Controller
 
     public function showHome()
     {
-        return view('admin.home');
+        return view('cms.home');
     }
 }

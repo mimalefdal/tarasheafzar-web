@@ -22,18 +22,12 @@ class AdminLoginController extends Controller
 
     public function adminLogin(Request $request)
     {
-        $this->login($request);
-        return response()->json([
-            'redirect_to' => URL::route('admin.home'),
-            'intended' => URL::previous(),
-        ]);
+        return $this->login($request);
     }
 
     public function adminLogout(Request $request)
     {
-        // dump($request->all());
         Auth::guard('admin')->logout();
-        // $this->logout($request);
-        return redirect()->route('admin.login');
+        return redirect()->route('cms.login');
     }
 }

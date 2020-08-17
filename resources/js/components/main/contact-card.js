@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "../../../public/css/contact-card.css";
-import "../../../public/css/contact-item.css";
-import sendIcon from "../../../public/image/send.svg";
-import loadingIcon from "../../../public/image/loading.png";
-import data from "../../../storage/app/public/company.json";
+import "../../../../public/css/contact-card.css";
+import "../../../../public/css/contact-item.css";
+import sendIcon from "../../../../public/image/send.svg";
+import loadingIcon from "../../../../public/image/loading.png";
+import data from "../../../../storage/app/public/company.json";
 
 export default class ContactCard extends Component {
     componentDidMount() {

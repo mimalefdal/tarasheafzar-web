@@ -22,6 +22,7 @@ return [
     'username' => 'نام کاربری',
     'password' => 'گذرواژه',
     'enterpersonnelId' => 'کد پرسنلی خود را وارد فرمائید',
+    'enterIdentifyCode' => 'کد شناسایی خود را وارد فرمائید',
     'enterpassword' => 'گذرواژه خود را وارد فرمائید',
     'enterusername' => 'نام کاربری خود را وارد فرمائید',
     'personnelId' => 'کد پرسنلی',

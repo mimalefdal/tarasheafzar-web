@@ -14,6 +14,10 @@
     justify-content: center;
 
     background-color: lightskyblue;
+
+    position: sticky;
+    top: 0;
+    z-index: 50;
 }
 
 #btn-logout {
@@ -24,15 +28,27 @@
 .panel-title-text {
     font-size: 14px;
     font-weight: 400;
+    /* color: white; */
+}
+
+.navbar-item-text {
     color: white;
+    font-weight: bold;
+}
+
+.page-content {
+    background-color: whitesmoke;
+    min-height: 100vh;
+
 }
 
 .content {
+    /* background-color: whitesmoke; */
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
-    flex-direction: row;
-    background-color: whitesmoke;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 1281px) {}

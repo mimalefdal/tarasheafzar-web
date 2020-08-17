@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import "../../../public/css/sticky-welcome.css";
-import logo from "../../../public/image/talogo-nocap.png";
-import data from "../../../storage/app/public/company.json";
+import "../../../../public/css/sticky-welcome.css";
+import logo from "../../../../public/image/talogo-nocap.png";
+import data from "../../../../storage/app/public/company.json";
 import { Link } from "react-router-dom";
 import WebMenu from "./webmenu";
 

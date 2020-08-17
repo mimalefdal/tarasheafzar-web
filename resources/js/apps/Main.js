@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Contact from "../views/contact";
-import Index from "../views";
-import Scrolltotop from "./scrolltotop";
+import Scrolltotop from "../components/scrolltotop";
+import { Welcome, Contact } from "../views/main";
 
-function App() {
+function Main() {
     return (
         <div className="App">
             <BrowserRouter>
                 <Scrolltotop />
                 <Switch>
-                    <Route exact path="/" component={Index} />
+                    <Route exact path="/" component={Welcome} />
                     <Route path="/Contact" component={Contact} />
                 </Switch>
             </BrowserRouter>
@@ -19,8 +18,8 @@ function App() {
     );
 }
 
-export default App;
+export default Main;
 
-if (document.getElementById("app")) {
-    ReactDOM.render(<App />, document.getElementById("app"));
+if (document.getElementById("main")) {
+    ReactDOM.render(<Main />, document.getElementById("main"));
 }

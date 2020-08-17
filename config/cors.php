@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['api/*'],
+    'paths' => ['api/*', 'http://api.*/*', 'https://api.*/*'],
 
     'allowed_methods' => ['*'],
 
@@ -29,6 +29,6 @@ return [
 
     'max_age' => false,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];
