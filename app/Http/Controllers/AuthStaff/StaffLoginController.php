@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Staff;
 use App\Traits\AuthenticatesStaff;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
 
@@ -80,6 +81,7 @@ class StaffLoginController extends Controller
     public function staffLogout(Request $request)
     {
         $user = Auth::guard('staff')->user();
+        // $request->session()->flush();
         $request->session()->flush();
         Auth::guard('staff')->logout();
         return redirect()->route('staff.login');

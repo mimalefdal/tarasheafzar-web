@@ -10,21 +10,32 @@ export default class PanelsHome extends Component {
 
     render() {
         let cmsLink;
-        if (getIsAllowed("access-cms")) {
-            cmsLink = <Link to="cms">CMS</Link>;
+        if (getIsAllowed("access-cms-panel")) {
+            cmsLink = (
+                <Link className="panel-link" to="cms">
+                    CMS Panel
+                </Link>
+            );
         }
         let staffManagementLink;
 
-        if (getIsAllowed("add-staff")) {
+        if (getIsAllowed("access-staff-management")) {
             staffManagementLink = (
-                <Link to="staff-management">Staff Management</Link>
+                <Link className="panel-link" to="staff-management">
+                    Staff Management Panel
+                </Link>
             );
         }
 
         return (
             <div>
-                <div>This is Staff Home Component</div>
-                {cmsLink} {staffManagementLink}
+                <div className="panel-welcome-title">
+                    This is Panels Home Component
+                </div>
+                <div className="panel-links">
+                    {cmsLink}
+                    {staffManagementLink}
+                </div>
             </div>
         );
     }

@@ -1,0 +1,18 @@
+.panel-welcome-title {
+    font-size: 18px;
+    padding: 15px;
+    font-weight: bold;
+
+}
+
+.panel-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px;
+}
+
+.panel-link {
+    padding: 15px
+}

@@ -15,7 +15,7 @@
 @endpush
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @endpush
@@ -145,7 +145,7 @@
                 password: $("input[name='password']").val()
             },
             success: function (response) {
-                console.log('sucessResponse->', response)
+                // console.log('sucessResponse->', response)
                 $("#loader").addClass('hidden');
                 $("#staff-name").removeClass('hidden');
                 $("#dear-colleague").removeClass('hidden');
@@ -176,8 +176,8 @@
                     $("#not-you").removeClass("invisible")
                 } else {
                     $('#staff-name').text("در حال هدایت هستید ...");
-                    console.log(response)
-                    if (response.mode = 'dubug') {
+                    // console.log(response)
+                    if (response.mode == 'dubug') {
                         console.log(response.data)
                     } else {
                         window.location = response.redirect_to
@@ -185,12 +185,13 @@
                 }
             },
             error: function (reject) {
-                console.log('errorResponse->', reject);
+                // console.log('errorResponse->', reject);
+                // console.log(reject.responseJSON)
+
                 $("#auth-error").removeClass('invisible');
                 $("#loader").addClass('hidden');
                 $("#staff-name").removeClass('hidden');
                 $("#dear-colleague").removeClass('hidden');
-                console.log(reject.responseJSON)
 
                 if (reject.status === 422) {
                     // console.log(reject.responseJSON)
@@ -211,7 +212,7 @@
 
                 }
                 if (reject.status === 401) {
-                    console.log(reject)
+                    // console.log(reject)
                     var message = reject.responseJSON.message
                     $("#error-message").text(message);
                 }

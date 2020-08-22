@@ -14,5 +14,8 @@
     },
     "errors": {
         "required": "تکمیل این فیلد الزامی است"
+    },
+    "custum-titles": {
+        "welcomeStaffManagement": "به پانل مدیریت کارکنان خوش آمدید"
     }
 }

@@ -14045,7 +14045,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".form-body {\r\n    /* background-color: black; */\r\n}\r\n\r\n.form-text-input {}\r\n\r\n.btn-submit-add {\r\n    width: 50%;\r\n    align-self: flex-end;\r\n}\r\n", ""]);
+exports.push([module.i, ".form-body {\r\n    /* background-color: black; */\r\n}\r\n\r\n.form-text-input {}\r\n\r\n.btn-submit-add {\r\n    width: 50%;\r\n    align-self: flex-end;\r\n}\r\n\r\n.component-title {\r\n    margin-top: 5vh;\r\n    text-align: end;\r\n    font-size: 24px;\r\n    font-weight: bold;\r\n    color: #3490dc;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/styles/panels.css":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/styles/panels.css ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".panel-welcome-title {\r\n    font-size: 18px;\r\n    padding: 15px;\r\n    font-weight: bold;\r\n\r\n}\r\n\r\n.panel-links {\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    justify-content: center;\r\n    padding: 50px;\r\n}\r\n\r\n.panel-link {\r\n    padding: 15px\r\n}\r\n", ""]);
 
 // exports
 
@@ -85929,31 +85948,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function PanelsApp(props) {
+  sessionStorage.clear();
   var rights = JSON.parse(props.rights);
   var user = JSON.parse(props.user);
-  console.log(user);
+  var appLocale = props.locale;
+  var token = user.api_token;
   rights.map(function (right) {
     sessionStorage.setItem(right.slug, true);
   });
-  var appLocale = props.locale;
   sessionStorage.setItem("currentLanguage", appLocale);
-  var headers = {
-    Accept: "application/json"
-  };
-  var data = {
-    userId: user.id
-  };
-  var token = user.api_token;
-  console.log(token);
-  sessionStorage.setItem("StaffAccessToken", token); // if (isNull(token)) {
-  //     Axios.post("http://panels.localhost:8000/getToken", data, {
-  //         headers
-  //     }).then(response => {
-  //         console.log("getToken:", response.data.token);
-  //         sessionStorage.setItem("StaffAccessToken", response.data.token);
-  //     });
-  // }
-
+  sessionStorage.setItem("StaffAccessToken", token);
   return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_scrolltotop__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_guards__WEBPACK_IMPORTED_MODULE_3__["GuardProvider"], {
       guards: [_router_panels_guards__WEBPACK_IMPORTED_MODULE_4__["requireRight"], _router_panels_guards__WEBPACK_IMPORTED_MODULE_4__["waitOneSecond"]]
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_guards__WEBPACK_IMPORTED_MODULE_3__["GuardedRoute"], {
@@ -85966,13 +85970,13 @@ function PanelsApp(props) {
       path: "/cms",
       component: _views_panels_cmsApp__WEBPACK_IMPORTED_MODULE_7__["default"],
       loading: "Please wait ...",
-      meta: _defineProperty({}, _router_panels_types__WEBPACK_IMPORTED_MODULE_5__["REQUIRED_RIGHT"], "access-cms")
+      meta: _defineProperty({}, _router_panels_types__WEBPACK_IMPORTED_MODULE_5__["REQUIRED_RIGHT"], "access-cms-panel")
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_guards__WEBPACK_IMPORTED_MODULE_3__["GuardedRoute"], {
       exact: true,
       path: "/staff-management",
       component: _views_panels_StaffManagement__WEBPACK_IMPORTED_MODULE_10__["default"],
       loading: "Please wait ...",
-      meta: _defineProperty({}, _router_panels_types__WEBPACK_IMPORTED_MODULE_5__["REQUIRED_RIGHT"], "add-staff")
+      meta: _defineProperty({}, _router_panels_types__WEBPACK_IMPORTED_MODULE_5__["REQUIRED_RIGHT"], "access-staff-management")
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_guards__WEBPACK_IMPORTED_MODULE_3__["GuardedRoute"], {
       exact: true,
       path: "/unathorized",
@@ -87084,84 +87088,30 @@ function App() {
     };
     _services_api__WEBPACK_IMPORTED_MODULE_4__["default"].get("/user", {
       headers: headers
-    }).then(function (response) {
-      console.log(response);
+    }).then(function (response) {// console.log(response);
     });
     _services_api__WEBPACK_IMPORTED_MODULE_4__["default"].post("/rights/add", data, {
       headers: headers
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       setBackendErrors(false);
     })["catch"](function (error) {
-      console.log(error.response);
-
+      // console.log(error.response);
       if (error.response.status == 422) {
         setBackendErrors(error.response.data.errors);
       } else {
-        console.log(error.response);
+        // console.log(error.response);
         setBackendErrors(false);
       }
-    }); // Axios.get("/sanctum/csrf-cookie").then(response => {
-    //     console.log(response);
-    //     apiClient
-    //         .post("/rights/add", data, { headers: headers })
-    //         .then(response => {
-    //             console.log(response);
-    //         })
-    //         .catch(error => {
-    //             console.log(error.response);
-    //         });
-    // });
-    // axios
-    //     .get("http://panels.localhost:8000/sanctum/csrf-cookie")
-    //     .then(response => {
-    //         console.log(response);
-    //         axios
-    //             .post(
-    //                 "http://panels.localhost:8000/login",
-    //                 { personnel_id: "1650", password: "abcd", state: 1 },
-    //                 {
-    //                     headers: { Accept: "application/json" },
-    //                     withCredentials: true
-    //                 }
-    //             )
-    //             .then(response => {
-    //                 console.log(response);
-    //             })
-    //             .catch(error => {
-    //                 console.log(error);
-    //             });
-    //     });
-    // Axios.get("http://api.localhost:8000/sanctum/csrf-cookie").then(
-    //     response => {
-    //         console.log(response);
-    //         if (response.status === 204) {
-    //             Axios({
-    //                 method: "post",
-    //                 url: "http://api.localhost:8000/rights/add",
-    //                 data: data,
-    //                 headers: headers
-    //                 // withCredentials: true
-    //             })
-    //                 .then(response => {
-    //                     console.log("response:", response.data);
-    //                     setBackendErrors(false);
-    //                 })
-    //                 .catch(error => {
-    //                     if (error.response.status == 422) {
-    //                         setBackendErrors(error.response.data.errors);
-    //                     } else {
-    //                         console.log(error.response);
-    //                         setBackendErrors(false);
-    //                     }
-    //                 });
-    //         }
-    //     }
-    // );
+    });
   }; // console.log(watch("name")); // watch input value by passing the name of it
 
 
-  return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "component-title"
+    }, "\u062A\u0639\u0631\u06CC\u0641 \u062D\u0642 \u062F\u0633\u062A\u0631\u0633\u06CC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
       className: "form-body",
       onSubmit: handleSubmit(onSubmit)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_2__["DualLabelTextInput"], {
@@ -87203,7 +87153,7 @@ function App() {
       className: "btn btn-primary btn-submit-add",
       type: "submit",
       value: Object(_utils__WEBPACK_IMPORTED_MODULE_3__["t"])("labels.submit-add")
-    }))
+    })))
   );
 }
 
@@ -87298,10 +87248,10 @@ var strings = function strings(key) {
 /*!*******************************************!*\
   !*** ./resources/js/lang/fa/strings.json ***!
   \*******************************************/
-/*! exports provided: labels, errors, default */
+/*! exports provided: labels, errors, custum-titles, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"labels\":{\"name\":\"نام\",\"family\":\"نام خانوادگی\",\"title\":\"عنوان\",\"title_fa\":\"عنوان فارسی\",\"title_en\":\"عنوان انگلیسی\",\"submit\":\"ارسال\",\"submit-add\":\"ذخیره جدید\",\"slug\":\"تگ سیستمی\",\"activation\":\"فعالسازی\",\"active\":\"فعال\",\"deactive\":\"غیرفعال\"},\"errors\":{\"required\":\"تکمیل این فیلد الزامی است\"}}");
+module.exports = JSON.parse("{\"labels\":{\"name\":\"نام\",\"family\":\"نام خانوادگی\",\"title\":\"عنوان\",\"title_fa\":\"عنوان فارسی\",\"title_en\":\"عنوان انگلیسی\",\"submit\":\"ارسال\",\"submit-add\":\"ذخیره جدید\",\"slug\":\"تگ سیستمی\",\"activation\":\"فعالسازی\",\"active\":\"فعال\",\"deactive\":\"غیرفعال\"},\"errors\":{\"required\":\"تکمیل این فیلد الزامی است\"},\"custum-titles\":{\"welcomeStaffManagement\":\"به پانل مدیریت کارکنان خوش آمدید\"}}");
 
 /***/ }),
 
@@ -87433,6 +87383,36 @@ var apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./forms.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/styles/forms.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/styles/panels.css":
+/*!****************************************!*\
+  !*** ./resources/js/styles/panels.css ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!./panels.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/styles/panels.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -87900,21 +87880,27 @@ var PanelsHome = /*#__PURE__*/function (_Component) {
     value: function render() {
       var cmsLink;
 
-      if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getIsAllowed"])("access-cms")) {
+      if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getIsAllowed"])("access-cms-panel")) {
         cmsLink = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "panel-link",
           to: "cms"
-        }, "CMS");
+        }, "CMS Panel");
       }
 
       var staffManagementLink;
 
-      if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getIsAllowed"])("add-staff")) {
+      if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getIsAllowed"])("access-staff-management")) {
         staffManagementLink = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "panel-link",
           to: "staff-management"
-        }, "Staff Management");
+        }, "Staff Management Panel");
       }
 
-      return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "This is Staff Home Component"), cmsLink, " ", staffManagementLink)
+      return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "panel-welcome-title"
+        }, "This is Panels Home Component"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "panel-links"
+        }, cmsLink, staffManagementLink))
       );
     }
   }]);
@@ -87940,6 +87926,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./resources/js/utils/index.js");
 /* harmony import */ var _components_staff_management__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/staff-management */ "./resources/js/components/staff-management/index.js");
+/* harmony import */ var _styles_panels_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/panels.css */ "./resources/js/styles/panels.css");
+/* harmony import */ var _styles_panels_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_panels_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -87962,6 +87950,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var StaffManagement = /*#__PURE__*/function (_Component) {
   _inherits(StaffManagement, _Component);
 
@@ -87974,12 +87963,14 @@ var StaffManagement = /*#__PURE__*/function (_Component) {
   _createClass(StaffManagement, [{
     key: "render",
     value: function render() {
-      return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "panel-welcome-title"
+        }, Object(_utils__WEBPACK_IMPORTED_MODULE_1__["t"])("custum-titles.welcomeStaffManagement")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
             width: "50%",
             margin: "auto"
           }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome to Staff Management Panel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_staff_management__WEBPACK_IMPORTED_MODULE_2__["AddFormRight"], null))
+        }))
       );
     }
   }]);

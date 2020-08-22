@@ -12,33 +12,18 @@ import { Unathorized, NotFound } from "../views/errors";
 import StaffManagement from "../views/panels/StaffManagement";
 
 function PanelsApp(props) {
+    sessionStorage.clear();
+
     let rights = JSON.parse(props.rights);
     let user = JSON.parse(props.user);
-    console.log(user);
+    let appLocale = props.locale;
+    let token = user.api_token;
 
     rights.map(right => {
         sessionStorage.setItem(right.slug, true);
     });
-    let appLocale = props.locale;
     sessionStorage.setItem("currentLanguage", appLocale);
-
-    let headers = {
-        Accept: "application/json"
-    };
-    let data = { userId: user.id };
-
-    let token = user.api_token;
-    console.log(token);
     sessionStorage.setItem("StaffAccessToken", token);
-
-    // if (isNull(token)) {
-    //     Axios.post("http://panels.localhost:8000/getToken", data, {
-    //         headers
-    //     }).then(response => {
-    //         console.log("getToken:", response.data.token);
-    //         sessionStorage.setItem("StaffAccessToken", response.data.token);
-    //     });
-    // }
 
     return (
         <BrowserRouter>
@@ -57,7 +42,7 @@ function PanelsApp(props) {
                         component={CmsApp}
                         loading="Please wait ..."
                         meta={{
-                            [REQUIRED_RIGHT]: "access-cms"
+                            [REQUIRED_RIGHT]: "access-cms-panel"
                         }}
                     />
                     <GuardedRoute
@@ -66,7 +51,7 @@ function PanelsApp(props) {
                         component={StaffManagement}
                         loading="Please wait ..."
                         meta={{
-                            [REQUIRED_RIGHT]: "add-staff"
+                            [REQUIRED_RIGHT]: "access-staff-management"
                         }}
                     />
                     <GuardedRoute

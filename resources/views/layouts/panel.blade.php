@@ -30,11 +30,13 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
-                @if(Route::current()->getName() != 'staff.index')
+                <!-- @if(Route::current()->getName() != 'staff.home')
                     <a href="/home" class="navbar-item-text">خانه</a>
-                @endif
+@endif-->
+                <a href="/home" class="navbar-item-text">خانه</a>
 
-                @auth('staff')
+
+@auth('staff')
                     <div class="staff-info">
                         <a href="{{ route('staff.profile') }}"
                             class="staff-name">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }} </a>
@@ -42,8 +44,8 @@
                     </div>
 
                     <a href="{{ route('staff.logout') }}" class="btn btn-primary">خروج</a>
-                @endauth
-                @auth('admin')
+@endauth
+@auth('admin')
                     <div class="staff-info">
                         <a disabeld href="#" class="staff-name">{{ Auth::user()->name }}
                         </a>
@@ -52,12 +54,12 @@
 
                     <a id='btn-logout' href="{{ route('admin.logout') }}"
                         class="btn btn-primary">خروج</a>
-                @endauth
+@endauth
             </nav>
 
         </div>
 
-    @endauth
+@endauth
 
     <div class="flex-center position-ref ">
         <!-- 
@@ -65,12 +67,12 @@
                 <p class="panel-title-text">@yield('panel-title')</p>
             </div> -->
 
-        @yield('pre-content')
-        <div class="content">
-            @yield('content')
-        </div>
+                @yield('pre-content')
+                <div class="content">
+                    @yield('content')
+                </div>
 
-    </div>
+        </div>
 
 
 </body>

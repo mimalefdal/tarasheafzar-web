@@ -8,3 +8,11 @@
     width: 50%;
     align-self: flex-end;
 }
+
+.component-title {
+    margin-top: 5vh;
+    text-align: end;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3490dc;
+}
