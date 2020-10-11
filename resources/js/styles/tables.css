@@ -1,0 +1,67 @@
+table {
+    width: 100%;
+    /* table-layout: fixed; */
+    background-color: white;
+}
+
+th, thead {
+    background-color: #efefef;
+}
+
+thead {
+    border-bottom: 2px solid lightsalmon;
+}
+
+th {
+    padding: 1em;
+    font-size: 16px;
+    font-weight: bold;
+    position: sticky;
+    top: 23vh;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+    height: 100px;
+}
+
+td {
+    padding: 0.5rem;
+    cursor: default;
+}
+
+.selected-row {
+    background-color: lightsalmon;
+}
+
+.operation-icon-btn {
+    /* height: 20px; */
+    flex: 1;
+    fill: lightsalmon;
+    border: none;
+    /* cursor: pointer; */
+    background: none;
+    /* margin: 0.1rem; */
+    margin-left: 0.5rem;
+}
+
+.operation-icon-btn:focus {
+    outline: none;
+}
+
+.operation-icon-btn.selected svg {
+    fill: lemonchiffon;
+}
+
+.operation-icon-btn:hover svg {
+    fill: teal;
+}
+
+.operation-icon-btn:disabled svg {
+    fill: #ddd
+}
+
+.btn-set {
+    display: flex;
+    flex-direction: row;
+}

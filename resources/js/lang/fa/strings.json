@@ -1,0 +1,38 @@
+{
+    "labels": {
+        "index": "ردیف",
+        "name": "نام",
+        "family": "نام خانوادگی",
+        "title": "عنوان",
+        "title_fa": "عنوان فارسی",
+        "title_en": "عنوان انگلیسی",
+        "submit": "ارسال",
+        "submit-add": "ذخیره جدید",
+        "slug": "تگ سیستمی",
+        "activation": "فعالسازی",
+        "active": "فعال",
+        "deactive": "غیرفعال",
+        "operation": "َعملیات"
+    },
+    "errors": {
+        "required": "تکمیل این فیلد الزامی است"
+    },
+    "custum-titles": {
+        "welcomeStaffManagement": "به پانل مدیریت کارکنان خوش آمدید",
+        "welcomePanelHome": "به پنل کاری تراشه افزار خوش آمدید",
+        "welcomeSystemSetting": "به پنل مدیریت سیستم خوش آمدید",
+        "defineRight": "ثبت حق دسترسی",
+        "rightsListTitle": "لیست مجوزها"
+    },
+    "buttons": {
+        "Home": "خانه",
+        "Back": "بازگشت"
+    },
+    "panels": {
+        "staff-management": "مدیریت کارکنان",
+        "system-management": "مدیریت سیستم",
+        "crm": "ارتباط با مشتریان",
+        "cms": "مدیریت محتوا",
+        "staff": "پنل کارکنان"
+    }
+}
