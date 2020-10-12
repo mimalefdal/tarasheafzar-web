@@ -1,0 +1,28 @@
+[
+    {
+        "personnel_id": "8518",
+        "username": "mimalefdal",
+        "password": "amin8518",
+        "firstname": "محمدامین",
+        "nickname": "دلوار",
+        "lastname": "دلورانی",
+        "gender": "male",
+        "email": "mimalefdal@yahoo.com",
+        "roles": [
+            "enterprise-manager"
+        ]
+    },
+    {
+        "personnel_id": "3578",
+        "username": "s.sadeghi",
+        "password": "amin8518",
+        "firstname": "صبا",
+        "nickname": "فرفر",
+        "lastname": "صادقی",
+        "gender": "female",
+        "email": "saba_sadeghi7@yahoo.com",
+        "roles": [
+            "it-manager"
+        ]
+    }
+]

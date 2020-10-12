@@ -8,10 +8,10 @@ use App\Models\Role;
 trait AllowedToTrait
 {
 
-    public function giveRightsTo(...$rights)
+    public function giveRightsTo($rights)
     {
         $rights = $this->getAllRights($rights);
-        dd($rights);
+        // dd($rights);
         if ($rights === null) {
             return $this;
         }
@@ -20,7 +20,7 @@ trait AllowedToTrait
     }
 
 
-    public function withdrawRightsTo(...$rights)
+    public function withdrawRightsTo($rights)
     {
         $rights = $this->getAllRights($rights);
         $this->rights()->detach($rights);
@@ -28,7 +28,7 @@ trait AllowedToTrait
     }
 
 
-    public function refreshRights(...$rights)
+    public function refreshRights($rights)
     {
         $this->rights()->detach();
         return $this->giveRightsTo($rights);
@@ -73,21 +73,6 @@ trait AllowedToTrait
         }
         return false;
 
-
-        // // dump($roles);
-        // $check = false;
-        // foreach ($roles as $role) {
-        //     dump($role);
-
-        //     foreach ($this->roles as $mainrole) {
-        //         dump($mainrole->slug);
-        //         if ($mainrole->slug == $role) {
-        //             $check = true;
-        //         }
-        //     }
-        // }
-        // dd($check);
-        // return $check;
     }
 
 

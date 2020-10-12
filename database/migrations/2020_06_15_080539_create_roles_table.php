@@ -16,8 +16,10 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title'); // Staff Management
-            $table->string('slug'); // manage-staff
+            $table->string('title')->unique(); // Staff Management
+            $table->string('title_fa')->unique();
+
+            $table->string('slug')->unique(); // manage-staff
             $table->string('description')->nullable();
             $table->string('activation')->nullable(); // activation state of role
 

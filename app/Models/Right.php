@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Right extends Model
 {
     //
+    protected $fillable = [
+        'title', 'slug', 'description', 'activation', 'title_fa'
+    ];
 
     public function roles()
     {

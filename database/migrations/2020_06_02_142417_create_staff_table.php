@@ -17,13 +17,15 @@ class CreateStaffTable extends Migration
             $table->id();
             $table->string('personnel_id')->unique();
             $table->string('username')->unique();
+
             $table->string('firstname');
             $table->string('nickname')->nullable();
             $table->string('lastname');
+            $table->string('gender')->nullable();
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('php artisan migrate');
+            $table->integer('verification_status')->nullable();
 
             $table->string('password');
             $table->rememberToken();

@@ -16,8 +16,10 @@ class CreateRightsTable extends Migration
         Schema::create('rights', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title'); // Display Name like Create User
-            $table->string('slug'); // System-slug lige create-user
+            $table->string('title')->unique(); // Display Name like Create User
+            $table->string('title_fa')->unique();
+
+            $table->string('slug')->unique(); // System-slug lige create-user
             $table->string('description')->nullable(); // Description for right
             $table->boolean('activation'); // activation state of right
 

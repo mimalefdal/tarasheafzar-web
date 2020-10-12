@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Staff;
+use App\Models\Role;
 class StaffSeeder extends Seeder
 {
     /**
@@ -11,15 +12,26 @@ class StaffSeeder extends Seeder
      */
     public function run()
     {
-    factory(Staff::class)->create([
-        'personnel_id'=>'8518',
-        'username'=>'mimalefdal',
-        'password'=>Hash::make('amin8518'),
-        'firstname'=>'محمدامین',
-        'nickname'=>'دلوار',
-        'lastname'=>'دلورانی',
-        'email'=>'mimalefdal@yahoo.com',
-    ]);
+        // $path = Storage::disk('public')->path('basicStaff.json');
+        $path = base_path().'/public/data/basicStaff.json';
+
+        $basicStaff = file_get_contents($path);
+        $basicStaff = json_decode($basicStaff, true);
+        foreach($basicStaff as $staff) {
+            DB::table('Staff')->insert([
+                "personnel_id"=>$staff['personnel_id'],
+                "username"=>$staff['username'],
+                "password"=>Hash::make($staff['password']),
+                "firstname"=>$staff['firstname'],
+                "nickname"=>$staff['nickname'],
+                "lastname"=>$staff['lastname'],
+                "gender"=>$staff['gender'],
+                "email"=>$staff['email'],
+            ]);
+            $newStaff = Staff::where('personnel_id',$staff['personnel_id'])->first();
+            $newStaff->setRoles($staff['roles']);
+        }
+
 
     }
 }
