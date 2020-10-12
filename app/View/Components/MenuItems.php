@@ -17,7 +17,9 @@ class MenuItems extends Component
      */
     public function __construct()
     {
-        $path = Storage::disk('public')->path('site.json');
+        // $path = Storage::disk('public')->path('site.json');
+        $path = base_path().'/public/data/site.json';
+
         $siteData = file_get_contents($path);
         $siteData = json_decode($siteData, true);
 
