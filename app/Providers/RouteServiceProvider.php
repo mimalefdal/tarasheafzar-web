@@ -63,7 +63,9 @@ class RouteServiceProvider extends ServiceProvider
             Route::group(['domain' => 'app.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
 
                 Route::get('/{path?}', function () {
-                    $path = Storage::disk('public')->path('company.json');
+                    // $path = Storage::disk('public')->path('company.json');
+                    $path = base_path().'/public/data/company.json';
+
                     $companyData = file_get_contents($path);
                     $companyData = json_decode($companyData, true);
 
