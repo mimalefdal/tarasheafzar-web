@@ -23,6 +23,7 @@
 .contact-info {
     flex: 2;
     background-color: #01579b;
+    background-color: goldenrod;
     color: white;
 }
 
@@ -39,6 +40,8 @@
 .form-title {
     color: black;
     color: #01579b;
+    color: goldenrod;
+
     /* color: goldenrod; */
     align-items: flex-end;
 }
@@ -53,7 +56,6 @@
     align-items: flex-start;
 }
 
-
 .form-body {
     flex: 5;
     display: flex;
@@ -65,7 +67,6 @@
 .message-form {
     text-align: left;
 }
-
 
 .input-block {
     display: flex;
@@ -144,9 +145,6 @@
     margin-top: 5vh;
 }
 
-
-
-
 textarea:focus,
 input:focus {
     outline: none;
@@ -158,7 +156,8 @@ textarea {
     border: none;
     background: none;
     border-bottom: 1px solid #01579b;
-    ;
+    border-bottom: 1px solid goldenrod;
+
     font-family: iranyekanfa;
     padding: 10px;
 }
@@ -193,11 +192,10 @@ textarea {
 
     background-color: white;
     color: #01579b;
+    color: goldenrod;
     border: 1px solid #01579b;
-
+    border: 1px solid goldenrod;
 }
-
-
 
 #sendBtnLoading,
 #sendBtnIcon {
@@ -214,7 +212,7 @@ textarea {
     padding: 10px;
     font-weight: 500;
     color: #01579b;
-
+    color: goldenrod;
 }
 
 .shoma {
@@ -232,7 +230,6 @@ textarea {
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 8vh;
-
 }
 
 .social-item {
@@ -248,10 +245,10 @@ textarea {
     fill: #bbb;
     max-width: 80%;
     height: 50%;
-
 }
 
-@media screen and (min-width: 992px) and (max-width: 1281px) {}
+@media screen and (min-width: 992px) and (max-width: 1281px) {
+}
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .form-body {
@@ -265,4 +262,5 @@ textarea {
     }
 }
 
-@media screen and (max-width: 767px) and (orientation:landscape) {}
+@media screen and (max-width: 767px) and (orientation: landscape) {
+}

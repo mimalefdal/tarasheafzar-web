@@ -1,5 +1,6 @@
 {
-    "menu-items": [{
+    "menu-items": [
+        {
             "title": "contact-us",
             "link": "/contact",
             "show": true
@@ -7,11 +8,6 @@
         {
             "title": "about-us",
             "link": "#",
-            "show": true
-        },
-        {
-            "title": "Temptest",
-            "link": "http://app.localhost:8000/",
             "show": true
         }
     ]

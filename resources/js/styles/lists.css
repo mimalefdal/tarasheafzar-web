@@ -21,7 +21,8 @@
 }
 
 .list-title-text {
-    color: #24c239;
+    /* color: #24c239;
+    color: white; */
 }
 
 .items-ribbon {
@@ -45,4 +46,5 @@
 
 .list-operation-btn svg {
     fill: #24c239;
+    fill: white;
 }

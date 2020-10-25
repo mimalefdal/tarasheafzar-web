@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Storage;
 Route::panelRoutes();
 Route::reactAppVersionRoutes();
 
-
 Route::domain(env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))->group(function () {
     Route::get('/', function () {
         // $path = Storage::disk('public')->path('company.json');

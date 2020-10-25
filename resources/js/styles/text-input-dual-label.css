@@ -38,6 +38,7 @@
     flex: 5;
     padding: 2px;
     min-height: 50px;
+    border-color: var(--titlebkg);
     /* width: 100%; */
 }
 

@@ -28,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         //
 
         Schema::defaultStringLength(191);
+        // Blade::component('section-item', SectionItem::class);
+        // Blade::component('sticky-welcome', StickyWelcomeComponent::class);
     }
 }

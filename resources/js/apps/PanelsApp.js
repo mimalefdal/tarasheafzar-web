@@ -21,6 +21,7 @@ function PanelsApp(props) {
     let rights = JSON.parse(props.rights);
     let user = JSON.parse(props.user);
     let appLocale = props.locale;
+    let appEnv = props.env;
     let token = user.api_token;
 
     rights.map(right => {
@@ -28,7 +29,9 @@ function PanelsApp(props) {
     });
     sessionStorage.setItem("currentLanguage", appLocale);
     sessionStorage.setItem("StaffAccessToken", token);
+    sessionStorage.setItem("ENV", appEnv);
 
+    console.log(appEnv);
     return (
         <BrowserRouter>
             <PanelsNavBar />

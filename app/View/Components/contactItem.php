@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class contactItem extends Component
+class ContactItem extends Component
 {
 
     public $icon;

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class section extends Component
+class Section extends Component
 {
     public $data;
     var $title;
@@ -19,12 +19,12 @@ class section extends Component
         // dump($data["title"]);
         if ( isset($data["title"]) ) {
             $this->title = $data["title"];
-        } 
-        
+        }
+
         if ( isset($data["description"]) ) {
             $this->description = $data["description"];
-        } 
-        
+        }
+
     }
 
     /**

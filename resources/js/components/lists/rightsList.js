@@ -32,7 +32,10 @@ class rightsList extends Component {
 
         const response = await ApiClient.get("/rights", {
             headers: headers
+        }).catch(error => {
+            console.log(error.response);
         });
+
         const rights = response.data;
         // console.log(rights);
         this.setState({ rights, loaded: true });

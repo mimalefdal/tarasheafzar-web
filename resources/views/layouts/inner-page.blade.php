@@ -8,7 +8,7 @@
 
     <link href="{{ asset('css/base.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/inner.css') }}" rel="stylesheet" />
-    @if(Config::get('app.locale') == 'fa')
+    @if (Config::get('app.locale') == 'fa')
         <link href="{{ asset('css/appfa.css') }}" rel="stylesheet" />
     @endif
 

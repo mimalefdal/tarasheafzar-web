@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 function viewButton(props) {
     return (
         <Link
-            className={"operation-icon-btn " + props.className}
+            className={
+                "operation-icon-btn table-operation-icon-btn " + props.className
+            }
             style={props.style}
             to={props.target}
         >

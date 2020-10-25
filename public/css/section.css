@@ -2,6 +2,7 @@
     /* width: 100vw; */
     background-color: goldenrod;
     background-color: inherit;
+    min-height: 100vh;
     /* border-bottom: 1px solid #ddd; */
 }
 
@@ -50,7 +51,6 @@
     font-size: 12px;
     font-weight: 600;
     /* width: 20%; */
-
 }
 
 .section-items {
@@ -69,7 +69,6 @@
     .section-title {
         font-size: 24px;
     }
-
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -100,7 +99,7 @@
     }
 }
 
-@media screen and (max-width: 767px) and (orientation:landscape) {
+@media screen and (max-width: 767px) and (orientation: landscape) {
     .section-items {
         flex-direction: row;
     }

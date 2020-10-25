@@ -55,7 +55,7 @@ class rightEntry extends Component {
                 <td className="">{this.props.right.slug}</td>
                 <td className="">{activeState}</td>
                 <td className="">
-                    <div className="btn-set">
+                    <div className="table-row-btn-set">
                         <ViewButton
                             className={this.state.selected ? "selected" : ""}
                             target={"right/" + this.props.right.slug}

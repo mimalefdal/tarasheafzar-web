@@ -1,107 +1,113 @@
 @extends('layouts.panel')
 
 @section('title')
-تراشه افزار | ورود همکاران
+    تراشه افزار | ورود همکاران
 @endsection
 
 @push('styles')
-<link href="{{ asset('css/login.css') }}" rel="stylesheet" />
-<style>
-    body {
-        background-color: white;
-    }
-</style>
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet" />
+    <style>
+        body {
+            background-color: white;
+        }
+
+    </style>
 @endpush
 
 @push('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @endpush
 
 @section('content')
 
-<div id='main-container' class="full-height flex-center">
+    <div id='main-container' class="full-height flex-center">
 
-    <div class="side-container" id="right-container">
-        <div class="sub-container" id="title-container">
-            <a href="http://localhost:8000" style="cursor: default;">
-                <img id="company-logo" class="logo-main" src="{{ asset('image/talogo-nocap.png') }}" alt="company logo" />
-            </a>
-            <div id="company-name" class="large-title">
-                شرکت تراشه افزار سامانه ایرانیان
-            </div>
-            <div id='panel-name' class="">پنل ورود همکاران</div>
-
-        </div>
-        <div class="sub-container" style="flex-direction: row;">
-
-        </div>
-        <!-- <div class="sub-container" id="news">
-            گزارش مالی هیئت مدیره مربوط به عملکر سال ۱۳۹۸ منتشر شد
-        </div> -->
-    </div>
-
-
-    <div class="side-container" id="left-container">
-        <div class="sub-container" id="title-container">
-
-
-        </div>
-        <div class="sub-container" id="form-container">
-            <div class="login-info">
-                <div id="dear-colleague">
-                    همکار گرامی
-                </div>
-                <div id="loader" class="loader hidden"></div>
-                <div id="staff-name" class="staff-name">
-                    وقت بخیر
-                </div>
-
-            </div>
-            <form class="login-form" id="login-form">
-                @csrf
-
-                <div id="idBlock" class="input-block">
-                    <label class="input-label" for="personnelId">{{ __('auth.enterpersonnelId') }}</label>
-                    <input class="input-auth" id="personnelId" type="text" name="personnelId" value="{{ old('personnelId') }}" autocomplete="off" autofocus />
-
-                </div>
-
-                <div id="passBlock" class="input-block hidden">
-
-                    <label class="input-label" for="password">{{ __('auth.enterpassword') }}</label>
-                    <input class="input-auth" id="password" type="password" name="password" autofocus />
-                </div>
-                <div id='auth-error' class="invisible error-block">
-                    <p id='error-message' class="error-message"></p>
-                </div>
-                <a href="" class=invisible id="not-you">
-                    شخص دیگری هستم
+        <div class="side-container" id="right-container">
+            <div class="sub-container" id="title-container">
+                <a href="{{ env('APP_ENV') == 'local' ? 'http://localhost:8000' : 'https://tarasheafzar.ir' }}"
+                    style="cursor: default;">
+                    <img id="company-logo" class="logo-main" src="{{ asset('image/talogo-nocap.png') }}"
+                        alt="company logo" />
                 </a>
-                <div class="input-block button-box hidden" id="login-button-box">
-                    <button id="loginBtn" type="submit" class="btn btn-login" onclick="event.preventDefault(); identifyPesonnelId()">
-                        {{ __('auth.loginbtn') }}
-                    </button>
+                <div id="company-name" class="large-title">
+                    شرکت تراشه افزار سامانه ایرانیان
                 </div>
-                <div class="input-block button-box" id="continue-button-box">
-                    <button id="continueBtn" type="submit" class="btn btn-login" onclick="event.preventDefault(); identifyPesonnelId()">
-                        {{ __('auth.continuebtn') }}
-                    </button>
-                </div>
+                <div id='panel-name' class="">پنل ورود همکاران</div>
 
-            </form>
+            </div>
+            <div class="sub-container" style="flex-direction: row;">
 
+            </div>
+            <!-- <div class="sub-container" id="news">
+                        گزارش مالی هیئت مدیره مربوط به عملکر سال ۱۳۹۸ منتشر شد
+                    </div> -->
         </div>
 
-        <div class="sub-container" id="bottom-container">
-            <div style="display: flex;flex-direction: column;">
-                <a href="{{ url('password.reset') }}">گذرواژه/کد پرسنلی را فراموش کرده‌ام</a>
 
+        <div class="side-container" id="left-container">
+            <div class="sub-container" id="title-container">
+
+
+            </div>
+            <div class="sub-container" id="form-container">
+                <div class="login-info">
+                    <div id="dear-colleague">
+                        همکار گرامی
+                    </div>
+                    <div id="loader" class="loader hidden"></div>
+                    <div id="staff-name" class="staff-name">
+                        وقت بخیر
+                    </div>
+
+                </div>
+                <form class="login-form" id="login-form">
+                    @csrf
+
+                    <div id="idBlock" class="input-block">
+                        <label class="input-label" for="personnelId">{{ __('auth.enterpersonnelId') }}</label>
+                        <input class="input-auth" id="personnelId" type="text" name="personnelId"
+                            value="{{ old('personnelId') }}" autocomplete="off" autofocus />
+
+                    </div>
+
+                    <div id="passBlock" class="input-block hidden">
+
+                        <label class="input-label" for="password">{{ __('auth.enterpassword') }}</label>
+                        <input class="input-auth" id="password" type="password" name="password" autofocus />
+                    </div>
+                    <div id='auth-error' class="invisible error-block">
+                        <p id='error-message' class="error-message"></p>
+                    </div>
+                    <a href="" class=invisible id="not-you">
+                        شخص دیگری هستم
+                    </a>
+                    <div class="input-block button-box hidden" id="login-button-box">
+                        <button id="loginBtn" type="submit" class="btn btn-login"
+                            onclick="event.preventDefault(); identifyPesonnelId()">
+                            {{ __('auth.loginbtn') }}
+                        </button>
+                    </div>
+                    <div class="input-block button-box" id="continue-button-box">
+                        <button id="continueBtn" type="submit" class="btn btn-login"
+                            onclick="event.preventDefault(); identifyPesonnelId()">
+                            {{ __('auth.continuebtn') }}
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="sub-container" id="bottom-container">
+                <div style="display: flex;flex-direction: column;">
+                    <a href="{{ url('password.reset') }}">گذرواژه/کد پرسنلی را فراموش کرده‌ام</a>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 <script>
@@ -213,4 +219,5 @@
             }
         });
     }
+
 </script>
