@@ -1,0 +1,16 @@
+.inner-content {
+    min-height: 75vh;
+    width: 100vw;
+}
+
+.main-menu-container {
+    z-index: inherit !important;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1281px) {}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {}
+
+@media screen and (max-width: 767px) {}
+
+@media screen and (max-width: 767px) and (orientation:landscape) {}

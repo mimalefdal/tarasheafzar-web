@@ -1,0 +1,18 @@
+[
+    {
+        "slug": "enterprise-manager",
+        "title": "Enterprise Manager",
+        "title_fa": "مدیر سازمان",
+        "activation": true,
+        "rights": [
+            "allRights"
+        ]
+    },
+    {
+        "slug": "it-manager",
+        "title": "IT Manager",
+        "title_fa": "مدیر فناوری اطلاعات",
+        "activation": true,
+        "rights": []
+    }
+]

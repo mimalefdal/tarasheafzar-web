@@ -1,0 +1,22 @@
+.staff-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1;
+    margin-left: 15px;
+}
+
+.panel-title {
+    /* margin-right: 15px; */
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.staff-name {
+    font-weight: 400;
+}
+
+.staff-job-title {
+    font-size: 10px;
+}

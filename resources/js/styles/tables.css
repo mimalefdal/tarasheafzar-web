@@ -1,0 +1,77 @@
+:root {
+    --table-bkg: white;
+    --table-header-bkg: #efefef;
+    --table-header-font: initial;
+    --table-secondary-color: var(--blue);
+    --table-secondary-color-dark: var(--indigo);
+}
+
+table {
+    width: 100%;
+    /* table-layout: fixed; */
+    background-color: var(--table-bkg);
+}
+
+th,
+thead {
+    background-color: var(--table-header-bkg);
+}
+
+thead {
+    border-bottom: 2px solid var(--table-secondary-color);
+}
+
+th {
+    padding: 1em;
+    font-size: 16px;
+    font-weight: bold;
+    position: sticky;
+    top: 23vh;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+    height: 100px;
+}
+
+td {
+    padding: 0.5rem;
+    cursor: default;
+}
+
+.selected-row {
+    background-color: var(--table-secondary-color);
+}
+
+.table-operation-icon-btn {
+    /* height: 20px; */
+    flex: 1;
+    fill: var(--table-secondary-color);
+    border: none;
+    /* cursor: pointer; */
+    background: none;
+    /* margin: 0.1rem; */
+    margin-left: 0.5rem;
+}
+
+.table-operation-icon-btn:focus {
+    outline: none;
+}
+
+.table-operation-icon-btn.selected svg {
+    fill: lemonchiffon;
+}
+
+.table-operation-icon-btn:hover svg {
+    fill: var(--table-secondary-color-dark);
+    /* width: calc(100% + 2%); */
+}
+
+.table-operation-icon-btn:disabled svg {
+    fill: #ddd;
+}
+
+.table-row-btn-set {
+    display: flex;
+    flex-direction: row;
+}

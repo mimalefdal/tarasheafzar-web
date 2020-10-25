@@ -1,0 +1,14 @@
+{
+    "menu-items": [
+        {
+            "title": "contact-us",
+            "link": "/contact",
+            "show": true
+        },
+        {
+            "title": "about-us",
+            "link": "#",
+            "show": true
+        }
+    ]
+}

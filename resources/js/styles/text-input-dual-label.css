@@ -1,0 +1,58 @@
+.input-block {
+    display: flex;
+    margin-bottom: 1vh;
+    padding-bottom: 2vh;
+}
+
+.dual-label-box {
+    display: flex;
+    flex-direction: column;
+    /* width: 20%; */
+    flex: 2;
+}
+
+.text-input-label {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.text-input-label-comment {
+    flex: 1;
+    font-size: 0.75rem;
+    padding-bottom: 10px;
+    min-height: 30px;
+}
+
+.input-with-error-box {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-text-input {
+    flex: 5;
+    padding: 2px;
+    min-height: 50px;
+    border-color: var(--titlebkg);
+    /* width: 100%; */
+}
+
+.input-error {
+    flex: 1;
+    /* height: 0; */
+    text-align: start;
+    transition: all 0.5s;
+}
+
+.input-error-message {
+    color: tomato;
+    font-size: 10px;
+    font-weight: bold;
+    /* height: 0; */
+    transition: all 0.5s;
+}

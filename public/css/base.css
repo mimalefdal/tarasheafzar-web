@@ -1,0 +1,367 @@
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/eot/iranyekanwebbold.eot");
+    src: url("../fonts/eot/iranyekanwebbold.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebbold.woff") format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebbold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/eot/iranyekanwebthin.eot");
+    src: url("../fonts/eot/iranyekanwebthin.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebthin.woff") format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebthin.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/eot/iranyekanweblight.eot");
+    src: url("../fonts/eot/iranyekanweblight.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanweblight.woff") format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanweblight.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/eot/iranyekanwebregular.eot");
+    src: url("../fonts/eot/iranyekanwebregular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebregular.woff") format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebregular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/eot/iranyekanwebmedium.eot");
+    src: url("../fonts/eot/iranyekanwebmedium.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebmedium.woff") format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebmedium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: 800;
+    src: url("../fonts/eot/iranyekanwebextrabold.eot");
+    src: url("../fonts/eot/iranyekanwebextrabold.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebextrabold.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebextrabold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: 900;
+    src: url("../fonts/eot/iranyekanwebblack.eot");
+    src: url("../fonts/eot/iranyekanwebblack.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebblack.woff") format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebblack.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekan;
+    font-style: normal;
+    font-weight: 950;
+    src: url("../fonts/eot/iranyekanwebextrablack.eot");
+    src: url("../fonts/eot/iranyekanwebextrablack.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebextrablack.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebextrablack.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/eot/iranyekanwebboldfanum.eot");
+    src: url("../fonts/eot/iranyekanwebboldfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebboldfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebboldfanum.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/eot/iranyekanwebthinfanum.eot");
+    src: url("../fonts/eot/iranyekanwebthinfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebthinfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebthinfanum.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/eot/iranyekanweblightfanum.eot");
+    src: url("../fonts/eot/iranyekanweblightfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanweblightfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanweblightfanum.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/eot/iranyekanwebregularfanum.eot");
+    src: url("../fonts/eot/iranyekanwebregularfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebregularfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebregularfanum.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/eot/iranyekanwebmediumfanum.eot");
+    src: url("../fonts/eot/iranyekanwebmediumfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebmediumfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebmediumfanum.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: 800;
+    src: url("../fonts/eot/iranyekanwebextraboldfanum.eot");
+    src: url("../fonts/eot/iranyekanwebextraboldfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebextraboldfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebextraboldfanum.ttf")
+            format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: 900;
+    src: url("../fonts/eot/iranyekanwebblackfanum.eot");
+    src: url("../fonts/eot/iranyekanwebblackfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebblackfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebblackfanum.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: iranyekanfa;
+    font-style: normal;
+    font-weight: 950;
+    src: url("../fonts/eot/iranyekanwebextrablackfanum.eot");
+    src: url("../fonts/eot/iranyekanwebextrablackfanum.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-8 */ url("../fonts/woff/iranyekanwebextrablackfanum.woff")
+            format("woff"),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url("../fonts/ttf/iranyekanwebextrablackfanum.ttf")
+            format("truetype");
+}
+
+@font-face {
+    font-family: iranmarker;
+    src: url("../fonts/ttf/IRANMarker.ttf");
+}
+
+html,
+body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: "iranyekanfa", sans-serif;
+    font-weight: 300;
+    height: 100vh;
+    margin: 0;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+    /* display: flex;
+    flex-direction: column; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+input,
+textarea {
+    flex: 1;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #01579b;
+    font-family: iranyekanfa;
+    padding: 10px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+/* Change the white to any color ;) */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /* -webkit-box-shadow: 0 0 0 30px white inset !important; */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    /* color: inherit; */
+}
+
+a:hover {
+    text-decoration: none;
+}
+button:focus {
+    outline: none;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    /* margin-top: 8vh; */
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.responsive-inner-width {
+    width: 60%;
+}
+
+.responseive-width-full {
+    width: 100vw;
+}
+
+.wrap-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-func-item {
+}
+
+@media screen and (max-width: 1281px) {
+    .responsive-inner-width {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1281px) {
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+}
+
+@media screen and (max-width: 767px) {
+    .responsive-inner-width {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+}

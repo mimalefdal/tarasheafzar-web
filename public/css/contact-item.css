@@ -1,0 +1,29 @@
+.contact-item-body {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vh;
+}
+
+.contact-icon {
+    flex: 1;
+    /* border: 1px solid white; */
+}
+
+.contact-data {
+    flex: 5;
+    display: flex;
+    direction: rtl;
+    padding-right: 10px;
+    flex-direction: column;
+}
+
+.contact-main-data {
+    text-align: right;
+    font-size: 14px;
+}
+
+.contact-comment {
+    text-align: right;
+    font-size: 8px;
+}

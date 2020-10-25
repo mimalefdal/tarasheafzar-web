@@ -1,0 +1,21 @@
+.form-body {
+    /* background-color: black; */
+}
+
+.form-text-input {
+}
+
+.btn-submit-add {
+    width: 50%;
+    align-self: flex-end;
+}
+
+.form-title {
+    width: 100%;
+    /* margin-top: 5vh; */
+    text-align: end;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding: 1rem;
+}

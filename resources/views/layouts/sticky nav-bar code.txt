@@ -1,0 +1,32 @@
+<div class="nav-items-container .bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light responsive-inner-width">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+        <!-- @if(Route::current()->getName() != 'staff.home')
+                    <a href="/home" class="navbar-item-text">خانه</a>
+@endif-->
+        <a href="/home" class="navbar-item-text">خانه</a>
+
+
+        @auth('staff')
+        <div class="staff-info">
+            <a href="{{ route('staff.profile') }}" class="staff-name">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }} </a>
+            <p class="staff-job-title">{{ Auth::user()->roles->first()->title }} </p>
+        </div>
+
+        <a href="{{ route('staff.logout') }}" class="btn btn-primary">خروج</a>
+        @endauth
+        @auth('admin')
+        <div class="staff-info">
+            <a disabeld href="#" class="staff-name">{{ Auth::user()->name }}
+            </a>
+            <p class="staff-job-title">{{ Auth::user()->email }} </p>
+        </div>
+
+        <a id='btn-logout' href="{{ route('admin.logout') }}" class="btn btn-primary">خروج</a>
+        @endauth
+    </nav>
+
+</div>

@@ -1,0 +1,17 @@
+.nav-items-container {
+    background-color: #283593;
+    position: sticky;
+    z-index: 500;
+    top: 0;
+}
+
+#btn-logout {
+    background-color: inherit;
+    border-color: #4FC3F7;
+    color: #4FC3F7;
+    /* color: white; */
+}
+
+.staff-name {
+    color: white;
+}
