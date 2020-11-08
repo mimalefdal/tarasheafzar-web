@@ -23,6 +23,9 @@ class CreateRolesTable extends Migration
             $table->string('description')->nullable();
             $table->string('activation')->nullable(); // activation state of role
 
+            $table->integer('unit_id')->nullable();
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
+
 
             $table->timestamps();
         });

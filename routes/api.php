@@ -19,5 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('rights/add', 'RightController@create')->name('rights.add');
-Route::get('rights', 'RightController@index');
+Route::post('rights/add', 'API\RightController@create')->name('rights.add');
+Route::get('rights', 'API\RightController@index');
+
+Route::get('staff', 'API\StaffController@index');

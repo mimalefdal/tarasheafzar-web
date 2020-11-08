@@ -9,9 +9,30 @@
         ]
     },
     {
-        "slug": "it-manager",
-        "title": "IT Manager",
-        "title_fa": "مدیر فناوری اطلاعات",
+        "slug": "hr-manager",
+        "title": "Human Resources Manager",
+        "title_fa": "مدیر منابع انسانی",
+        "activation": true,
+        "rights": []
+    },
+    {
+        "slug": "fullstack-developer",
+        "title": "Fullstack Developer",
+        "title_fa": "توسعه‌دنده فول‌ستک",
+        "activation": true,
+        "rights": []
+    },
+    {
+        "slug": "frontend-developer",
+        "title": "Front-end Developer",
+        "title_fa": "توسعه‌دنده فرانت‌اند",
+        "activation": true,
+        "rights": []
+    },
+    {
+        "slug": "backend-developer",
+        "title": "Back-end Developer",
+        "title_fa": "توسعه‌دنده بک‌اند",
         "activation": true,
         "rights": []
     }

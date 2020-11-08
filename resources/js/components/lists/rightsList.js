@@ -23,13 +23,6 @@ class rightsList extends Component {
             Authorization: "Bearer " + token
         };
 
-        // ApiClient.get("/rights", {
-        //     headers: headers
-        // }).then(response => {
-        //     console.log(response);
-        //     this.setState({ rights: response.data });
-        // });
-
         const response = await ApiClient.get("/rights", {
             headers: headers
         }).catch(error => {
@@ -48,14 +41,16 @@ class rightsList extends Component {
                     {this.state.loaded ? (
                         <RightsTable
                             rights={this.state.rights}
+                            loading={!this.state.loaded}
                             selectionMode="none"
                             className="general-shadow"
                         />
                     ) : (
-                        <img
-                            src={Loading}
-                            alt="Loading"
-                            style={{ height: "50px", width: "50px" }}
+                        <RightsTable
+                            rights={this.state.rights}
+                            loading={!this.state.loaded}
+                            selectionMode="none"
+                            className="general-shadow"
                         />
                     )}
                 </div>

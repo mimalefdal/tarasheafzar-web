@@ -17,6 +17,9 @@ export default function StaffManagement() {
                 <Link className="panel-link" to={`${match.url}/dashboard`}>
                     Dashboard
                 </Link>
+                <Link className="panel-link" to={`${match.url}/manage`}>
+                    Manage
+                </Link>
             </div>
         </div>
     );

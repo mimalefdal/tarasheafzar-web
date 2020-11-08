@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Storage;
 
 // Route::cmsRoutes();
 Route::panelRoutes();
-Route::reactAppVersionRoutes();
 
 Route::domain(env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))->group(function () {
     Route::get('/', function () {

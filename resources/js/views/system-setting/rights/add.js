@@ -13,7 +13,9 @@ function AddRight() {
                     title={t("custum-titles.defineRight")}
                 />
             </PageHeaderBar>
-            <AddRightForm />
+            <div className="form-container">
+                <AddRightForm />
+            </div>
         </div>
     );
 }

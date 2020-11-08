@@ -32,7 +32,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
 
-
         Route::macro('cmsRoutes', function () {
             Route::group(['domain' => 'cms.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
 
@@ -58,28 +57,6 @@ class RouteServiceProvider extends ServiceProvider
                 Route::get('{any}', 'StaffController@showHome')->name('staff.app')->where('any', '.*');
             });
         });
-
-        Route::macro('reactAppVersionRoutes', function () {
-            Route::group(['domain' => 'app.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
-
-                Route::get('/{path?}', function () {
-                    // $path = Storage::disk('public')->path('company.json');
-                    $path = base_path().'/public/data/company.json';
-
-                    $companyData = file_get_contents($path);
-                    $companyData = json_decode($companyData, true);
-
-                    return view('app.app')->with('companyData', $companyData);
-                });
-                Route::post('newMessage', 'VisitorMessageController@store');
-            });
-        });
-
-        // Route::macro('adminRoutes', function () {
-        //     Route::group(['domain' => 'admin.' . (env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))], function () {
-        //     });
-        // });
-
 
         parent::boot();
     }

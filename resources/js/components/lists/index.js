@@ -1,1 +1,2 @@
-export { default as RightsList } from "./rightsList";
+export { default as RightsList } from "./RightsList";
+export { default as StaffList } from "./StaffList";

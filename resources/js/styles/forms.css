@@ -1,21 +1,16 @@
+.form-container {
+    /* padding-top: 3rem; */
+}
+
 .form-body {
     /* background-color: black; */
+    text-align: left;
 }
 
 .form-text-input {
 }
 
 .btn-submit-add {
-    width: 50%;
+    width: 33%;
     align-self: flex-end;
-}
-
-.form-title {
-    width: 100%;
-    /* margin-top: 5vh; */
-    text-align: end;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    padding: 1rem;
 }

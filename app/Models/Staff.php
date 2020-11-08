@@ -27,6 +27,16 @@ class Staff extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'staff_roles');
+    }
+
+    public function rights()
+    {
+        return $this->belongsToMany(Right::class, 'staff_rights');
+    }
+
     public function setRoles($roles) {
         $roles = Role::whereIn('slug',$roles)->get();
         $this->roles()->saveMany($roles);

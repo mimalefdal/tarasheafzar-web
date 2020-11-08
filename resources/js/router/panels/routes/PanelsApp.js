@@ -2,18 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
-import { requireRight, waitOneSecond } from "../router/panels/guards";
-import { REQUIRED_RIGHT, RIGHT_ONLY } from "../router/panels/types";
+import { requireRight, waitOneSecond } from "../guards";
+import { REQUIRED_RIGHT, RIGHT_ONLY } from "../types";
 
-import Scrolltotop from "../components/scrolltotop";
-import CmsApp from "../views/panels/cmsApp";
-import { Home, SystemSetting } from "../views/panels";
-import { Unathorized, NotFound } from "../views/errors";
-import StaffManagement from "../views/panels/StaffManagement";
-import { AddFormRight } from "../components/forms";
-import { StaffDashboard } from "../views/staff-management";
-import { divide } from "lodash";
-import PanelsNavBar from "../components/PanelsNavBar";
+import Scrolltotop from "../../../components/scrolltotop";
+import { Unathorized, NotFound } from "../../../views/errors";
+import PanelsNavBar from "../../../components/PanelsNavBar";
+import PanelsHome from "../../../views/PanelsHome";
+import CmsApp from "./CmsApp";
+import StaffManagement from "./StaffManagement";
+import SystemSetting from "./SystemSetting";
+import HrApp from "./hrApp";
 
 function PanelsApp(props) {
     sessionStorage.clear();
@@ -41,7 +40,7 @@ function PanelsApp(props) {
                     <GuardedRoute
                         exact
                         path="/home"
-                        component={Home}
+                        component={PanelsHome}
                         loading="Please wait ..."
                     />
                     <GuardedRoute
@@ -68,6 +67,16 @@ function PanelsApp(props) {
                         loading="Please wait ..."
                         meta={{
                             [REQUIRED_RIGHT]: "access-system-setting"
+                        }}
+                    />
+
+                    <GuardedRoute
+                        path="/HR"
+                        component={HrApp}
+                        loading="Please wait ..."
+                        meta={{
+                            // [REQUIRED_RIGHT]: "access-hr-panel",
+                            [REQUIRED_RIGHT]: "access-staff-management"
                         }}
                     />
 

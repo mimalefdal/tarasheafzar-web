@@ -14,5 +14,5 @@ require("./bootstrap");
 
 require("./components/Example");
 
-require("./apps/Main");
-require("./apps/PanelsApp");
+// require("./apps/Main");
+require("./router/panels/routes/PanelsApp");

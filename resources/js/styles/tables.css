@@ -3,7 +3,7 @@
     --table-header-bkg: #efefef;
     --table-header-font: initial;
     --table-secondary-color: var(--blue);
-    --table-secondary-color-dark: var(--indigo);
+    --table-secondary-color-dark: var(--amber);
 }
 
 table {
@@ -45,13 +45,14 @@ td {
 
 .table-operation-icon-btn {
     /* height: 20px; */
-    flex: 1;
+    /* flex: 1; */
+    width: 25px;
     fill: var(--table-secondary-color);
     border: none;
     /* cursor: pointer; */
     background: none;
     /* margin: 0.1rem; */
-    margin-left: 0.5rem;
+    margin: 0.25rem;
 }
 
 .table-operation-icon-btn:focus {
@@ -74,4 +75,5 @@ td {
 .table-row-btn-set {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }

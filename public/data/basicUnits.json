@@ -1,0 +1,34 @@
+[
+    {
+        "slug": "hr-unit",
+        "title": "Human Resources",
+        "title_fa": "منابع انسانی",
+        "roles": [
+            "hr-manager"
+        ]
+    },
+    {
+        "slug": "it-unit",
+        "title": "IT",
+        "title_fa": "فناوری اطلاعات",
+        "roles": [
+            "it-manager"
+        ]
+    },
+    {
+        "slug": "software-unit",
+        "title": "Software Production",
+        "title_fa": "تولید نرم‌افزار",
+        "roles": [
+            "fullstack-developer",
+            "frontend-developer",
+            "backend-developer"
+        ]
+    },
+    {
+        "slug": "accounting-unit",
+        "title": "Accounting",
+        "title_fa": "تولید نرم‌افزار",
+        "roles": null
+    }
+]

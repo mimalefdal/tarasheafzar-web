@@ -78,14 +78,14 @@ trait AllowedToTrait
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'staff_roles');
+        return $this->belongsToMany(Role::class);
     }
 
 
     public function rights()
     {
 
-        return $this->belongsToMany(Right::class, 'staff_rights');
+        return $this->belongsToMany(Right::class);
     }
 
     public function allRights()

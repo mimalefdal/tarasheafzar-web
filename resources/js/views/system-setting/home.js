@@ -14,9 +14,6 @@ export default function SystemSetting() {
                 <Link className="panel-link" to={`${match.url}/rights`}>
                     Manage Rights
                 </Link>
-                <Link className="panel-link" to={`${match.url}/roles`}>
-                    Manage Roles
-                </Link>
             </div>
         </div>
     );

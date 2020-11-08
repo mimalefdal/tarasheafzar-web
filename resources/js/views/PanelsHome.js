@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getIsAllowed, t } from "../../utils";
-import "../../styles/forms.css";
+import { getIsAllowed, t } from "../utils";
+import "../styles/panels.css";
 
 export default class PanelsHome extends Component {
     constructor(props) {
@@ -35,15 +35,23 @@ export default class PanelsHome extends Component {
             );
         }
 
+        let hrLink;
+        // if (getIsAllowed("access-human-resources")) {
+        if (getIsAllowed("access-staff-management")) {
+            hrLink = (
+                <Link className="panel-link" to="/HR">
+                    {t("panels.hr")}
+                </Link>
+            );
+        }
+
         return (
             <div className="panel-body">
                 <div className="panel-links">
                     {systemSettingsLink}
                     {staffManagementLink}
+                    {hrLink}
                     {cmsLink}
-                    <a className="panel-link" href="http://crm.localhost:8000">
-                        {t("panels.crm")}
-                    </a>
                 </div>
             </div>
         );

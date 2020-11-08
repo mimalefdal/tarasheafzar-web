@@ -1,0 +1,25 @@
+[
+    {
+        "slug": "administrative-dep",
+        "title": "Administrative Department",
+        "title_fa": "دپارتمان اداری",
+        "units": [
+            "hr-unit",
+            "it-unit"
+        ]
+    },
+    {
+        "slug": "technical-dep",
+        "title": "Administrative Department",
+        "title_fa": "دپارتمان فنی",
+        "units": [
+            "software-unit"
+        ]
+    },
+    {
+        "slug": "market-dep",
+        "title": "Market Department",
+        "title_fa": "دپارتمان بازار",
+        "units": []
+    }
+]

@@ -1,15 +1,13 @@
 import React from "react";
-import { t } from "../../utils";
-import "../../styles/panels.css";
 import {
     SystemSettingManageRights,
     SystemSettingHome,
     SystemSettingManageRoles,
     SystemSettingAddRight
-} from "../system-setting";
+} from "../../../views/system-setting";
 import { useRouteMatch, Switch, Route } from "react-router-dom";
 
-function systemSetting(props) {
+function SystemSetting(props) {
     let match = useRouteMatch();
 
     return (
@@ -36,4 +34,4 @@ function systemSetting(props) {
     );
 }
 
-export default systemSetting;
+export default SystemSetting;

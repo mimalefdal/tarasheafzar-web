@@ -12,6 +12,10 @@
         "activation": "فعالسازی",
         "active": "فعال",
         "deactive": "غیرفعال",
+        "department": "دپارتمان",
+        "role": "سمت",
+        "personnel_id": "کد پرسنلی",
+        "username": "نام کاربری",
         "operation": "َعملیات"
     },
     "errors": {
@@ -21,8 +25,10 @@
         "welcomeStaffManagement": "به پانل مدیریت کارکنان خوش آمدید",
         "welcomePanelHome": "به پنل کاری تراشه افزار خوش آمدید",
         "welcomeSystemSetting": "به پنل مدیریت سیستم خوش آمدید",
+        "welcomeHumanResources": "به پنل مدیریت منابع انسانی خوش آمدید",
         "defineRight": "ثبت حق دسترسی",
-        "rightsListTitle": "لیست مجوزها"
+        "rightsListTitle": "لیست مجوزها",
+        "staffListTitle": "لیست کارکنان"
     },
     "buttons": {
         "Home": "خانه",
@@ -32,6 +38,7 @@
         "staff-management": "مدیریت کارکنان",
         "system-management": "مدیریت سیستم",
         "crm": "ارتباط با مشتریان",
+        "hr": "منابع انسانی",
         "cms": "مدیریت محتوا",
         "staff": "پنل کارکنان"
     }

@@ -48,3 +48,8 @@
     fill: #24c239;
     fill: white;
 }
+
+.list-operation-btn:hover svg {
+    fill: deepskyblue;
+    fill: #ffc107;
+}

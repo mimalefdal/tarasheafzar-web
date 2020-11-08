@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import { RightEntry } from "../list-controls";
 import { t } from "../../utils";
 import "../../styles/tables.css";
+import { LodingTableItems } from "../table-controls";
 
 class rightsTable extends Component {
     constructor(props) {
@@ -66,17 +67,21 @@ class rightsTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.rights.map((right, index) => {
-                            return (
-                                <RightEntry
-                                    right={right}
-                                    key={index}
-                                    onClick={this.handleClick}
-                                    selectionMode={this.props.selectionMode}
-                                    className={this.state.selectedRow}
-                                />
-                            );
-                        })}
+                        {this.props.loading ? (
+                            <LodingTableItems columns="6" />
+                        ) : (
+                            this.props.rights.map((right, index) => {
+                                return (
+                                    <RightEntry
+                                        right={right}
+                                        key={index}
+                                        onClick={this.handleClick}
+                                        selectionMode={this.props.selectionMode}
+                                        className={this.state.selectedRow}
+                                    />
+                                );
+                            })
+                        )}
                     </tbody>
                 </table>
             </Fragment>

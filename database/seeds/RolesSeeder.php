@@ -19,20 +19,20 @@ class RolesSeeder extends Seeder
         $basicRoles = file_get_contents($path);
         $basicRoles = json_decode($basicRoles, true);
         foreach($basicRoles as $role) {
-            DB::table('roles')->insert([
+            $newrole = new Role([
                 "slug"=>$role['slug'],
                 "title"=>$role['title'],
                 "title_fa"=>$role['title_fa'],
                 "activation"=>$role['activation'],
             ]);
-            $newrole = Role::where('slug',$role['slug'])->first();
+            $newrole->save();
             if ($role['rights'] != null ){
-            if ($role['rights'][0] == "allRights") {
-                $rights=Right::all()->pluck('slug')->all();
-                $newrole->giveRightsTo($rights);
-            }
-        }
+                if ($role['rights'][0] == "allRights") {
+                    $rights=Right::all()->pluck('slug')->all();
+                    $newrole->giveRightsTo($rights);
 
+                }
+            }
         }
     }
 }

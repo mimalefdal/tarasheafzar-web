@@ -5,6 +5,7 @@ import { t } from "../../utils";
 import { useState } from "react";
 import apiClient from "../../services/api";
 import { FormTitle } from "../form-controls";
+import "../../styles/forms.css";
 
 export default function App() {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -17,17 +18,6 @@ export default function App() {
             Accept: "application/json",
             Authorization: "Bearer " + token
         };
-
-        apiClient
-            .get("/user", {
-                headers: headers
-            })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error.response);
-            });
 
         apiClient
             .post("/rights/add", data, { headers: headers })
@@ -50,7 +40,6 @@ export default function App() {
 
     return (
         <div className="container">
-            {/* <FormTitle title={t("custum-titles.defineRight")} /> */}
             <form className="form-body" onSubmit={handleSubmit(onSubmit)}>
                 <DualLabelTextInput
                     name="slug"
@@ -89,7 +78,7 @@ export default function App() {
                 />
 
                 <input
-                    className="btn btn-primary btn-submit-add"
+                    className="btn btn-primary btn-submit-add general-shadow"
                     type="submit"
                     value={t("labels.submit-add")}
                 />
