@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BackButton, HomeButton } from "../../components/button";
+import { BackButton, HomeButton } from "../../components/buttons";
 
 function NewPage(props) {
     return (

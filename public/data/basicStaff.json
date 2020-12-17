@@ -1,28 +1,62 @@
 [
     {
+        "personnel_id": "superadmin",
+        "username": "superadmin",
+        "password": "verysecret",
+        "firstname": "System",
+        "nickname": null,
+        "lastname": "Super Administrator",
+        "national_id": null,
+        "idcert_no": null,
+        "gender": "Empty",
+        "email": "superadmin@companydomain.com",
+        "position": null,
+        "roles": [
+            "super-admin"
+        ]
+    },
+    {
+        "personnel_id": "admin",
+        "username": "admin",
+        "password": "secret",
+        "firstname": "Enterprise",
+        "nickname": null,
+        "lastname": "Administrator",
+        "national_id": null,
+        "idcert_no": null,
+        "gender": "Empty",
+        "email": "admin@companydomain.com",
+        "position": null,
+        "roles": [
+            "enterprise-admin"
+        ]
+    },
+    {
         "personnel_id": "8518",
         "username": "mimalefdal",
-        "password": "amin8518",
+        "password": "secret",
         "firstname": "محمدامین",
         "nickname": "دلوار",
         "lastname": "دلورانی",
+        "national_id": "0071044434",
+        "idcert_no": "8518",
         "gender": "male",
         "email": "mimalefdal@yahoo.com",
-        "roles": [
-            "enterprise-manager"
-        ]
+        "position": null,
+        "roles": null
     },
     {
         "personnel_id": "3578",
         "username": "s.sadeghi",
-        "password": "amin8518",
+        "password": "secret",
         "firstname": "صبا",
         "nickname": "فرفر",
         "lastname": "صادقی",
+        "national_id": null,
+        "idcert_no": "3578",
         "gender": "female",
         "email": "saba_sadeghi7@yahoo.com",
-        "roles": [
-            "it-manager"
-        ]
+        "position": null,
+        "roles": null
     }
 ]

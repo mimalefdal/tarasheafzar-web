@@ -58,19 +58,19 @@ class StaffLoginController extends Controller
             case '0':
 
                 $validatedRequest = $request->validate(['personnel_id' => 'required']);
-
-                $pid = $request->get('personnel_id');
-                $user = Staff::where('personnel_id', $pid)->first();
-
+                $user = $this->getUser($request->get('personnel_id'));
                 if ($user)
+                {
                     return $user;
-                else {
+                }
+                else  {
                     return response()->json(['response' => 'failed', 'message' => Lang::get('auth.wrongPersonnelId')], 404);
                 }
 
                 break;
             case '1':
                 $validatedRequest = $request->validate(['password' => 'required']);
+                $request->merge(['personnel_id'=>$this->getUser($request->get('personnel_id'))->personnel_id]);
                 return $this->login($request);
                 break;
         }
@@ -85,5 +85,20 @@ class StaffLoginController extends Controller
         $request->session()->flush();
         Auth::guard('staff')->logout();
         return redirect()->route('staff.login');
+    }
+
+    private function getUser ($staffUserInput) {
+                if ($user = Staff::where('personnel_id', $staffUserInput)->first())
+                {
+                    return $user;
+                }
+                elseif ($user = Staff::where('username', $staffUserInput)->first())
+                {
+                    return $user;
+                }
+                else
+                {
+                    return null;
+                }
     }
 }

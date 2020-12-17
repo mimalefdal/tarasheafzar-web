@@ -41,6 +41,11 @@
     min-height: 100vh;
 }
 
+.main-content {
+    background: var(--titlebkg);
+    padding: 2rem;
+}
+
 .content {
     /* background-color: whitesmoke; */
     width: 100vw;

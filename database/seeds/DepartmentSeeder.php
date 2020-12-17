@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Department;
 use App\Models\Unit;
+use App\Models\Position;
 
 class DepartmentSeeder extends Seeder
 {
@@ -28,6 +29,11 @@ class DepartmentSeeder extends Seeder
             if ($Department['units'] != null) {
                 $units = Unit::whereIn('slug',$Department['units'])->get();
                 $newDepartment->setUnits($units);
+            }
+
+            if ($Department['positions'] != null) {
+                $positions = Position::whereIn('slug',$Department['positions'])->get();
+                $newDepartment->addPositions($positions);
             }
 
 

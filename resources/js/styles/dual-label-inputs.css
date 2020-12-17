@@ -1,0 +1,98 @@
+.input-block {
+    display: flex;
+    margin-bottom: 1vh;
+    padding-bottom: 1vh;
+}
+
+.dual-label-box {
+    display: flex;
+    flex-direction: column;
+    /* width: 20%; */
+    flex: 2;
+}
+
+.text-input-label {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.8rem;
+    padding-left: 0.8rem;
+    /* padding-bottom: 5px; */
+    margin-bottom: 0;
+}
+
+.text-input-label-comment {
+    flex: 1;
+    font-size: 0.6rem;
+    /* padding-bottom: 1rem; */
+    /* min-height: 30px; */
+}
+
+.input-with-error-box {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-text-input {
+    flex: 5;
+    padding: 0.5rem;
+    /* min-height: 40px; */
+    height: 40px;
+    border-color: var(--titlebkg);
+    /* width: 100%; */
+}
+
+.input-error {
+    flex: 1;
+    /* height: 0; */
+    text-align: start;
+    transition: all 0.5s;
+}
+
+.input-error-message {
+    color: tomato;
+    font-size: 10px;
+    font-weight: bold;
+    height: 0;
+    transition: all 0.5s;
+}
+
+.dual-label-dropdown {
+    color: inherit !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+.dual-label-dropdown::before {
+    /* border-bottom: 1px solid var(--titlebkg) !important; */
+}
+.dual-label-dropdown::after {
+    border-bottom: 1px solid var(--titlebkg) !important;
+    /* border-bottom: inherit !important; */
+}
+.MuiInput-underline:before {
+}
+.MuiInput-underline:after {
+}
+.dual-label-dropdown:hover::before {
+    border-bottom: 1px solid var(--titlebkg) !important;
+}
+.dual-label-dropdown::before {
+    border-color: var(--titlebkg) !important;
+}
+
+.dual-label-dropdown-root {
+}
+
+.dual-label-dropdown-selectMenu {
+    text-align: right;
+}
+.dual-label-dropdown-selectMenu:focus {
+    background-color: inherit !important;
+}
+
+.MuiMenuItem-root {
+    font-family: inherit !important;
+    font-size: inherit !important;
+}

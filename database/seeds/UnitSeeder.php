@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Unit;
 use App\Models\Role;
+use App\Models\Position;
 
 class UnitSeeder extends Seeder
 {
@@ -16,7 +17,8 @@ class UnitSeeder extends Seeder
         $path = base_path().'/public/data/basicUnits.json';
         $basicUnits = file_get_contents($path);
         $basicUnits = json_decode($basicUnits, true);
-        foreach($basicUnits as $Unit) {
+        foreach($basicUnits as $Unit)
+        {
             $newUnit = new Unit([
                 "slug"=>$Unit['slug'],
                 "title"=>$Unit['title'],
@@ -24,9 +26,8 @@ class UnitSeeder extends Seeder
             ]);
             $newUnit->save();
 
-            if ($Unit['roles'] != null) {
-                $roles = Role::whereIn('slug',$Unit['roles'])->get();
-                $newUnit->addRoles($roles);
+            if ($Unit['positions'] != null) {
+                $newUnit->addPositions($Unit['positions']);
             }
 
 

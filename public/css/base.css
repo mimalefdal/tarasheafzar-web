@@ -233,7 +233,8 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 5px;
+    /* if scrollbar have a value problems will occured when mui modal opens   */
+    width: 0px;
 }
 
 body::-webkit-scrollbar-track {
@@ -246,6 +247,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 input,
+select,
 textarea {
     flex: 1;
     border: none;
@@ -256,7 +258,8 @@ textarea {
 }
 
 textarea:focus,
-input:focus {
+input:focus,
+select:focus {
     outline: none;
 }
 

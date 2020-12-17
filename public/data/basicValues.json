@@ -1,0 +1,16 @@
+{
+    "gender": [
+        {
+            "slug": "male",
+            "title": "Man"
+        },
+        {
+            "slug": "female",
+            "title": "Woman"
+        },
+        {
+            "slug": "othergenders",
+            "title": "Other Genders"
+        }
+    ]
+}

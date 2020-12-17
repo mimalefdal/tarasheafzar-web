@@ -3,32 +3,26 @@
         "slug": "hr-unit",
         "title": "Human Resources",
         "title_fa": "منابع انسانی",
-        "roles": [
-            "hr-manager"
-        ]
+        "positions": null
     },
     {
         "slug": "it-unit",
         "title": "IT",
         "title_fa": "فناوری اطلاعات",
-        "roles": [
-            "it-manager"
+        "positions": [
+            "enterprise-admin"
         ]
     },
     {
         "slug": "software-unit",
         "title": "Software Production",
         "title_fa": "تولید نرم‌افزار",
-        "roles": [
-            "fullstack-developer",
-            "frontend-developer",
-            "backend-developer"
-        ]
+        "positions": null
     },
     {
         "slug": "accounting-unit",
         "title": "Accounting",
         "title_fa": "تولید نرم‌افزار",
-        "roles": null
+        "positions": null
     }
 ]

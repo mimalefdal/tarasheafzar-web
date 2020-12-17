@@ -1,33 +1,23 @@
+import { Switch } from "@material-ui/core";
 import React, { useState } from "react";
-import Switch from "@material-ui/core/Switch";
+import DualLabelFormControl from "./base-controls/dual-label-form-control";
 
-const Control = ({ name, isOn, label, labelComment }, ref) => {
-    const [value, setValue] = useState(false);
-    isOn = value;
+const Control = (props, ref) => {
+    const [value, setValue] = useState(props.isOn);
+    var { ...props } = props;
+
     return (
-        <>
-            <div className="input-block">
-                <div className="dual-label-box">
-                    <label className="text-input-label">{label}</label>
-                    <label className="text-input-label text-input-label-comment">
-                        {labelComment}
-                    </label>
-                </div>
-
-                <div className="input-with-error-box">
-                    <Switch
-                        checked={isOn}
-                        onChange={() => {
-                            setValue(!value);
-                        }}
-                        color="primary"
-                        name={name}
-                        inputProps={{ "aria-label": "primary checkbox" }}
-                        inputRef={ref}
-                    />
-                </div>
-            </div>
-        </>
+        <DualLabelFormControl {...props}>
+            <Switch
+                checked={value}
+                onChange={() => {
+                    setValue(!value);
+                }}
+                color="primary"
+                name={props.name}
+                inputRef={ref}
+            />
+        </DualLabelFormControl>
     );
 };
 

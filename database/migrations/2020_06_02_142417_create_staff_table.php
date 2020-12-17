@@ -23,9 +23,15 @@ class CreateStaffTable extends Migration
             $table->string('lastname');
             $table->string('gender')->nullable();
 
-            $table->string('email')->unique();
+            $table->string('national_id')->unique()->nullable();
+            $table->string('idcert_no')->unique()->nullable();
+
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('verification_status')->nullable();
+
+            $table->string('position_id')->nullable();
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
 
             $table->string('password');
             $table->rememberToken();

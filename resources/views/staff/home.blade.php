@@ -14,11 +14,7 @@
             data-name="{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}"
             data-rights="{{ Auth::user()->allrights() }}" data-locale="{{ Config::get('app.locale') }}">
         </div>
-        <script>
-            let nickname = "{{ Auth::user()->nickname }}"
-            let rightset = "{{ Auth::user()->allrights() }}"
 
-        </script>
         <script src="{{ asset('js/app.js') }}"></script>
     </div>
 

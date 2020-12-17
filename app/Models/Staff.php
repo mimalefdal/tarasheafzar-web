@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Traits\AllowedToTrait;
+use App\Traits\ManagesRoles;
+use App\Traits\ManagesPosition;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -12,11 +14,13 @@ class Staff extends Authenticatable
     use Notifiable;
     use AllowedToTrait;
     use HasApiTokens;
+    use ManagesRoles;
+    use ManagesPosition;
 
     protected $guard = 'staff';
 
     protected $fillable = [
-        'personnel_id', 'username', 'password', 'firstname', 'nickname', 'lastname','gender', 'email', 'verification_status'
+        'personnel_id', 'username', 'password', 'firstname', 'nickname', 'lastname','gender', 'email', 'verification_status','national_id','idcert_no'
     ];
 
     protected $hidden = [
@@ -37,20 +41,22 @@ class Staff extends Authenticatable
         return $this->belongsToMany(Right::class, 'staff_rights');
     }
 
-    public function setRoles($roles) {
-        $roles = Role::whereIn('slug',$roles)->get();
-        $this->roles()->saveMany($roles);
-        return $this;
+    public function rolesThroughPosition()
+    {
+        // dd($this->position->roles);
+        if ($this->position != null)
+        {
+            return $this->position->roles;
+        }
+        return collect([]);
+        // return $this->hasManyThrough(Role::class,Position::class);
     }
 
-    public function withdrawRoles($roles) {
-        $roles = Role::whereIn('slug',$roles)->get();
-        $this->roles()->detach($roles);
-        return $this;
+    public function allRoles()
+    {
+        return $this->roles->merge($this->rolesThroughPosition());
     }
 
-    public function refreshRoles($roles) {
-        $this->roles()->detach($roles);
-        $this->setRoles($roles);
-    }
+
+
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ManagesRoleRights;
-use App\Models\Unit;
+use App\Models\Position;
 
 
 class Role extends Model
@@ -25,9 +25,9 @@ class Role extends Model
         return $this->belongsToMany(Staff::class, 'staff_roles');
     }
 
-    public function unit()
+    public function positions()
     {
-        return $this->belongsTo(Unit::class);
+        return $this->belongsToMany(Position::class,'positions_roles');
     }
 
 

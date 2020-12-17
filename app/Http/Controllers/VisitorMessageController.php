@@ -14,7 +14,7 @@ class VisitorMessageController extends Controller
     public function store(Request $request)
     {
 
-        // 
+        //
 
         // sleep(1);
 

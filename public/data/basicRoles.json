@@ -1,39 +1,30 @@
 [
     {
-        "slug": "enterprise-manager",
-        "title": "Enterprise Manager",
-        "title_fa": "مدیر سازمان",
+        "slug": "super-admin",
+        "title": "System Super Administrator",
+        "title_fa": "مدیر فوق‌العاده سیستم",
         "activation": true,
         "rights": [
             "allRights"
         ]
     },
     {
-        "slug": "hr-manager",
-        "title": "Human Resources Manager",
-        "title_fa": "مدیر منابع انسانی",
+        "slug": "enterprise-admin",
+        "title": "Enterprise Adminstrator",
+        "title_fa": "مدیر سامانه کمپانیو",
         "activation": true,
-        "rights": []
+        "rights": [
+            "access-enterprise-adminstration-panel",
+            "access-system-initialize-tool"
+        ]
     },
     {
-        "slug": "fullstack-developer",
-        "title": "Fullstack Developer",
-        "title_fa": "توسعه‌دنده فول‌ستک",
+        "slug": "company-structure-manager",
+        "title": "Company Structure Manager",
+        "title_fa": "مدیر ساختار شرکت",
         "activation": true,
-        "rights": []
-    },
-    {
-        "slug": "frontend-developer",
-        "title": "Front-end Developer",
-        "title_fa": "توسعه‌دنده فرانت‌اند",
-        "activation": true,
-        "rights": []
-    },
-    {
-        "slug": "backend-developer",
-        "title": "Back-end Developer",
-        "title_fa": "توسعه‌دنده بک‌اند",
-        "activation": true,
-        "rights": []
+        "rights": [
+            "access-company-management-panel"
+        ]
     }
 ]

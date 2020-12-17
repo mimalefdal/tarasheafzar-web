@@ -16,6 +16,11 @@ class StaffController extends Controller
 
     public function index()
     {
-        return Staff::with('roles.rights','rights')->get();
+        return Staff::with('roles.rights','roles.unit.department','rights')->get();
+    }
+
+    public function create(Request $request)
+    {
+        return $request;
     }
 }

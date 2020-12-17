@@ -23,3 +23,10 @@ Route::post('rights/add', 'API\RightController@create')->name('rights.add');
 Route::get('rights', 'API\RightController@index');
 
 Route::get('staff', 'API\StaffController@index');
+Route::post('staff/add', 'API\StaffController@create');
+
+Route::get('/initialize/status', 'API\InitializeController@status');
+Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');
+
+Route::get('/valuelist', 'API\ValuelistController@index');
+

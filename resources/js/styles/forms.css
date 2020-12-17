@@ -1,7 +1,22 @@
-.form-container {
-    /* padding-top: 3rem; */
-}
+:root {
+    --redirectColor: var(--indigo);
+    --redirectColor: #ff9800;
+    --redirectColor: var(--dark);
 
+    /* --titlebkg: var(--dark); */
+}
+.form-container {
+    padding-top: 3rem;
+    padding: 3rem;
+    width: 50%;
+    margin: auto;
+    background: aliceblue;
+}
+.form-header {
+    background: var(--indigo) !important;
+    height: 7vh !important;
+    margin-bottom: 1vh !important;
+}
 .form-body {
     /* background-color: black; */
     text-align: left;
@@ -13,4 +28,49 @@
 .btn-submit-add {
     width: 33%;
     align-self: flex-end;
+}
+
+.MuiAlert-root,
+.MuiTypography-body1 {
+    font-family: inherit !important;
+}
+
+.MuiTypography-body1 {
+    text-align: right;
+}
+
+.form-alert {
+    transition: 1s all;
+    margin-bottom: 0;
+}
+
+.form-alert.show {
+    height: fit-content;
+    margin-bottom: 2vh;
+}
+
+.form-progress.primary {
+    background-color: white;
+}
+
+.form-progress.barPrimary {
+    background-color: var(--titlebkg);
+}
+
+.redirect {
+    width: 100%;
+}
+.redirect-text {
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    color: var(--redirectColor);
+}
+
+.form-redirect.primary {
+    background-color: transparent;
+}
+
+.form-redirect.barPrimary {
+    background-color: var(--redirectColor);
 }

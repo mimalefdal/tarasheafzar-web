@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeButton, BackButton } from "./button";
+import { HomeButton, BackButton } from "./buttons";
 import { useLocation } from "react-router-dom";
 import { t } from "../utils";
 

@@ -1,26 +1,20 @@
 [
     {
-        "slug": "access-system-setting",
-        "title": "Access System Management",
-        "title_fa": "دسترسی به تنظیمات سامانه",
+        "slug": "access-enterprise-adminstration-panel",
+        "title": "Access Enterprise Adminstration Panel",
+        "title_fa": "دسترسی به پنل مدیریت سامانه",
         "activation": true
     },
     {
-        "slug": "access-staff-management",
-        "title": "Access Staff Management",
-        "title_fa": "دسترسی به پنل مدیریت کارکنان",
+        "slug": "access-system-initialize-tool",
+        "title": "Initialize Enterprise",
+        "title_fa": "راه‌اندازی سامانه",
         "activation": true
     },
     {
-        "slug": "access-crm-panel",
-        "title": "Access CRM Panel",
-        "title_fa": "دسترسی به پنل ارتباط با مشتریان",
-        "activation": true
-    },
-    {
-        "slug": "access-cms-panel",
-        "title": "Access CMS Panel",
-        "title_fa": "دسترسی به پنل مدیریت سایت",
+        "slug": "access-company-management-panel",
+        "title": "Access Company Management Panel",
+        "title_fa": "دسترسی به پنل مدیریت شرکت",
         "activation": true
     }
 ]

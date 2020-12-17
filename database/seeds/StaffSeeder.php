@@ -18,18 +18,29 @@ class StaffSeeder extends Seeder
         $basicStaff = file_get_contents($path);
         $basicStaff = json_decode($basicStaff, true);
         foreach($basicStaff as $staff) {
-            DB::table('Staff')->insert([
+
+            $newStaff = new Staff([
                 "personnel_id"=>$staff['personnel_id'],
                 "username"=>$staff['username'],
                 "password"=>Hash::make($staff['password']),
                 "firstname"=>$staff['firstname'],
                 "nickname"=>$staff['nickname'],
                 "lastname"=>$staff['lastname'],
+                "national_id"=>$staff['national_id'],
+                "idcert_no"=>$staff['idcert_no'],
                 "gender"=>$staff['gender'],
                 "email"=>$staff['email'],
             ]);
-            $newStaff = Staff::where('personnel_id',$staff['personnel_id'])->first();
-            $newStaff->setRoles($staff['roles']);
+            $newStaff->save();
+            if ($staff['roles'] != null)
+            {
+                $newStaff->setRoles($staff['roles']);
+            }
+
+            if ($staff['position'] != null)
+            {
+                $newStaff->setPosition($staff['position']);
+            }
         }
 
 

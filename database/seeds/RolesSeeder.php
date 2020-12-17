@@ -29,9 +29,11 @@ class RolesSeeder extends Seeder
             if ($role['rights'] != null ){
                 if ($role['rights'][0] == "allRights") {
                     $rights=Right::all()->pluck('slug')->all();
-                    $newrole->giveRightsTo($rights);
-
+                } else {
+                    // $rights=Right::whereIn('slug',$role['rights'])->get();
+                    $rights = $role['rights'];
                 }
+                $newrole->giveRightsTo($rights);
             }
         }
     }

@@ -1,25 +1,31 @@
 [
     {
         "slug": "administrative-dep",
-        "title": "Administrative Department",
-        "title_fa": "دپارتمان اداری",
+        "title": "Administrative",
+        "title_fa": "اداری",
         "units": [
             "hr-unit",
             "it-unit"
+        ],
+        "positions": [
+            "ceo",
+            ""
         ]
     },
     {
         "slug": "technical-dep",
-        "title": "Administrative Department",
-        "title_fa": "دپارتمان فنی",
+        "title": "Technical",
+        "title_fa": "فنی",
         "units": [
             "software-unit"
-        ]
+        ],
+        "positions": []
     },
     {
-        "slug": "market-dep",
-        "title": "Market Department",
-        "title_fa": "دپارتمان بازار",
-        "units": []
+        "slug": "business-dep",
+        "title": "Business",
+        "title_fa": "تجاری",
+        "units": [],
+        "positions": []
     }
 ]

@@ -4,8 +4,8 @@ function pageHeaderBar(props) {
     return (
         <div
             className={
-                (props.className ? props.className : "") +
-                " page-header general-shadow"
+                "page-header general-shadow " +
+                (props.className ? props.className : "")
             }
         >
             {props.children}

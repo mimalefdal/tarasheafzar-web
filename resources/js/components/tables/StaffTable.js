@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from "react";
-import { StaffEntry } from "../list-controls";
 import { t } from "../../utils";
 import "../../styles/tables.css";
 import { LodingTableItems } from "../table-controls";
+import { StaffEntry } from ".";
 
 class Table extends Component {
     constructor(props) {
@@ -60,15 +60,16 @@ class Table extends Component {
                     <thead>
                         <tr>
                             <th className="">{t("labels.index")}</th>
-                            <th className="">{t("labels.name")}</th>
                             <th className="">{t("labels.personnel_id")}</th>
+                            <th className="">{t("labels.name")}</th>
+                            <th className="">{t("labels.depunit")}</th>
                             <th className="">{t("labels.role")}</th>
                             <th className="">{t("labels.operation")}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.props.loading ? (
-                            <LodingTableItems columns="5" />
+                            <LodingTableItems columns="6" />
                         ) : (
                             this.props.items.map((item, index) => {
                                 return (

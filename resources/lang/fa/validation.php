@@ -39,7 +39,7 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => 'لطفاً :attribute را با یک نشانی درست پر کنید.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'exists' => 'The selected :attribute is invalid.',
     'file' => 'The :attribute must be a file.',
@@ -92,7 +92,7 @@ return [
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
-    'numeric' => 'The :attribute must be a number.',
+    'numeric' => ':attribute باید مقدار عددی باشد.',
     'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
@@ -113,7 +113,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid zone.',
-    'unique' => ':attribute نباید تکراری باشد.',
+    'unique' => 'این :attribute پیشتر ثبت شده است.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -157,7 +157,10 @@ return [
         'message' => 'متنی برای پیام',
         'username' => 'نام کاربری',
         'password' => 'گذرواژه',
-        'slug' => "تگ سیستمی"
+        'slug' => "تگ سیستمی",
+        'national_id' => "کدملی",
+        'idcert_no' => "شماره‌شناسنامه",
+        'email' => "ایمیل"
     ],
 
 ];

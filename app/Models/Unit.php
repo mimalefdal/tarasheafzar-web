@@ -3,52 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Role;
 use App\Models\Department;
+use App\Models\Position;
+use App\Traits\ManagesPositions;
 
 class Unit extends Model
 {
+    use ManagesPositions;
+
     protected $fillable = [
         'title','title_fa','slug','department_id'
     ];
 
-    public function roles()
+    public function department()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsTo(Department::class);
     }
 
-    // public function department()
-    // {
-    //     return $this->belongsTo(Department::class);
-    // }
-
-    // public function setDepartment($department)
-    // {
-    //     $this->department()->associate($department);
-    //     $this->save();
-    // }
-    // public function removefromDepartment($department)
-    // {
-    //     $this->department()->dissociate($department);
-    //     $this->save();
-    // }
-
-    public function addRoles($roles)
+    public function positions()
     {
-        return $this->roles()->saveMany($roles);
+        return $this->morphMany(Position::class, 'hasposition');
     }
-
-    public function removeRoles($roles)
-    {
-        return $this->roles()->detach($roles);
-    }
-
-    public function refreshRoles($roles)
-    {
-       $this->roles()->detach();
-       return $this->addRoles($roles);
-
-    }
-
-
 }

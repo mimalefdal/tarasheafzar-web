@@ -1,0 +1,12 @@
+[
+    {
+        "slug": "ceo",
+        "title": "CEO",
+        "title_fa": "مدیر عامل",
+        "job-level": "chief-officer",
+        "recruit_capacity": 1,
+        "roles": [
+            "company-structure-manager"
+        ]
+    }
+]

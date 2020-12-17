@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from "react";
-import { RightEntry } from "../list-controls";
 import { t } from "../../utils";
 import "../../styles/tables.css";
 import { LodingTableItems } from "../table-controls";
+import { RightEntry } from ".";
 
 class rightsTable extends Component {
     constructor(props) {

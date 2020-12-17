@@ -1,0 +1,15 @@
+.checklist-text-cell {
+    width: 40%;
+}
+
+.checklist-text-cell.first {
+    text-align: end;
+}
+
+.checklist-text-cell.last {
+    text-align: start;
+}
+
+.checklist-btn {
+    width: 100%;
+}

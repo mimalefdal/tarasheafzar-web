@@ -2,8 +2,10 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Collection;
 use App\Models\Right;
 use App\Models\Role;
+use App\Models\Position;
 
 trait AllowedToTrait
 {
@@ -76,29 +78,29 @@ trait AllowedToTrait
     }
 
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 
-
-    public function rights()
-    {
-
-        return $this->belongsToMany(Right::class);
-    }
 
     public function allRights()
     {
-        $roles = $this->roles;
-        $role = $roles->first();
-        $rightsThrouhRole = $role->rights;
+        $roles = $this->allRoles();
+        // dd($roles->toArray());
+        // $role = $roles->first();
+        // $rightsThrouhRole = $role->rights;
+        $rightsThrouhRole = collect([]);
+        foreach ($roles as $role) {
+            $rightsThrouhRole = $rightsThrouhRole->merge($role->rights);
+        }
         $rightsIndividual = $this->rights;
-        $mergerRights = $rightsThrouhRole->merge($rightsIndividual);
-        // dd($mergerRights->toArray());
+        $allRights = $rightsThrouhRole->merge($rightsIndividual);
+        // dd($allRights->toArray());
         // dd($rightsThrouhRole->toArray(), $rightsIndividual->toArray());
 
-        return $mergerRights;
+        return $allRights;
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
 
     protected function allowed($right)
@@ -106,10 +108,14 @@ trait AllowedToTrait
 
         return (bool) $this->rights->where('slug', $right->slug)->count();
     }
-
-
+    public function rights()
+    {
+        return $this->belongsToMany(Right::class);
+    }
     protected function getAllRights(array $rights)
     {
         return Right::whereIn('slug', $rights)->get();
     }
+
+
 }

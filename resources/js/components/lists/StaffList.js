@@ -31,7 +31,7 @@ class List extends Component {
         });
 
         const staff = response.data;
-        // console.log(staff);
+        console.log(staff);
         this.setState({ staff, loaded: true });
     }
 

@@ -1,1 +1,2 @@
-export { default as AddRightForm } from "./form-add-right";
+export { default as RightAddForm } from "./RightAddForm";
+export { default as StaffRegisterForm } from "./StaffRegisterForm";

@@ -30,9 +30,16 @@
                 <!-- <a href="/home" class="navbar-item-text">خانه</a> -->
                 @auth('staff')
                     <div class="staff-info">
-                        <a href="{{ route('staff.profile') }}" class="staff-name">{{ Auth::user()->firstname }}
-                            {{ Auth::user()->lastname }} </a>
-                        <p class="staff-job-title">{{ Auth::user()->roles->first()->title }} </p>
+
+                        @if (Auth::user()->position != null)
+                            <a href="{{ route('staff.profile') }}" class="staff-name">{{ Auth::user()->firstname }}
+                                {{ Auth::user()->lastname }} </a>
+                            <p class="staff-job-title">{{ Auth::user()->position->title }} </p>
+                        @else
+                            <p class="staff-name">{{ Auth::user()->roles->first()->title_fa }}</p>
+                            <p class="staff-job-title">{{ Auth::user()->roles->first()->title }} </p>
+                        @endif
+
                     </div>
 
                     <a href="{{ route('staff.logout') }}" class="btn btn-primary">خروج</a>
