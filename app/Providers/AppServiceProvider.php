@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Company;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,10 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         Schema::defaultStringLength(191);
-        // Blade::component('section-item', SectionItem::class);
-        // Blade::component('sticky-welcome', StickyWelcomeComponent::class);
+
+        $this->app->singleton('Company', function ($app) {
+            return new Company(['name' => 'Example Company']);
+        });
     }
 }

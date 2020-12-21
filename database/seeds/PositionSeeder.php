@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Position;
 use App\Models\Joblevel;
+use App\Models\Company;
 use App\Models\Branch;
 use App\Models\Unit;
 use App\Models\Department;
@@ -29,7 +30,7 @@ class PositionSeeder extends Seeder
                 "recruit_capacity"=>$position['recruit_capacity'],
             ]);
             $newPosition->save();
-            if ($position['holder'] != null)
+            if ($position['holderType'] != null)
             {
                 switch ($position['holderType']) {
                     case 'branch':
@@ -46,7 +47,7 @@ class PositionSeeder extends Seeder
                         break;
 
                     default:
-                        $hasposition = null;
+                        $hasposition = resolve('Company');
                         break;
                 }
                 dump(get_class($hasposition));
