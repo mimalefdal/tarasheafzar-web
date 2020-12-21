@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
             ValueSeeder::class,
             RightsSeeder::class,
             RolesSeeder::class,
+            BranchSeeder::class,
+            DepartmentSeeder::class,
+            UnitSeeder::class,
             JobLevelSeeder::class,
             PositionSeeder::class,
-            UnitSeeder::class,
-            DepartmentSeeder::class,
             StaffSeeder::class,
             ]);
     }

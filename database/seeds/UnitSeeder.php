@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Unit;
-use App\Models\Role;
-use App\Models\Position;
+use App\Models\Department;
 
 class UnitSeeder extends Seeder
 {
@@ -17,20 +16,19 @@ class UnitSeeder extends Seeder
         $path = base_path().'/public/data/basicUnits.json';
         $basicUnits = file_get_contents($path);
         $basicUnits = json_decode($basicUnits, true);
-        foreach($basicUnits as $Unit)
+        foreach($basicUnits as $unit)
         {
             $newUnit = new Unit([
-                "slug"=>$Unit['slug'],
-                "title"=>$Unit['title'],
-                "title_fa"=>$Unit['title_fa'],
+                "slug"=>$unit['slug'],
+                "title"=>$unit['title'],
+                "title_fa"=>$unit['title_fa'],
             ]);
             $newUnit->save();
 
-            if ($Unit['positions'] != null) {
-                $newUnit->addPositions($Unit['positions']);
+            if ($unit['department'] != null) {
+                $department = Department::where('slug',$unit['department'])->firstorfail();
+                $newUnit->setDepartment($department)->save();
             }
-
-
         }
     }
 }

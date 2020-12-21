@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Unit;
 use App\Traits\ManagesPositions;
+use App\Models\Branch;
+use App\Models\Unit;
 use App\Models\Position;
 
 class Department extends Model
@@ -15,9 +16,14 @@ class Department extends Model
         'title','title_fa','slug'
     ];
 
-    public function positions()
+    public function branch()
     {
-        return $this->morphMany(Position::class, 'hasposition');
+        return $this->belongsTo(Branch::class);
+    }
+
+    public function setBranch($branch)
+    {
+        return $this->branch()->associate($branch);
     }
 
     public function units()

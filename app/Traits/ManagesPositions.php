@@ -12,7 +12,7 @@ public function addPositions($positions)
         return $this->positions()->savemany($positions);
     }
 
-    public function removePosition($positions)
+    public function removePositions($positions)
     {
         $positions = Position::whereIn('slug',$positions)->get();
         return $this->positions()->detach($positions);
@@ -24,7 +24,8 @@ public function addPositions($positions)
        return $this->addPositions($positions);
     }
 
-    public function position() {
-        return $this->belongsTo(Position::class);
+    public function positions()
+    {
+        return $this->morphMany(Position::class, 'hasposition');
     }
 }

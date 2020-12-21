@@ -3,29 +3,18 @@
         "slug": "administrative-dep",
         "title": "Administrative",
         "title_fa": "اداری",
-        "units": [
-            "hr-unit",
-            "it-unit"
-        ],
-        "positions": [
-            "ceo",
-            ""
-        ]
+        "branch": "main"
     },
     {
         "slug": "technical-dep",
         "title": "Technical",
         "title_fa": "فنی",
-        "units": [
-            "software-unit"
-        ],
-        "positions": []
+        "branch": "global"
     },
     {
         "slug": "business-dep",
         "title": "Business",
         "title_fa": "تجاری",
-        "units": [],
-        "positions": []
+        "branch": null
     }
 ]

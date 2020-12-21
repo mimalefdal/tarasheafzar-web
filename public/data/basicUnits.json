@@ -3,26 +3,24 @@
         "slug": "hr-unit",
         "title": "Human Resources",
         "title_fa": "منابع انسانی",
-        "positions": null
+        "department": "administrative-dep"
     },
     {
         "slug": "it-unit",
         "title": "IT",
         "title_fa": "فناوری اطلاعات",
-        "positions": [
-            "enterprise-admin"
-        ]
+        "department": "administrative-dep"
     },
     {
         "slug": "software-unit",
         "title": "Software Production",
         "title_fa": "تولید نرم‌افزار",
-        "positions": null
+        "department": "technical-dep"
     },
     {
         "slug": "accounting-unit",
         "title": "Accounting",
         "title_fa": "تولید نرم‌افزار",
-        "positions": null
+        "department": null
     }
 ]

@@ -21,6 +21,11 @@ class Position extends Model
         return $this->morphTo();
     }
 
+    public function setHasPosition($holder)
+    {
+        return $this->hasposition()->associate($holder);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class,'positions_roles');

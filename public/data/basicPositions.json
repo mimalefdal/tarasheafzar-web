@@ -5,6 +5,20 @@
         "title_fa": "مدیر عامل",
         "job-level": "chief-officer",
         "recruit_capacity": 1,
+        "holderType": "company",
+        "holder": null,
+        "roles": [
+            "company-structure-manager"
+        ]
+    },
+    {
+        "slug": "cto",
+        "title": "Chief Technology Officer",
+        "title_fa": "مدیر ارشد فناوری",
+        "job-level": "chief-officer",
+        "recruit_capacity": 1,
+        "holderType": "branch",
+        "holder": "main",
         "roles": [
             "company-structure-manager"
         ]

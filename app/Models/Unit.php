@@ -20,8 +20,10 @@ class Unit extends Model
         return $this->belongsTo(Department::class);
     }
 
-    public function positions()
+    public function setDepartment($department)
     {
-        return $this->morphMany(Position::class, 'hasposition');
+        return $this->department()->associate($department);
     }
+
+
 }

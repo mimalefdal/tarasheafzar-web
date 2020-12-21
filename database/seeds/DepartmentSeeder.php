@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Branch;
 use App\Models\Department;
-use App\Models\Unit;
-use App\Models\Position;
 
 class DepartmentSeeder extends Seeder
 {
@@ -17,26 +16,20 @@ class DepartmentSeeder extends Seeder
         $path = base_path().'/public/data/basicDepartments.json';
         $basicDepartments = file_get_contents($path);
         $basicDepartments = json_decode($basicDepartments, true);
-        foreach($basicDepartments as $Department) {
+        foreach($basicDepartments as $department) {
 
             $newDepartment = new Department([
-                "slug"=>$Department['slug'],
-                "title"=>$Department['title'],
-                "title_fa"=>$Department['title_fa'],
+                "slug"=>$department['slug'],
+                "title"=>$department['title'],
+                "title_fa"=>$department['title_fa'],
 
             ]);
             $newDepartment->save();
-            if ($Department['units'] != null) {
-                $units = Unit::whereIn('slug',$Department['units'])->get();
-                $newDepartment->setUnits($units);
+
+            if ($department['branch'] != null) {
+                $branch = Branch::where('slug',$department['branch'])->first();
+                $newDepartment->setBranch($branch)->save();
             }
-
-            if ($Department['positions'] != null) {
-                $positions = Position::whereIn('slug',$Department['positions'])->get();
-                $newDepartment->addPositions($positions);
-            }
-
-
         }
 
     }

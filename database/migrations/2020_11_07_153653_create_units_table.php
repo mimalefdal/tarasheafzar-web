@@ -20,7 +20,7 @@ class CreateUnitsTable extends Migration
             $table->string('title_fa');
             $table->string('slug')->unique();
             $table->string('department_id')->nullable();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null');
 
             $table->timestamps();
         });
