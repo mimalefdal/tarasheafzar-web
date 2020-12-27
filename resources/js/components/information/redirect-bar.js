@@ -22,7 +22,7 @@ function component({ delay, type = "desc", target, ...props }) {
 
     useEffect(() => {
         const progressInterval = setInterval(() => {
-            console.log(barUpdateStep + "ms");
+            // console.log(barUpdateStep + "ms");
             if (type == "desc") {
                 setProgress(progress => progress - progressStep);
             } else {

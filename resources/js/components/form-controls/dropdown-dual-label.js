@@ -35,6 +35,7 @@ const Control = (props, ref) => {
                     setValue(event.target.value);
                 }}
                 MenuProps={menuProps}
+                disabled={props.loading}
             >
                 {!props.readonly &&
                     items.map((item, key) => {

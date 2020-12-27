@@ -39,6 +39,7 @@ export default function CompanyPanel() {
                         [REQUIRED_RIGHT]: "access-company-management-panel"
                     }}
                 />
+
                 <GuardedRoute
                     path={`${match.path}/company/structure`}
                     component={CompanyStructure}

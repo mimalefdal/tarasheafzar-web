@@ -39,6 +39,7 @@ function DefineCeo(props) {
             <div className="main-content general-shadow">
                 {!loading && (
                     <StaffRegisterForm
+                        preset="ceo"
                         showAlert={
                             status.requestedStatus
                                 ? {

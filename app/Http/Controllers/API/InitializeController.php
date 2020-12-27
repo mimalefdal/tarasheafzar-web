@@ -17,23 +17,21 @@ class InitializeController extends Controller
 
     public function status(Request $request)
     {
-        $path = base_path().'/public/data/systemInitialize.json';
+        $path = base_path() . '/public/data/systemInitialize.json';
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
 
         $targetStatus = $request->get('targetFunction');
 
         if ($targetStatus != null) {
-        $message="";
+            $message = "";
 
             switch ($targetStatus) {
                 case 'defineCeo':
-                    if ($this->currentCeo() != null)
-                    {
+                    if ($this->currentCeo() != null) {
                         $status = true;
                         $message = Lang::get('messages.ceoalreadydefined');
-                    } else
-                    {
+                    } else {
                         $status = false;
                     }
                     break;
@@ -42,7 +40,7 @@ class InitializeController extends Controller
                     # code...
                     break;
             }
-            return response()->json(['requestedStatus'=>$status,'message'=>$message],200);
+            return response()->json(['requestedStatus' => $status, 'message' => $message], 200);
             // return response()->json(['function'=>$targetStatus,'status'=>$systemInitialize[$targetStatus]] );
         }
         return response()->json($systemInitialize, 200);
@@ -50,15 +48,18 @@ class InitializeController extends Controller
 
     public function defineceo(Request $request)
     {
-        if ($this->currentCeo() != null)   {
+        if ($this->currentCeo() != null) {
             // TODO : Send alert/notification to current ceo account and superadmin [Security Reasons]
 
-            $this->updateInitializeStatus(["defineCeo"=>true,]);
+            $this->updateInitializeStatus(["defineCeo" => true,]);
             return response()->json(
                 [
-                    'error'=>'ceo Already Defined',
-                    'message'=> Lang::get('messages.ceoalreadydefined')
-                ], 400);
+                    'error' => 'ceo Already Defined',
+                    'message' => Lang::get('messages.ceoalreadydefined'),
+                    'redirect' => true
+                ],
+                400
+            );
         }
 
         $validatedRequest = $request->validate([
@@ -78,40 +79,38 @@ class InitializeController extends Controller
             $ceo = Staff::create($validatedRequest);
             $ceo->setPosition('ceo');
 
-            $this->updateInitializeStatus(["defineCeo"=>true,]);
+            $this->updateInitializeStatus(["defineCeo" => true,]);
             return response()->json(
-            ["message"=> Lang::get('messages.ceodefinedsuccesfully')]
-            , 200);
+                ["message" => Lang::get('messages.ceodefinedsuccesfully'), 'redirect' => true],
+                200
+            );
         } catch (\Throwable $th) {
             return response()->json([
                 'error' => $th,
                 'message' => Lang::get('messages.generalfailure'),
-                'request' => $request->all()
+                'request' => $request->all(),
+                'redirect' => true
             ], 500);;
         }
-
-
     }
 
     private function currentCeo()
     {
-        return Staff::with('Position')->whereHas('position',function($query){
-            $query->where('slug','ceo');
+        return Staff::with('Position')->whereHas('position', function ($query) {
+            $query->where('slug', 'ceo');
         })->first();
     }
 
     private function updateInitializeStatus($status)
     {
-        $path = base_path().'/public/data/systemInitialize.json';
-            $systemInitialize = file_get_contents($path);
-            $systemInitialize = json_decode($systemInitialize, true);
+        $path = base_path() . '/public/data/systemInitialize.json';
+        $systemInitialize = file_get_contents($path);
+        $systemInitialize = json_decode($systemInitialize, true);
 
-            foreach ($status as $key => $value) {
-                $systemInitialize[$key] = $value;
-            }
+        foreach ($status as $key => $value) {
+            $systemInitialize[$key] = $value;
+        }
 
-            file_put_contents($path,json_encode($systemInitialize));
+        file_put_contents($path, json_encode($systemInitialize));
     }
-
-
 }

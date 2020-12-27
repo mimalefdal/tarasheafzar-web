@@ -15,7 +15,7 @@ function branchsList(props) {
     useEffect(() => {
         ApiClient.get("/branchs", { headers: apiHeaders })
             .then(response => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setItems(response.data.data);
                 setLoading(false);
             })
