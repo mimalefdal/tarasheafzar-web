@@ -68,7 +68,7 @@ export default function App() {
                     name="title_fa"
                     placeholder="title_fa"
                     ref={register({ required: true })}
-                    label={t("labels.title_fa")}
+                    label={t("labels.title_local")}
                     labelComment=""
                     errors={errors}
                     backendErrors={backendErrors}

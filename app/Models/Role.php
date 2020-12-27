@@ -13,7 +13,7 @@ class Role extends Model
     use ManagesRoleRights;
 
     protected $fillable = [
-        'title', 'slug', 'description', 'activation', 'title_fa','unit_id'
+        'title', 'slug', 'description', 'activation','unit_id'
     ];
     public function rights()
     {

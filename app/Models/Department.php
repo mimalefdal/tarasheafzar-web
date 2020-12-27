@@ -13,7 +13,7 @@ class Department extends Model
     use ManagesPositions;
 
     protected $fillable = [
-        'title','title_fa','slug'
+        'title','slug'
     ];
 
     public function branch()

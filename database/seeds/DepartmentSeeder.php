@@ -20,8 +20,7 @@ class DepartmentSeeder extends Seeder
 
             $newDepartment = new Department([
                 "slug"=>$department['slug'],
-                "title"=>$department['title'],
-                "title_fa"=>$department['title_fa'],
+                "title"=>json_encode($department['title']),
 
             ]);
             $newDepartment->save();

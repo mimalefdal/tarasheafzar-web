@@ -13,7 +13,7 @@ class Position extends Model
     use ManagesRoles;
 
     protected $fillable = [
-        'title', 'title_fa','slug','recruit_capacity'
+        'title', 'slug','recruit_capacity'
     ];
 
     public function hasposition()

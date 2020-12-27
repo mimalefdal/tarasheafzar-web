@@ -12,5 +12,23 @@
             "slug": "othergenders",
             "title": "Other Genders"
         }
+    ],
+    "branchtypes": [
+        {
+            "slug": "office",
+            "title": "Office"
+        },
+        {
+            "slug": "store",
+            "title": "Store"
+        },
+        {
+            "slug": "factory",
+            "title": "Factory"
+        },
+        {
+            "slug": "studio",
+            "title": "Studio"
+        }
     ]
 }

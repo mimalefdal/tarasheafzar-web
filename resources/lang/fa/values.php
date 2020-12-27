@@ -4,11 +4,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Titles Language Lines
+    | Values Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used for various
-    | titles that we need to display to the user. You are free to modify
+    | values that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
     */
@@ -17,5 +17,11 @@ return [
     'Man' => 'آقا',
     'Woman' => 'خانم',
     'Other Genders' => 'سایر',
+
+    'branch' => 'شاخه',
+    'Office' => 'دفتر',
+    'Store' => 'فروشگاه',
+    'Factory' => 'کارخانه',
+    'Studio' => 'کارگاه',
 
 ];

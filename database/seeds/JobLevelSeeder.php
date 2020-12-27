@@ -19,8 +19,7 @@ class JobLevelSeeder extends Seeder
         {
             $newJobLevel = new Joblevel([
                 "slug"=>$JobLevel['slug'],
-                "title"=>$JobLevel['title'],
-                "title_fa"=>$JobLevel['title_fa'],
+                "title"=>json_encode($JobLevel['title']),
                 "scope"=>$JobLevel['scope'],
                 "priority"=>$JobLevel['priority'],
             ]);

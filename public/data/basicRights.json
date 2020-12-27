@@ -1,20 +1,26 @@
 [
     {
         "slug": "access-enterprise-adminstration-panel",
-        "title": "Access Enterprise Adminstration Panel",
-        "title_fa": "دسترسی به پنل مدیریت سامانه",
+        "title": {
+            "fa": "دسترسی به پنل مدیریت سامانه",
+            "en": "Access Enterprise Adminstration Panel"
+        },
         "activation": true
     },
     {
         "slug": "access-system-initialize-tool",
-        "title": "Initialize Enterprise",
-        "title_fa": "راه‌اندازی سامانه",
+        "title": {
+            "fa": "دسترسی به ابزار راه‌اندازی سامانه",
+            "en": "Access Enterprise Initialize Tool"
+        },
         "activation": true
     },
     {
         "slug": "access-company-management-panel",
-        "title": "Access Company Management Panel",
-        "title_fa": "دسترسی به پنل مدیریت شرکت",
+        "title": {
+            "fa": "دترسی به پنل مدیریت شرکت",
+            "en": "Access Company Management Panel"
+        },
         "activation": true
     }
 ]

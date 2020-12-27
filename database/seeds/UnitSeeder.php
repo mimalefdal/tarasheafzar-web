@@ -20,8 +20,7 @@ class UnitSeeder extends Seeder
         {
             $newUnit = new Unit([
                 "slug"=>$unit['slug'],
-                "title"=>$unit['title'],
-                "title_fa"=>$unit['title_fa'],
+                "title"=>json_encode($unit['title']),
             ]);
             $newUnit->save();
 

@@ -54,6 +54,7 @@ const Control = (props, ref) => {
         </DualLabelFormControl>
     );
 };
+
 const defaultValue = props => {
     if (props.defaultItem) {
         return props.defaultItem.value;
@@ -61,4 +62,5 @@ const defaultValue = props => {
         return "";
     }
 };
+
 export default React.forwardRef(Control);

@@ -19,7 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('rights/add', 'API\RightController@create')->name('rights.add');
+Route::post('branchs/define', 'API\BranchController@create');
+Route::get('branchs', 'API\BranchController@index');
+
+Route::post('rights/add', 'API\RightController@create');
 Route::get('rights', 'API\RightController@index');
 
 Route::get('staff', 'API\StaffController@index');
@@ -29,4 +32,3 @@ Route::get('/initialize/status', 'API\InitializeController@status');
 Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');
 
 Route::get('/valuelist', 'API\ValuelistController@index');
-

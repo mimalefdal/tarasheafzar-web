@@ -20,8 +20,7 @@ class BranchSeeder extends Seeder
             $newBranch = new Branch([
                 "slug"=>$branch['slug'],
                 "type"=>$branch['type'],
-                "title"=>$branch['title'],
-                "title_fa"=>$branch['title_fa'],
+                "title"=>json_encode($branch['title'])
 
             ]);
             $newBranch->save();

@@ -1,20 +1,26 @@
 [
     {
         "slug": "administrative-dep",
-        "title": "Administrative",
-        "title_fa": "اداری",
+        "title": {
+            "fa": "اداری",
+            "en": "Administrative"
+        },
         "branch": "main"
     },
     {
         "slug": "technical-dep",
-        "title": "Technical",
-        "title_fa": "فنی",
+        "title": {
+            "fa": "فنی",
+            "en": "Technical"
+        },
         "branch": "global"
     },
     {
         "slug": "business-dep",
-        "title": "Business",
-        "title_fa": "تجاری",
+        "title": {
+            "fa": "تجاری",
+            "en": "Business"
+        },
         "branch": null
     }
 ]

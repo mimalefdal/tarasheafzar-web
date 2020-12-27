@@ -16,8 +16,7 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->string('title_fa');
+            $table->json('title');
             $table->string('slug')->unique();
             $table->string('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null');

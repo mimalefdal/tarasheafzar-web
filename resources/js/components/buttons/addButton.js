@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { t } from "../../utils";
 import Add from "../../assets/images/add.svg";
 import { ReactSVG } from "react-svg";
-import { Button } from "@material-ui/core";
+import { Button, SvgIcon } from "@material-ui/core";
 
 function AddButton(props) {
     return (

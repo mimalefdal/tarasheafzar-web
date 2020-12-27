@@ -16,8 +16,7 @@ class CreateJobLevelsTable extends Migration
         Schema::create('joblevels', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title')->unique();
-            $table->string('title_fa')->unique();
+            $table->json('title');
             $table->string('slug')->unique();
             $table->string('scope');
             $table->integer('priority')->unique();

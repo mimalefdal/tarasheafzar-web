@@ -59,7 +59,7 @@ class rightsTable extends Component {
                     <thead>
                         <tr>
                             <th className="">{t("labels.index")}</th>
-                            <th className="">{t("labels.title_fa")}</th>
+                            <th className="">{t("labels.title_local")}</th>
                             <th className="">{t("labels.title_en")}</th>
                             <th className="">{t("labels.slug")}</th>
                             <th className="">{t("labels.activation")}</th>

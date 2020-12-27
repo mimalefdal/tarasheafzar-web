@@ -27,6 +27,8 @@
         "depunit": "دپارتمان/واحد",
         "status": "وضعیت",
         "comments": "توضیحات",
+        "type": "نوع",
+        "branchType": "نوع شاخه",
         "stages": "مراحل"
     },
     "comments": {
@@ -63,10 +65,12 @@
     },
     "tools": {
         "systemInitialize": "راه‌اندازی سامانه",
+        "branchsManagement": "مدیریت شاخه‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی"
     },
     "forms": {
-        "registerCEO": "ثبت اکانت مدیرعامل"
+        "registerCEO": "ثبت اکانت مدیرعامل",
+        "defineBranch": "درج شاخه جدید"
     },
     "alerts": {
         "success": "موفقیت",

@@ -17,12 +17,12 @@ class ValueSeeder extends Seeder
         $basicValues = json_decode($basicValues, true);
         foreach($basicValues as $field=>$values )
         {
-        foreach($values as $Value)
+        foreach($values as $value)
         {
             $newValue = new Value([
                 "field"=>$field,
-                "slug"=>$Value['slug'],
-                "title"=>$Value['title'],
+                "slug"=>$value['slug'],
+                "title"=>$value['title'],
             ]);
             $newValue->save();
             }

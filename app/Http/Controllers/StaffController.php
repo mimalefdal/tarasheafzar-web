@@ -20,7 +20,18 @@ class StaffController extends Controller
 
     public function showHome()
     {
-        return view('staff.home');
+        $lang = \Lang::getLocale();
+
+        $user = Auth::user();
+        if ($user->position != null) {
+            $titles = json_decode($user->position->title);
+            $user->title = $titles->$lang;
+        } else {
+            $titles = json_decode($user->roles->first()->title);
+            $user->title = $titles->$lang;
+        }
+
+        return view('staff.home')->with('user',$user);
     }
 
     /**
@@ -64,7 +75,7 @@ class StaffController extends Controller
     {
         //
         // dd(Auth::user()->toArray());
-        return view('staff.profile');
+        return view('staff.profile')->with('user',$staff);;
     }
 
     /**

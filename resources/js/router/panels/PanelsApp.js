@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
 
 import PanelsNavBar from "../../components/PanelsNavBar";
-import apiClient from "../../services/api";
+import apiClient, { apiHeaders } from "../../services/api";
 import { NotFound, Unathorized } from "../../views/errors";
 import Scrolltotop from "../../components/ScrollToTop";
 import { REQUIRED_RIGHT } from "../guards/types";
@@ -42,26 +42,25 @@ function PanelsApp(props) {
 
     // console.log(appEnv);
 
-    // apiClient.get("sanctum/csrf-cookie").then(response => {
-    //     // console.log(response);
-    // });
+    apiClient
+        .get("sanctum/csrf-cookie", { headers: apiHeaders })
+        .then(response => {
+            // console.log(response);
+        });
     return (
         <BrowserRouter>
             <PanelsNavBar />
             <Scrolltotop />
-            <GuardProvider guards={[requireRight, waitOneSecond]}>
+            <GuardProvider
+                guards={[requireRight, waitOneSecond]}
+                loading={FormLoadingData}
+            >
                 <Switch>
-                    <Route
-                        exact
-                        path="/home"
-                        component={PanelsHome}
-                        loading={FormLoadingData}
-                    />
+                    <Route exact path="/home" component={PanelsHome} />
 
                     <GuardedRoute
                         path="/enterprise-management"
                         component={EnterpriseManagementPanel}
-                        loading={FormLoadingData}
                         meta={{
                             [REQUIRED_RIGHT]:
                                 "access-enterprise-adminstration-panel"
@@ -71,7 +70,6 @@ function PanelsApp(props) {
                     <GuardedRoute
                         path="/company-management"
                         component={CompanyManagmentPanel}
-                        loading={FormLoadingData}
                         meta={{
                             [REQUIRED_RIGHT]: "access-company-management-panel"
                         }}
@@ -79,7 +77,6 @@ function PanelsApp(props) {
                     <GuardedRoute
                         path="/staff-management"
                         component={StaffManagementPanel}
-                        loading={FormLoadingData}
                         meta={{
                             [REQUIRED_RIGHT]: "access-staff-management"
                         }}
@@ -87,7 +84,6 @@ function PanelsApp(props) {
                     <GuardedRoute
                         path="/HR"
                         component={HRManagementPanel}
-                        loading={FormLoadingData}
                         meta={{
                             [REQUIRED_RIGHT]: "access-staff-management"
                         }}

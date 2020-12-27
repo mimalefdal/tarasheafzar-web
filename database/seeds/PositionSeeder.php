@@ -25,8 +25,7 @@ class PositionSeeder extends Seeder
         {
             $newPosition = new Position([
                 "slug"=>$position['slug'],
-                "title"=>$position['title'],
-                "title_fa"=>$position['title_fa'],
+                "title"=>json_encode($position['title']),
                 "recruit_capacity"=>$position['recruit_capacity'],
             ]);
             $newPosition->save();
@@ -50,7 +49,7 @@ class PositionSeeder extends Seeder
                         $hasposition = resolve('Company');
                         break;
                 }
-                dump(get_class($hasposition));
+                // dump(get_class($hasposition));
                 $newPosition->setHasPosition($hasposition)->save();
 
             }

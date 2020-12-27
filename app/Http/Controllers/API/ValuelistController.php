@@ -31,8 +31,9 @@ class ValuelistController extends Controller
                 return DropdownItem::collection(Value::where('field','gender')->get());
                 break;
 
+
             default:
-                    return[];
+                return DropdownItem::collection(Value::where('field',$field)->get());
                 break;
         }
     }

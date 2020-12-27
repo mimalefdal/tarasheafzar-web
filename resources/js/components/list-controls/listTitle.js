@@ -1,5 +1,9 @@
 import React from "react";
-import Icon1 from "../../assets/images/house.svg";
+import PropTypes from "prop-types";
+
+listTitle.propTypes = {
+    title: PropTypes.string
+};
 
 function listTitle(props) {
     return (

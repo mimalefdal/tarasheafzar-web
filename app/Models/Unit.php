@@ -12,7 +12,7 @@ class Unit extends Model
     use ManagesPositions;
 
     protected $fillable = [
-        'title','title_fa','slug','department_id'
+        'title','slug','department_id'
     ];
 
     public function department()

@@ -10,7 +10,7 @@ function StaffDashboard(props) {
     return (
         <div className="page-content responsive-inner-width">
             <PageHeaderBar>
-                {/* <ListTitle title={t("custum-titles.staffListTitle")} /> */}
+                <ListTitle title={t("custum-titles.staffListTitle")} />
             </PageHeaderBar>
         </div>
     );

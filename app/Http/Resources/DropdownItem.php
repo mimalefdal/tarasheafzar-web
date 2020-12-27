@@ -14,7 +14,16 @@ class DropdownItem extends JsonResource
      */
     public function toArray($request)
     {
-        $item = ['value'=>$this->slug,'label'=>\Lang::get('titles.'.$this->title)];
+        $title = json_decode($this->title);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            // Title field contains a valid JSON
+            // means Title field is user translateable data
+            $lang = \Lang::getLocale();
+            $item = ['value'=>$this->slug,'label'=>$title->$lang];
+        } else {
+            // means Title field is system translateable data
+            $item = ['value'=>$this->slug,'label'=>\Lang::get('values.'.$this->title)];
+        }
         return $item;
     }
 }

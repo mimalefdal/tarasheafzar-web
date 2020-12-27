@@ -1,26 +1,34 @@
 [
     {
         "slug": "hr-unit",
-        "title": "Human Resources",
-        "title_fa": "منابع انسانی",
+        "title": {
+            "fa": "منابع انسانی",
+            "en": "Human Resources"
+        },
         "department": "administrative-dep"
     },
     {
         "slug": "it-unit",
-        "title": "IT",
-        "title_fa": "فناوری اطلاعات",
+        "title": {
+            "fa": "فناوری اطلاعات",
+            "en": "IT"
+        },
         "department": "administrative-dep"
     },
     {
         "slug": "software-unit",
-        "title": "Software Production",
-        "title_fa": "تولید نرم‌افزار",
+        "title": {
+            "fa": "تولید نرم‌افزار",
+            "en": "Software Production"
+        },
         "department": "technical-dep"
     },
     {
         "slug": "accounting-unit",
-        "title": "Accounting",
-        "title_fa": "تولید نرم‌افزار",
+        "title": {
+            "fa": "حسابداری",
+            "en": "Accounting"
+        },
         "department": null
     }
 ]

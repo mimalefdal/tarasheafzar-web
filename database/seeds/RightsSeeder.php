@@ -20,8 +20,7 @@ class RightsSeeder extends Seeder
         foreach($basicRights as $right) {
             DB::table('rights')->insert([
                 "slug"=>$right['slug'],
-                "title"=>$right['title'],
-                "title_fa"=>$right['title_fa'],
+                "title"=>json_encode($right['title']),
                 "activation"=>$right['activation'],
             ]);
         }

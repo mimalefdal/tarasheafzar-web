@@ -17,6 +17,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
     @stack('scripts')
     @stack('styles')
 </head>
@@ -32,12 +34,15 @@
                     <div class="staff-info">
 
                         @if (Auth::user()->position != null)
-                            <a href="{{ route('staff.profile') }}" class="staff-name">{{ Auth::user()->firstname }}
-                                {{ Auth::user()->lastname }} </a>
-                            <p class="staff-job-title">{{ Auth::user()->position->title }} </p>
+                            <a href="{{ route('staff.profile') }}" class="staff-name">{{ $user->firstname }}
+                                {{ $user->lastname }} </a>
+                            <p class="staff-job-title">{{ $user->title }} </p>
                         @else
-                            <p class="staff-name">{{ Auth::user()->roles->first()->title_fa }}</p>
-                            <p class="staff-job-title">{{ Auth::user()->roles->first()->title }} </p>
+                            <p class="staff-name">{{ $user->title }}</p>
+                            <p class="staff-job-title">
+
+                            </p>
+
                         @endif
 
                     </div>

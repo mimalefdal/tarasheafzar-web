@@ -8,7 +8,7 @@ use App\Models\Position;
 class Joblevel extends Model
 {
     protected $fillable = [
-        'title', 'title_fa','slug','scope','priority'
+        'title', 'slug','scope','priority'
     ];
 
     public function positions()

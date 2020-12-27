@@ -17,11 +17,8 @@ class CreateBranchesTable extends Migration
             $table->id();
 
             $table->string('type');
-
             $table->string('slug')->unique();
-
-            $table->string('title');
-            $table->string('title_fa');
+            $table->json('title');
 
             $table->timestamps();
         });

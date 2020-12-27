@@ -21,8 +21,7 @@ class RolesSeeder extends Seeder
         foreach($basicRoles as $role) {
             $newrole = new Role([
                 "slug"=>$role['slug'],
-                "title"=>$role['title'],
-                "title_fa"=>$role['title_fa'],
+                "title"=>json_encode($role['title']),
                 "activation"=>$role['activation'],
             ]);
             $newrole->save();

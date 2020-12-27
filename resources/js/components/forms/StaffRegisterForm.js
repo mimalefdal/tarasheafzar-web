@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { t } from "../../utils";
 import { useState } from "react";
-import apiClient from "../../services/api";
+import apiClient, { apiHeaders } from "../../services/api";
 import {
     DropDownSelect,
     DualLabelTextInput,
@@ -69,12 +69,6 @@ export default function Form({ preset = "general", ...props }) {
         message: props.showAlert ? props.showAlert.message : ""
     });
 
-    let token = sessionStorage.getItem("StaffAccessToken");
-    let headers = {
-        Accept: "application/json",
-        Authorization: "Bearer " + token
-    };
-
     useEffect(() => {
         apiClient
             .get("/valuelist", { params: { fields: ["gender", "position"] } })
@@ -94,7 +88,7 @@ export default function Form({ preset = "general", ...props }) {
         setLoading(true);
         setShowAlert({ show: false, type: showAlert.type });
         apiClient
-            .post(presets[preset].url, data, { headers: headers })
+            .post(presets[preset].url, data, { headers: apiHeaders })
             .then(response => {
                 // console.log("Response", response);
                 setLoading(false);

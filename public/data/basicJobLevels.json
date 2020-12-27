@@ -1,8 +1,10 @@
 [
     {
         "slug": "chief-officer",
-        "title": "Chief Officer",
-        "title_fa": "مدیر",
+        "title": {
+            "fa": "مدیر ارشد",
+            "en": "Chief Officer"
+        },
         "scope": "Company",
         "priority": 0
     }

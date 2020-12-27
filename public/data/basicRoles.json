@@ -1,8 +1,10 @@
 [
     {
         "slug": "super-admin",
-        "title": "System Super Administrator",
-        "title_fa": "مدیر فوق‌العاده سیستم",
+        "title": {
+            "fa": "مدیریت ویژه سامانه",
+            "en": "System Super Administrator"
+        },
         "activation": true,
         "rights": [
             "allRights"
@@ -10,8 +12,10 @@
     },
     {
         "slug": "enterprise-admin",
-        "title": "Enterprise Adminstrator",
-        "title_fa": "مدیر سامانه کمپانیو",
+        "title": {
+            "fa": "مدیریت سامانه",
+            "en": "Enterprise Adminstration"
+        },
         "activation": true,
         "rights": [
             "access-enterprise-adminstration-panel",
@@ -20,8 +24,10 @@
     },
     {
         "slug": "company-structure-manager",
-        "title": "Company Structure Manager",
-        "title_fa": "مدیر ساختار شرکت",
+        "title": {
+            "fa": "مدیریت ساختار شرکت",
+            "en": "Company Structure Management"
+        },
         "activation": true,
         "rights": [
             "access-company-management-panel"

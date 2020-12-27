@@ -8,7 +8,7 @@ class Right extends Model
 {
     //
     protected $fillable = [
-        'title', 'slug', 'description', 'activation', 'title_fa'
+        'title', 'slug', 'description', 'activation'
     ];
 
     public function roles()

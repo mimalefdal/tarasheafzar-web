@@ -1,8 +1,10 @@
 [
     {
         "slug": "ceo",
-        "title": "CEO",
-        "title_fa": "مدیر عامل",
+        "title": {
+            "fa": "مدیر عامل",
+            "en": "CEO"
+        },
         "job-level": "chief-officer",
         "recruit_capacity": 1,
         "holderType": "company",
@@ -13,12 +15,14 @@
     },
     {
         "slug": "cto",
-        "title": "Chief Technology Officer",
-        "title_fa": "مدیر ارشد فناوری",
+        "title": {
+            "fa": "مدیر ارشد فناوری",
+            "en": "Chief Technology Officer"
+        },
         "job-level": "chief-officer",
         "recruit_capacity": 1,
         "holderType": "branch",
-        "holder": "main",
+        "holder": "main-office",
         "roles": [
             "company-structure-manager"
         ]
