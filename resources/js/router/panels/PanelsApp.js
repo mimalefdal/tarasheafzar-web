@@ -12,7 +12,6 @@ import { requireRight, waitOneSecond } from "../guards";
 import {
     CompanyManagmentPanel,
     EnterpriseManagementPanel,
-    HRManagementPanel,
     MainPanel,
     StaffManagementPanel
 } from ".";
@@ -77,13 +76,6 @@ function PanelsApp(props) {
                     <GuardedRoute
                         path="/staff-management"
                         component={StaffManagementPanel}
-                        meta={{
-                            [REQUIRED_RIGHT]: "access-staff-management"
-                        }}
-                    />
-                    <GuardedRoute
-                        path="/HR"
-                        component={HRManagementPanel}
                         meta={{
                             [REQUIRED_RIGHT]: "access-staff-management"
                         }}

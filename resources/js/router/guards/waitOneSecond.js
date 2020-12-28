@@ -1,5 +1,5 @@
 const waitOneSecond = (to, from, next) => {
-    setTimeout(next, 1000);
+    setTimeout(next, 100);
 };
 
 export default waitOneSecond;

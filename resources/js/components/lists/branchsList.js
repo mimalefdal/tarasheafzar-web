@@ -31,7 +31,7 @@ function branchsList(props) {
                 <FormLoadingData />
             ) : (
                 items.map(item => {
-                    return <BranchCard key={item.id} data={item} />;
+                    return <BranchCard key={item.id} item={item} />;
                 })
             )}
         </div>

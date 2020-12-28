@@ -36,7 +36,7 @@ const presets = {
 export default function Form({ preset = "general", ...props }) {
     // console.log(props);
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, watch, errors, reset } = useForm();
     const [ready, setReady] = useState(false);
     const [dropdowns, setDropdowns] = useState([]);
 
@@ -59,6 +59,7 @@ export default function Form({ preset = "general", ...props }) {
             submitUrl={presets[preset].url}
             ready={ready}
             handleSubmit={handleSubmit}
+            reset={reset}
             showAlert={props.showAlert}
             redirectDelay={1000}
             redirectTarget="/enterprise-management/initialize/"

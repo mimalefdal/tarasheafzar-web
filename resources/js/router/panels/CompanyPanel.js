@@ -8,7 +8,6 @@ import {
     Route,
     BrowserRouter
 } from "react-router-dom";
-import { CompanyManagementHome } from "../../views/company";
 import { NotFound } from "../../views/errors";
 import { GuardedRoute } from "react-router-guards";
 import { REQUIRED_RIGHT } from "../guards/types";
@@ -21,17 +20,14 @@ import {
     ManageUnits
 } from "../../tools/company-structure-tool";
 import defineBranch from "../../tools/company-structure-tool/defineBranch";
+import { CompanyPanelView } from "../../views";
 
 export default function CompanyPanel() {
     let match = useRouteMatch();
     return (
         <div>
             <Switch>
-                <Route
-                    exact
-                    path={match.path}
-                    component={CompanyManagementHome}
-                />
+                <Route exact path={match.path} component={CompanyPanelView} />
                 <GuardedRoute
                     path={`${match.path}/company/information`}
                     component={CompanyInformation}

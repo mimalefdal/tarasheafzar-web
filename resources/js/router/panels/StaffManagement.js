@@ -11,9 +11,8 @@ import {
 import {
     StaffManagementHome,
     StaffManagementManage,
-    StaffManagementMDashboard,
-    StaffManagementRegister
-} from "../../views/staff-management";
+    StaffManagementMDashboard
+} from "../../tools/staff-management";
 
 export default function StaffManagement() {
     let match = useRouteMatch();

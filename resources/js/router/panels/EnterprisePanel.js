@@ -6,12 +6,12 @@ import { GuardedRoute } from "react-router-guards";
 import { REQUIRED_RIGHT } from "../guards/types";
 
 import { RightsAdd, RightsManagement } from "../../tools/rights-management";
-import { EnterprisePanelHome } from "../../views/enterprise-management";
 import {
     InitializeCeo,
     InitializeStart
 } from "../../tools/enterprise-initialize-tool";
 import { FormLoadingData } from "../../components/form-controls";
+import { EnterprisePanelView } from "../../views";
 
 function EnterprisePanel(props) {
     let match = useRouteMatch();
@@ -22,7 +22,7 @@ function EnterprisePanel(props) {
                 <Route
                     exact
                     path={match.path}
-                    component={EnterprisePanelHome}
+                    component={EnterprisePanelView}
                 />
                 <GuardedRoute
                     exact
