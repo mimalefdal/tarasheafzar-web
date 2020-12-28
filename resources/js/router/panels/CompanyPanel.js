@@ -11,16 +11,13 @@ import {
 import { NotFound } from "../../views/errors";
 import { GuardedRoute } from "react-router-guards";
 import { REQUIRED_RIGHT } from "../guards/types";
-import {
-    CompanyInformation,
-    CompanyStructure,
-    ManageBranchs,
-    ManageDepartments,
-    ManagePositions,
-    ManageUnits
-} from "../../tools/company-structure-tool";
-import defineBranch from "../../tools/company-structure-tool/defineBranch";
+
 import { CompanyPanelView } from "../../views";
+import { DefineBranch, ManageBranchs } from "../../views/branchs";
+import { CompanyInformation, CompanyStructure } from "../../views/company";
+import { ManageUnits } from "../../views/units";
+import { ManagePositions } from "../../views/positions";
+import { ManageDepartments } from "../../views/departments";
 
 export default function CompanyPanel() {
     let match = useRouteMatch();
@@ -53,7 +50,7 @@ export default function CompanyPanel() {
                 />
                 <GuardedRoute
                     path={`${match.path}/branchs/define`}
-                    component={defineBranch}
+                    component={DefineBranch}
                     meta={{
                         [REQUIRED_RIGHT]: "access-company-management-panel"
                     }}

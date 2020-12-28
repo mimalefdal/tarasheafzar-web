@@ -5,11 +5,8 @@ import { GuardedRoute } from "react-router-guards";
 
 import { REQUIRED_RIGHT } from "../guards/types";
 
-import { RightsAdd, RightsManagement } from "../../tools/rights-management";
-import {
-    InitializeCeo,
-    InitializeStart
-} from "../../tools/enterprise-initialize-tool";
+import { RightsAdd, RightsManagement } from "../../views/rights";
+import { InitializeCeo, InitializeStart } from "../../views/initialize";
 import { FormLoadingData } from "../../components/form-controls";
 import { EnterprisePanelView } from "../../views";
 

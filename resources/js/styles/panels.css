@@ -36,6 +36,7 @@
 .panel-link {
     /* flex: 0.25; */
     /* width: 25%; */
+    order: 100;
     width: calc(100% / 5);
     height: 15vh;
     padding: 15px;

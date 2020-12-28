@@ -12,7 +12,7 @@ import {
     StaffManagementHome,
     StaffManagementManage,
     StaffManagementMDashboard
-} from "../../tools/staff-management";
+} from "../../views/staff-management";
 
 export default function StaffManagement() {
     let match = useRouteMatch();

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { getIsAllowed, t } from "../utils";
-import "../styles/panels.css";
 import { Link, useRouteMatch } from "react-router-dom";
 
 export default function viewComponent() {

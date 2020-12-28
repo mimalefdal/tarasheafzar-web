@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { t } from "../utils";
-import "../styles/panels.css";
 import { Link, useRouteMatch } from "react-router-dom";
 import { AddFormRight } from "../components/forms";
 import { Unathorized } from "./errors";
@@ -13,7 +12,7 @@ export default function viewComponent() {
                 {t("custum-titles.welcomeCompanyManagement")}
             </div>
             <div className="panel-links">
-                <Link
+                {/* <Link
                     className="panel-link"
                     to={`${match.url}/company/information`}
                 >
@@ -24,18 +23,34 @@ export default function viewComponent() {
                     to={`${match.url}/company/structure`}
                 >
                     View Company Structure
-                </Link>
-                <Link className="panel-link" to={`${match.url}/branchs`}>
+                </Link> */}
+                <Link
+                    className="panel-link"
+                    to={`${match.url}/branchs`}
+                    style={{ order: 1 }}
+                >
                     {t("tools.branchsManagement")}
                 </Link>
-                <Link className="panel-link" to={`${match.url}/departments`}>
-                    Manage Departments
+                <Link
+                    className="panel-link"
+                    to={`${match.url}/departments`}
+                    style={{ order: 2 }}
+                >
+                    {t("tools.departmentsManagement")}
                 </Link>
-                <Link className="panel-link" to={`${match.url}/units`}>
-                    Manage Units
+                <Link
+                    className="panel-link"
+                    to={`${match.url}/units`}
+                    style={{ order: 3 }}
+                >
+                    {t("tools.unitsManagement")}
                 </Link>
-                <Link className="panel-link" to={`${match.url}/positions`}>
-                    Manage Positions
+                <Link
+                    className="panel-link"
+                    to={`${match.url}/positions`}
+                    style={{ order: 4 }}
+                >
+                    {t("tools.positionsManagement")}
                 </Link>
                 {/* <Link className="panel-link" to={`${match.url}/company`}>
                     Company Information

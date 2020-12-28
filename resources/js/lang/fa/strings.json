@@ -66,6 +66,9 @@
     "tools": {
         "systemInitialize": "راه‌اندازی سامانه",
         "branchsManagement": "مدیریت شاخه‌ها",
+        "departmentsManagement": "مدیریت دپارتمان‌ها",
+        "unitsManagement": "مدیریت واحدها",
+        "positionsManagement": "مدیریت جایگاه‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی"
     },
     "forms": {
