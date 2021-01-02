@@ -19,8 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('branchs/define', 'API\BranchController@create');
-Route::get('branchs', 'API\BranchController@index');
+Route::post('branch/define', 'API\BranchController@create');
+Route::post('branch/update', 'API\BranchController@update');
+Route::post('branch/remove', 'API\BranchController@delete');
+Route::get('branches', 'API\BranchController@index');
+Route::get('branch', 'API\BranchController@show');
 
 Route::post('rights/add', 'API\RightController@create');
 Route::get('rights', 'API\RightController@index');

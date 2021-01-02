@@ -14,49 +14,43 @@ function EnterprisePanel(props) {
     let match = useRouteMatch();
 
     return (
-        <div>
-            <Switch>
-                <Route
-                    exact
-                    path={match.path}
-                    component={EnterprisePanelView}
-                />
-                <GuardedRoute
-                    exact
-                    path={`${match.path}/initialize`}
-                    component={InitializeStart}
-                    loading={FormLoadingData}
-                    meta={{
-                        [REQUIRED_RIGHT]: "access-system-initialize-tool"
-                    }}
-                />
-                <GuardedRoute
-                    exact
-                    path={`${match.path}/initialize/ceo`}
-                    component={InitializeCeo}
-                    loading={FormLoadingData}
-                    meta={{
-                        [REQUIRED_RIGHT]: "access-system-initialize-tool"
-                    }}
-                />
+        <Switch>
+            <Route exact path={match.path} component={EnterprisePanelView} />
+            <GuardedRoute
+                exact
+                path={`${match.path}/initialize`}
+                component={InitializeStart}
+                loading={FormLoadingData}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-system-initialize-tool"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/initialize/ceo`}
+                component={InitializeCeo}
+                loading={FormLoadingData}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-system-initialize-tool"
+                }}
+            />
 
-                <GuardedRoute
-                    exact
-                    path={`${match.path}/rights`}
-                    component={RightsManagement}
-                    loading={FormLoadingData}
-                    meta={{
-                        [REQUIRED_RIGHT]: "access-rights-management-tool"
-                    }}
-                />
+            <GuardedRoute
+                exact
+                path={`${match.path}/rights`}
+                component={RightsManagement}
+                loading={FormLoadingData}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-rights-management-tool"
+                }}
+            />
 
-                <Route
-                    exact
-                    path={`${match.path}/right/add`}
-                    component={RightsAdd}
-                />
-            </Switch>
-        </div>
+            <Route
+                exact
+                path={`${match.path}/right/add`}
+                component={RightsAdd}
+            />
+        </Switch>
     );
 }
 

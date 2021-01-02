@@ -5,7 +5,7 @@
             "fa": "اداری",
             "en": "Administrative"
         },
-        "branch": "main"
+        "branch": "global-branch"
     },
     {
         "slug": "technical-dep",
@@ -13,7 +13,7 @@
             "fa": "فنی",
             "en": "Technical"
         },
-        "branch": "global"
+        "branch": "global-branch"
     },
     {
         "slug": "business-dep",

@@ -2,18 +2,26 @@ import React from "react";
 import Delete from "../../assets/images/delete.svg";
 import { ReactSVG } from "react-svg";
 import { Link } from "react-router-dom";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-function deleteButton(props) {
+function deleteButton({ target = "#", ...props }) {
     return (
-        <Link
-            className={
-                "operation-icon-btn  table-operation-icon-btn" + props.className
-            }
+        <button
+            className={"operation-icon-btn " + props.className}
             style={props.style}
-            to={props.target}
+            onClick={props.onClick && props.onClick}
         >
-            <ReactSVG src={Delete} />
-        </Link>
+            {/* <ReactSVG src={Delete} /> */}
+            <DeleteIcon />
+        </button>
+        // <Link
+        //     className={"operation-icon-btn " + props.className}
+        //     style={props.style}
+        //     to={target}
+        // >
+        //     {/* <ReactSVG src={Delete} /> */}
+        //     <DeleteIcon />
+        // </Link>
     );
 }
 

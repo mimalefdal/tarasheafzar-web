@@ -14,8 +14,7 @@ function ManageRights() {
                     title={t("custum-titles.rightsListTitle")}
                     btnSet={
                         <AddButton
-                            className="list-operation-btn"
-                            style={{ width: "35px" }}
+                            className="header-operation-btn"
                             target="right/add"
                         />
                     }

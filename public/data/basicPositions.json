@@ -22,7 +22,7 @@
         "job-level": "chief-officer",
         "recruit_capacity": 1,
         "holderType": "branch",
-        "holder": "main-office",
+        "holder": "global-branch",
         "roles": [
             "company-structure-manager"
         ]

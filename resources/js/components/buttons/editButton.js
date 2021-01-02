@@ -2,21 +2,29 @@ import React from "react";
 import Edit from "../../assets/images/pencil.svg";
 import { ReactSVG } from "react-svg";
 import { Link } from "react-router-dom";
+import EditIcon from "@material-ui/icons/Edit";
 
 const handleClick = props => () => {
     console.log("Edit Clicked", props);
 };
 
-function editButton(props) {
-    return (
-        <Link
-            className={
-                "operation-icon-btn  table-operation-icon-btn" + props.className
-            }
+function editButton({ target = "#", ...props }) {
+    return target == "#" ? (
+        <button
+            className={"operation-icon-btn " + props.className}
             style={props.style}
-            to={props.target}
+            onClick={props.onClick}
         >
-            <ReactSVG src={Edit} />
+            <EditIcon />
+        </button>
+    ) : (
+        <Link
+            className={"operation-icon-btn " + props.className}
+            style={props.style}
+            to={target}
+        >
+            {/* <ReactSVG src={Edit} /> */}
+            <EditIcon />
         </Link>
     );
 }

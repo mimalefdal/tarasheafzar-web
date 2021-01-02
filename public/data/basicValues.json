@@ -15,6 +15,10 @@
     ],
     "branchtypes": [
         {
+            "slug": "branch",
+            "title": "Branch"
+        },
+        {
             "slug": "office",
             "title": "Office"
         },

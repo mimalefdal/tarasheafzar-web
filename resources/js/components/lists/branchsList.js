@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { ApiClient } from "../../services";
-import { apiHeaders } from "../../services/api";
+import { ApiClient, ApiHeaders } from "../../services";
 import { BranchCard } from "../cards";
 import { FormLoadingData } from "../form-controls";
 
@@ -13,9 +12,10 @@ function branchsList(props) {
     var branchlist = [];
 
     useEffect(() => {
-        ApiClient.get("/branchs", { headers: apiHeaders })
+        // console.log(apiHeaders);
+        ApiClient.get("/branches", { headers: ApiHeaders })
             .then(response => {
-                // console.log(response.data.data);
+                console.log(response.data.data);
                 setItems(response.data.data);
                 setLoading(false);
             })

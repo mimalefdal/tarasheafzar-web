@@ -2,6 +2,7 @@ import React from "react";
 import Ball from "../../../../public/image/loading-ball.svg";
 import Spin from "../../../../public/image/loading-spin.svg";
 import Roll from "../../../../public/image/loading-roll.svg";
+import { ReactSVG } from "react-svg";
 
 function Control(props) {
     let Loading = Roll;
@@ -22,16 +23,16 @@ function Control(props) {
             break;
     }
     return (
-        <div>
-            <img
-                src={Loading}
-                alt="Loading"
-                style={{
-                    height: height ? height : "100px",
-                    width: width ? width : "100px"
-                }}
-            />
-        </div>
+        <ReactSVG
+            className="loading"
+            src={Loading}
+            alt="Loading"
+            style={{
+                fill: props.fill && props.fill,
+                height: height ? height : "100px",
+                width: width ? width : "100px"
+            }}
+        />
     );
 }
 

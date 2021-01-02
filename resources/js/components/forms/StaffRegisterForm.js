@@ -10,11 +10,14 @@ import { SingleColumnFormBase } from ".";
 const presets = {
     general: {
         url: "/staff/add",
+        submitValue: t("labels.submit-add"),
+
         fields: ["all"],
         inputProps: {}
     },
     ceo: {
         url: "/initialize/defineceo",
+        submitValue: t("labels.submit-define-ceo"),
         fields: [
             "gender",
             "firstname",
@@ -27,7 +30,8 @@ const presets = {
         inputProps: {
             position: {
                 readonly: true,
-                defaultItem: { value: "ceo", label: "مدیرعامل" }
+                itemValue: { value: "ceo", label: "مدیرعامل" }
+                // TODO: this item must get from positions api and set here
             }
         }
     }
@@ -57,6 +61,7 @@ export default function Form({ preset = "general", ...props }) {
     return (
         <SingleColumnFormBase
             submitUrl={presets[preset].url}
+            submitValue={presets[preset].submitValue}
             ready={ready}
             handleSubmit={handleSubmit}
             reset={reset}

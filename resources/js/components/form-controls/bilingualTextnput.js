@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DualLabelTextInput } from ".";
 import { currentLang, t } from "../../utils";
 import { useForm } from "react-hook-form";
+import { LocalGasStation } from "@material-ui/icons";
 
 function Input({ name, errors, backendErrors, loading, ...props }, ref) {
-    const [value, setValue] = useState({ fa: "", en: "" });
+    // TODO: useState Object must be like {local:"",en:""} and the local phrase
+    //          must translate to fa or other language code before save
+    const [value, setValue] = useState({ local: "", en: "" });
+    // console.log(props);
+
+    useEffect(() => {
+        if (props.itemValue) {
+            // console.log("from bilingualInput", props.itemValue);
+            setValue(props.itemValue);
+        }
+    }, []);
 
     return (
         <div>
@@ -19,12 +30,13 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                     ref={ref}
                     name={name + "_fa"}
                     label={t("labels.title")}
-                    labelComment="فارسی"
+                    labelComment={t("languages.fa")}
                     errors={errors}
                     backendErrors={backendErrors}
                     disabled={loading}
+                    value={props.itemValue ? props.itemValue.local : null}
                     onChange={event => {
-                        setValue({ ...value, fa: event.target.value });
+                        setValue({ ...value, local: event.target.value });
                     }}
                 />
             )}
@@ -38,6 +50,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                 errors={errors}
                 backendErrors={backendErrors}
                 disabled={loading}
+                value={props.itemValue ? props.itemValue.en : null}
                 onChange={event =>
                     setValue({ ...value, en: event.target.value })
                 }

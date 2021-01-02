@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 class StoreBranchRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,7 +32,7 @@ class StoreBranchRequest extends FormRequest
         return [
             'type' => 'required',
             'title_en' => 'required|string|min:3',
-            'title_' . $lang => 'required',
+            'title_' . $lang => 'required|string|min:3',
             // 'slug'=>'unique:branches'
         ];
     }
@@ -43,8 +44,14 @@ class StoreBranchRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
+        $lang = \Lang::getLocale();
+
+        $titles = json_decode($this->title);
+        $titles = json_encode(['en' => $titles->en, $lang => $titles->local]);
+
         $this->merge([
             'slug' => Str::slug(Str::slug($this->title_en . ' ' . $this->type, '-')),
+            'title' => $titles,
         ]);
     }
 }

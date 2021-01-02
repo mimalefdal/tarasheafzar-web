@@ -17,11 +17,12 @@ return [
     'Man' => 'آقا',
     'Woman' => 'خانم',
     'Other Genders' => 'سایر',
-
-    'branch' => 'شاخه',
     'Office' => 'دفتر',
     'Store' => 'فروشگاه',
     'Factory' => 'کارخانه',
     'Studio' => 'کارگاه',
+    'Branch' => 'شاخه',
+    'branch' => 'شاخه',
+
 
 ];

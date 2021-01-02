@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FormLoadingData } from "../../form-controls";
 import apiClient, { apiHeaders } from "../../../services/api";
 import { useForm } from "react-hook-form";
-import { FormAlert, LineProgress, RedirectBar } from "../../information";
+import { FormAlert, LineProgress, RedirectBar } from "../../feedback";
 import { t } from "../../../utils";
 
 FormBase.propTypes = {
@@ -17,10 +17,10 @@ function FormBase({
     handleSubmit,
     redirectDelay = 5000,
     redirectTarget = "/home",
+    submitValue,
+    ready,
     ...props
 }) {
-    // console.log("Base", props);
-
     const [backendErrors, setBackendErrors] = useState(false);
     const [loading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
@@ -34,10 +34,14 @@ function FormBase({
         // console.log("submit", data);
         setLoading(true);
         setShowAlert({ show: false, type: showAlert.type });
+
+        // add item to request data for possible uses in backend controller
+        if (props.item) data["item"] = props.item;
+
         apiClient
             .post(props.submitUrl, data, { headers: apiHeaders })
             .then(response => {
-                console.log("Response", response);
+                // console.log("Response", response.data);
                 setLoading(false);
                 setShowAlert({
                     show: true,
@@ -45,7 +49,10 @@ function FormBase({
                     message: response.data.message
                 });
                 setBackendErrors(false);
-                props.reset();
+                if (!props.item) {
+                    // means form is not in edit mode
+                    props.reset();
+                }
                 response.data.redirect && setRedirect(true);
             })
             .catch(error => {
@@ -78,7 +85,7 @@ function FormBase({
 
     return (
         <div className="form-container general-shadow">
-            {!props.ready ? (
+            {!ready ? (
                 <FormLoadingData type="ball" />
             ) : (
                 <form className="form-body" onSubmit={handleSubmit(onSubmit)}>
@@ -101,7 +108,7 @@ function FormBase({
                         <input
                             className="btn btn-primary btn-submit-add general-shadow"
                             type="submit"
-                            value={t("labels.submit-add")}
+                            value={submitValue}
                             disabled={loading}
                         />
                     )}

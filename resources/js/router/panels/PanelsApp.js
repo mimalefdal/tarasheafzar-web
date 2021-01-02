@@ -1,22 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
-
 import PanelsNavBar from "../../components/PanelsNavBar";
 import apiClient, { apiHeaders } from "../../services/api";
-import { NotFound, Unathorized } from "../../views/errors";
 import Scrolltotop from "../../components/ScrollToTop";
-import { REQUIRED_RIGHT } from "../guards/types";
 import { requireRight, waitOneSecond } from "../guards";
-import {
-    CompanyManagmentPanel,
-    EnterpriseManagementPanel,
-    MainPanel,
-    StaffManagementPanel
-} from ".";
-import PanelsHome from "../../views/PanelsHome";
 import { FormLoadingData } from "../../components/form-controls";
+import CoreApp from "./CoreApp";
 
 function PanelsApp(props) {
     sessionStorage.clear();
@@ -46,50 +37,21 @@ function PanelsApp(props) {
         .then(response => {
             // console.log(response);
         });
+
     return (
         <BrowserRouter>
             <PanelsNavBar />
             <Scrolltotop />
+            <Switch>
+                <Route exact path="/">
+                    <Redirect to="home" />
+                </Route>
+            </Switch>
             <GuardProvider
                 guards={[requireRight, waitOneSecond]}
                 loading={FormLoadingData}
             >
-                <Switch>
-                    <Route exact path="/home" component={PanelsHome} />
-
-                    <GuardedRoute
-                        path="/enterprise-management"
-                        component={EnterpriseManagementPanel}
-                        meta={{
-                            [REQUIRED_RIGHT]:
-                                "access-enterprise-adminstration-panel"
-                        }}
-                    />
-
-                    <GuardedRoute
-                        path="/company-management"
-                        component={CompanyManagmentPanel}
-                        meta={{
-                            [REQUIRED_RIGHT]: "access-company-management-panel"
-                        }}
-                    />
-                    <GuardedRoute
-                        path="/staff-management"
-                        component={StaffManagementPanel}
-                        meta={{
-                            [REQUIRED_RIGHT]: "access-staff-management"
-                        }}
-                    />
-
-                    <Route
-                        exact
-                        path="/unathorized"
-                        component={Unathorized}
-                        loading="redirecting..."
-                    />
-
-                    <Route path="*" component={NotFound} />
-                </Switch>
+                <CoreApp />
             </GuardProvider>
         </BrowserRouter>
     );

@@ -7,16 +7,35 @@ import { BilingualTextInput, DropDownSelect } from "../form-controls";
 import "../../styles/forms.css";
 import { SingleColumnFormBase } from ".";
 
-const presets = {
-    general: {
-        url: "/branchs/define",
-        fields: ["all"],
-        inputProps: {}
-    }
-};
-
 export default function Form({ preset = "general", ...props }) {
-    // console.log("form", props);
+    // props.item && console.log("form", props);
+
+    const presets = {
+        general: {
+            url: "/branch/define",
+            submitValue: t("labels.submit-add"),
+            fields: ["all"],
+            inputProps: {}
+        },
+        edit: preset == "edit" && {
+            url: "/branch/update",
+            submitValue: t("labels.submit-update"),
+            fields: ["all"],
+            inputProps: {
+                type: {
+                    // readonly: true,
+                    itemValue: props.item.type_object
+                },
+                title: {
+                    itemValue: {
+                        local: props.item.title,
+                        en: props.item.title_en
+                    }
+                }
+            }
+        }
+    };
+
     const { register, handleSubmit, watch, errors, reset } = useForm();
     const [dropdowns, setDropdowns] = useState([]);
     const [ready, setReady] = useState(false);
@@ -38,9 +57,11 @@ export default function Form({ preset = "general", ...props }) {
     return (
         <SingleColumnFormBase
             submitUrl={presets[preset].url}
-            ready={ready}
+            submitValue={presets[preset].submitValue}
             handleSubmit={handleSubmit}
+            ready={ready}
             reset={reset}
+            item={props.item}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("type")) && (

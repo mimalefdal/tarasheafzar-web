@@ -12,7 +12,9 @@
         "title_fa": "عنوان فارسی",
         "title_en": "عنوان انگلیسی",
         "submit": "ارسال",
-        "submit-add": "ذخیره جدید",
+        "submit-add": "درج",
+        "submit-define-ceo": "درج مدیرعامل",
+        "submit-update": "درج ویرایش",
         "slug": "تگ سیستمی",
         "activation": "فعالسازی",
         "active": "فعال",
@@ -29,6 +31,7 @@
         "comments": "توضیحات",
         "type": "نوع",
         "branchType": "نوع شاخه",
+        "branch": "شاخه",
         "stages": "مراحل"
     },
     "comments": {
@@ -79,6 +82,15 @@
         "success": "موفقیت",
         "error": "خطا",
         "info": "اطلاعات",
-        "warning": "اخطار"
+        "warning": "اخطار",
+        "confirm": "تأیید",
+        "deleted": "پاک‌شده"
+    },
+    "languages": {
+        "en": "English",
+        "fa": "فارسی"
+    },
+    "expressions": {
+        "sureDelete": "پاک شود؟"
     }
 }

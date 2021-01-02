@@ -18,12 +18,19 @@ class BranchItem extends JsonResource
         $lang = \Lang::getLocale();
 
         $branch = parent::toArray($request);
-        $type = Value::where('slug',$this->type)->first();
-        $branch['type'] = \Lang::get('values.'.$type->title);
+        $type = Value::where('field', 'branchtypes')->where('slug', $branch['type'])->first();
+
+        $branch['type'] = \Lang::get('values.' . $type->title);
+        $branch['type_en'] = $type->title;
+        $branch['type_object'] = new DropdownItem($type);
 
         $titles = json_decode($branch['title']);
         $branch['title'] = $titles->$lang;
+        $branch['title_en'] = $titles->en;
 
+        if ($branch['deleted_at'] != null) {
+            $branch['deleted'] = true;
+        }
         return $branch;
     }
 }

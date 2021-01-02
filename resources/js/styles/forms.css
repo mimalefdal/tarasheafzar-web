@@ -13,7 +13,7 @@
     background: aliceblue;
 }
 .form-header {
-    background: var(--indigo) !important;
+    background: var(--formtitlebkg) !important;
     height: 7vh !important;
     margin-bottom: 1vh !important;
 }

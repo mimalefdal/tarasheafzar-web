@@ -1,14 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { t } from "../../utils";
 import Home from "../../assets/images/house.svg";
 import { ReactSVG } from "react-svg";
 import { Button } from "@material-ui/core";
 
 function HomeButton(props) {
+    let location = useLocation();
+    // location.state && console.log("from HomeButton", location.state);
     return (
         <button className="nav-btn" style={props.style}>
-            <Link to="/home">
+            <Link
+                replace
+                to={{
+                    pathname: "/home",
+                    state: { transition: "slide-right", timeout: 1000 }
+                }}
+            >
                 <ReactSVG src={Home} />
             </Link>
         </button>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { t } from "../utils";
 import { Link, useRouteMatch } from "react-router-dom";
 import { AddFormRight } from "../components/forms";
@@ -7,7 +7,7 @@ import { Unathorized } from "./errors";
 export default function viewComponent() {
     let match = useRouteMatch();
     return (
-        <div>
+        <Fragment>
             <div className="panel-welcome-title">
                 {t("custum-titles.welcomeCompanyManagement")}
             </div>
@@ -24,9 +24,16 @@ export default function viewComponent() {
                 >
                     View Company Structure
                 </Link> */}
+                <Link className="panel-link" to={`${match.url}/rights`}>
+                    {t("tools.rightsManagement")}
+                </Link>
                 <Link
                     className="panel-link"
-                    to={`${match.url}/branchs`}
+                    // to={`${match.url}/branchs`}
+                    to={{
+                        pathname: `${match.url}/branchs`,
+                        state: { prev: location.pathname }
+                    }}
                     style={{ order: 1 }}
                 >
                     {t("tools.branchsManagement")}
@@ -56,6 +63,6 @@ export default function viewComponent() {
                     Company Information
                 </Link> */}
             </div>
-        </div>
+        </Fragment>
     );
 }

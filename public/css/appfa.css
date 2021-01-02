@@ -3,6 +3,10 @@ body {
     text-align: right;
 }
 
+* {
+    font-family: "iranyekanfa" !important ;
+}
+
 .ml-auto,
 .mx-auto {
     margin-left: inherit !important;

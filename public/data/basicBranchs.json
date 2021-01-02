@@ -1,10 +1,10 @@
 [
     {
-        "type": "office",
-        "slug": "main-office",
+        "type": "branch",
+        "slug": "global-branch",
         "title": {
-            "fa": "مرکزی",
-            "en": "Central"
+            "fa": "اصلی",
+            "en": "Global"
         }
     }
 ]

@@ -13,8 +13,7 @@ function manageBranchs(props) {
                     title={t("tools.branchsManagement")}
                     btnSet={
                         <AddButton
-                            className="list-operation-btn"
-                            style={{ width: "35px" }}
+                            className="header-operation-btn"
                             target="branchs/define"
                         />
                     }

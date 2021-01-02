@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\ManagesPositions;
 use App\Models\Department;
 use stdClass;
@@ -13,6 +14,7 @@ class Branch extends Model
 {
     use ManagesPositions;
     use ChecksUniqueness;
+    use SoftDeletes;
 
     protected $fillable = [
         'title', 'slug', 'type'

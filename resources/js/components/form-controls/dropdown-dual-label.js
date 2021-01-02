@@ -4,7 +4,7 @@ import { MenuItem, Select } from "@material-ui/core";
 
 const Control = (props, ref) => {
     var { items = [], ...props } = props;
-    const [value, setValue] = useState(defaultValue(props));
+    const [value, setValue] = useState(itemValue(props));
 
     const menuProps = {
         anchorOrigin: {
@@ -47,8 +47,8 @@ const Control = (props, ref) => {
                     })}
 
                 {props.readonly && (
-                    <MenuItem value={props.defaultItem.value}>
-                        {props.defaultItem.label}
+                    <MenuItem value={props.itemValue.value}>
+                        {props.itemValue.label}
                     </MenuItem>
                 )}
             </Select>
@@ -56,9 +56,9 @@ const Control = (props, ref) => {
     );
 };
 
-const defaultValue = props => {
-    if (props.defaultItem) {
-        return props.defaultItem.value;
+const itemValue = props => {
+    if (props.itemValue) {
+        return props.itemValue.value;
     } else {
         return "";
     }

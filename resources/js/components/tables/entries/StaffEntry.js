@@ -73,17 +73,32 @@ class Control extends Component {
                 <td className="">
                     <div className="table-row-btn-set">
                         <ViewButton
-                            className={this.state.selected ? "selected" : ""}
+                            className={
+                                "table-operation-icon-btn " +
+                                this.state.selected
+                                    ? "selected"
+                                    : ""
+                            }
                             target={"staff/" + this.props.item.username}
                         />
                         <EditButton
-                            className={this.state.selected ? "selected" : ""}
+                            className={
+                                "table-operation-icon-btn " +
+                                this.state.selected
+                                    ? "selected"
+                                    : ""
+                            }
                             target={
                                 "staff/" + this.props.item.username + "/edit"
                             }
                         />
                         <DeleteButton
-                            className={this.state.selected ? "selected" : ""}
+                            className={
+                                "table-operation-icon-btn " +
+                                this.state.selected
+                                    ? "selected"
+                                    : ""
+                            }
                             target="#"
                         />
                     </div>
