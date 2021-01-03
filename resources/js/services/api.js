@@ -1,7 +1,5 @@
 import axios from "axios";
 
-var token = sessionStorage.getItem("StaffAccessToken");
-
 let client_local = axios.create({
     baseURL: "http://api.localhost:8000",
     withCredentials: true
@@ -21,5 +19,5 @@ export default apiClient;
 
 export const apiHeaders = {
     Accept: "application/json",
-    Authorization: "Bearer " + token
+    Authorization: "Bearer " + sessionStorage.getItem("StaffAccessToken")
 };

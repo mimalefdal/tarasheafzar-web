@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getIsAllowed, t } from "../utils";
 import "../styles/panels.css";
+import { useDispatch } from "react-redux";
+import { clearTitle, setTitle } from "../features/redux/navSlice";
 
 export default function PanelsHome(props) {
-    let location = useLocation();
+    const location = useLocation();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setTitle(t("custum-titles.welcome")));
+        return () => {
+            dispatch(clearTitle());
+        };
+    }, []);
+
     let companyManagmentPanelLink;
-    if (getIsAllowed("access-company-management-panel")) {
+    if (getIsAllowed("access-structure-management-panel")) {
         companyManagmentPanelLink = (
             <Link
                 className="panel-link"
                 to={{
-                    pathname: "/company-management",
+                    pathname: "/structure-management",
                     state: { prev: location.pathname }
                 }}
             >
-                {t("panels.company-management")}
+                {t("panels.structure-management")}
             </Link>
         );
     }
@@ -57,7 +68,7 @@ export default function PanelsHome(props) {
     }
 
     return (
-        <div className="panel-links">
+        <div className="panel-links responsive-inner-width">
             {companyManagmentPanelLink}
             {systemManagementLink}
             {staffManagementLink}

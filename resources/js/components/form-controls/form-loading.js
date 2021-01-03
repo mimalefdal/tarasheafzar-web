@@ -28,7 +28,6 @@ function Control(props) {
             src={Loading}
             alt="Loading"
             style={{
-                fill: props.fill && props.fill,
                 height: height ? height : "100px",
                 width: width ? width : "100px"
             }}

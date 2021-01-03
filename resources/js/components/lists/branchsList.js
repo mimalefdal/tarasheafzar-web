@@ -13,11 +13,17 @@ function branchsList(props) {
 
     useEffect(() => {
         // console.log(apiHeaders);
-        ApiClient.get("/branches", { headers: ApiHeaders })
+        ApiClient.get("/branches", {
+            headers: {
+                Accept: "application/json",
+                Authorization:
+                    "Bearer " + sessionStorage.getItem("StaffAccessToken")
+            }
+        })
             .then(response => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setItems(response.data.data);
-                setLoading(false);
+                // setLoading(false);
             })
             .catch(error => {
                 console.log(error.response);

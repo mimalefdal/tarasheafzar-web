@@ -31,7 +31,7 @@ function show(props) {
                 params: { slug: slug }
             })
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     setItem(response.data.data);
                     setReady(true);
                 })
@@ -93,7 +93,7 @@ function show(props) {
             params: { id: item.id }
         })
             .then(response => {
-                console.log(response);
+                // console.log(response);
 
                 let responseItem = response.data.data;
                 if (item.slug != responseItem.slug) {

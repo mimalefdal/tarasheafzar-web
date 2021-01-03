@@ -15,4 +15,4 @@ require("./bootstrap");
 require("./components/Example");
 
 // require("./apps/Main");
-require("./router/panels/PanelsApp");
+require("./CompanyApp");

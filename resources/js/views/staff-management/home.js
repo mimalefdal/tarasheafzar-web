@@ -7,11 +7,8 @@ import { AddFormRight } from "../../components/forms";
 export default function StaffManagement() {
     let match = useRouteMatch();
     return (
-        <div>
-            <div className="panel-welcome-title">
-                {t("custum-titles.welcomeStaffManagement")}
-            </div>
-            <div className="panel-links">
+        <>
+            <div className="panel-links  responsive-inner-width">
                 <Link className="panel-link" to={`${match.url}/dashboard`}>
                     Dashboard
                 </Link>
@@ -19,6 +16,6 @@ export default function StaffManagement() {
                     Manage
                 </Link>
             </div>
-        </div>
+        </>
     );
 }

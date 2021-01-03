@@ -30,7 +30,7 @@
         },
         "activation": true,
         "rights": [
-            "access-company-management-panel"
+            "access-structure-management-panel"
         ]
     }
 ]

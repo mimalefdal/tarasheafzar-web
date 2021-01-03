@@ -31,7 +31,7 @@ function branchCard({ item, ...props }) {
     }
 
     function onDelete(confirm) {
-        console.log("branch Card -> onDelete : confirmed = ", confirm);
+        // console.log("branch Card -> onDelete : confirmed = ", confirm);
         setAskToConfirm(false);
 
         if (confirm) {

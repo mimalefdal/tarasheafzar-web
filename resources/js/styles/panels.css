@@ -4,6 +4,8 @@
     --showtitlebkg: #000080;
     --managecardbkg: #000080;
 
+    --primaryColor: var(--blue);
+    --primaryBkgColor: #eee;
     /* --titlebkg: var(--dark); */
 }
 
@@ -103,6 +105,11 @@
     align-items: center;
 }
 
+.flex.start-bottom {
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
 .flex.column {
     flex-direction: column;
 }
@@ -129,11 +136,6 @@
 .global {
     font-family: "segoe ui light" !important;
 }
-.panel-welcome-title {
-    font-size: 18px;
-    padding: 15px;
-    font-weight: bold;
-}
 
 .panel-links {
     display: flex;
@@ -142,15 +144,15 @@
     justify-content: center;
     padding: 10px;
     /* height: 30vh; */
-    width: 40%;
+    /* width: 40%; */
     margin: auto;
 }
 
 .panel-link {
     /* flex: 0.25; */
-    /* width: 25%; */
+    width: 25%;
     order: 100;
-    width: calc(100% / 5);
+    /* width: calc(100% / 5); */
     height: 15vh;
     padding: 15px;
     color: grey;
@@ -211,7 +213,10 @@
     /* fill: white; */
 }
 
-.main-title {
+.nav-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primaryColor);
 }
 
 .component-title {
@@ -291,6 +296,10 @@
 .header-operation-btn:hover svg {
     fill: deepskyblue;
     fill: #ffc107;
+}
+
+.loading {
+    margin: auto;
 }
 
 .loading svg {

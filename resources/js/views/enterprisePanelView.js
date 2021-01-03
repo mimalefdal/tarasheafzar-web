@@ -25,10 +25,7 @@ export default function viewComponent() {
 
     return (
         <div>
-            <div className="panel-welcome-title">
-                {t("custum-titles.welcomeEnterpriseManagement")}
-            </div>
-            <div className="panel-links">
+            <div className="panel-links  responsive-inner-width">
                 {initializeEnterpriseLink}
                 {ManageRightsLink}
             </div>
