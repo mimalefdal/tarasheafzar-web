@@ -7,13 +7,15 @@ import { BranchForm } from "../../components/forms";
 import { Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog } from "../../components/feedback";
-import { ApiClient, ApiHeaders } from "../../services";
+import { ApiClient } from "../../services";
 import { Badge } from "@material-ui/core";
 
 function show(props) {
-    let { slug } = useParams();
-    let location = useLocation();
-    let history = useHistory();
+    const { slug } = useParams();
+    const location = useLocation();
+    const history = useHistory();
+    const token = sessionStorage.getItem("StaffAccessToken");
+
     const [item, setItem] = useState();
     const [ready, setReady] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
@@ -27,7 +29,10 @@ function show(props) {
             console.log(location);
 
             ApiClient.get("branch", {
-                headers: ApiHeaders,
+                headers: {
+                    Accept: "application/json",
+                    Authorization: "Bearer " + token
+                },
                 params: { slug: slug }
             })
                 .then(response => {
@@ -89,7 +94,10 @@ function show(props) {
         setShowEdit(false);
 
         ApiClient.get("branch", {
-            headers: ApiHeaders,
+            headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + token
+            },
             params: { id: item.id }
         })
             .then(response => {

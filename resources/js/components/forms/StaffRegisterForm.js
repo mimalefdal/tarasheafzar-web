@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { t } from "../../utils";
 import { useState } from "react";
-import apiClient, { apiHeaders } from "../../services/api";
 import { DropDownSelect, DualLabelTextInput } from "../form-controls";
 import "../../styles/forms.css";
 import { SingleColumnFormBase } from ".";
+import { ApiClient } from "../../services";
 
 const presets = {
     general: {
@@ -45,8 +45,9 @@ export default function Form({ preset = "general", ...props }) {
     const [dropdowns, setDropdowns] = useState([]);
 
     useEffect(() => {
-        apiClient
-            .get("/valuelist", { params: { fields: ["gender", "position"] } })
+        ApiClient.get("/valuelist", {
+            params: { fields: ["gender", "position"] }
+        })
             .then(response => {
                 // console.log(response.data);
                 setDropdowns(response.data);

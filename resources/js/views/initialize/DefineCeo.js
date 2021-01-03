@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
 import { StaffRegisterForm } from "../../components/forms";
-import apiClient from "../../services/api";
+import { ApiClient } from "../../services";
 import { t } from "../../utils";
 
 function DefineCeo(props) {
@@ -15,11 +15,10 @@ function DefineCeo(props) {
     const [status, setStatus] = useState(false);
 
     useEffect(() => {
-        apiClient
-            .get("/initialize/status", {
-                headers: headers,
-                params: { targetFunction: "defineCeo" }
-            })
+        ApiClient.get("/initialize/status", {
+            headers: headers,
+            params: { targetFunction: "defineCeo" }
+        })
             .then(response => {
                 // console.log(response);
                 setStatus(response.data);

@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 import { t } from "../../utils";
-import apiClient from "../../services/api";
 import {
     DualLabelTextInput,
     DualLabelToggleSwitch,
     FormTitle
 } from "../form-controls";
 import "../../styles/forms.css";
+import { ApiClient } from "../../services";
 
 export default function App() {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -23,8 +23,7 @@ export default function App() {
             Authorization: "Bearer " + token
         };
         console.log(data);
-        apiClient
-            .post("/rights/add", data, { headers: headers })
+        ApiClient.post("/rights/add", data, { headers: headers })
             .then(response => {
                 // console.log(response);
                 setBackendErrors(false);

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FormLoadingData } from "../../form-controls";
-import apiClient, { apiHeaders } from "../../../services/api";
 import { useForm } from "react-hook-form";
 import { FormAlert, LineProgress, RedirectBar } from "../../feedback";
 import { t } from "../../../utils";
+import { ApiClient } from "../../../services";
 
 FormBase.propTypes = {
     submitUrl: PropTypes.string,
@@ -38,8 +38,13 @@ function FormBase({
         // add item to request data for possible uses in backend controller
         if (props.item) data["item"] = props.item;
 
-        apiClient
-            .post(props.submitUrl, data, { headers: apiHeaders })
+        ApiClient.post(props.submitUrl, data, {
+            headers: {
+                Accept: "application/json",
+                Authorization:
+                    "Bearer " + sessionStorage.getItem("StaffAccessToken")
+            }
+        })
             .then(response => {
                 // console.log("Response", response.data);
                 setLoading(false);

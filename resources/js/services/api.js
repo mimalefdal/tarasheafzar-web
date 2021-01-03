@@ -10,14 +10,9 @@ let client_production = axios.create({
     withCredentials: true
 });
 
-const apiClient =
+const client =
     sessionStorage.getItem("ENV") == "production"
         ? client_production
         : client_local;
 
-export default apiClient;
-
-export const apiHeaders = {
-    Accept: "application/json",
-    Authorization: "Bearer " + sessionStorage.getItem("StaffAccessToken")
-};
+export default client;

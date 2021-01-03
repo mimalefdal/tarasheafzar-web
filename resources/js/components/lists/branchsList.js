@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { ApiClient, ApiHeaders } from "../../services";
+import { ApiClient } from "../../services";
 import { BranchCard } from "../cards";
 import { FormLoadingData } from "../form-controls";
 
@@ -23,7 +23,7 @@ function branchsList(props) {
             .then(response => {
                 // console.log(response.data.data);
                 setItems(response.data.data);
-                // setLoading(false);
+                setLoading(false);
             })
             .catch(error => {
                 console.log(error.response);

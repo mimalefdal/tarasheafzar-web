@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { t } from "../../utils";
 import { useState } from "react";
-import apiClient, { apiHeaders, getValues } from "../../services/api";
 import { BilingualTextInput, DropDownSelect } from "../form-controls";
 import "../../styles/forms.css";
 import { SingleColumnFormBase } from ".";
+import { ApiClient } from "../../services";
 
 export default function Form({ preset = "general", ...props }) {
     // props.item && console.log("form", props);
@@ -41,8 +41,7 @@ export default function Form({ preset = "general", ...props }) {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        apiClient
-            .get("/valuelist", { params: { fields: ["branchtypes"] } })
+        ApiClient.get("/valuelist", { params: { fields: ["branchtypes"] } })
             .then(response => {
                 // console.log(response.data);
                 setDropdowns(response.data);

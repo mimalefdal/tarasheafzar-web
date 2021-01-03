@@ -4,7 +4,7 @@ import { data, error } from "jquery";
 import "../../styles/cards.css";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { DeleteButton, ViewButton } from "../buttons";
-import { ApiClient, ApiHeaders } from "../../services";
+import { ApiClient } from "../../services";
 import { ConfirmDialog } from "../feedback";
 import { t } from "../../utils";
 
@@ -41,7 +41,17 @@ function branchCard({ item, ...props }) {
     }
 
     function tryDelete() {
-        ApiClient.post("branch/remove", { item: item }, { headers: ApiHeaders })
+        ApiClient.post(
+            "branch/remove",
+            { item: item },
+            {
+                headers: {
+                    Accept: "application/json",
+                    Authorization:
+                        "Bearer " + sessionStorage.getItem("StaffAccessToken")
+                }
+            }
+        )
             .then(response => {
                 console.log(response);
                 history.replace(history.location.pathname);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import "../../styles/checklists.css";
-import apiClient from "../../services/api";
 import { t } from "../../utils";
 import { FormLoadingData } from "../form-controls";
 import DoneIcon from "@material-ui/icons/Done";
@@ -10,6 +9,7 @@ import {
     ChecklistHeaderTripleColumn,
     ChecklistRowTripleColumn
 } from "../checklist-controls";
+import { ApiClient } from "../../services";
 
 function SystemInitialize() {
     const [status, setStatus] = useState({});
@@ -21,10 +21,9 @@ function SystemInitialize() {
     };
 
     useEffect(() => {
-        apiClient
-            .get("/initialize/status", {
-                headers: headers
-            })
+        ApiClient.get("/initialize/status", {
+            headers: headers
+        })
             .then(response => {
                 // console.log(response.data);
                 setStatus(response.data);
