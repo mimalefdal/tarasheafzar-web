@@ -21,9 +21,16 @@ export default function viewComponent() {
                 >
                     View Company Structure
                 </Link> */}
+
+                {/* Temp */}
                 <Link className="panel-link" to={`${match.url}/rights`}>
                     {t("tools.rightsManagement")}
                 </Link>
+                <Link className="panel-link" to={`${match.url}/staff`}>
+                    {t("tools.staffManagement")}
+                </Link>
+                {/* Temp End */}
+
                 <Link
                     className="panel-link"
                     // to={`${match.url}/branchs`}

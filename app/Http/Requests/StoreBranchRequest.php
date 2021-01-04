@@ -52,6 +52,7 @@ class StoreBranchRequest extends FormRequest
         $this->merge([
             'slug' => Str::slug(Str::slug($this->title_en . ' ' . $this->type, '-')),
             'title' => $titles,
+            'deleted_at' => null
         ]);
     }
 }

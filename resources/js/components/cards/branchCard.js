@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { data, error } from "jquery";
 import "../../styles/cards.css";
@@ -7,6 +7,8 @@ import { DeleteButton, ViewButton } from "../buttons";
 import { ApiClient } from "../../services";
 import { ConfirmDialog } from "../feedback";
 import { t } from "../../utils";
+import AppContext from "../../context/appContext";
+import StaffContext from "../../context/staffContext";
 
 branchCard.propTypes = {
     item: PropTypes.any
@@ -16,7 +18,8 @@ function branchCard({ item, ...props }) {
     // console.log("from branch card", item);
 
     const history = useHistory();
-    const lang = sessionStorage.getItem("currentLanguage");
+    const lang = useContext(AppContext).locale;
+    const token = useContext(StaffContext).token;
     let match = useRouteMatch();
 
     let [askToConfirm, setAskToConfirm] = useState(false);
@@ -47,13 +50,12 @@ function branchCard({ item, ...props }) {
             {
                 headers: {
                     Accept: "application/json",
-                    Authorization:
-                        "Bearer " + sessionStorage.getItem("StaffAccessToken")
+                    Authorization: "Bearer " + token
                 }
             }
         )
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 history.replace(history.location.pathname);
             })
             .catch(error => {

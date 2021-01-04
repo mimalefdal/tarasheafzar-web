@@ -14,11 +14,10 @@ import { ApiClient } from "../../services";
 export default function App() {
     const { register, handleSubmit, watch, errors } = useForm();
     const [backendErrors, setBackendErrors] = useState(false);
+    const token = useContext(StaffContext).token;
 
     const onSubmit = data => {
-        let token = sessionStorage.getItem("StaffAccessToken");
-
-        let headers = {
+        const headers = {
             Accept: "application/json",
             Authorization: "Bearer " + token
         };

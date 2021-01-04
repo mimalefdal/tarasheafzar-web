@@ -10,25 +10,39 @@ import CoreApp from "./routes/switches/CoreApp";
 import { Provider } from "react-redux";
 import store from "./features/redux/store";
 import { ApiClient } from "./services";
+import StaffContext from "./context/staffContext";
+import AppContext from "./context/appContext";
 
 function CompanyApp(props) {
     sessionStorage.clear();
     // const [ready, setReady] = useState(false);
 
-    let rights = JSON.parse(props.rights);
-    let user = JSON.parse(props.user);
-    let appLocale = props.locale;
-    let appEnv = props.env;
-    let token = user.api_token;
+    const appContextValue = {
+        rights: JSON.parse(props.rights),
+        locale: props.locale,
+        env: props.env
+    };
+
+    const staffContextValue = {
+        user: JSON.parse(props.user),
+        rights: JSON.parse(props.rights),
+        token: JSON.parse(props.user).api_token
+    };
+
+    const rights = JSON.parse(props.rights);
 
     if (rights != null) {
+        let rightsArray = [];
         rights.map(right => {
-            sessionStorage.setItem(right.slug, true);
+            // sessionStorage.setItem(right.slug, true);
+            rightsArray.push(right.slug);
         });
+        sessionStorage.setItem("rights", JSON.stringify(rightsArray));
     }
-    sessionStorage.setItem("currentLanguage", appLocale);
-    sessionStorage.setItem("StaffAccessToken", token);
-    sessionStorage.setItem("ENV", appEnv);
+    sessionStorage.setItem("currentLanguage", props.locale);
+    sessionStorage.setItem("ENV", props.env);
+
+    // sessionStorage.setItem("StaffAccessToken", token);
 
     // ApiClient.get("sanctum/csrf-cookie")
     //     .then(response => {
@@ -53,7 +67,11 @@ function CompanyApp(props) {
                 guards={[requireRight, waitOneSecond]}
                 loading={FormLoadingData}
             >
-                <CoreApp />
+                <AppContext.Provider value={appContextValue}>
+                    <StaffContext.Provider value={staffContextValue}>
+                        <CoreApp />
+                    </StaffContext.Provider>
+                </AppContext.Provider>
             </GuardProvider>
         </BrowserRouter>
     );

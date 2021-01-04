@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
 import { StaffRegisterForm } from "../../components/forms";
+import StaffContext from "../../context/staffContext";
 import { ApiClient } from "../../services";
 import { t } from "../../utils";
 
 function DefineCeo(props) {
-    let token = sessionStorage.getItem("StaffAccessToken");
-    let headers = {
+    const token = useContext(StaffContext).token;
+
+    const headers = {
         Accept: "application/json",
         Authorization: "Bearer " + token
     };

@@ -6,8 +6,8 @@ import { ReactSVG } from "react-svg";
 function BackButton(props) {
     let history = useHistory();
     let location = useLocation();
-    console.log("from BackButton", location.state && location.state.prev);
-    console.log("from BackButton", history.location);
+    // console.log("from BackButton", location.state && location.state.prev);
+    // console.log("from BackButton", history.location);
 
     return location.state && location.state.prev ? (
         <button className="nav-btn" style={props.style}>

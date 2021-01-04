@@ -14,10 +14,11 @@ import { ApiClient } from "../../services";
 function SystemInitialize() {
     const [status, setStatus] = useState({});
     const [loading, setLoading] = useState(true);
+    const token = useContext(StaffContext).token;
 
     const headers = {
         Accept: "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("StaffAccessToken")
+        Authorization: "Bearer " + token
     };
 
     useEffect(() => {

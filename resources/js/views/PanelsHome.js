@@ -16,9 +16,9 @@ export default function PanelsHome(props) {
         };
     }, []);
 
-    let companyManagmentPanelLink;
+    let structureManagmentPanelLink;
     if (getIsAllowed("access-structure-management-panel")) {
-        companyManagmentPanelLink = (
+        structureManagmentPanelLink = (
             <Link
                 className="panel-link"
                 to={{
@@ -58,7 +58,6 @@ export default function PanelsHome(props) {
     }
 
     let hrLink;
-    // if (getIsAllowed("access-human-resources")) {
     if (getIsAllowed("access-hr-management-panel")) {
         hrLink = (
             <Link className="panel-link" to="/HR">
@@ -69,7 +68,7 @@ export default function PanelsHome(props) {
 
     return (
         <div className="panel-links responsive-inner-width">
-            {companyManagmentPanelLink}
+            {structureManagmentPanelLink}
             {systemManagementLink}
             {staffManagementLink}
             {hrLink}

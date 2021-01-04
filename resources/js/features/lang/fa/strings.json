@@ -12,7 +12,7 @@
         "national_id": "کدملی",
         "idcert_no": "شماره شناسنامه",
         "title": "عنوان",
-        "title_fa": "عنوان فارسی",
+        "title_local": "عنوان فارسی",
         "title_en": "عنوان انگلیسی",
         "submit": "ارسال",
         "submit-add": "درج",
@@ -24,7 +24,7 @@
         "deactive": "غیرفعال",
         "department": "دپارتمان",
         "position": "سمت",
-        "role": "سمت",
+        "role": "نقش",
         "personnel_id": "کد پرسنلی",
         "username": "نام کاربری",
         "email": "ایمیل",
@@ -76,7 +76,8 @@
         "departmentsManagement": "مدیریت دپارتمان‌ها",
         "unitsManagement": "مدیریت واحدها",
         "positionsManagement": "مدیریت جایگاه‌ها",
-        "rightsManagement": "مدیریت حقوق دسترسی"
+        "rightsManagement": "مدیریت حقوق دسترسی",
+        "staffManagement": "مدیریت کارکنان"
     },
     "forms": {
         "registerCEO": "ثبت اکانت مدیرعامل",

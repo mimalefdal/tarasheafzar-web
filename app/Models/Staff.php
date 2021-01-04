@@ -20,7 +20,7 @@ class Staff extends Authenticatable
     protected $guard = 'staff';
 
     protected $fillable = [
-        'personnel_id', 'username', 'password', 'firstname', 'nickname', 'lastname','gender', 'email', 'verification_status','national_id','idcert_no'
+        'personnel_id', 'username', 'password', 'firstname', 'nickname', 'lastname', 'gender', 'email', 'verification_status', 'national_id', 'idcert_no'
     ];
 
     protected $hidden = [
@@ -44,8 +44,7 @@ class Staff extends Authenticatable
     public function rolesThroughPosition()
     {
         // dd($this->position->roles);
-        if ($this->position != null)
-        {
+        if ($this->position != null) {
             return $this->position->roles;
         }
         return collect([]);
@@ -57,6 +56,8 @@ class Staff extends Authenticatable
         return $this->roles->merge($this->rolesThroughPosition());
     }
 
-
-
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
+    }
 }

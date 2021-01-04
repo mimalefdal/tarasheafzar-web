@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FormLoadingData } from "../../form-controls";
 import { useForm } from "react-hook-form";
 import { FormAlert, LineProgress, RedirectBar } from "../../feedback";
 import { t } from "../../../utils";
 import { ApiClient } from "../../../services";
+import StaffContext from "../../../context/staffContext";
 
 FormBase.propTypes = {
     submitUrl: PropTypes.string,
@@ -29,6 +30,7 @@ function FormBase({
         type: props.showAlert ? props.showAlert.type : "success",
         message: props.showAlert ? props.showAlert.message : ""
     });
+    const token = useContext(StaffContext).token;
 
     const onSubmit = data => {
         // console.log("submit", data);
@@ -41,8 +43,7 @@ function FormBase({
         ApiClient.post(props.submitUrl, data, {
             headers: {
                 Accept: "application/json",
-                Authorization:
-                    "Bearer " + sessionStorage.getItem("StaffAccessToken")
+                Authorization: "Bearer " + token
             }
         })
             .then(response => {

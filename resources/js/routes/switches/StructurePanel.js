@@ -19,6 +19,7 @@ import { ManageUnits } from "../../views/units";
 import { ManagePositions } from "../../views/positions";
 import { ManageDepartments } from "../../views/departments";
 import ManageRights from "../../views/rights/manage";
+import { StaffManagementManage } from "../../views/staff-management";
 
 export default function CompanyPanel() {
     let match = useRouteMatch();
@@ -40,6 +41,7 @@ export default function CompanyPanel() {
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
+            {/* Temp */}
             <GuardedRoute
                 exact
                 path={`${match.path}/rights`}
@@ -48,6 +50,16 @@ export default function CompanyPanel() {
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
+            <GuardedRoute
+                exact
+                path={`${match.path}/staff`}
+                component={StaffManagementManage}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+            {/* Temp END */}
+
             <GuardedRoute
                 exact
                 path={`${match.path}/branchs`}

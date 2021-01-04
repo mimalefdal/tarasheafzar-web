@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { GuardedRoute } from "react-router-guards";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -7,13 +7,21 @@ import {
     EnterpriseManagementPanel,
     StaffManagementPanel
 } from ".";
+import AppContext from "../../context/appContext";
+import StaffContext from "../../context/staffContext";
 import { NotFound, Unathorized } from "../../views/errors";
 import PanelsHome from "../../views/PanelsHome";
 import { REQUIRED_RIGHT } from "../guards/types";
 
 function CoreApp(props) {
     let location = useLocation();
-    // console.log(location);
+
+    let staff = useContext(StaffContext);
+    // console.log("CoreApp", staff);
+
+    let appContext = useContext(AppContext);
+    // console.log("CoreApp", appContext);
+
     return (
         <TransitionGroup
             appear={true}

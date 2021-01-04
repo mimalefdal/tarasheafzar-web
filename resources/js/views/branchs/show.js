@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { EditButton } from "../../components/buttons";
@@ -9,17 +9,18 @@ import { swapUrlTail, t } from "../../utils";
 import { FormDialog } from "../../components/feedback";
 import { ApiClient } from "../../services";
 import { Badge } from "@material-ui/core";
+import StaffContext from "../../context/staffContext";
 
 function show(props) {
     const { slug } = useParams();
     const location = useLocation();
     const history = useHistory();
-    const token = sessionStorage.getItem("StaffAccessToken");
 
     const [item, setItem] = useState();
     const [ready, setReady] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
     // console.log(item);
+    const token = useContext(StaffContext).token;
 
     useEffect(() => {
         if (location.state) {
