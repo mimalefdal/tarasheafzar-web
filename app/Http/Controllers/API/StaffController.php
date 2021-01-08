@@ -16,7 +16,7 @@ class StaffController extends Controller
 
     public function index()
     {
-        return Staff::with('position', 'position.roles')->get();
+        return Staff::whereNotNull('national_id')->with('position', 'position.roles')->get();
     }
 
     public function create(Request $request)

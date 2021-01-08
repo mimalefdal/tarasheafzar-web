@@ -1,49 +1,34 @@
 import React from "react";
 import { EditButton, DeleteButton, ViewButton } from "../../components/buttons";
+import { OperationEntry } from "../../components/tables";
 import { currentLang, t } from "../../utils";
 
-function Entry({ item, ...props }) {
-    console.log(item);
+function Entry({ item, entryActions, ...props }) {
+    // console.log(item);
+    //transform item data to displayable format
 
     let titles;
     if (item.position_id != null) titles = JSON.parse(item.position.title);
 
-    return (
-        <tr className="">
-            <td>{item.id}</td>
-            <td className="">{item.personnel_id}</td>
-            <td className="">
-                {item.firstname} {item.lastname}
-            </td>
-            <td className="">
-                {item.position_id != null ? (
-                    <div>
-                        <p>{titles[currentLang()]}</p>
-                        <p style={{ fontSize: "8px" }}></p>
-                    </div>
-                ) : (
-                    "-"
-                )}
-            </td>
-            <td className=""> </td>
+    const id = item.id;
+    const personnel_id = item.personnel_id;
 
-            <td className="">
-                <div className="table-row-btn-set">
-                    <ViewButton
-                        className={"table-operation-icon-btn "}
-                        target={"staff/" + item.username}
-                    />
-                    <EditButton
-                        className={"table-operation-icon-btn "}
-                        target={"staff/" + item.username + "/edit"}
-                    />
-                    <DeleteButton
-                        className={"table-operation-icon-btn "}
-                        target="#"
-                    />
-                </div>
-            </td>
-        </tr>
+    const name = item.firstname + " " + item.lastname;
+    const position = item.position_id && titles[currentLang()];
+
+    const displayItem = {
+        index: id,
+        personnel_id: personnel_id,
+        name: name,
+        position: position,
+        depunit: null
+    };
+    return (
+        <OperationEntry
+            item={displayItem}
+            entryActions={entryActions}
+            tableMap={props.tableMap}
+        />
     );
 }
 

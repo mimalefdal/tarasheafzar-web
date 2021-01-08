@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
-import { StaffRegisterForm } from "../../components/forms";
 import { t } from "../../utils";
+import { StaffRegisterForm } from "../../view-components";
 
 export default function register() {
     return (

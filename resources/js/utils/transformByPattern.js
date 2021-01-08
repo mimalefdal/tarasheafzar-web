@@ -15,11 +15,12 @@ export default function utility(pattern, item) {
                     //corresponding data added to data item
                 } else {
                     //given data item is imperfect
-                    throw new Error(
-                        "given item does not match map object, " +
-                            pattern[key].toUpperCase() +
-                            " key is missing."
-                    );
+                    item[key] = null;
+                    // throw new Error(
+                    //     "given item does not match map object, " +
+                    //         pattern[key].toUpperCase() +
+                    //         " key is missing."
+                    // );
                 }
             }
         });
