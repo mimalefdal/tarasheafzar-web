@@ -12,6 +12,8 @@ import store from "./features/redux/store";
 import { ApiClient } from "./services";
 import StaffContext from "./context/staffContext";
 import AppContext from "./context/appContext";
+import "./styles/styles.css";
+import Layout from "./Layout";
 
 function CompanyApp(props) {
     sessionStorage.clear();
@@ -69,7 +71,17 @@ function CompanyApp(props) {
             >
                 <AppContext.Provider value={appContextValue}>
                     <StaffContext.Provider value={staffContextValue}>
-                        <CoreApp />
+                        <Layout>
+                            <div className="panel-side-area layout-content">
+                                SideArea
+                            </div>
+                            <div className="responsive-inner-width panel-body ">
+                                <CoreApp />
+                            </div>
+                            <div className="panel-side-area layout-content">
+                                SideArea
+                            </div>
+                        </Layout>
                     </StaffContext.Provider>
                 </AppContext.Provider>
             </GuardProvider>

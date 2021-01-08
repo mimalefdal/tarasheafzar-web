@@ -24,6 +24,8 @@ class BranchController extends Controller
     public function create(StoreBranchRequest $request)
     {
         $newBranch = $this->makeNewBranchFromRequest($request);
+        // return response([$request->all(), $newBranch], 250);
+
         $this->checkForUnity($newBranch);
 
         $newBranch->save();
@@ -87,10 +89,6 @@ class BranchController extends Controller
 
     private function makeNewBranchFromRequest($request)
     {
-        return new Branch([
-            "slug" => $request['slug'],
-            "type" => $request['type'],
-            "title" => $request['title']
-        ]);
+        return new Branch($request->all());
     }
 }

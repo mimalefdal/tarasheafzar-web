@@ -23,7 +23,7 @@ trait ChecksUniqueness
 
         $title = json_decode($this->title);
         $localTitle = $title->$lang;
-        $localTitleCheck = get_class($this)::where('title->' . $lang, $localTitle)->where('type', $this->type)->first();
+        $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->where('type', $this->type)->first();
         if ($localTitleCheck != null) {
             if ($localTitleCheck->id != $this->id) {
                 $error = ['title_' . $lang => [__('validation.unique', ['attribute' => __('validation.attributes.title')]), "item" => $localTitleCheck]];
@@ -35,7 +35,7 @@ trait ChecksUniqueness
 
     public function isGlobalNameUnique()
     {
-        $slugCheck = get_class($this)::where('slug', $this->slug)->first();
+        $slugCheck = get_class($this)::withTrashed()->where('slug', $this->slug)->first();
         if ($slugCheck != null) {
             if ($slugCheck->id != $this->id) {
                 $error = ['title_en' => [__('validation.unique', ['attribute' => __('validation.attributes.title')]), "item" => $slugCheck]];

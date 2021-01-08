@@ -1,4 +1,5 @@
 :root {
+    --main-bkg: whitesmoke;
     --titlebkg: var(--blue);
     --formtitlebkg: var(--indigo);
     --showtitlebkg: #000080;
@@ -15,7 +16,7 @@
 .slide-up-enter-done,
 .slide-right-enter-done,
 .slide-left-enter-done {
-    position: inherit !important;
+    /* position: inherit !important; */
 }
 /* SLIDE LEFT */
 .slide-left-enter,
@@ -95,34 +96,25 @@
     opacity: 0;
     transition: opacity 500ms linear;
 }
-
-.flex {
-    display: flex;
+.panel-main-content {
+    /* position: absolute; */
+    width: 100%;
+    /* min-height: 100%; */
 }
-
-.flex.center {
-    justify-content: center;
-    align-items: center;
-}
-
-.flex.start-bottom {
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
-.flex.column {
-    flex-direction: column;
-}
-
 .panel-body {
     /* background-color: #227dc7; */
-    position: absolute;
-    min-height: 100%;
-    width: 100%;
+    flex: none; /* is prior to responsive innwe width */
 }
-.page-content {
-    min-height: 92vh; /*temorary must be 92vh */
-    margin: auto;
+
+.panel-side-area {
+    flex: 1;
+    z-index: 99;
+    background-color: var(--main-bkg);
+}
+.layout-content {
+    min-height: 92vh;
+    background-color: var(--main-bkg);
+    /* margin: auto; */
 }
 
 .general-shadow {
@@ -182,9 +174,9 @@
     top: 0;
     width: 100vw;
     height: 8vh;
-    background: whitesmoke;
-    color: whitesmoke;
-    z-index: 50;
+    background: var(--main-bkg);
+    /* color: yellow; */
+    z-index: 99;
 }
 
 .nav-bar-area {

@@ -7,7 +7,7 @@ import { t } from "../../utils";
 
 function Start() {
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="">
             <PageHeaderBar>
                 <ChecklistTitle
                     title={t("custum-titles.initializeChecklistTitle")}

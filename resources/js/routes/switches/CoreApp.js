@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { GuardedRoute } from "react-router-guards";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -24,6 +24,7 @@ function CoreApp(props) {
 
     return (
         <TransitionGroup
+            component={null}
             appear={true}
             childFactory={child =>
                 React.cloneElement(child, {
@@ -44,7 +45,7 @@ function CoreApp(props) {
                 unmountOnExit={true}
                 mountOnEnter={false}
             >
-                <div className="panel-body">
+                <div className="panel-main-content layout-content">
                     <Switch location={location}>
                         <Route exact path="/home" component={PanelsHome} />
                         <GuardedRoute

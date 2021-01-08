@@ -17,7 +17,7 @@ class Branch extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'slug', 'type'
+        'title', 'slug', 'type', 'deleted_at'
     ];
 
     public function departments()

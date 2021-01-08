@@ -1,42 +1,33 @@
 import React, { Component } from "react";
+import { OperationEntry } from "..";
 import { currentLang, t } from "../../../utils";
 import { EditButton, DeleteButton, ViewButton } from "../../buttons";
 
-function Entry({ item, ...props }) {
-    let activeState;
+function Entry({ item, entryActions, ...props }) {
+    //transform item data to displayable format
+    let activation;
     if (item.activation) {
-        activeState = t("labels.active");
+        activation = t("labels.active");
     } else {
-        activeState = t("labels.deactive");
+        activation = t("labels.deactive");
     }
+    const id = item.id;
+    const slug = item.slug;
+    const title = JSON.parse(item.title)[currentLang()];
 
-    const titles = JSON.parse(item.title);
-    // console.log(title_local);
+    const displayItem = {
+        title: title,
+        index: id,
+        slug: slug,
+        status: activation
+    };
 
     return (
-        <tr className="">
-            <td>{item.id}</td>
-            <td className="">{titles[currentLang()]}</td>
-            {/* <td className="">{titles.en}</td> */}
-            <td className="">{item.slug}</td>
-            <td className="">{activeState}</td>
-            <td className="">
-                <div className="table-row-btn-set">
-                    <ViewButton
-                        // className={this.state.selected ? "selected" : ""}
-                        target={"right/" + item.slug}
-                    />
-                    <EditButton
-                        // className={this.state.selected ? "selected" : ""}
-                        target={"right/" + item.slug + "/edit"}
-                    />
-                    <DeleteButton
-                        // className={this.state.selected ? "selected" : ""}
-                        target="#"
-                    />
-                </div>
-            </td>
-        </tr>
+        <OperationEntry
+            item={displayItem}
+            entryActions={entryActions}
+            tableMap={props.tableMap}
+        />
     );
 }
 

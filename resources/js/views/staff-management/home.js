@@ -8,7 +8,7 @@ export default function StaffManagement() {
     let match = useRouteMatch();
     return (
         <>
-            <div className="panel-links  responsive-inner-width">
+            <div className="panel-links  ">
                 <Link className="panel-link" to={`${match.url}/dashboard`}>
                     Dashboard
                 </Link>

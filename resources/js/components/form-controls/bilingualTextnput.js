@@ -5,8 +5,6 @@ import { useForm } from "react-hook-form";
 import { LocalGasStation } from "@material-ui/icons";
 
 function Input({ name, errors, backendErrors, loading, ...props }, ref) {
-    // TODO: useState Object must be like {local:"",en:""} and the local phrase
-    //          must translate to fa or other language code before save
     const [value, setValue] = useState({ local: "", en: "" });
     // console.log(props);
 

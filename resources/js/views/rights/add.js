@@ -7,7 +7,7 @@ import { t } from "../../utils";
 
 function AddRight() {
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="">
             <PageHeaderBar>
                 <FormTitle
                     className=""

@@ -1,3 +1,3 @@
-export { default as RightsList } from "./RightsList";
 export { default as StaffList } from "./StaffList";
-export { default as BranchsList } from "./branchsList";
+export { default as CardList } from "./CardListBase";
+export { default as TableList } from "./TableListBase";

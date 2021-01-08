@@ -67,7 +67,7 @@ export default function PanelsHome(props) {
     }
 
     return (
-        <div className="panel-links responsive-inner-width">
+        <div className="panel-links ">
             {structureManagmentPanelLink}
             {systemManagementLink}
             {staffManagementLink}

@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="page-content responseive-width-full">
+    <div class="responseive-width-full">
         <div id="panels-app" data-env={{ env('APP_ENV') }} data-user="{{ Auth::user() }}"
             data-name="{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}"
             data-rights="{{ Auth::user()->allrights() }}" data-locale="{{ Config::get('app.locale') }}">

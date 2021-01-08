@@ -9,7 +9,7 @@ import { t } from "../../utils";
 
 function View(props) {
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="page-content">
             <PageHeaderBar>
                 <ListTitle
                     title={t("custum-titles.staffListTitle")}

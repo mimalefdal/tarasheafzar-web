@@ -47,7 +47,7 @@ function FormBase({
             }
         })
             .then(response => {
-                // console.log("Response", response.data);
+                console.log("Branch add Response", response.data);
                 setLoading(false);
                 setShowAlert({
                     show: true,

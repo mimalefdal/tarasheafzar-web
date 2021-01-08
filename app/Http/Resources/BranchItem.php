@@ -27,7 +27,6 @@ class BranchItem extends JsonResource
         $titles = json_decode($branch['title']);
         $branch['title'] = $titles->$lang;
         $branch['title_en'] = $titles->en;
-
         if ($branch['deleted_at'] != null) {
             $branch['deleted'] = true;
         }

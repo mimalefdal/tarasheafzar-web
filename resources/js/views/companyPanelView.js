@@ -8,7 +8,7 @@ export default function viewComponent() {
     let match = useRouteMatch();
     return (
         <Fragment>
-            <div className="panel-links  responsive-inner-width">
+            <div className="panel-links  ">
                 {/* <Link
                     className="panel-link"
                     to={`${match.url}/company/information`}

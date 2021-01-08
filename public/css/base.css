@@ -333,7 +333,7 @@ button:focus {
 }
 
 .responsive-inner-width {
-    width: 60%;
+    width: 50vw;
 }
 
 .responseive-width-full {
@@ -350,7 +350,7 @@ button:focus {
 
 @media screen and (max-width: 1281px) {
     .responsive-inner-width {
-        width: 70%;
+        width: 70vw;
     }
 }
 
@@ -362,7 +362,7 @@ button:focus {
 
 @media screen and (max-width: 767px) {
     .responsive-inner-width {
-        width: 90%;
+        width: 90vw;
     }
 }
 

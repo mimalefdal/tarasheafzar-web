@@ -47,7 +47,7 @@ function show(props) {
         }
     }, []);
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="">
             <PageHeaderBar className="view-header">
                 {ready ? (
                     <Title

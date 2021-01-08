@@ -25,7 +25,7 @@ export default function viewComponent() {
 
     return (
         <div>
-            <div className="panel-links  responsive-inner-width">
+            <div className="panel-links  ">
                 {initializeEnterpriseLink}
                 {ManageRightsLink}
             </div>

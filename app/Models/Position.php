@@ -13,7 +13,7 @@ class Position extends Model
     use ManagesRoles;
 
     protected $fillable = [
-        'title', 'slug','recruit_capacity'
+        'title', 'slug', 'recruit_capacity'
     ];
 
     public function hasposition()
@@ -28,10 +28,11 @@ class Position extends Model
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class,'positions_roles');
+        return $this->belongsToMany(Role::class, 'positions_roles');
     }
 
-    public function staff() {
+    public function staff()
+    {
         return $this->hasMany(Staff::class);
     }
 

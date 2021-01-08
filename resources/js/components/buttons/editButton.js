@@ -13,7 +13,7 @@ function editButton({ target = "#", ...props }) {
         <button
             className={"operation-icon-btn " + props.className}
             style={props.style}
-            onClick={props.onClick}
+            onClick={props.onClick && props.onClick}
         >
             <EditIcon />
         </button>

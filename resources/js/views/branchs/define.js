@@ -6,7 +6,7 @@ import { t } from "../../utils";
 
 function defineBranch(props) {
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="">
             <PageHeaderBar className="form-header">
                 <FormTitle className="" title={t("forms.defineBranch")} />
             </PageHeaderBar>

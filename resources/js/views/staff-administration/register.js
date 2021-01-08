@@ -6,7 +6,7 @@ import { t } from "../../utils";
 
 export default function register() {
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="">
             <PageHeaderBar>
                 <FormTitle
                     className=""

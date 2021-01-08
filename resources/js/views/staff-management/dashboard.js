@@ -8,7 +8,7 @@ import { t } from "../../utils";
 
 function StaffDashboard(props) {
     return (
-        <div className="page-content responsive-inner-width">
+        <div className="">
             <PageHeaderBar>
                 <ListTitle title={t("custum-titles.staffListTitle")} />
             </PageHeaderBar>
