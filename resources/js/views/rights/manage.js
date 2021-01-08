@@ -4,12 +4,10 @@ import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
 import { ListTitle } from "../../components/list-controls";
 import { RightsList, TableList } from "../../components/lists";
-import {
-    OperationTable,
-    RightEntry,
-    RightsTable
-} from "../../components/tables";
+import { OperationTable } from "../../components/tables";
+
 import { t } from "../../utils";
+import { RightEntry } from "../../view-components";
 
 function ManageRights() {
     const rightsTableMap = {

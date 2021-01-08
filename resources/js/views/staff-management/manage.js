@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
 import { ListTitle } from "../../components/list-controls";
-import { StaffList } from "../../components/lists";
 import { t } from "../../utils";
+import { StaffList } from "../../view-components";
 
 function View(props) {
     return (

@@ -13,7 +13,7 @@ import { GuardedRoute } from "react-router-guards";
 import { REQUIRED_RIGHT } from "../guards/types";
 
 import { CompanyPanelView } from "../../views";
-import { DefineBranch, ManageBranchs, ShowBranch } from "../../views/branchs";
+import { DefineBranch, ManageBranchs, ShowBranch } from "../../views/branches";
 import { CompanyInformation, CompanyStructure } from "../../views/company";
 import { ManageUnits } from "../../views/units";
 import { ManagePositions } from "../../views/positions";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DualLabelFormControl from "./base-controls/dual-label-form-control";
+import DualLabelFormControl from "./dual-label-form-control";
 import { MenuItem, Select } from "@material-ui/core";
 
 const Control = (props, ref) => {

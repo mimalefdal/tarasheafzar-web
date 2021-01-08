@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
-import { StaffRegisterForm } from "../../components/forms";
 import StaffContext from "../../context/staffContext";
 import { ApiClient } from "../../services";
 import { t } from "../../utils";
+import { StaffRegisterForm } from "../../view-components";
 
 function DefineCeo(props) {
     const token = useContext(StaffContext).token;

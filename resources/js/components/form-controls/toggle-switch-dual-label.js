@@ -1,6 +1,6 @@
 import { Switch } from "@material-ui/core";
 import React, { useState } from "react";
-import DualLabelFormControl from "./base-controls/dual-label-form-control";
+import DualLabelFormControl from "./dual-label-form-control";
 
 const Control = (props, ref) => {
     const [value, setValue] = useState(props.isOn);

@@ -1,6 +1,6 @@
 import React from "react";
 import { t } from "../../utils";
-import DualLabelFormControl from "./base-controls/dual-label-form-control";
+import DualLabelFormControl from "./dual-label-form-control";
 
 function Control(props, ref) {
     // console.log(props.lang == "en" ? " latin" : "");

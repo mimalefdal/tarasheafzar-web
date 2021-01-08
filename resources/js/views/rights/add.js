@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
-import { RightAddForm } from "../../components/forms";
 import { t } from "../../utils";
+import { RightAddForm } from "../../view-components";
 
 function AddRight() {
     return (

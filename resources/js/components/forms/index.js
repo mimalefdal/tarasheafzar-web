@@ -1,5 +1,1 @@
-export { default as SingleColumnFormBase } from "./form-bases/SingleColumnFormBase";
-
-export { default as RightAddForm } from "./RightAddForm";
-export { default as StaffRegisterForm } from "./StaffRegisterForm";
-export { default as BranchForm } from "./branchForm";
+export { default as SingleColumnFormBase } from "./SingleColumnFormBase";
