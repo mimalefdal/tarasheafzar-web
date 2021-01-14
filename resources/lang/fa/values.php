@@ -22,7 +22,8 @@ return [
     'Factory' => 'کارخانه',
     'Studio' => 'کارگاه',
     'Branch' => 'شاخه',
-    'branch' => 'شاخه',
+    'Department' => 'دپارتمان',
+    'Unit' => 'واحد',
 
 
 ];

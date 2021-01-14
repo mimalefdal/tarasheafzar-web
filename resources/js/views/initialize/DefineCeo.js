@@ -2,34 +2,29 @@ import React, { useContext, useEffect, useState } from "react";
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
 import StaffContext from "../../context/staffContext";
-import { ApiClient } from "../../services";
+import { ApiClient, GetInitializeStatus } from "../../services";
 import { t } from "../../utils";
 import { StaffRegisterForm } from "../../view-components";
 
 function DefineCeo(props) {
-    const token = useContext(StaffContext).token;
-
-    const headers = {
-        Accept: "application/json",
-        Authorization: "Bearer " + token
-    };
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState(false);
 
+    const token = useContext(StaffContext).token;
+    const statusParam = { targetFunction: "defineCeo" };
+
     useEffect(() => {
-        ApiClient.get("/initialize/status", {
-            headers: headers,
-            params: { targetFunction: "defineCeo" }
-        })
-            .then(response => {
-                // console.log(response);
+        GetInitializeStatus(
+            statusParam,
+            token,
+            response => {
                 setStatus(response.data);
                 setLoading(false);
-            })
-            .catch(error => {
-                // console.log(error.response);
+            },
+            error => {
                 setLoading(false);
-            });
+            }
+        );
     }, []);
 
     return (

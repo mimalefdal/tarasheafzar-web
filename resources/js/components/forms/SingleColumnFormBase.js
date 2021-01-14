@@ -7,6 +7,7 @@ import { FormAlert, LineProgress, RedirectBar } from "../feedback";
 import { t } from "../../utils";
 import { ApiClient } from "../../services";
 import StaffContext from "../../context/staffContext";
+import { useHistory } from "react-router-dom";
 
 FormBase.propTypes = {
     submitUrl: PropTypes.string,
@@ -17,6 +18,7 @@ FormBase.propTypes = {
 
 function FormBase({
     handleSubmit,
+    dataService,
     redirectDelay = 5000,
     redirectTarget = "/home",
     submitValue,
@@ -32,54 +34,53 @@ function FormBase({
         message: props.showAlert ? props.showAlert.message : ""
     });
     const token = useContext(StaffContext).token;
+    let history = useHistory();
 
     const onSubmit = data => {
-        // console.log("submit", data);
+        console.log("submit", data);
         setLoading(true);
         setShowAlert({ show: false, type: showAlert.type });
 
         // add item to request data for possible uses in backend controller
         if (props.item) data["item"] = props.item;
-
-        ApiClient.post(props.submitUrl, data, {
-            headers: {
-                Accept: "application/json",
-                Authorization: "Bearer " + token
-            }
-        })
-            .then(response => {
-                // console.log("Branch add Response", response.data);
-                setLoading(false);
-                setShowAlert({
-                    show: true,
-                    type: "success",
-                    message: response.data.message
-                });
-                setBackendErrors(false);
-                if (!props.item) {
-                    // means form is not in edit mode
-                    props.reset();
-                }
-                response.data.redirect && setRedirect(true);
-            })
-            .catch(error => {
-                console.log("Error", error.response);
-                setLoading(false);
-
-                if (error.response.status == 422) {
-                    setBackendErrors(error.response.data.errors);
-                } else {
-                    // console.log(error.response);
-                    setBackendErrors(false);
-                    setShowAlert({
-                        show: true,
-                        type: "error",
-                        message: error.response.data.message
-                    });
-                }
-                error.response.data.redirect && setRedirect(true);
-            });
+        dataService(data, token, successResponse, errorResponse);
     };
+
+    function successResponse(response) {
+        console.log(response.data);
+        setLoading(false);
+        setShowAlert({
+            show: true,
+            type: "success",
+            message: response.data.message
+        });
+        setBackendErrors(false);
+        if (!props.item) {
+            // means form is not in edit mode
+            props.reset();
+        }
+        response.data.redirect && setRedirect(true);
+    }
+
+    function errorResponse(error) {
+        console.log("SingleColumnFormBase", error);
+        setLoading(false);
+
+        if (error.status == 422) {
+            setBackendErrors(error.data.errors);
+        } else {
+            // console.log(error.response);
+            setBackendErrors(false);
+            setShowAlert({
+                show: true,
+                type: "error",
+                message: error.data.message
+            });
+        }
+        error.data.redirect && setRedirect(true);
+        // error.data.redirect && history.push(redirectTarget);
+    }
+
     const childrenWithProps = React.Children.map(props.children, child => {
         if (React.isValidElement(child)) {
             return React.cloneElement(child, {
@@ -101,6 +102,7 @@ function FormBase({
                         <RedirectBar
                             delay={redirectDelay}
                             target={redirectTarget}
+                            // type="asc"
                         />
                     )}
                     <FormAlert

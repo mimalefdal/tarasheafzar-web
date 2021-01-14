@@ -6,7 +6,7 @@ import { FormLoadingData, FormTitle } from "../../components/form-controls";
 import { Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog } from "../../components/feedback";
-import { ApiClient } from "../../services";
+import { ApiClient, GetBranch } from "../../services";
 import { Badge } from "@material-ui/core";
 import StaffContext from "../../context/staffContext";
 import { BranchForm } from "../../view-components";
@@ -27,23 +27,18 @@ function show(props) {
             setItem(location.state.item);
             setReady(true);
         } else {
-            console.log(location);
-
-            ApiClient.get("branch", {
-                headers: {
-                    Accept: "application/json",
-                    Authorization: "Bearer " + token
-                },
-                params: { slug: slug }
-            })
-                .then(response => {
-                    // console.log(response);
+            // console.log(location);
+            GetBranch(
+                { slug: slug },
+                token,
+                response => {
                     setItem(response.data.data);
                     setReady(true);
-                })
-                .catch(error => {
-                    console.log(error.response);
-                });
+                },
+                failure => {
+                    console.log(failure);
+                }
+            );
         }
     }, []);
     return (
@@ -93,32 +88,21 @@ function show(props) {
     function closeEditForm() {
         setReady(false);
         setShowEdit(false);
+        GetBranch({ id: item.id }, token, getBranchResponse, getBranchError);
+    }
 
-        ApiClient.get("branch", {
-            headers: {
-                Accept: "application/json",
-                Authorization: "Bearer " + token
-            },
-            params: { id: item.id }
-        })
-            .then(response => {
-                // console.log(response);
-
-                let responseItem = response.data.data;
-                if (item.slug != responseItem.slug) {
-                    history.replace(
-                        swapUrlTail(
-                            history.location.pathname,
-                            responseItem.slug
-                        )
-                    );
-                }
-                setItem(response.data.data);
-                setReady(true);
-            })
-            .catch(error => {
-                console.log(error.response);
-            });
+    function getBranchResponse(response) {
+        let responseItem = response.data.data;
+        if (item.slug != responseItem.slug) {
+            history.replace(
+                swapUrlTail(history.location.pathname, responseItem.slug)
+            );
+        }
+        setItem(response.data.data);
+        setReady(true);
+    }
+    function getBranchError(failure) {
+        console.log(failure);
     }
 }
 

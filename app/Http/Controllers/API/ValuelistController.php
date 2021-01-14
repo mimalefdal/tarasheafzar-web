@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Position;
 use App\Models\Value;
 use App\Http\Resources\DropdownItem;
+use App\Models\Branch;
 
 class ValuelistController extends Controller
 {
@@ -27,13 +28,12 @@ class ValuelistController extends Controller
                 return DropdownItem::collection(Position::all());
                 break;
 
-            case 'gender':
-                return DropdownItem::collection(Value::where('field','gender')->get());
+            case 'branch':
+                return DropdownItem::collection(Branch::all());
                 break;
 
-
             default:
-                return DropdownItem::collection(Value::where('field',$field)->get());
+                return DropdownItem::collection(Value::where('field', $field)->get());
                 break;
         }
     }

@@ -7,7 +7,7 @@ import { ConfirmDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { BranchsList, CardList } from "../../components/lists";
 import StaffContext from "../../context/staffContext";
-import { ApiClient, DeleteBranch } from "../../services";
+import { DeleteBranch, GetBranchsList } from "../../services";
 import { t } from "../../utils";
 
 function manageBranchs(props) {
@@ -45,13 +45,13 @@ function manageBranchs(props) {
     ];
 
     function handleDelete(item) {
-        console.log("handle DELETE called", item);
+        // console.log("handle DELETE called", item);
         setItem(item);
         setAskToConfirm(true);
     }
 
     function handleShow(item) {
-        console.log("handle VIEW called", item);
+        // console.log("handle VIEW called", item);
 
         history.push({
             pathname: `${match.path}/${item.slug}`,
@@ -77,17 +77,17 @@ function manageBranchs(props) {
         <>
             <PageHeaderBar>
                 <ListTitle
-                    title={t("tools.branchsManagement")}
+                    title={t("tools.branchesManagement")}
                     btnSet={
                         <AddButton
                             className="header-operation-btn"
-                            target="branchs/define"
+                            target="branches/define"
                         />
                     }
                 />
             </PageHeaderBar>
             <CardList
-                dataUrl="/branches"
+                dataService={GetBranchsList}
                 cardComponent={<BranchCard />}
                 entryOperations={entryOperations}
             />

@@ -4,12 +4,15 @@ namespace App\Traits;
 
 trait ChecksUniqueness
 {
-
-    public function isNamedUnique()
+    public function isNamedUnique(string $nameChecksWith = null)
     {
+        $lang = \Lang::getLocale();
+        $globalNameCheck = null;
+        $localNameCheck = null;
+
         $errors = collect();
         $globalNameCheck = $this->isGlobalNameUnique();
-        $localNameCheck = $this->isLocalNameUnique();
+        if ($lang != 'en') $localNameCheck = $this->isLocalNameUnique($nameChecksWith);
 
         if ($globalNameCheck != null) $errors = $errors->merge($globalNameCheck);
         if ($localNameCheck != null) $errors = $errors->merge($localNameCheck);
@@ -17,13 +20,17 @@ trait ChecksUniqueness
         return $errors->toArray();
     }
 
-    public function isLocalNameUnique()
+    public function isLocalNameUnique($nameChecksWith)
     {
         $lang = \Lang::getLocale();
 
         $title = json_decode($this->title);
         $localTitle = $title->$lang;
-        $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->where('type', $this->type)->first();
+        if ($nameChecksWith)
+            $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->where($nameChecksWith, $this[$nameChecksWith])->first();
+        else
+            $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->first();
+
         if ($localTitleCheck != null) {
             if ($localTitleCheck->id != $this->id) {
                 $error = ['title_' . $lang => [__('validation.unique', ['attribute' => __('validation.attributes.title')]), "item" => $localTitleCheck]];

@@ -9,9 +9,9 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
     // console.log(props);
 
     useEffect(() => {
-        if (props.itemValue) {
-            // console.log("from bilingualInput", props.itemValue);
-            setValue(props.itemValue);
+        if (props.initialValue) {
+            // console.log("from bilingualInput", props.initialValue);
+            setValue(props.initialValue);
         }
     }, []);
 
@@ -32,7 +32,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                     errors={errors}
                     backendErrors={backendErrors}
                     disabled={loading}
-                    value={props.itemValue ? props.itemValue.local : null}
+                    value={props.initialValue ? props.initialValue.local : null}
                     onChange={event => {
                         setValue({ ...value, local: event.target.value });
                     }}
@@ -48,7 +48,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                 errors={errors}
                 backendErrors={backendErrors}
                 disabled={loading}
-                value={props.itemValue ? props.itemValue.en : null}
+                value={props.initialValue ? props.initialValue.en : null}
                 onChange={event =>
                     setValue({ ...value, en: event.target.value })
                 }

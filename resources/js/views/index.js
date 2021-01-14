@@ -1,2 +1,2 @@
-export { default as CompanyPanelView } from "./companyPanelView";
+export { default as StructurePanelView } from "./structurePanelView";
 export { default as EnterprisePanelView } from "./enterprisePanelView";

@@ -12,7 +12,7 @@ import { OperationEntry } from "../tables";
 
 function TableListBase({
     type = "basic",
-    dataUrl,
+    dataService,
     tableComponent,
     entryComponent = null,
     tableMap,
@@ -28,19 +28,18 @@ function TableListBase({
         Authorization: "Bearer " + token
     };
     useEffect(() => {
-        ApiClient.get(dataUrl, {
-            headers: headers
-        })
-            .then(response => {
-                // console.info("TablelistBase", response.data);
+        dataService(
+            token,
+            response => {
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
                 setLoading(false);
-            })
-            .catch(error => {
+            },
+            error => {
                 console.log(error.response);
                 setLoading(false);
-            });
+            }
+        );
     }, []);
 
     return (

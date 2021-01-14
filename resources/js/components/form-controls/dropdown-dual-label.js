@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import DualLabelFormControl from "./dual-label-form-control";
 import { MenuItem, Select } from "@material-ui/core";
 
-const Control = (props, ref) => {
-    var { items = [], ...props } = props;
-    const [value, setValue] = useState(itemValue(props));
+const Control = ({ items = [], item, initialValue = null, ...props }, ref) => {
+    const [value, setValue] = useState(initialValue ? initialValue.value : "");
 
     const menuProps = {
         anchorOrigin: {
@@ -37,6 +36,7 @@ const Control = (props, ref) => {
                 MenuProps={menuProps}
                 disabled={props.loading}
             >
+                {/* {!props.readonly && <MenuItem value="">Delete</MenuItem>} */}
                 {!props.readonly &&
                     items.map((item, key) => {
                         return (
@@ -47,8 +47,8 @@ const Control = (props, ref) => {
                     })}
 
                 {props.readonly && (
-                    <MenuItem value={props.itemValue.value}>
-                        {props.itemValue.label}
+                    <MenuItem value={initialValue.value}>
+                        {initialValue.label}
                     </MenuItem>
                 )}
             </Select>
@@ -56,9 +56,9 @@ const Control = (props, ref) => {
     );
 };
 
-const itemValue = props => {
-    if (props.itemValue) {
-        return props.itemValue.value;
+const getInitialValue = props => {
+    if (props.initilaValue) {
+        return props.initilaValue.value;
     } else {
         return "";
     }

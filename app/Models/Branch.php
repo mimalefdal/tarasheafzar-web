@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\ManagesPositions;
 use App\Models\Department;
-use stdClass;
 use App\Traits\ChecksUniqueness;
 use App\Http\Resources\BranchItem;
+use Bilang;
+use Illuminate\Support\Facades\Lang;
 
 class Branch extends Model
 {
@@ -32,22 +33,20 @@ class Branch extends Model
 
     public function isUnique()
     {
-        $isUnique = new stdClass();
-        $isNamedUnique = $this->isNamedUnique();
+        return Bilang::isUnique($this, 'type', BranchItem::class);
+    }
 
-        if ($isNamedUnique == null) {
-            $isUnique->check = true;
-        } else {
-            $isUnique->check = false;
+    //returns type + title(s) of branch object
+    public function fullTitle(string $lang = null)
+    {
+        if (!$lang) $lang = Lang::getLocale();
+        $type = Value::where('field', 'branchtypes')->where('slug', $this->type)->first();
 
-            // Transform matched item to api resource
-            foreach ($isNamedUnique as $key => &$error) {
-                $error['item'] = new BranchItem($error['item']);
-            }
+        return Bilang::grammertize(Value::getLocalValue($type->title, $lang), Bilang::getLocalTitle($this->title, $lang));
+    }
 
-            $isUnique->errors = $isNamedUnique;
-        }
-
-        return $isUnique;
+    public function slug()
+    {
+        return '';
     }
 }

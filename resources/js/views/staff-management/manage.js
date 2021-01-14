@@ -6,6 +6,7 @@ import { AddButton } from "../../components/buttons";
 import { ListTitle } from "../../components/list-controls";
 import { TableList } from "../../components/lists";
 import { OperationEntry, OperationTable } from "../../components/tables";
+import { GetStaffList } from "../../services";
 import { t } from "../../utils";
 import { StaffEntry } from "../../view-components";
 
@@ -33,7 +34,7 @@ function Manage(props) {
     }
 
     return (
-        <div className="page-content">
+        <div className="">
             <PageHeaderBar>
                 <ListTitle
                     title={t("custum-titles.staffListTitle")}
@@ -41,7 +42,7 @@ function Manage(props) {
                 />
             </PageHeaderBar>
             <TableList
-                dataUrl="/staff"
+                dataService={GetStaffList}
                 tableComponent={<OperationTable className="general-shadow" />}
                 entryComponent={<StaffEntry />}
                 tableMap={staffTableMap}

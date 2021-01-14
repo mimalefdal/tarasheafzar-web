@@ -4,19 +4,20 @@ import { FormLoadingData } from "../form-controls";
 import { DoneSharp } from "@material-ui/icons";
 import { t } from "../../utils";
 
-function Control({ loadstate, itemTitle, itemStatus, itemComment }, props) {
+function Control({ loadstate, itemTitle, itemStatus, itemComment, ...props }) {
     let match = useRouteMatch();
 
-    const [loading, setLoading] = useState(loadstate);
+    const [loading, setLoading] = useState(loading);
 
     useEffect(() => {
         // console.log("loadstate", loadstate);
-    });
+        setLoading(loadstate);
+    }, [loadstate]);
     return (
         <tr>
             <td className="checklist-text-cell first">{itemTitle}</td>
             <td>
-                {loadstate ? (
+                {loading ? (
                     <FormLoadingData type="spin" />
                 ) : itemStatus ? (
                     <button className="btn btn-primary checklist-btn" disabled>
@@ -31,7 +32,7 @@ function Control({ loadstate, itemTitle, itemStatus, itemComment }, props) {
                     </Link>
                 )}
             </td>
-            {!loadstate && (
+            {!loading && (
                 <td className="checklist-text-cell last">{itemComment}</td>
             )}
         </tr>

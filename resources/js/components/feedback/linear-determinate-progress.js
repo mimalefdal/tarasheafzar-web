@@ -3,7 +3,7 @@ import { LinearProgress } from "@material-ui/core";
 
 function feedback({ value, ...props }) {
     const [progress, setProgress] = useState(value);
-    useEffect(() => setProgress(value));
+    useEffect(() => setProgress(value), [value]);
 
     return (
         <LinearProgress

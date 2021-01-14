@@ -21,12 +21,12 @@ class InitializeController extends Controller
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
 
-        $targetStatus = $request->get('targetFunction');
+        $targetFunction = $request->get('targetFunction');
 
-        if ($targetStatus != null) {
+        if ($targetFunction != null) {
             $message = "";
 
-            switch ($targetStatus) {
+            switch ($targetFunction) {
                 case 'defineCeo':
                     if ($this->currentCeo() != null) {
                         $status = true;
@@ -41,7 +41,6 @@ class InitializeController extends Controller
                     break;
             }
             return response()->json(['requestedStatus' => $status, 'message' => $message], 200);
-            // return response()->json(['function'=>$targetStatus,'status'=>$systemInitialize[$targetStatus]] );
         }
         return response()->json($systemInitialize, 200);
     }

@@ -19,17 +19,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('branch/define', 'API\BranchController@create');
+Route::post('branch/add', 'API\BranchController@create');
 Route::post('branch/update', 'API\BranchController@update');
 Route::post('branch/remove', 'API\BranchController@delete');
 Route::get('branches', 'API\BranchController@index');
 Route::get('branch', 'API\BranchController@show');
 
-Route::post('rights/add', 'API\RightController@create');
+Route::post('department/add', 'API\DepartmentController@create');
+Route::post('department/update', 'API\DepartmentController@update');
+Route::post('department/remove', 'API\DepartmentController@delete');
+Route::get('departments', 'API\DepartmentController@index');
+Route::get('department', 'API\DepartmentController@show');
+
+Route::post('right/add', 'API\RightController@create');
 Route::get('rights', 'API\RightController@index');
 
-Route::get('staff', 'API\StaffController@index');
 Route::post('staff/add', 'API\StaffController@create');
+Route::get('staff', 'API\StaffController@index');
+Route::get('anstaff', 'API\StaffController@show');
 
 Route::get('/initialize/status', 'API\InitializeController@status');
 Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');

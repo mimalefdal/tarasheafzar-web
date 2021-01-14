@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\Value;
+use Bilang;
 
 class BranchItem extends JsonResource
 {
@@ -15,21 +16,26 @@ class BranchItem extends JsonResource
      */
     public function toArray($request)
     {
-        $lang = \Lang::getLocale();
 
-        $branch = parent::toArray($request);
-        $type = Value::where('field', 'branchtypes')->where('slug', $branch['type'])->first();
+        // $branch = parent::toArray($request);
 
-        $branch['type'] = \Lang::get('values.' . $type->title);
-        $branch['type_en'] = $type->title;
+        $branch = [];
+
+        $branch['id'] = $this->id;
+
+        $type = Value::where('field', 'branchtypes')->where('slug', $this->type)->first();
         $branch['type_object'] = new DropdownItem($type);
+        $branch['type_en'] = $type->title;
+        $branch['type'] = \Lang::get('values.' . $type->title);
 
-        $titles = json_decode($branch['title']);
-        $branch['title'] = $titles->$lang;
-        $branch['title_en'] = $titles->en;
-        if ($branch['deleted_at'] != null) {
-            $branch['deleted'] = true;
-        }
+        $branch['full_title'] = $this->fullTitle();
+        $branch['full_title_en'] = $this->fullTitle('en');
+        $branch['title_en'] = Bilang::getEnTitle($this->title);
+        $branch['title'] = Bilang::getLocalTitle($this->title);
+
+        $branch['deleted'] = $this->trashed();
+        $branch['slug'] = $this->slug;
+
         return $branch;
     }
 }

@@ -9,7 +9,7 @@ CardListBase.propTypes = {};
 
 function CardListBase({
     type = "basic",
-    dataUrl,
+    dataService,
     cardComponent,
     entryOperations,
     ...props
@@ -33,23 +33,20 @@ function CardListBase({
 
     useEffect(() => {
         // console.log(apiHeaders);
-        ApiClient.get(dataUrl, {
-            headers: {
-                Accept: "application/json",
-                Authorization: "Bearer " + token
-            }
-        })
-            .then(response => {
-                // console.log("CardlistBase", response);
+
+        dataService(
+            token,
+            response => {
+                // console.log("CardListBase", response.data);
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
-
                 setLoading(false);
-            })
-            .catch(error => {
-                console.log(error.response);
+            },
+            error => {
+                console.log(error);
                 setLoading(false);
-            });
+            }
+        );
     }, []);
 
     return (

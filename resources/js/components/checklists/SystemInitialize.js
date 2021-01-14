@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import "../../styles/checklists.css";
 import { t } from "../../utils";
@@ -9,31 +9,28 @@ import {
     ChecklistHeaderTripleColumn,
     ChecklistRowTripleColumn
 } from "../checklist-controls";
-import { ApiClient } from "../../services";
+import { GetInitializeStatus } from "../../services";
+import StaffContext from "../../context/staffContext";
 
-function SystemInitialize() {
+function SystemInitialize(props) {
     const [status, setStatus] = useState({});
     const [loading, setLoading] = useState(true);
     const token = useContext(StaffContext).token;
 
-    const headers = {
-        Accept: "application/json",
-        Authorization: "Bearer " + token
-    };
-
     useEffect(() => {
-        ApiClient.get("/initialize/status", {
-            headers: headers
-        })
-            .then(response => {
-                // console.log(response.data);
+        GetInitializeStatus(
+            {},
+            token,
+            response => {
+                // console.log("Initialize View", response);
                 setStatus(response.data);
                 setLoading(false);
-            })
-            .catch(error => {
-                // console.log(error.response);
+            },
+            error => {
+                // console.log("Initialize View", error);
                 setLoading(false);
-            });
+            }
+        );
     }, []);
 
     return (
@@ -44,14 +41,12 @@ function SystemInitialize() {
                         <ChecklistHeaderTripleColumn />
                     </thead>
                     <tbody>
-                        {
-                            <ChecklistRowTripleColumn
-                                loadstate={loading}
-                                itemTitle="ثبت اکانت مدیرعامل"
-                                itemStatus={!loading && status.defineCeo}
-                                itemComment=""
-                            />
-                        }
+                        <ChecklistRowTripleColumn
+                            loadstate={loading}
+                            itemTitle="ثبت اکانت مدیرعامل"
+                            itemStatus={status && status.defineCeo}
+                            itemComment=""
+                        />
                     </tbody>
                 </table>
             </div>

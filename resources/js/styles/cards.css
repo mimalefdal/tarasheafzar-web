@@ -29,6 +29,8 @@
     color: var(--showtitlebkg);
     margin-bottom: 3rem;
 }
+.card-title-box {
+}
 
 .card-btn-set {
     align-self: flex-start;
@@ -42,4 +44,14 @@
 
 .card-operation-btn:hover svg {
     opacity: 1;
+}
+
+.basic-card-title-tail {
+    font-weight: normal;
+}
+.basic-card-title-complement {
+    font-size: 10px;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+    color: lightcoral;
 }

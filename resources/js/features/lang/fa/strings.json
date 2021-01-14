@@ -72,7 +72,7 @@
     },
     "tools": {
         "systemInitialize": "راه‌اندازی سامانه",
-        "branchsManagement": "مدیریت شاخه‌ها",
+        "branchesManagement": "مدیریت شاخه‌ها",
         "departmentsManagement": "مدیریت دپارتمان‌ها",
         "unitsManagement": "مدیریت واحدها",
         "positionsManagement": "مدیریت جایگاه‌ها",
@@ -81,7 +81,8 @@
     },
     "forms": {
         "registerCEO": "ثبت اکانت مدیرعامل",
-        "defineBranch": "درج شاخه جدید"
+        "defineBranch": "درج شاخه جدید",
+        "defineDepartment": "درج دپارتمان جدید"
     },
     "alerts": {
         "success": "موفقیت",

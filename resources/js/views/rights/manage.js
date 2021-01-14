@@ -5,6 +5,7 @@ import { AddButton } from "../../components/buttons";
 import { ListTitle } from "../../components/list-controls";
 import { RightsList, TableList } from "../../components/lists";
 import { OperationTable } from "../../components/tables";
+import { GetRightList } from "../../services";
 
 import { t } from "../../utils";
 import { RightEntry } from "../../view-components";
@@ -45,7 +46,7 @@ function ManageRights() {
                 />
             </PageHeaderBar>
             <TableList
-                dataUrl="/rights"
+                dataService={GetRightList}
                 tableComponent={<OperationTable className="general-shadow" />}
                 entryComponent={<RightEntry />}
                 tableMap={rightsTableMap}

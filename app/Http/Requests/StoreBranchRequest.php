@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Bilang;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 
 class StoreBranchRequest extends FormRequest
@@ -27,13 +29,12 @@ class StoreBranchRequest extends FormRequest
     {
 
         // echo ($this->data);
-        $lang = \Lang::getLocale();
+        $lang = Lang::getLocale();
 
         return [
             'type' => 'required',
             'title_en' => 'required|string|min:3',
             'title_' . $lang => 'required|string|min:3',
-            // 'slug'=>'unique:branches'
         ];
     }
 
@@ -44,13 +45,11 @@ class StoreBranchRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        $lang = \Lang::getLocale();
-
-        $titles = json_decode($this->title);
-        $titles = json_encode(['en' => $titles->en, $lang => $titles->local]);
+        $titles = Bilang::makeTitleObject($this->title);
+        $slugTemplate = $this->title_en . ' ' . $this->type;
 
         $this->merge([
-            'slug' => Str::slug(Str::slug($this->title_en . ' ' . $this->type, '-')),
+            'slug' => Str::slug(Str::slug($slugTemplate, '-')),
             'title' => $titles,
             'deleted_at' => null
         ]);

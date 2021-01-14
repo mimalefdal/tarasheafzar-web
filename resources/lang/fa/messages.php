@@ -17,7 +17,8 @@ return [
     'generalfailure' => 'درخواست قابل انجام نیست.',
     'ceodefinedsuccesfully' => 'اکانت مدیرعامل با موفقیت ثبت شد.',
     'ceoalreadydefined' => 'اکانت مدیرعامل قبلاً ثبت شده‌است.',
-    'recordـcreated' => ':attribute جدید ثبت شد.',
-    'recordـupdated' => 'ویرایش :attribute انجام شد.'
+    'newrecordـcreated' => ':attribute جدید ثبت شد.',
+    'recordـcreated' => ':title ثبت شد.',
+    'recordـupdated' => 'ویرایش :title با موفقیت انجام شد.'
 
 ];

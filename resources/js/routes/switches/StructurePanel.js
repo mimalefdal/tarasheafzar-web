@@ -12,20 +12,22 @@ import { NotFound } from "../../views/errors";
 import { GuardedRoute } from "react-router-guards";
 import { REQUIRED_RIGHT } from "../guards/types";
 
-import { CompanyPanelView } from "../../views";
+import { StructurePanelView } from "../../views";
 import { DefineBranch, ManageBranchs, ShowBranch } from "../../views/branches";
+import {
+    DefineDepartment,
+    ManageDepartments,
+    ShowDepartment
+} from "../../views/departments";
 import { CompanyInformation, CompanyStructure } from "../../views/company";
 import { ManageUnits } from "../../views/units";
 import { ManagePositions } from "../../views/positions";
-import { ManageDepartments } from "../../views/departments";
-import ManageRights from "../../views/rights/manage";
-import { StaffManagementManage } from "../../views/staff-management";
 
 export default function CompanyPanel() {
     let match = useRouteMatch();
     return (
         <Switch>
-            <Route exact path={match.path} component={CompanyPanelView} />
+            <Route exact path={match.path} component={StructurePanelView} />
             <GuardedRoute
                 path={`${match.path}/company/information`}
                 component={CompanyInformation}
@@ -41,35 +43,17 @@ export default function CompanyPanel() {
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
-            {/* Temp */}
+            {/* Branches */}
             <GuardedRoute
                 exact
-                path={`${match.path}/rights`}
-                component={ManageRights}
-                meta={{
-                    [REQUIRED_RIGHT]: "access-structure-management-panel"
-                }}
-            />
-            <GuardedRoute
-                exact
-                path={`${match.path}/staff`}
-                component={StaffManagementManage}
-                meta={{
-                    [REQUIRED_RIGHT]: "access-structure-management-panel"
-                }}
-            />
-            {/* Temp END */}
-
-            <GuardedRoute
-                exact
-                path={`${match.path}/branchs`}
+                path={`${match.path}/branches`}
                 component={ManageBranchs}
                 meta={{
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
             <GuardedRoute
-                path={`${match.path}/branchs/define`}
+                path={`${match.path}/branches/define`}
                 component={DefineBranch}
                 meta={{
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
@@ -77,13 +61,14 @@ export default function CompanyPanel() {
             />
             <GuardedRoute
                 exact
-                path={`${match.path}/branchs/:slug`}
+                path={`${match.path}/branches/:slug`}
                 component={ShowBranch}
                 meta={{
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
 
+            {/* Departments */}
             <GuardedRoute
                 exact
                 path={`${match.path}/departments`}
@@ -92,6 +77,24 @@ export default function CompanyPanel() {
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
+            <GuardedRoute
+                exact
+                path={`${match.path}/departments/define`}
+                component={DefineDepartment}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/departments/:slug`}
+                component={ShowDepartment}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+
+            {/* Units */}
             <GuardedRoute
                 exact
                 path={`${match.path}/units`}

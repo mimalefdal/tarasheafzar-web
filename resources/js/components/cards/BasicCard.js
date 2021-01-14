@@ -7,7 +7,15 @@ CardBase.propTypes = {
     item: PropTypes.any
 };
 
-function CardBase({ item, entryActions, ...props }) {
+function CardBase({
+    item,
+    entryActions,
+    title_complements_local = null,
+    title_complements_global = null,
+    title_tail_local = null,
+    title_tail_global = null,
+    ...props
+}) {
     // console.log("from branch card", item);
 
     const lang = useContext(AppContext).locale;
@@ -16,24 +24,43 @@ function CardBase({ item, entryActions, ...props }) {
         <div className="card-container flex row">
             <div className="card-title-action-box flex column">
                 <div className="card-title">
-                    {item.type} {item.title}
+                    <div className="card-title-box">
+                        {item.full_title
+                            ? item.full_title
+                            : item.type + " " + item.title}
+                        {title_tail_local && (
+                            <span className="basic-card-title-tail">
+                                {title_tail_local}
+                            </span>
+                        )}
+                        {title_complements_local && (
+                            <div className="basic-card-title-complement">
+                                {title_complements_local}
+                            </div>
+                        )}
+                    </div>
                     {lang != "en" && (
-                        <div className="global" style={{ fontSize: "10px" }}>
-                            {item.title_en} {item.type_en}
+                        <div
+                            className="card-title-box global"
+                            style={{ fontSize: "12px" }}
+                        >
+                            {item.full_title_en
+                                ? item.full_title_en
+                                : item.type_en + " " + item.title_en}
+                            {title_tail_global && (
+                                <span className="basic-card-title-tail">
+                                    {title_tail_global}
+                                </span>
+                            )}
+                            {title_complements_global && (
+                                <div className="basic-card-title-complement global">
+                                    {title_complements_global}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
-                <div className="btn-set card-btn-set">
-                    {entryActions}
-                    {/* <ViewButton
-                        className="card-operation-btn"
-                        target={showTarget}
-                    />
-                    <DeleteButton
-                        className="card-operation-btn"
-                        onClick={() => setAskToConfirm(true)}
-                    /> */}
-                </div>
+                <div className="btn-set card-btn-set">{entryActions}</div>
             </div>
 
             <div className="filler">{props.children}</div>

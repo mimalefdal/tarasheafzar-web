@@ -22,6 +22,8 @@ class CreateDepartmentsTable extends Migration
             $table->string('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('set null');
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

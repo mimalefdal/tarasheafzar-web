@@ -8,37 +8,7 @@ import {
 } from "../../components/form-controls";
 import "../../styles/forms.css";
 import { SingleColumnFormBase } from "../../components/forms";
-import { ApiClient } from "../../services";
-
-const presets = {
-    general: {
-        url: "/staff/add",
-        submitValue: t("labels.submit-add"),
-
-        fields: ["all"],
-        inputProps: {}
-    },
-    ceo: {
-        url: "/initialize/defineceo",
-        submitValue: t("labels.submit-define-ceo"),
-        fields: [
-            "gender",
-            "firstname",
-            "lastname",
-            "national_id",
-            "idcert_no",
-            "position",
-            "email"
-        ],
-        inputProps: {
-            position: {
-                readonly: true,
-                itemValue: { value: "ceo", label: "مدیرعامل" }
-                // TODO: this item must get from positions api and set here
-            }
-        }
-    }
-};
+import { AddStaff, GetValidValues, InitializeCEO } from "../../services";
 
 export default function Form({ preset = "general", ...props }) {
     // console.log(props);
@@ -48,30 +18,59 @@ export default function Form({ preset = "general", ...props }) {
     const [dropdowns, setDropdowns] = useState([]);
 
     useEffect(() => {
-        ApiClient.get("/valuelist", {
-            params: { fields: ["gender", "position"] }
-        })
-            .then(response => {
-                // console.log(response.data);
+        const fields = ["gender", "position"];
+        GetValidValues(
+            fields,
+            response => {
                 setDropdowns(response.data);
                 setReady(true);
-            })
-            .catch(error => {
-                console.log(error.response);
+            },
+            error => {
+                console.log(error);
                 setReady(true);
-            });
+            }
+        );
     }, []);
 
+    const presets = {
+        general: {
+            dataService: AddStaff,
+            submitValue: t("labels.submit-add"),
+
+            fields: ["all"],
+            inputProps: {}
+        },
+        ceo: {
+            dataService: InitializeCEO,
+            submitValue: t("labels.submit-define-ceo"),
+            fields: [
+                "gender",
+                "firstname",
+                "lastname",
+                "national_id",
+                "idcert_no",
+                "position",
+                "email"
+            ],
+            inputProps: {
+                position: {
+                    readonly: true,
+                    initialValue: { value: "ceo", label: "مدیرعامل" }
+                    // TODO: this item must get from positions api and set here
+                }
+            }
+        }
+    };
     return (
         <SingleColumnFormBase
-            submitUrl={presets[preset].url}
+            dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
             ready={ready}
             handleSubmit={handleSubmit}
             reset={reset}
             showAlert={props.showAlert}
-            redirectDelay={1000}
-            redirectTarget="/enterprise-management/initialize/"
+            // redirectDelay={2000}
+            redirectTarget="/enterprise-management/initialize"
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("gender")) && (

@@ -23,4 +23,9 @@ class StaffController extends Controller
     {
         return $request;
     }
+
+    public function show(Request $request)
+    {
+        return ['function must implement'];
+    }
 }

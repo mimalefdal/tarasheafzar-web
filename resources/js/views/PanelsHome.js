@@ -19,15 +19,25 @@ export default function PanelsHome(props) {
     let structureManagmentPanelLink;
     if (getIsAllowed("access-structure-management-panel")) {
         structureManagmentPanelLink = (
-            <Link
-                className="panel-link"
-                to={{
-                    pathname: "/structure-management",
-                    state: { prev: location.pathname }
-                }}
-            >
-                {t("panels.structure-management")}
-            </Link>
+            <>
+                <Link
+                    className="panel-link"
+                    to={{
+                        pathname: "/structure-management",
+                        state: { prev: location.pathname }
+                    }}
+                >
+                    {t("panels.structure-management")}
+                </Link>
+                {/* Temp */}
+                <Link className="panel-link" to={`/rights`}>
+                    {t("tools.rightsManagement")}
+                </Link>
+                <Link className="panel-link" to={`/staff`}>
+                    {t("tools.staffManagement")}
+                </Link>
+                {/* Temp End */}
+            </>
         );
     }
 

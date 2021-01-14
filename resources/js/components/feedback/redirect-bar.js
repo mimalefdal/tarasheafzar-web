@@ -10,30 +10,49 @@ const initialValue = type => {
 function feedback({ delay, type = "desc", target, ...props }) {
     let history = useHistory();
 
-    const barUpdateStep = 100;
-    const barUpdateScale = delay / barUpdateStep;
-    const progressStep = 100 / barUpdateScale;
-    const redirectDelay = type == "asc" ? delay : delay + 1000;
-    const [progress, setProgress] = useState(initialValue(type));
+    const barUpdateSteps = 100;
+    const barUpdateScale = delay / barUpdateSteps;
+    const progressStep = barUpdateSteps / barUpdateScale;
 
-    setTimeout(() => {
-        history.push(target);
-    }, redirectDelay);
+    const [progress, setProgress] = useState(initialValue(type));
+    const [done, SetDone] = useState(false);
 
     useEffect(() => {
-        const progressInterval = setInterval(() => {
-            // console.log(barUpdateStep + "ms");
+        // console.log({
+        //     delay: delay,
+        //     barUpdateSteps: barUpdateSteps,
+        //     barUpdateScale: barUpdateScale,
+        //     progressStep: progressStep
+        // });
+        let progressInterval = setInterval(() => {
             if (type == "desc") {
                 setProgress(progress => progress - progressStep);
             } else {
                 setProgress(progress => progress + progressStep);
             }
-        }, barUpdateStep);
+        }, barUpdateScale);
 
         return () => {
             clearInterval(progressInterval);
         };
     }, []);
+
+    useEffect(() => {
+        if (done) {
+            setTimeout(() => {
+                history.replace(target);
+            }, 500);
+        }
+    }, [done]);
+
+    useEffect(() => {
+        // console.log(progress);
+        if (type == "desc") {
+            if (progress <= 0) SetDone(true);
+        } else {
+            if (progress >= 100) SetDone(true);
+        }
+    }, [progress]);
 
     return (
         <div className="redirect">

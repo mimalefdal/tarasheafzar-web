@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreBranchRequest;
 use App\Models\Branch;
 use App\Http\Resources\BranchItem;
+use App\Models\Value;
+use Debugbar;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class BranchController extends Controller
@@ -16,25 +19,25 @@ class BranchController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function index()
-    {
-        return BranchItem::collection(Branch::all());
-    }
-
     public function create(StoreBranchRequest $request)
     {
-        $newBranch = $this->makeNewBranchFromRequest($request);
+        $newBranch = new Branch($request->all());
         // return response([$request->all(), $newBranch], 250);
 
         $this->checkForUnity($newBranch);
 
         $newBranch->save();
         $branchItem = new BranchItem($newBranch);
-        $title = $branchItem->type . ' ' . $branchItem->title;
-        $message = \Lang::get('messages.recordـcreated', ['attribute' => \Lang::get('values.branch'), "title" => $title]);
 
+        // $message = \Lang::get('messages.recordـcreated', ['attribute' => \Lang::get('values.' . $type->title)]);
+        $message = \Lang::get('messages.recordـcreated', ['title' => $branchItem->full_title]);
         $data = ['message' => $message, 'branch' => $branchItem];
         return response()->json($data, 200);
+    }
+
+    public function index()
+    {
+        return BranchItem::collection(Branch::all());
     }
 
     public function show(Request $request)
@@ -50,19 +53,36 @@ class BranchController extends Controller
 
     public function update(StoreBranchRequest $request)
     {
+
+        $flagRelated = false; //determine relations update required if become true
+
         $item = $request->get('item');
-        $editedBranch = $this->makeNewBranchFromRequest($request);
+        $editedBranch = new Branch($request->all());
         $editedBranch->id = $item['id'];
 
         $this->checkForUnity($editedBranch);
 
+        //update record
         $branch = Branch::find($item['id']);
+        if ($branch->slug != $request->slug) {
+            $flagRelated = true;
+            $oldSlug = $branch->slug;
+        }
         $branch->update($request->all());
-        $branch = new BranchItem($branch);
-        $title = $branch->title_display;
-        $message = \Lang::get('messages.recordـupdated', ['attribute' => \Lang::get('values.branch'), "title" => $title]);
 
-        $data = ['message' => $message, 'branch' => $branch];
+        //update related records if needed
+        if ($flagRelated) {
+            $relatedDepartments = $branch->departments;
+            foreach ($relatedDepartments as $department) {
+                $department->slug = Str::replaceFirst($oldSlug, $request->slug, $department->slug);
+                $department->save();
+            }
+            $relatedDepartments = $branch->departments;
+        }
+
+        $branchItem = new BranchItem($branch);
+        $message = \Lang::get('messages.recordـupdated', ['title' => $branch->fullTitle()]);
+        $data = ['message' => $message, 'branch' => $branchItem, 'relations update' => $flagRelated];
         return response($data);
     }
 
@@ -85,10 +105,5 @@ class BranchController extends Controller
         if (!$isUnique->check) {
             throw ValidationException::withMessages($isUnique->errors);
         }
-    }
-
-    private function makeNewBranchFromRequest($request)
-    {
-        return new Branch($request->all());
     }
 }
