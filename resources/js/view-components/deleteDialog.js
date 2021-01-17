@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ConfirmDialog, WaitingDialog } from "../../components/feedback";
-import StaffContext from "../../context/staffContext";
-import { DeleteDepartment } from "../../services";
-import { t } from "../../utils";
+import { ConfirmDialog, WaitingDialog } from "../components/feedback";
+import StaffContext from "../context/staffContext";
+import { t } from "../utils";
 import {
     EXECUTION_DONE_FAILURE,
     EXECUTION_DONE_SUCCESS,
     WAIT_FOR_EXECUTION
-} from "../../utils/constants";
+} from "../utils/constants";
 
-function Delete({ request, item, onClose, ...props }) {
+function Delete({ dataService, request, item, onClose, ...props }) {
     // console.log("DeleteDepartmentDialog", item);
 
     const token = useContext(StaffContext).token;
@@ -28,7 +27,7 @@ function Delete({ request, item, onClose, ...props }) {
             setWaitForExecution(true);
             setExecutionState(WAIT_FOR_EXECUTION);
 
-            DeleteDepartment(
+            dataService(
                 item,
                 token,
                 response => {

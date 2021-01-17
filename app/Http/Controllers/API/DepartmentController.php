@@ -15,20 +15,20 @@ class DepartmentController extends Controller
 {
     public function create(StoreDepartmentRequest $request)
     {
-        $newDepartment = new Department($request->all());
-        $newDepartment->setBranch(Branch::find($request->branch_id));
-        // return response([$request->all(), $newDepartment], 250);
+        $newItem = new Department($request->all());
+        $newItem->setBranch(Branch::find($request->branch_id));
+        // return response([$request->all(), $newItem], 250);
 
-        $newDepartment->validateUnity();
+        $newItem->validateUnity();
         //unity check passed
 
-        $newDepartment->save();
-        $departmentItem = new DepartmentItem($newDepartment);
+        $newItem->save();
+        $resourceItem = new DepartmentItem($newItem);
 
-        $message = \Lang::get('messages.recordـcreated', ['title' => $newDepartment->fullTitle()]);
+        $message = \Lang::get('messages.recordـcreated', ['title' => $newItem->fullTitle()]);
         // $message = \Lang::get('messages.newrecordـcreated', ['attribute' => Value::getLocalValue($type)]);
 
-        $data = ['message' => $message, 'department' => $departmentItem];
+        $data = ['message' => $message, 'department' => $resourceItem];
         return response()->json($data, 200);
 
         // return response(["message" => "Not Implemented", $request], 400);
@@ -58,29 +58,29 @@ class DepartmentController extends Controller
         $flagRelated = false; //determine relations update required if become true
 
         $item = $request->get('item');
-        $editedDepartment = new Department($request->all());
-        $editedDepartment->id = $item['id'];
-        $editedDepartment->setBranch(Branch::find($request->branch_id));
+        $editedItem = new Department($request->all());
+        $editedItem->id = $item['id'];
+        $editedItem->setBranch(Branch::find($request->branch_id));
 
-        $editedDepartment->validateUnity();
+        $editedItem->validateUnity();
         //unity check passed
 
         //update record
-        $department = Department::find($item['id']);
+        $item = Department::find($item['id']);
 
-        if ($department->slug != $request->slug) {
+        if ($item->slug != $request->slug) {
             $flagRelated = true;
-            $oldSlug = $department->slug;
+            $oldSlug = $item->slug;
         }
-        $department->update($request->all());
+        $item->update($request->all());
 
         //update related records if needed
         if ($flagRelated) {
         }
 
-        $departmentItem = new DepartmentItem($department);
-        $message = \Lang::get('messages.recordـupdated', ['title' => $department->fullTitle()]);
-        $data = ['message' => $message, 'department' => $departmentItem, 'relations update' => $flagRelated];
+        $resourceItem = new DepartmentItem($item);
+        $message = \Lang::get('messages.recordـupdated', ['title' => $item->fullTitle()]);
+        $data = ['message' => $message, 'department' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
 
         // return response(["message" => "Not Implemented", $request->all()], 400);
@@ -90,11 +90,11 @@ class DepartmentController extends Controller
     {
         $item = $request->item;
         $item = Department::find($item['id']);
-        $item->delete();
+        // $item->delete();
 
-        $departmentItem = new DepartmentItem($item);
+        $resourceItem = new DepartmentItem($item);
         $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
-        $data = ['message' => $message, 'department' => $departmentItem];
+        $data = ['message' => $message, 'department' => $resourceItem];
 
         return response($data);
 

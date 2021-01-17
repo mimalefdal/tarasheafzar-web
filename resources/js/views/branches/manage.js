@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
-import { BranchCard } from "../../view-components";
-import { ConfirmDialog } from "../../components/feedback";
+import { BranchCard, DeleteDialog } from "../../view-components";
 import { ListTitle } from "../../components/list-controls";
 import { BranchsList, CardList } from "../../components/lists";
 import StaffContext from "../../context/staffContext";
@@ -13,9 +12,9 @@ import { t } from "../../utils";
 function manageBranchs(props) {
     let match = useRouteMatch();
     const history = useHistory();
-    const token = useContext(StaffContext).token;
-    let [askToConfirm, setAskToConfirm] = useState(false);
-    let [item, setItem] = useState({});
+    const [item, setItem] = useState({});
+    const [deleteRequest, setDeleteRequest] = useState(false);
+    const [trigReload, setTrigReload] = useState(false);
 
     // TODO : this const been used to send item via target state
     // this fuction must been supported with renderActions function
@@ -47,7 +46,7 @@ function manageBranchs(props) {
     function handleDelete(item) {
         // console.log("handle DELETE called", item);
         setItem(item);
-        setAskToConfirm(true);
+        setDeleteRequest(true);
     }
 
     function handleShow(item) {
@@ -59,18 +58,6 @@ function manageBranchs(props) {
                 item: item
             }
         });
-    }
-
-    function onDelete(confirm) {
-        setAskToConfirm(false);
-        if (confirm) {
-            DeleteBranch(item, token, deleted);
-        }
-    }
-
-    function deleted(response) {
-        console.log(response);
-        history.replace(history.location.pathname);
     }
 
     return (
@@ -90,14 +77,18 @@ function manageBranchs(props) {
                 dataService={GetBranchsList}
                 cardComponent={<BranchCard />}
                 entryOperations={entryOperations}
+                trigger={trigReload}
             />
 
-            <ConfirmDialog
-                show={askToConfirm}
-                onClose={onDelete}
-                title={t("alerts.confirm")}
-                content={t("expressions.sureDelete")}
-                item={item.type + " " + item.title}
+            <DeleteDialog
+                dataService={DeleteBranch}
+                request={deleteRequest}
+                item={item}
+                onClose={updateNeeded => {
+                    if (updateNeeded) setTrigReload(!trigReload);
+                    setDeleteRequest(false);
+                    setItem({});
+                }}
             />
         </>
     );

@@ -6,12 +6,8 @@ import { ConfirmDialog, WaitingDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { CardList } from "../../components/lists";
 import { t } from "../../utils";
-import { GetDepartmentsList } from "../../services";
-import {
-    BranchCard,
-    DeleteDepartment,
-    DepartmentCard
-} from "../../view-components";
+import { DeleteDepartment, GetDepartmentsList } from "../../services";
+import { DeleteDialog, DepartmentCard } from "../../view-components";
 import { error } from "jquery";
 import {
     EXECUTION_DONE,
@@ -90,7 +86,8 @@ function ManageDepartments(props) {
                 trigger={trigReload}
             />
 
-            <DeleteDepartment
+            <DeleteDialog
+                dataService={DeleteDepartment}
                 request={deleteRequest}
                 item={item}
                 onClose={updateNeeded => {

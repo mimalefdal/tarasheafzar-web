@@ -21,18 +21,18 @@ class BranchController extends Controller
 
     public function create(StoreBranchRequest $request)
     {
-        $newBranch = new Branch($request->all());
-        // return response([$request->all(), $newBranch], 250);
+        $newItem = new Branch($request->all());
+        // return response([$request->all(), $newItem], 250);
 
-        $newBranch->validateUnity();
+        $newItem->validateUnity();
         //unity check passed
 
-        $newBranch->save();
-        $branchItem = new BranchItem($newBranch);
+        $newItem->save();
+        $resourceItem = new BranchItem($newItem);
 
         // $message = \Lang::get('messages.recordـcreated', ['attribute' => \Lang::get('values.' . $type->title)]);
-        $message = \Lang::get('messages.recordـcreated', ['title' => $branchItem->full_title]);
-        $data = ['message' => $message, 'branch' => $branchItem];
+        $message = \Lang::get('messages.recordـcreated', ['title' => $resourceItem->full_title]);
+        $data = ['message' => $message, 'branch' => $resourceItem];
         return response()->json($data, 200);
     }
 
@@ -58,10 +58,10 @@ class BranchController extends Controller
         $flagRelated = false; //determine relations update required if become true
 
         $item = $request->get('item');
-        $editedBranch = new Branch($request->all());
-        $editedBranch->id = $item['id'];
+        $editedItem = new Branch($request->all());
+        $editedItem->id = $item['id'];
 
-        $editedBranch->validateUnity();
+        $editedItem->validateUnity();
         //unity check passed
 
         //update record
@@ -82,9 +82,9 @@ class BranchController extends Controller
             $relatedDepartments = $branch->departments;
         }
 
-        $branchItem = new BranchItem($branch);
+        $resourceItem = new BranchItem($branch);
         $message = \Lang::get('messages.recordـupdated', ['title' => $branch->fullTitle()]);
-        $data = ['message' => $message, 'branch' => $branchItem, 'relations update' => $flagRelated];
+        $data = ['message' => $message, 'branch' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
     }
 
@@ -92,11 +92,12 @@ class BranchController extends Controller
     {
         $item = $request->item;
         $item = Branch::find($item['id']);
-        $item->delete();
+        // $item->delete();
 
-        return response([
-            'message' => 'SOFT-Deleted',
-            'item' => $item
-        ], 200);
+        $resourceItem = new BranchItem($item);
+        $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
+        $data = ['message' => $message, 'department' => $resourceItem];
+
+        return response($data);
     }
 }
