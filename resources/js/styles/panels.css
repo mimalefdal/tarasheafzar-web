@@ -7,6 +7,9 @@
 
     --primaryColor: var(--blue);
     --primaryBkgColor: #eee;
+
+    --linkedTagColor: lightcoral;
+    --hoverColor: lightcoral;
     /* --titlebkg: var(--dark); */
 }
 
@@ -228,11 +231,19 @@
     color: white;
 }
 
-.title-line {
+.title-pretitle,
+.title-posttitle,
+.text-tail {
     font-size: 14px;
     flex-grow: 1;
     color: #ddd;
     /* border-bottom: 1px solid var(--titlebkg); */
+}
+
+.text-tail.post {
+    background-color: var(--linkedTagColor);
+    color: white;
+    padding: 3px;
 }
 
 .page-header {
@@ -297,6 +308,8 @@
 .loading svg {
     width: 100%;
     height: 100%;
+    /* fill: none;
+    stroke: var(--primaryColor); */
 }
 
 .tag {
@@ -306,4 +319,26 @@
     font-size: 12px;
     font-weight: bold;
     border-radius: 0.2rem;
+}
+.MuiAlert-message {
+    width: 100%;
+}
+
+.alert-action {
+    width: 20px !important;
+    height: 20px !important;
+    color: white;
+    margin-right: 1rem;
+}
+
+.alert-action svg {
+    fill: white;
+}
+
+.fixed-alert {
+}
+
+.wait-alert {
+    transition: all 1s linear;
+    height: 20vh !important;
 }

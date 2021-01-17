@@ -51,7 +51,7 @@ class Department extends Model
 
     public function isUnique()
     {
-        return Bilang::isUnique($this, 'branch_id', DepartmentItem::class);
+        return $this->unity('branch_id', DepartmentItem::class);
     }
 
     //returns type + title(s) of branch object
@@ -60,6 +60,6 @@ class Department extends Model
         if (!$lang) $lang = Lang::getLocale();
         $type = 'Department';
 
-        return Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, $lang));
+        return Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang));
     }
 }

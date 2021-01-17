@@ -10,13 +10,10 @@ const Control = (
     { options = [], initialOptionIndex = null, ...props },
     ref
 ) => {
-    // console.log(
-    //     "AutoCompleteDeualLabel",
-    //     options,
-    //     initialOptionIndex,
-    //     options[initialOptionIndex],
-    //     props
-    // );
+    // console.log("AutoCompleteDualLabel", options);
+    // console.log("AutoCompleteDualLabel", initialOptionIndex);
+    // console.log("AutoCompleteDualLabel", options[initialOptionIndex]);
+    // console.log("AutoCompleteDualLabel", props);
 
     const [value, setValue] = useState(
         initialOptionIndex != null ? options[initialOptionIndex] : null

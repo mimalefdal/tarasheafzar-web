@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import "../../styles/checklists.css";
 import { t } from "../../utils";
-import { FormLoadingData } from "../form-controls";
 import DoneIcon from "@material-ui/icons/Done";
 import DoneSharp from "@material-ui/icons/Done";
 import {

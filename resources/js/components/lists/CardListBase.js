@@ -2,8 +2,8 @@ import React, { cloneElement, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import StaffContext from "../../context/staffContext";
 import { ApiClient } from "../../services";
-import { FormLoadingData } from "../form-controls";
 import { renderActionComponent } from "../../utils";
+import { Loading } from "../feedback";
 
 CardListBase.propTypes = {};
 
@@ -12,6 +12,7 @@ function CardListBase({
     dataService,
     cardComponent,
     entryOperations,
+    trigger,
     ...props
 }) {
     // console.log("CardListBase", entryOperations);
@@ -32,27 +33,33 @@ function CardListBase({
     }
 
     useEffect(() => {
-        // console.log(apiHeaders);
-
+        // console.log("CardListBase->useEffect(trigger)", trigger);
+        setLoading(true);
         dataService(
             token,
             response => {
-                // console.log("CardListBase", response.data);
+                // console.log(
+                //     "CardListBase->useEffect(dataService)->response",
+                //     response.data
+                // );
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
                 setLoading(false);
             },
             error => {
-                console.log(error);
+                console.log(
+                    "CardListBase->useEffect(dataService)->ERROR",
+                    error
+                );
                 setLoading(false);
             }
         );
-    }, []);
+    }, [trigger]);
 
     return (
         <div className={"card-list-base " + classesByType}>
             {loading ? (
-                <FormLoadingData />
+                <Loading />
             ) : (
                 items.map((item, index) => {
                     if (!loading) {

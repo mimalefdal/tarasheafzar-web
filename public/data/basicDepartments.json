@@ -1,6 +1,6 @@
 [
     {
-        "slug": "administrative-dep",
+        "slug": "global-branch-administrative-dep",
         "title": {
             "fa": "اداری",
             "en": "Administrative"
@@ -8,7 +8,7 @@
         "branch": "global-branch"
     },
     {
-        "slug": "technical-dep",
+        "slug": "global-branch-technical-dep",
         "title": {
             "fa": "فنی",
             "en": "Technical"

@@ -5,7 +5,7 @@
             "fa": "منابع انسانی",
             "en": "Human Resources"
         },
-        "department": "administrative-dep"
+        "department": "global-branch-administrative-dep"
     },
     {
         "slug": "it-unit",
@@ -13,7 +13,7 @@
             "fa": "فناوری اطلاعات",
             "en": "IT"
         },
-        "department": "administrative-dep"
+        "department": "global-branch-administrative-dep"
     },
     {
         "slug": "software-unit",
@@ -21,7 +21,7 @@
             "fa": "تولید نرم‌افزار",
             "en": "Software Production"
         },
-        "department": "technical-dep"
+        "department": "global-branch-technical-dep"
     },
     {
         "slug": "accounting-unit",

@@ -9,7 +9,7 @@ export const getValues = (fields, successCallback, failureCallback) => {
             successCallback(response);
         })
         .catch(error => {
-            console.log("GetValues Service", error.response);
+            // console.error("GetValues Service ERROR", error);
             failureCallback(error.response);
         });
 };

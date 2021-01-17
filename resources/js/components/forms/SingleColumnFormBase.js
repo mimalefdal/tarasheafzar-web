@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 
-import { FormLoadingData } from "../form-controls";
-import { FormAlert, LineProgress, RedirectBar } from "../feedback";
+import { FormAlert, LineProgress, Loading, RedirectBar } from "../feedback";
 import { t } from "../../utils";
 import { ApiClient } from "../../services";
 import StaffContext from "../../context/staffContext";
@@ -25,6 +24,8 @@ function FormBase({
     ready,
     ...props
 }) {
+    // console.log("SingleColumnFormBase", props);
+
     const [backendErrors, setBackendErrors] = useState(false);
     const [loading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
@@ -35,6 +36,14 @@ function FormBase({
     });
     const token = useContext(StaffContext).token;
     let history = useHistory();
+
+    useEffect(() => {
+        setShowAlert({
+            show: props.showAlert ? props.showAlert.show : false,
+            type: props.showAlert ? props.showAlert.type : "success",
+            message: props.showAlert ? props.showAlert.message : ""
+        });
+    }, [props.showAlert]);
 
     const onSubmit = data => {
         console.log("submit", data);
@@ -94,7 +103,7 @@ function FormBase({
     return (
         <div className="form-container general-shadow">
             {!ready ? (
-                <FormLoadingData type="ball" />
+                <Loading type="ball" />
             ) : (
                 <form className="form-body" onSubmit={handleSubmit(onSubmit)}>
                     {loading && <LineProgress />}

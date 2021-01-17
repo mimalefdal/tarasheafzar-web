@@ -42,7 +42,7 @@
 }
 
 .form-alert {
-    transition: 1s all;
+    transition: 1s all !important;
     margin-bottom: 0;
 }
 

@@ -11,3 +11,4 @@ export { default as BranchCard } from "./branch/manageCard";
 
 export { default as DepartmentForm } from "./department/defineForm";
 export { default as DepartmentCard } from "./department/manageCard";
+export { default as DeleteDepartment } from "./department/deleteDialog";

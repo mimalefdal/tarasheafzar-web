@@ -169,6 +169,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -176,7 +177,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AccessServiceProvider::class,
         App\Providers\UtilityServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Bilang' => App\Utilities\Bilang::class,
+        'Utility' => App\Utilities\Utility::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 

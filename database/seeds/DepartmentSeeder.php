@@ -13,23 +13,22 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path().'/public/data/basicDepartments.json';
+        $path = base_path() . '/public/data/basicDepartments.json';
         $basicDepartments = file_get_contents($path);
         $basicDepartments = json_decode($basicDepartments, true);
-        foreach($basicDepartments as $department) {
+        foreach ($basicDepartments as $department) {
 
             $newDepartment = new Department([
-                "slug"=>$department['slug'],
-                "title"=>json_encode($department['title']),
+                "slug" => $department['slug'],
+                "title" => json_encode($department['title']),
 
             ]);
             $newDepartment->save();
 
             if ($department['branch'] != null) {
-                $branch = Branch::where('slug',$department['branch'])->first();
+                $branch = Branch::where('slug', $department['branch'])->first();
                 $newDepartment->setBranch($branch)->save();
             }
         }
-
     }
 }

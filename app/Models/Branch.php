@@ -33,7 +33,7 @@ class Branch extends Model
 
     public function isUnique()
     {
-        return Bilang::isUnique($this, 'type', BranchItem::class);
+        return $this->unity('type', BranchItem::class);
     }
 
     //returns type + title(s) of branch object
@@ -42,11 +42,6 @@ class Branch extends Model
         if (!$lang) $lang = Lang::getLocale();
         $type = Value::where('field', 'branchtypes')->where('slug', $this->type)->first();
 
-        return Bilang::grammertize(Value::getLocalValue($type->title, $lang), Bilang::getLocalTitle($this->title, $lang));
-    }
-
-    public function slug()
-    {
-        return '';
+        return Bilang::grammertize(Value::getLocalValue($type->title, $lang), Bilang::getLocalTitle($this->title, false, $lang));
     }
 }

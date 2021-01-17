@@ -17,37 +17,50 @@ import {
 
 export default function Form({ preset = "general", ...props }) {
     // props.item && console.log("DefineForm", props.item);
+    // console.log("DefineForm", props);
 
     function findValueObject(valueObject) {
-        return (valueObject.value = props.item.branch.slug);
+        return valueObject.value == props.item.branch.slug;
     }
 
     const { register, handleSubmit, watch, errors, reset } = useForm();
     const [dropdowns, setDropdowns] = useState([]);
     const [ready, setReady] = useState(false);
+    const [initialAlert, setInitialAlert] = useState();
     const [initialOptionIndex, setInitialOptionIndex] = useState(null);
 
     useEffect(() => {
+        // props.item && console.log("DefineForm", props.item);
+
         const fields = ["branch"];
         GetValidValues(
             fields,
             response => {
                 // console.log("DefineForm Values", response.data);
-                if (preset == "edit") {
-                    const initialOption_ValueObject = response.data.branch.find(
-                        findValueObject
-                    );
-                    const initialOption_Index = response.data.branch.indexOf(
-                        initialOption_ValueObject
-                    );
-                    setInitialOptionIndex(initialOption_Index);
-                }
                 setDropdowns(response.data);
+                if (preset == "edit") {
+                    if (props.item && props.item.branch.deleted == true) {
+                        console.log("deleted branch");
+                        setInitialAlert({
+                            show: true,
+                            type: "warning",
+                            message: "شاخه پاک شده است"
+                        });
+                    } else {
+                        const initialOption_ValueObject = response.data.branch.find(
+                            findValueObject
+                        );
+                        const initialOption_Index = response.data.branch.indexOf(
+                            initialOption_ValueObject
+                        );
+                        setInitialOptionIndex(initialOption_Index);
+                    }
+                }
                 setReady(true);
             },
             error => {
-                console.log(error);
-                // setReady(true);
+                console.error("DepartmentForm ERROR", error);
+                setReady(true);
             }
         );
     }, []);
@@ -86,6 +99,7 @@ export default function Form({ preset = "general", ...props }) {
             ready={ready}
             reset={reset}
             item={props.item}
+            showAlert={initialAlert}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("branch")) && (

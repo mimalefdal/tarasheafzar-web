@@ -2,21 +2,30 @@ import React, { useContext, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
-import { ConfirmDialog } from "../../components/feedback";
+import { ConfirmDialog, WaitingDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { CardList } from "../../components/lists";
-import StaffContext from "../../context/staffContext";
 import { t } from "../../utils";
-import { DeleteDepartment, GetDepartmentsList } from "../../services";
-import { BranchCard, DepartmentCard } from "../../view-components";
+import { GetDepartmentsList } from "../../services";
+import {
+    BranchCard,
+    DeleteDepartment,
+    DepartmentCard
+} from "../../view-components";
 import { error } from "jquery";
+import {
+    EXECUTION_DONE,
+    EXECUTION_DONE_FAILURE,
+    EXECUTION_DONE_SUCCESS,
+    WAIT_FOR_EXECUTION
+} from "../../utils/constants";
 
 function ManageDepartments(props) {
     let match = useRouteMatch();
     const history = useHistory();
-    const token = useContext(StaffContext).token;
-    let [askToConfirm, setAskToConfirm] = useState(false);
-    let [item, setItem] = useState({});
+    const [item, setItem] = useState(null);
+    const [deleteRequest, setDeleteRequest] = useState(false);
+    const [trigReload, setTrigReload] = useState(false);
 
     // TODO : this const been used to send item via target state
     // this fuction must been supported with renderActions function
@@ -48,35 +57,17 @@ function ManageDepartments(props) {
     function handleDelete(item) {
         // console.log("handle DELETE called", item);
         setItem(item);
-        setAskToConfirm(true);
+        setDeleteRequest(true);
     }
 
     function handleShow(item) {
         // console.log("handle VIEW called", item);
-
         history.push({
             pathname: `${match.path}/${item.slug}`,
             state: {
                 item: item
             }
         });
-    }
-
-    function onDelete(confirm) {
-        setAskToConfirm(false);
-        if (confirm) {
-            DeleteDepartment(
-                item,
-                token,
-                response => {
-                    console.log(response);
-                    history.replace(history.location.pathname);
-                },
-                error => {
-                    console.log(error);
-                }
-            );
-        }
     }
 
     return (
@@ -96,14 +87,17 @@ function ManageDepartments(props) {
                 dataService={GetDepartmentsList}
                 cardComponent={<DepartmentCard />}
                 entryOperations={entryOperations}
+                trigger={trigReload}
             />
 
-            <ConfirmDialog
-                show={askToConfirm}
-                onClose={onDelete}
-                title={t("alerts.confirm")}
-                content={t("expressions.sureDelete")}
-                item={item.type + " " + item.title}
+            <DeleteDepartment
+                request={deleteRequest}
+                item={item}
+                onClose={updateNeeded => {
+                    if (updateNeeded) setTrigReload(!trigReload);
+                    setDeleteRequest(false);
+                    setItem({});
+                }}
             />
         </>
     );

@@ -7,7 +7,6 @@ import { REQUIRED_RIGHT } from "../guards/types";
 
 import { RightsAdd, RightsManagement } from "../../views/rights";
 import { InitializeCeo, InitializeStart } from "../../views/initialize";
-import { FormLoadingData } from "../../components/form-controls";
 import { EnterprisePanelView } from "../../views";
 
 function EnterprisePanel(props) {
@@ -20,7 +19,7 @@ function EnterprisePanel(props) {
                 exact
                 path={`${match.path}/initialize`}
                 component={InitializeStart}
-                loading={FormLoadingData}
+                loading={Loading}
                 meta={{
                     [REQUIRED_RIGHT]: "access-system-initialize-tool"
                 }}
@@ -29,7 +28,7 @@ function EnterprisePanel(props) {
                 exact
                 path={`${match.path}/initialize/ceo`}
                 component={InitializeCeo}
-                loading={FormLoadingData}
+                loading={Loading}
                 meta={{
                     [REQUIRED_RIGHT]: "access-system-initialize-tool"
                 }}
@@ -39,7 +38,7 @@ function EnterprisePanel(props) {
                 exact
                 path={`${match.path}/rights`}
                 component={RightsManagement}
-                loading={FormLoadingData}
+                loading={Loading}
                 meta={{
                     [REQUIRED_RIGHT]: "access-rights-management-tool"
                 }}

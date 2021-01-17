@@ -7,6 +7,14 @@
     align-items: center;
 }
 
+.flex.vertical-center {
+    align-items: center;
+}
+
+.flex.horizontal-center {
+    justify-content: center;
+}
+
 .flex.start-bottom {
     justify-content: flex-start;
     align-items: flex-end;
@@ -21,6 +29,11 @@
     margin: 0; /* force appfa.css row class */
 }
 
-.filler {
+.filler,
+.flex-filler {
     flex-grow: 1;
+}
+
+.pointer {
+    cursor: pointer;
 }

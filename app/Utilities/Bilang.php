@@ -27,7 +27,7 @@ class Bilang
         }
     }
 
-    public static function getLocalTitle(string $titleSet, string $lang = null)
+    public static function getLocalTitle(string $titleSet, bool $returnNull = false, string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
 
@@ -35,8 +35,12 @@ class Bilang
 
         if (Arr::has($titles, $lang))
             return $titles->$lang;
-        else
-            return Lang::get('terms.no-title');
+        else {
+            if ($returnNull)
+                return '';
+            else
+                return Lang::get('terms.no-title');
+        }
     }
 
     public static function getEnTitle(string $titleSet)
@@ -56,29 +60,6 @@ class Bilang
             json_encode(['en' => $titles->en])
         );
     }
-
-    public static function isUnique($item, string $combinerField = null, $resourceClass = null)
-    {
-        $isUnique = new stdClass();
-        $isNamedUnique = $item->isNamedUnique($nameChecksWith = $combinerField);
-
-
-        if ($isNamedUnique == null) {
-            $isUnique->check = true;
-        } else {
-            $isUnique->check = false;
-            // Transform matched item to api resource
-            if ($resourceClass != null)
-                foreach ($isNamedUnique as $key => &$error) {
-                    $error['item'] = new $resourceClass($error['item']);
-                }
-            $isUnique->errors = $isNamedUnique;
-        }
-
-        return $isUnique;
-    }
-
-
 
     private static function langDirection(string $lang)
     {

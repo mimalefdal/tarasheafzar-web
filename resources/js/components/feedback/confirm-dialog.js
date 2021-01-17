@@ -8,6 +8,7 @@ import {
     DialogTitle,
     Slide
 } from "@material-ui/core";
+import { FormAlert, Loading } from ".";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -28,6 +29,8 @@ function dialog({
             TransitionComponent={Transition}
             maxWidth="sm"
             fullWidth={true}
+            disableBackdropClick
+            disableEscapeKeyDown
         >
             <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
             <DialogContent>
@@ -43,9 +46,6 @@ function dialog({
                     </span>
                     {" " + content}
                 </DialogContentText>
-                {/* <div style={{ fontWeight: "bold", fontSize: "16px" }}>
-                    {item}
-                </div> */}
             </DialogContent>
             <DialogActions>
                 <Button onClick={() => onClose(false)} color="primary">

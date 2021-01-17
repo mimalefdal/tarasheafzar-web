@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { EditButton } from "../../components/buttons";
-import { FormLoadingData, FormTitle } from "../../components/form-controls";
 import { Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog } from "../../components/feedback";
@@ -47,8 +46,26 @@ function show(props) {
                 {ready ? (
                     <Title
                         className="view-title"
-                        pretitle={t("labels.department")}
-                        title={item.type + " " + item.title}
+                        // pretitle={t("labels.department")}
+                        pretitle={t("tools.departmentsManagement")}
+                        posttail={
+                            item.branch ? (
+                                <Link
+                                    className="text-tail"
+                                    to={
+                                        "/structure-management/branches/" +
+                                        item.branch.slug
+                                    }
+                                >
+                                    {item.branch.full_title}{" "}
+                                </Link>
+                            ) : null
+                        }
+                        title={
+                            item.full_title
+                                ? item.full_title
+                                : item.type + " " + item.title
+                        }
                         btnSet={
                             item.deleted ? (
                                 // <Badge

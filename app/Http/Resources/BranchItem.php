@@ -31,7 +31,7 @@ class BranchItem extends JsonResource
         $branch['full_title'] = $this->fullTitle();
         $branch['full_title_en'] = $this->fullTitle('en');
         $branch['title_en'] = Bilang::getEnTitle($this->title);
-        $branch['title'] = Bilang::getLocalTitle($this->title);
+        $branch['title'] = Bilang::getLocalTitle($this->title, true);
 
         $branch['deleted'] = $this->trashed();
         $branch['slug'] = $this->slug;

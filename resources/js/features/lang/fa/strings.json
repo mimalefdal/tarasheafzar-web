@@ -97,6 +97,9 @@
         "fa": "فارسی"
     },
     "expressions": {
-        "sureDelete": "پاک شود؟"
+        "sureDelete": "پاک شود؟",
+        "executing": "در حال اجرا",
+        "executed": "پایان اجرا",
+        "deleteing": "در حال پاک کردن"
     }
 }

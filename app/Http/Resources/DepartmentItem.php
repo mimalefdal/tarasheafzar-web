@@ -33,19 +33,14 @@ class DepartmentItem extends JsonResource
         $department['full_title'] = $this->fullTitle();
         // $department['full_title_en'] = $this->fullTitle('en');
         $department['title_en'] = Bilang::getEnTitle($this->title);
-        $department['title'] = Bilang::getLocalTitle($this->title);
+        $department['title'] = Bilang::getLocalTitle($this->title, true);
 
         $department['deleted'] = $this->trashed();
         $department['slug'] = $this->slug;
 
         //transform may-related branch info
-        if ($this->branch_id != null) {
-            if ($request->has('branch'))
-                $department['branch'] = new BranchItem($request->branch);
-            else {
-                $department['branch'] = new BranchItem(Branch::find($this->branch_id));
-            }
-        }
+        if ($this->branch_id != null)
+            $department['branch'] = new BranchItem(Branch::withTrashed()->find($this->branch_id));
 
         return $department;
     }

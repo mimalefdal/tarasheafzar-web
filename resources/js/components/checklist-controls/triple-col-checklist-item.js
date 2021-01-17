@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import { FormLoadingData } from "../form-controls";
 import { DoneSharp } from "@material-ui/icons";
 import { t } from "../../utils";
+import { Loading } from "../feedback";
 
 function Control({ loadstate, itemTitle, itemStatus, itemComment, ...props }) {
     let match = useRouteMatch();
@@ -18,7 +18,7 @@ function Control({ loadstate, itemTitle, itemStatus, itemComment, ...props }) {
             <td className="checklist-text-cell first">{itemTitle}</td>
             <td>
                 {loading ? (
-                    <FormLoadingData type="spin" />
+                    <Loading type="spin" />
                 ) : itemStatus ? (
                     <button className="btn btn-primary checklist-btn" disabled>
                         <DoneSharp />

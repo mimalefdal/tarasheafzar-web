@@ -7,7 +7,7 @@ use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Resources\DepartmentItem;
 use App\Models\Branch;
 use App\Models\Department;
-use App\Models\Value;
+use App\Rules\bilangUnique;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -15,17 +15,17 @@ class DepartmentController extends Controller
 {
     public function create(StoreDepartmentRequest $request)
     {
-        $newDepartment = $this->makeNewDepartmentFromRequest($request);
+        $newDepartment = new Department($request->all());
         $newDepartment->setBranch(Branch::find($request->branch_id));
         // return response([$request->all(), $newDepartment], 250);
 
-        $this->checkForUnity($newDepartment);
-        // return $newDepartment;
+        $newDepartment->validateUnity();
+        //unity check passed
 
         $newDepartment->save();
         $departmentItem = new DepartmentItem($newDepartment);
 
-        $message = \Lang::get('messages.recordـcreated', ['record' => $newDepartment->fullTitle()]);
+        $message = \Lang::get('messages.recordـcreated', ['title' => $newDepartment->fullTitle()]);
         // $message = \Lang::get('messages.newrecordـcreated', ['attribute' => Value::getLocalValue($type)]);
 
         $data = ['message' => $message, 'department' => $departmentItem];
@@ -51,27 +51,53 @@ class DepartmentController extends Controller
         // return response(["message" => "Not Implemented", $request], 400);
     }
 
-    public function update(Request $request)
+    public function update(StoreDepartmentRequest $request)
     {
-        return response(["message" => "Not Implemented", $request], 400);
+
+        // return $request->all();
+        $flagRelated = false; //determine relations update required if become true
+
+        $item = $request->get('item');
+        $editedDepartment = new Department($request->all());
+        $editedDepartment->id = $item['id'];
+        $editedDepartment->setBranch(Branch::find($request->branch_id));
+
+        $editedDepartment->validateUnity();
+        //unity check passed
+
+        //update record
+        $department = Department::find($item['id']);
+
+        if ($department->slug != $request->slug) {
+            $flagRelated = true;
+            $oldSlug = $department->slug;
+        }
+        $department->update($request->all());
+
+        //update related records if needed
+        if ($flagRelated) {
+        }
+
+        $departmentItem = new DepartmentItem($department);
+        $message = \Lang::get('messages.recordـupdated', ['title' => $department->fullTitle()]);
+        $data = ['message' => $message, 'department' => $departmentItem, 'relations update' => $flagRelated];
+        return response($data);
+
+        // return response(["message" => "Not Implemented", $request->all()], 400);
     }
 
     public function delete(Request $request)
     {
-        return response(["message" => "Not Implemented", $request], 400);
-    }
+        $item = $request->item;
+        $item = Department::find($item['id']);
+        $item->delete();
 
-    private function checkForUnity(Department $department)
-    {
-        $isUnique = $department->isUnique();
+        $departmentItem = new DepartmentItem($item);
+        $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
+        $data = ['message' => $message, 'department' => $departmentItem];
 
-        if (!$isUnique->check) {
-            throw ValidationException::withMessages($isUnique->errors);
-        }
-    }
+        return response($data);
 
-    private function makeNewDepartmentFromRequest($request)
-    {
-        return new Department($request->all());
+        // return response(["message" => "Not Implemented", $request], 400);
     }
 }

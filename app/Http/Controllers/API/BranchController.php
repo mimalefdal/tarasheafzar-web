@@ -24,7 +24,8 @@ class BranchController extends Controller
         $newBranch = new Branch($request->all());
         // return response([$request->all(), $newBranch], 250);
 
-        $this->checkForUnity($newBranch);
+        $newBranch->validateUnity();
+        //unity check passed
 
         $newBranch->save();
         $branchItem = new BranchItem($newBranch);
@@ -60,7 +61,8 @@ class BranchController extends Controller
         $editedBranch = new Branch($request->all());
         $editedBranch->id = $item['id'];
 
-        $this->checkForUnity($editedBranch);
+        $editedBranch->validateUnity();
+        //unity check passed
 
         //update record
         $branch = Branch::find($item['id']);
@@ -93,17 +95,8 @@ class BranchController extends Controller
         $item->delete();
 
         return response([
-            'message' => 'Deleted',
+            'message' => 'SOFT-Deleted',
             'item' => $item
         ], 200);
-    }
-
-    private function checkForUnity(Branch $branch)
-    {
-        $isUnique = $branch->isUnique();
-
-        if (!$isUnique->check) {
-            throw ValidationException::withMessages($isUnique->errors);
-        }
     }
 }

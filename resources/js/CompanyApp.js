@@ -5,7 +5,6 @@ import { GuardProvider, GuardedRoute } from "react-router-guards";
 import PanelsNavBar from "./components/PanelsNavBar";
 import Scrolltotop from "./components/ScrollToTop";
 import { requireRight, waitOneSecond } from "./routes/guards";
-import { FormLoadingData } from "./components/form-controls";
 import CoreApp from "./routes/switches/CoreApp";
 import { Provider } from "react-redux";
 import store from "./features/redux/store";
@@ -14,6 +13,7 @@ import StaffContext from "./context/staffContext";
 import AppContext from "./context/appContext";
 import "./styles/styles.css";
 import Layout from "./Layout";
+import { Loading } from "./components/feedback";
 
 function CompanyApp(props) {
     sessionStorage.clear();
@@ -67,7 +67,7 @@ function CompanyApp(props) {
             </Switch>
             <GuardProvider
                 guards={[requireRight, waitOneSecond]}
-                loading={FormLoadingData}
+                loading={Loading}
             >
                 <AppContext.Provider value={appContextValue}>
                     <StaffContext.Provider value={staffContextValue}>
