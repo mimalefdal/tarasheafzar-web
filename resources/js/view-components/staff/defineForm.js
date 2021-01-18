@@ -16,7 +16,7 @@ export default function Form({ preset = "general", ...props }) {
     const { register, handleSubmit, watch, errors, reset } = useForm();
     const [ready, setReady] = useState(false);
     const [dropdowns, setDropdowns] = useState([]);
-    const [initialValues, setInitialValues] = useState({ position: "" });
+    const [initialValues, setInitialValues] = useState({});
 
     let presets = {
         general: {
@@ -42,7 +42,6 @@ export default function Form({ preset = "general", ...props }) {
                 position: {
                     readonly: true,
                     initialValue: initialValues.position
-                    // TODO: this item must get from positions api and set here
                 }
             }
         }

@@ -28,7 +28,33 @@ export default function Form({ preset = "general", ...props }) {
     const [dropdowns, setDropdowns] = useState([]);
     const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
-    const [initialOptionIndex, setInitialOptionIndex] = useState(null);
+    const [initialValues, setInitialValues] = useState({});
+
+    let presets = {
+        general: {
+            dataService: AddDepartment,
+            submitValue: t("labels.submit-add"),
+            fields: ["all"],
+            inputProps: {}
+        },
+        edit: preset == "edit" && {
+            dataService: UpdateDepartment,
+            submitValue: t("labels.submit-update"),
+            fields: ["all"],
+            inputProps: {
+                branch: {
+                    // readonly: true,
+                    initialOptionIndex: initialValues.branchIndex
+                },
+                title: {
+                    initialValue: {
+                        local: props.item.title,
+                        en: props.item.title_en
+                    }
+                }
+            }
+        }
+    };
 
     useEffect(() => {
         // props.item && console.log("DefineForm", props.item);
@@ -52,16 +78,15 @@ export default function Form({ preset = "general", ...props }) {
                             });
                         } else {
                             // set branch as selected
-                            const initialIndex = getMatchIndexOf(
+                            let _initialIndex = getMatchIndexOf(
                                 response.data.branch,
                                 "value",
                                 props.item.branch.slug
                             );
-                            console.log(
-                                "defineForm->useEffect->initialIndex:",
-                                initialIndex
-                            );
-                            setInitialOptionIndex(initialIndex);
+                            setInitialValues({
+                                ...initialValues,
+                                branchIndex: _initialIndex
+                            });
                         }
                     }
                 }
@@ -73,32 +98,6 @@ export default function Form({ preset = "general", ...props }) {
             }
         );
     }, []);
-
-    let presets = {
-        general: {
-            dataService: AddDepartment,
-            submitValue: t("labels.submit-add"),
-            fields: ["all"],
-            inputProps: {}
-        },
-        edit: preset == "edit" && {
-            dataService: UpdateDepartment,
-            submitValue: t("labels.submit-update"),
-            fields: ["all"],
-            inputProps: {
-                branch: {
-                    // readonly: true,
-                    initialOptionIndex: initialOptionIndex
-                },
-                title: {
-                    initialValue: {
-                        local: props.item.title,
-                        en: props.item.title_en
-                    }
-                }
-            }
-        }
-    };
 
     return (
         <SingleColumnFormBase

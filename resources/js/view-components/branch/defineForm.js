@@ -19,8 +19,11 @@ import {
 export default function Form({ preset = "general", ...props }) {
     // props.item && console.log("defineFormBranches->item:", props.item);
 
-    const [initialType, setInitialType] = useState();
+    const { register, handleSubmit, watch, errors, reset } = useForm();
+    const [dropdowns, setDropdowns] = useState([]);
+    const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
+    const [initialValues, setInitialValues] = useState({});
 
     let presets = {
         general: {
@@ -37,7 +40,7 @@ export default function Form({ preset = "general", ...props }) {
                 type: {
                     // readonly: true,
                     // initialValue: props.item.type_object
-                    initialValue: initialType
+                    initialValue: initialValues.type
                 },
                 title: {
                     initialValue: {
@@ -48,10 +51,6 @@ export default function Form({ preset = "general", ...props }) {
             }
         }
     };
-
-    const { register, handleSubmit, watch, errors, reset } = useForm();
-    const [dropdowns, setDropdowns] = useState([]);
-    const [ready, setReady] = useState(false);
 
     useEffect(() => {
         const fields = ["branchtypes"];
@@ -69,12 +68,15 @@ export default function Form({ preset = "general", ...props }) {
                         "value",
                         props.item.type_slug
                     );
-                    setInitialType(_initialType);
+                    setInitialValues({ ...initialValues, type: _initialType });
                 }
                 setReady(true);
             },
             error => {
-                console.log(error);
+                console.error(
+                    "defineFormBranches->useEffect->getValues->ERROR:",
+                    error
+                );
                 setReady(true);
             }
         );

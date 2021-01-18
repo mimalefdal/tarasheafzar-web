@@ -60,7 +60,7 @@ class DepartmentController extends Controller
         $item = $request->get('item');
         $editedItem = new Department($request->all());
         $editedItem->id = $item['id'];
-        $editedItem->setBranch(Branch::find($request->branch_id));
+        $editedItem->branch_id = $request->branch_id;
 
         $editedItem->validateUnity();
         //unity check passed
@@ -72,6 +72,7 @@ class DepartmentController extends Controller
             $flagRelated = true;
             $oldSlug = $item->slug;
         }
+        $item->setBranch(Branch::find($request->branch_id));
         $item->update($request->all());
 
         //update related records if needed
