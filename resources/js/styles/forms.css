@@ -32,17 +32,8 @@
     align-self: flex-end;
 }
 
-.MuiAlert-root,
-.MuiTypography-body1 {
-    font-family: inherit !important;
-}
-
-.MuiTypography-body1 {
-    text-align: right;
-}
-
 .form-alert {
-    transition: 1s all !important;
+    /* transition: 1s all !important; */
     margin-bottom: 0;
 }
 

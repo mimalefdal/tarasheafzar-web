@@ -13,7 +13,7 @@ function feedback({ show, type, message = "", ...props }) {
     return (
         <Collapse
             in={open}
-            className={"form-alert general-shadow" + showClassName}
+            className={"form-alert general-shadow complex" + showClassName}
         >
             <Alert
                 severity={type}

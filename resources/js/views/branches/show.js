@@ -4,7 +4,7 @@ import { PageHeaderBar } from "../../components";
 import { EditButton } from "../../components/buttons";
 import { Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
-import { FormDialog } from "../../components/feedback";
+import { FormDialog, Loading } from "../../components/feedback";
 import { ApiClient, GetBranch } from "../../services";
 import { Badge } from "@material-ui/core";
 import StaffContext from "../../context/staffContext";
@@ -66,9 +66,12 @@ function show(props) {
                         }
                     />
                 ) : (
-                    <p style={{ color: "white", fontSize: "12px" }}>
-                        در حال بارگذاری
-                    </p>
+                    <Loading
+                        preset="onDarkTitle"
+                        height="50px"
+                        width="50px"
+                        color="white"
+                    />
                 )}
             </PageHeaderBar>
             <FormDialog

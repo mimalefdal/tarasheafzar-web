@@ -57,7 +57,11 @@ function CardListBase({
     }, [trigger]);
 
     return (
-        <div className={"card-list-base " + classesByType}>
+        <div
+            className={
+                "flex column vertical-center card-list-base " + classesByType
+            }
+        >
             {loading ? (
                 <Loading />
             ) : (

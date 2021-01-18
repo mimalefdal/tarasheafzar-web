@@ -22,7 +22,7 @@ class DepartmentController extends Controller
         $newItem->validateUnity();
         //unity check passed
 
-        $newItem->save();
+        // $newItem->save();
         $resourceItem = new DepartmentItem($newItem);
 
         $message = \Lang::get('messages.recordـcreated', ['title' => $newItem->fullTitle()]);
@@ -73,7 +73,7 @@ class DepartmentController extends Controller
             $oldSlug = $item->slug;
         }
         $item->setBranch(Branch::find($request->branch_id));
-        $item->update($request->all());
+        // $item->update($request->all());
 
         //update related records if needed
         if ($flagRelated) {
@@ -91,7 +91,7 @@ class DepartmentController extends Controller
     {
         $item = $request->item;
         $item = Department::find($item['id']);
-        $item->delete();
+        // $item->delete();
 
         $resourceItem = new DepartmentItem($item);
         $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
