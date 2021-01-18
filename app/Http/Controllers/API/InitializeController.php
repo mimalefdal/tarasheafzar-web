@@ -76,9 +76,10 @@ class InitializeController extends Controller
 
         try {
             $ceo = Staff::create($validatedRequest);
-            $ceo->setPosition('ceo');
 
+            $ceo->setPosition('ceo');
             $this->updateInitializeStatus(["defineCeo" => true,]);
+
             return response()->json(
                 ["message" => Lang::get('messages.ceodefinedsuccesfully'), 'redirect' => true],
                 200

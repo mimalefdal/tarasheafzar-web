@@ -31,7 +31,7 @@ class BranchController extends Controller
         $resourceItem = new BranchItem($newItem);
 
         // $message = \Lang::get('messages.recordـcreated', ['attribute' => \Lang::get('values.' . $type->title)]);
-        $message = \Lang::get('messages.recordـcreated', ['title' => $resourceItem->full_title]);
+        $message = \Lang::get('messages.recordـcreated', ['title' => $newItem->fullTitle()]);
         $data = ['message' => $message, 'branch' => $resourceItem];
         return response()->json($data, 200);
     }
@@ -65,25 +65,25 @@ class BranchController extends Controller
         //unity check passed
 
         //update record
-        $branch = Branch::find($item['id']);
-        if ($branch->slug != $request->slug) {
+        $item = Branch::find($item['id']);
+        if ($item->slug != $request->slug) {
             $flagRelated = true;
-            $oldSlug = $branch->slug;
+            $oldSlug = $item->slug;
         }
-        $branch->update($request->all());
+        $item->update($request->all());
 
         //update related records if needed
         if ($flagRelated) {
-            $relatedDepartments = $branch->departments;
+            $relatedDepartments = $item->departments;
             foreach ($relatedDepartments as $department) {
                 $department->slug = Str::replaceFirst($oldSlug, $request->slug, $department->slug);
                 $department->save();
             }
-            $relatedDepartments = $branch->departments;
+            $relatedDepartments = $item->departments;
         }
 
-        $resourceItem = new BranchItem($branch);
-        $message = \Lang::get('messages.recordـupdated', ['title' => $branch->fullTitle()]);
+        $resourceItem = new BranchItem($item);
+        $message = \Lang::get('messages.recordـupdated', ['title' => $item->fullTitle()]);
         $data = ['message' => $message, 'branch' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
     }
@@ -92,7 +92,7 @@ class BranchController extends Controller
     {
         $item = $request->item;
         $item = Branch::find($item['id']);
-        // $item->delete();
+        $item->delete();
 
         $resourceItem = new BranchItem($item);
         $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);

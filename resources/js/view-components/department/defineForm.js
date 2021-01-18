@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { t } from "../../utils";
+import {
+    findObject,
+    getMatchIndexOf,
+    getObjectFromArray,
+    t
+} from "../../utils";
 import { useState } from "react";
 import {
     AutoCompleteSelect,
@@ -19,10 +24,6 @@ export default function Form({ preset = "general", ...props }) {
     // props.item && console.log("DefineForm", props.item);
     // console.log("DefineForm", props);
 
-    function findValueObject(valueObject) {
-        return valueObject.value == props.item.branch.slug;
-    }
-
     const { register, handleSubmit, watch, errors, reset } = useForm();
     const [dropdowns, setDropdowns] = useState([]);
     const [ready, setReady] = useState(false);
@@ -39,21 +40,29 @@ export default function Form({ preset = "general", ...props }) {
                 // console.log("DefineForm Values", response.data);
                 setDropdowns(response.data);
                 if (preset == "edit") {
-                    if (props.item && props.item.branch.deleted == true) {
-                        console.log("deleted branch");
-                        setInitialAlert({
-                            show: true,
-                            type: "warning",
-                            message: "شاخه پاک شده است"
-                        });
-                    } else {
-                        const initialOption_ValueObject = response.data.branch.find(
-                            findValueObject
-                        );
-                        const initialOption_Index = response.data.branch.indexOf(
-                            initialOption_ValueObject
-                        );
-                        setInitialOptionIndex(initialOption_Index);
+                    if (props.item && props.item.branch) {
+                        //means Item has a branch
+                        if (props.item.branch.deleted == true) {
+                            // item branch was deleted
+                            // console.log("deleted branch");
+                            setInitialAlert({
+                                show: true,
+                                type: "warning",
+                                message: "شاخه پاک شده است"
+                            });
+                        } else {
+                            // set branch as selected
+                            const initialIndex = getMatchIndexOf(
+                                response.data.branch,
+                                "value",
+                                props.item.branch.slug
+                            );
+                            console.log(
+                                "defineForm->useEffect->initialIndex:",
+                                initialIndex
+                            );
+                            setInitialOptionIndex(initialIndex);
+                        }
                     }
                 }
                 setReady(true);

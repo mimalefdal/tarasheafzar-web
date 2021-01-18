@@ -31,7 +31,7 @@ class DepartmentItem extends JsonResource
         $department['type_en'] = $type;
 
         $department['full_title'] = $this->fullTitle();
-        // $department['full_title_en'] = $this->fullTitle('en');
+        $department['full_title_en'] = $this->fullTitle('en');
         $department['title_en'] = Bilang::getEnTitle($this->title);
         $department['title'] = Bilang::getLocalTitle($this->title, true);
 

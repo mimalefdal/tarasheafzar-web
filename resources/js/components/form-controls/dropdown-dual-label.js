@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DualLabelFormControl from "./dual-label-form-control";
 import { MenuItem, Select } from "@material-ui/core";
 
 const Control = ({ items = [], item, initialValue = null, ...props }, ref) => {
-    const [value, setValue] = useState(initialValue ? initialValue.value : "");
+    // console.log("DropDownDualLabel->initialValue:", initialValue);
+    const [value, setValue] = useState("");
+    const [selectedItem, setSelectedItem] = useState({});
+
+    useEffect(() => {
+        console.log(
+            "DropDownDualLabel->useEffect->initialValue:",
+            initialValue
+        );
+
+        if (initialValue != null) {
+            setSelectedItem(initialValue);
+            setValue(initialValue.value);
+        }
+    }, [initialValue]);
 
     const menuProps = {
         anchorOrigin: {
@@ -46,9 +60,9 @@ const Control = ({ items = [], item, initialValue = null, ...props }, ref) => {
                         );
                     })}
 
-                {props.readonly && (
-                    <MenuItem value={initialValue.value}>
-                        {initialValue.label}
+                {props.readonly && selectedItem != null && (
+                    <MenuItem value={selectedItem.value}>
+                        {selectedItem.label}
                     </MenuItem>
                 )}
             </Select>

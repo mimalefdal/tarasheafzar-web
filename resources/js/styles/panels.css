@@ -322,6 +322,8 @@
 }
 .MuiAlert-message {
     width: 100%;
+    text-align: start;
+    font-size: 0.8rem;
 }
 
 .alert-action {

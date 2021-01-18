@@ -24,7 +24,8 @@ class BranchItem extends JsonResource
         $branch['id'] = $this->id;
 
         $type = Value::where('field', 'branchtypes')->where('slug', $this->type)->first();
-        $branch['type_object'] = new DropdownItem($type);
+
+        $branch['type_slug'] = $this->type;
         $branch['type_en'] = $type->title;
         $branch['type'] = \Lang::get('values.' . $type->title);
 

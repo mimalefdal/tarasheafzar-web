@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { t } from "../../utils";
+import { getObjectFromArray, t } from "../../utils";
 import { useState } from "react";
 import {
     AutoCompleteSelect,
@@ -17,7 +17,10 @@ import {
 } from "../../services";
 
 export default function Form({ preset = "general", ...props }) {
-    // props.item && console.log("form", props);
+    // props.item && console.log("defineFormBranches->item:", props.item);
+
+    const [initialType, setInitialType] = useState();
+    const [initialAlert, setInitialAlert] = useState();
 
     let presets = {
         general: {
@@ -33,7 +36,8 @@ export default function Form({ preset = "general", ...props }) {
             inputProps: {
                 type: {
                     // readonly: true,
-                    initialValue: props.item.type_object
+                    // initialValue: props.item.type_object
+                    initialValue: initialType
                 },
                 title: {
                     initialValue: {
@@ -54,8 +58,19 @@ export default function Form({ preset = "general", ...props }) {
         GetValidValues(
             fields,
             response => {
-                console.log(response.data);
+                // console.log(
+                //     "defineFormBranches->useEffect->getValues->Response:",
+                //     response.data
+                // );
                 setDropdowns(response.data);
+                if (preset == "edit") {
+                    let _initialType = getObjectFromArray(
+                        response.data.branchtypes,
+                        "value",
+                        props.item.type_slug
+                    );
+                    setInitialType(_initialType);
+                }
                 setReady(true);
             },
             error => {
@@ -73,6 +88,7 @@ export default function Form({ preset = "general", ...props }) {
             ready={ready}
             reset={reset}
             item={props.item}
+            showAlert={initialAlert}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("type")) && (

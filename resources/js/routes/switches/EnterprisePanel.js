@@ -8,6 +8,7 @@ import { REQUIRED_RIGHT } from "../guards/types";
 import { RightsAdd, RightsManagement } from "../../views/rights";
 import { InitializeCeo, InitializeStart } from "../../views/initialize";
 import { EnterprisePanelView } from "../../views";
+import { Loading } from "../../components/feedback";
 
 function EnterprisePanel(props) {
     let match = useRouteMatch();

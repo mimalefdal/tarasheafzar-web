@@ -90,7 +90,7 @@ class DepartmentController extends Controller
     {
         $item = $request->item;
         $item = Department::find($item['id']);
-        // $item->delete();
+        $item->delete();
 
         $resourceItem = new DepartmentItem($item);
         $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
