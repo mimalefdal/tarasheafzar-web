@@ -4,13 +4,17 @@ import Spin from "../../../../public/image/loading-spin.svg";
 import Roll from "../../../../public/image/loading-roll.svg";
 import { ReactSVG } from "react-svg";
 
-function Control({ type = Roll, preset = "default", ...props }) {
+function Control({ type = Roll, preset = "default", size = null, ...props }) {
     let Loading = type;
     let height = false;
     let width = false;
     let fill = "none"; // set for Roll default
     let stroke = "#3490dc"; // set for Roll default
 
+    if (size) {
+        props.height = size;
+        props.width = size;
+    }
     // TODO : implement presets for loading
     const presets = {
         default: {},

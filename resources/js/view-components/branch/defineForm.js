@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { getObjectFromArray, t } from "../../utils";
 import { useState } from "react";
 import {
@@ -19,7 +18,6 @@ import {
 export default function Form({ preset = "general", ...props }) {
     // props.item && console.log("defineFormBranches->item:", props.item);
 
-    const { register, handleSubmit, watch, errors, reset } = useForm();
     const [dropdowns, setDropdowns] = useState([]);
     const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
@@ -86,9 +84,7 @@ export default function Form({ preset = "general", ...props }) {
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
-            handleSubmit={handleSubmit}
             ready={ready}
-            reset={reset}
             item={props.item}
             showAlert={initialAlert}
         >
@@ -96,9 +92,8 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("type")) && (
                 <DropDownSelect
                     name="type"
-                    ref={register({ required: true })}
                     label={t("labels.branchType")}
-                    errors={errors}
+                    validation={{ required: true }}
                     items={dropdowns.branchtypes}
                     {...presets[preset].inputProps["type"]}
                 />
@@ -108,8 +103,7 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("title")) && (
                 <BilingualTextInput
                     name="title"
-                    ref={register({ required: true })}
-                    errors={errors}
+                    validation={{ required: true }}
                     {...presets[preset].inputProps["title"]}
                 />
             )}

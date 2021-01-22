@@ -12,6 +12,17 @@ body {
     margin-left: inherit !important;
 }
 
+.MuiAutocomplete-endAdornment {
+    left: 0;
+    right: unset;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon
+    .MuiAutocomplete-inputRoot,
+.MuiAutocomplete-inputRoot[class*="MuiInput-root"] {
+    padding: 0.5rem !important;
+}
+
 @media (min-width: 768px) {
     .offset-md-4 {
         margin-right: 33.3333333333%;

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { getObjectFromArray, t } from "../../utils";
 import { useState } from "react";
 import {
@@ -13,7 +12,6 @@ import { AddStaff, GetValidValues, InitializeCEO } from "../../services";
 export default function Form({ preset = "general", ...props }) {
     // console.log("DefineFormStaff->preset:", preset);
 
-    const { register, handleSubmit, watch, errors, reset } = useForm();
     const [ready, setReady] = useState(false);
     const [dropdowns, setDropdowns] = useState([]);
     const [initialValues, setInitialValues] = useState({});
@@ -88,8 +86,6 @@ export default function Form({ preset = "general", ...props }) {
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
             ready={ready}
-            handleSubmit={handleSubmit}
-            reset={reset}
             showAlert={props.showAlert}
             // redirectDelay={2000}
             redirectTarget="/enterprise-management/initialize"
@@ -98,10 +94,9 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("position")) && (
                 <DropDownSelect
                     name="position"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.position")}
                     labelComment=""
-                    errors={errors}
                     items={dropdowns.position}
                     {...presets[preset].inputProps["position"]}
                 />
@@ -110,9 +105,8 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("gender")) && (
                 <DropDownSelect
                     name="gender"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.gender")}
-                    errors={errors}
                     items={dropdowns.gender}
                     {...presets[preset].inputProps["gender"]}
                 />
@@ -122,10 +116,9 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("firstname")) && (
                 <DualLabelTextInput
                     name="firstname"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.name")}
                     labelComment=""
-                    errors={errors}
                     {...presets[preset].inputProps["firstname"]}
                 />
             )}
@@ -133,10 +126,9 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("lastname")) && (
                 <DualLabelTextInput
                     name="lastname"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.lastname")}
                     labelComment=""
-                    errors={errors}
                     {...presets[preset].inputProps["lastname"]}
                 />
             )}
@@ -144,10 +136,9 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("national_id")) && (
                 <DualLabelTextInput
                     name="national_id"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.national_id")}
                     labelComment=""
-                    errors={errors}
                     {...presets[preset].inputProps["national_id"]}
                 />
             )}
@@ -155,10 +146,9 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("idcert_no")) && (
                 <DualLabelTextInput
                     name="idcert_no"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.idcert_no")}
                     labelComment=""
-                    errors={errors}
                     {...presets[preset].inputProps["idcert_no"]}
                 />
             )}
@@ -167,10 +157,9 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("username")) && (
                 <DualLabelTextInput
                     name="username"
-                    ref={register({ required: true })}
+                    validation={{ required: true }}
                     label={t("labels.username")}
                     labelComment=""
-                    errors={errors}
                     {...presets[preset].inputProps["username"]}
                 />
             )}
@@ -178,10 +167,8 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("email")) && (
                 <DualLabelTextInput
                     name="email"
-                    ref={register({})}
                     label={t("labels.email")}
                     labelComment={t("comments.none-company")}
-                    errors={errors}
                     {...presets[preset].inputProps["email"]}
                 />
             )}

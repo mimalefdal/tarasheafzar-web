@@ -1,10 +1,26 @@
 [
     {
-        "type": "branch",
-        "slug": "global-branch",
+        "type": "brand",
+        "slug": "ramadel-brand",
         "title": {
-            "fa": "اصلی",
-            "en": "Global"
+            "fa": "رامادل",
+            "en": "Ramadel"
+        }
+    },
+    {
+        "type": "brand",
+        "slug": "rashban-brand",
+        "title": {
+            "fa": "راشبان",
+            "en": "Rashban"
+        }
+    },
+    {
+        "type": "studio",
+        "slug": "devarch-studio",
+        "title": {
+            "fa": "دوارک",
+            "en": "Devarch"
         }
     }
 ]

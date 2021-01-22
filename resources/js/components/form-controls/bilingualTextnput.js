@@ -17,12 +17,6 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
 
     return (
         <div>
-            <input
-                type="hidden"
-                value={JSON.stringify(value)}
-                name={name}
-                ref={ref}
-            />
             {currentLang() == "fa" && (
                 <DualLabelTextInput
                     ref={ref}
@@ -52,6 +46,12 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                 onChange={event =>
                     setValue({ ...value, en: event.target.value })
                 }
+            />
+            <input
+                type="hidden"
+                value={JSON.stringify(value)}
+                name={name}
+                ref={ref}
             />
         </div>
     );

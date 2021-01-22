@@ -2,12 +2,16 @@ import React, { useContext, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
-import { ConfirmDialog, WaitingDialog } from "../../components/feedback";
+import {
+    ConfirmDialog,
+    DeleteDialog,
+    WaitingDialog
+} from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { CardList } from "../../components/lists";
 import { t } from "../../utils";
 import { DeleteDepartment, GetDepartmentsList } from "../../services";
-import { DeleteDialog, DepartmentCard } from "../../view-components";
+import { DepartmentCard } from "../../view-components";
 import { error } from "jquery";
 import {
     EXECUTION_DONE,
@@ -16,7 +20,7 @@ import {
     WAIT_FOR_EXECUTION
 } from "../../utils/constants";
 
-function ManageDepartments(props) {
+function manage(props) {
     let match = useRouteMatch();
     const history = useHistory();
     const [item, setItem] = useState(null);
@@ -100,4 +104,4 @@ function ManageDepartments(props) {
     );
 }
 
-export default ManageDepartments;
+export default manage;

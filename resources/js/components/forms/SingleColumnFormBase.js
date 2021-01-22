@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 
@@ -8,15 +8,14 @@ import { ApiClient } from "../../services";
 import StaffContext from "../../context/staffContext";
 import { useHistory } from "react-router-dom";
 
-FormBase.propTypes = {
-    submitUrl: PropTypes.string,
-    ready: PropTypes.bool,
-    handleSubmit: PropTypes.func,
-    showAlert: PropTypes.object
-};
+// FormBase.propTypes = {
+//     submitUrl: PropTypes.string,
+//     ready: PropTypes.bool,
+//     handleSubmit: PropTypes.func,
+//     showAlert: PropTypes.object
+// };
 
 function FormBase({
-    handleSubmit,
     dataService,
     redirectDelay = 5000,
     redirectTarget = "/home",
@@ -26,6 +25,12 @@ function FormBase({
 }) {
     // console.log("SingleColumnFormBase", props);
 
+    const token = useContext(StaffContext).token;
+    let history = useHistory();
+
+    const { register, handleSubmit, watch, errors, reset } = useForm();
+    const focusRefs = useRef([]);
+
     const [backendErrors, setBackendErrors] = useState(false);
     const [loading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
@@ -34,8 +39,7 @@ function FormBase({
         type: props.showAlert ? props.showAlert.type : "success",
         message: props.showAlert ? props.showAlert.message : ""
     });
-    const token = useContext(StaffContext).token;
-    let history = useHistory();
+    const [focusTarget, setFocusTarget] = useState(null);
 
     useEffect(() => {
         setShowAlert({
@@ -44,6 +48,20 @@ function FormBase({
             message: props.showAlert ? props.showAlert.message : ""
         });
     }, [props.showAlert]);
+
+    useEffect(() => {
+        // console.log("focusTarget Changed", focusTarget, focusRefs);
+        if (focusTarget != null) {
+            focusRefs.current[focusTarget].focus();
+        }
+    }, [focusTarget]);
+
+    useEffect(() => {
+        if (ready) {
+            // console.log("SingleFormBase focusRefs:", focusRefs);
+            setFocusTarget(0);
+        }
+    }, [ready]);
 
     const onSubmit = data => {
         console.log("submit", data);
@@ -90,11 +108,23 @@ function FormBase({
         // error.data.redirect && history.push(redirectTarget);
     }
 
+    focusRefs.current = [];
     const childrenWithProps = React.Children.map(props.children, child => {
+        // console.log(child);
         if (React.isValidElement(child)) {
             return React.cloneElement(child, {
                 backendErrors: backendErrors,
-                loading: loading
+                loading: loading,
+                errors: errors,
+                ref: element => {
+                    if (element) {
+                        // console.log(element.getAttribute("name").charAt(0));
+                        element.getAttribute("type") != "hidden" &&
+                            focusRefs.current.push(element);
+                        element.getAttribute("name").charAt(0) != "_" &&
+                            register(element, child.props.validation);
+                    }
+                }
             });
         }
         return child;

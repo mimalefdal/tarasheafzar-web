@@ -41,7 +41,7 @@ function show(props) {
         }
     }, []);
     return (
-        <div className="">
+        <>
             <PageHeaderBar className="view-header">
                 {ready ? (
                     <Title
@@ -98,7 +98,7 @@ function show(props) {
                 title="ویرایش"
                 formComponent={<DepartmentForm preset="edit" item={item} />}
             />
-        </div>
+        </>
     );
 
     function displayEditForm() {

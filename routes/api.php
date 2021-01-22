@@ -19,6 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('company', 'API\CompanyController@show');
+
 Route::post('branch/add', 'API\BranchController@create');
 Route::post('branch/update', 'API\BranchController@update');
 Route::post('branch/remove', 'API\BranchController@delete');
@@ -30,6 +32,12 @@ Route::post('department/update', 'API\DepartmentController@update');
 Route::post('department/remove', 'API\DepartmentController@delete');
 Route::get('departments', 'API\DepartmentController@index');
 Route::get('department', 'API\DepartmentController@show');
+
+Route::post('unit/add', 'API\UnitController@create');
+Route::post('unit/update', 'API\UnitController@update');
+Route::post('unit/remove', 'API\UnitController@delete');
+Route::get('units', 'API\UnitController@index');
+Route::get('unit', 'API\UnitController@show');
 
 Route::post('right/add', 'API\RightController@create');
 Route::get('rights', 'API\RightController@index');

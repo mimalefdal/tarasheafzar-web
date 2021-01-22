@@ -1,26 +1,26 @@
 {
     "gender": [
         {
-            "slug": "male",
+            "slug": "gender-male",
             "title": "Man"
         },
         {
-            "slug": "female",
+            "slug": "gender-female",
             "title": "Woman"
         },
         {
-            "slug": "othergenders",
+            "slug": "gender-othergenders",
             "title": "Other Genders"
         }
     ],
     "branchtypes": [
         {
-            "slug": "branch",
-            "title": "Branch"
+            "slug": "brand",
+            "title": "Brand"
         },
         {
-            "slug": "office",
-            "title": "Office"
+            "slug": "regional-office",
+            "title": "Regional Office"
         },
         {
             "slug": "store",
@@ -33,6 +33,20 @@
         {
             "slug": "studio",
             "title": "Studio"
+        }
+    ],
+    "holdertypes": [
+        {
+            "slug": "company",
+            "title": "Company"
+        },
+        {
+            "slug": "branch",
+            "title": "Branch"
+        },
+        {
+            "slug": "department",
+            "title": "Department"
         }
     ]
 }

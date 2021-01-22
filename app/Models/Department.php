@@ -12,7 +12,6 @@ use App\Traits\ChecksUniqueness;
 use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
-use stdClass;
 
 class Department extends Model
 {
@@ -60,6 +59,19 @@ class Department extends Model
         if (!$lang) $lang = Lang::getLocale();
         $type = 'Department';
 
-        return Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang));
+        $typedName = Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
+        if ($this->branch != null) {
+            $holderTitle = $this->branch->fullTitle($lang);
+        } else
+            $holderTitle = resolve('Company')->getShortName()[$lang];
+
+        return Bilang::grammertize($typedName, $holderTitle, $lang);
+    }
+
+    public function typedTitle(string $lang = null)
+    {
+        if (!$lang) $lang = Lang::getLocale();
+        $type = 'Department';
+        return Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
     }
 }

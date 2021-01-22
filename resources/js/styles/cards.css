@@ -19,9 +19,10 @@
     justify-content: space-between;
 }
 
-.card-title-action-box {
+.card-title-box {
     flex: 0.5;
 }
+
 .card-title {
     text-align: start;
     font-weight: bold;
@@ -30,7 +31,10 @@
     color: var(--showtitlebkg);
     margin-bottom: 3rem;
 }
-.card-title-box {
+
+.card-info-box {
+    height: 100%;
+    background-color: #eee;
 }
 
 .card-btn-set {

@@ -8,6 +8,8 @@ use App\Models\Position;
 use App\Models\Value;
 use App\Http\Resources\DropdownItem;
 use App\Models\Branch;
+use App\Models\Department;
+use Lang;
 
 class ValuelistController extends Controller
 {
@@ -23,6 +25,7 @@ class ValuelistController extends Controller
 
     private function getItems($field)
     {
+        $lang = Lang::getLocale();
         switch ($field) {
             case 'position':
                 return DropdownItem::collection(Position::all());
@@ -32,8 +35,12 @@ class ValuelistController extends Controller
                 return DropdownItem::collection(Branch::all());
                 break;
 
+            case 'department':
+                return DropdownItem::collection(Department::orderBy('title', 'asc')->get());
+                break;
+
             default:
-                return DropdownItem::collection(Value::where('field', $field)->get());
+                return DropdownItem::collection(Value::where('field', 'LIKE', $field)->get());
                 break;
         }
     }

@@ -60,6 +60,11 @@
     transition: all 0.5s;
 }
 
+.embeded-loading {
+    /* fill: orange; */
+    color: coral;
+}
+
 .dual-label-dropdown {
     color: inherit !important;
     font-size: inherit !important;
@@ -85,4 +90,19 @@
 
 .MuiAutocomplete-option {
     font-size: 12px;
+}
+
+.MuiAlert-root,
+.MuiTypography-body1 {
+    font-family: inherit !important;
+}
+
+.MuiTypography-body1 {
+    text-align: right;
+}
+
+.MuiAlert-message {
+    width: 100%;
+    text-align: start;
+    font-size: 0.8rem;
 }

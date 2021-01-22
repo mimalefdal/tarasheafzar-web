@@ -328,21 +328,6 @@
     border-radius: 0.2rem;
 }
 
-.MuiAlert-root,
-.MuiTypography-body1 {
-    font-family: inherit !important;
-}
-
-.MuiTypography-body1 {
-    text-align: right;
-}
-
-.MuiAlert-message {
-    width: 100%;
-    text-align: start;
-    font-size: 0.8rem;
-}
-
 .alert-action {
     width: 20px !important;
     height: 20px !important;

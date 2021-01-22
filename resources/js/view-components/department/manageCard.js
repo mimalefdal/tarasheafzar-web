@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BasicCard } from "../../components/cards";
+import AppContext from "../../context/appContext";
 
 function Card({ item, entryActions, ...props }) {
     // console.log("DepartmentCard", item);
-    let localTitleCompliment = item.branch
-        ? item.branch.type + " " + item.branch.title
-        : "شرکت";
+    const locale = useContext(AppContext).locale;
 
-    let globalTitleCompliment = item.branch
-        ? "Of " + item.branch.title_en + " " + item.branch.type_en + " "
-        : "Of Company";
+    let localTitleCompliment = "TODO";
+    if (item.holder) {
+        localTitleCompliment = item.holder.full_title
+            ? item.holder.full_title
+            : item.holder.title[locale];
+    }
 
+    let globalTitleCompliment = item.holder;
+    if (item.holder) {
+        globalTitleCompliment = item.holder.full_title_en
+            ? item.holder.full_title_en
+            : item.holder.title["en"];
+    }
     return (
         <BasicCard
             item={item}
             entryActions={entryActions}
+            title_field_local="short_title"
+            title_field_global="short_title_en"
             title_complements_local={localTitleCompliment}
             title_complements_global={globalTitleCompliment}
         >
-            <div
-                style={{
-                    height: "100%",
-                    background: "lightcoral",
-                    color: "white",
-                    opacity: 0.3
-                }}
-            ></div>
+            <div className="card-info-box"></div>
         </BasicCard>
     );
 }

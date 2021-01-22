@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
-import { BranchCard, DeleteDialog } from "../../view-components";
+import { BranchCard } from "../../view-components";
 import { ListTitle } from "../../components/list-controls";
 import { BranchsList, CardList } from "../../components/lists";
 import StaffContext from "../../context/staffContext";
 import { DeleteBranch, GetBranchsList } from "../../services";
 import { t } from "../../utils";
+import { DeleteDialog } from "../../components/feedback";
 
 function manageBranchs(props) {
     let match = useRouteMatch();

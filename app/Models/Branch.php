@@ -42,6 +42,6 @@ class Branch extends Model
         if (!$lang) $lang = Lang::getLocale();
         $type = Value::where('field', 'branchtypes')->where('slug', $this->type)->first();
 
-        return Bilang::grammertize(Value::getLocalValue($type->title, $lang), Bilang::getLocalTitle($this->title, false, $lang));
+        return Bilang::grammertize(Value::getLocalValue($type->title, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
     }
 }

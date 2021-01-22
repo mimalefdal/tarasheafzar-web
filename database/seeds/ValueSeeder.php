@@ -12,19 +12,22 @@ class ValueSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path().'/public/data/basicValues.json';
+        $path = base_path() . '/public/data/basicValues.json';
         $basicValues = file_get_contents($path);
         $basicValues = json_decode($basicValues, true);
-        foreach($basicValues as $field=>$values )
-        {
-        foreach($values as $value)
-        {
-            $newValue = new Value([
-                "field"=>$field,
-                "slug"=>$value['slug'],
-                "title"=>$value['title'],
-            ]);
-            $newValue->save();
+        foreach ($basicValues as $field => $values) {
+            foreach ($values as $value) {
+                try {
+                    $newValue = new Value([
+                        "field" => $field,
+                        "slug" => $value['slug'],
+                        "title" => $value['title'],
+                    ]);
+                } catch (\Throwable $th) {
+                    dump('ERROR');
+                }
+
+                $newValue->save();
             }
         }
     }

@@ -35,7 +35,9 @@
         "type": "نوع",
         "branchType": "نوع شاخه",
         "branch": "شاخه",
-        "stages": "مراحل"
+        "stages": "مراحل",
+        "holderType": "نوع دارنده",
+        "holder": "دارنده"
     },
     "comments": {
         "none-company": "غیرسازمانی"
@@ -82,7 +84,8 @@
     "forms": {
         "registerCEO": "ثبت اکانت مدیرعامل",
         "defineBranch": "درج شاخه جدید",
-        "defineDepartment": "درج دپارتمان جدید"
+        "defineDepartment": "درج دپارتمان جدید",
+        "defineUnit": "درج واحد جدید"
     },
     "alerts": {
         "success": "موفقیت",

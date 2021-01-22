@@ -20,7 +20,7 @@ import {
     ShowDepartment
 } from "../../views/departments";
 import { CompanyInformation, CompanyStructure } from "../../views/company";
-import { ManageUnits } from "../../views/units";
+import { DefineUnit, EditUnit, ManageUnits, ShowUnit } from "../../views/units";
 import { ManagePositions } from "../../views/positions";
 
 export default function CompanyPanel() {
@@ -103,6 +103,35 @@ export default function CompanyPanel() {
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}
             />
+
+            <GuardedRoute
+                exact
+                path={`${match.path}/units/define`}
+                component={DefineUnit}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+
+            <GuardedRoute
+                exact
+                path={`${match.path}/units/:slug`}
+                component={ShowUnit}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/units/edit/:slug/`}
+                component={EditUnit}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+
+            {/* Positions */}
+
             <GuardedRoute
                 exact
                 path={`${match.path}/positions`}

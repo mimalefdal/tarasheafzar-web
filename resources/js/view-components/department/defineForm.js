@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import {
     findObject,
     getMatchIndexOf,
@@ -9,8 +8,7 @@ import {
 import { useState } from "react";
 import {
     AutoCompleteSelect,
-    BilingualTextInput,
-    DropDownSelect
+    BilingualTextInput
 } from "../../components/form-controls";
 import "../../styles/forms.css";
 import { SingleColumnFormBase } from "../../components/forms";
@@ -24,7 +22,6 @@ export default function Form({ preset = "general", ...props }) {
     // props.item && console.log("DefineForm", props.item);
     // console.log("DefineForm", props);
 
-    const { register, handleSubmit, watch, errors, reset } = useForm();
     const [dropdowns, setDropdowns] = useState([]);
     const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
@@ -103,9 +100,7 @@ export default function Form({ preset = "general", ...props }) {
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
-            handleSubmit={handleSubmit}
             ready={ready}
-            reset={reset}
             item={props.item}
             showAlert={initialAlert}
         >
@@ -113,9 +108,7 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("branch")) && (
                 <AutoCompleteSelect
                     name="branch"
-                    ref={register({})}
                     label={t("labels.branch")}
-                    errors={errors}
                     options={dropdowns.branch}
                     {...presets[preset].inputProps["branch"]}
                 />
@@ -125,8 +118,7 @@ export default function Form({ preset = "general", ...props }) {
                 presets[preset].fields.includes("title")) && (
                 <BilingualTextInput
                     name="title"
-                    ref={register({ required: true })}
-                    errors={errors}
+                    validation={{ required: true }}
                     {...presets[preset].inputProps["title"]}
                 />
             )}

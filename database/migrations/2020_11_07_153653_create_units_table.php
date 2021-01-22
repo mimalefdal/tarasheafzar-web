@@ -18,9 +18,10 @@ class CreateUnitsTable extends Migration
 
             $table->json('title');
             $table->string('slug')->unique();
-            $table->string('department_id')->nullable();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null');
 
+            $table->nullableMorphs('hasunit');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

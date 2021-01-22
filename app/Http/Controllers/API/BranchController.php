@@ -30,7 +30,6 @@ class BranchController extends Controller
         $newItem->save();
         $resourceItem = new BranchItem($newItem);
 
-        // $message = \Lang::get('messages.recordـcreated', ['attribute' => \Lang::get('values.' . $type->title)]);
         $message = \Lang::get('messages.recordـcreated', ['title' => $newItem->fullTitle()]);
         $data = ['message' => $message, 'branch' => $resourceItem];
         return response()->json($data, 200);
@@ -74,6 +73,7 @@ class BranchController extends Controller
 
         //update related records if needed
         if ($flagRelated) {
+            // TODO: this must been handled by an event
             $relatedDepartments = $item->departments;
             foreach ($relatedDepartments as $department) {
                 $department->slug = Str::replaceFirst($oldSlug, $request->slug, $department->slug);

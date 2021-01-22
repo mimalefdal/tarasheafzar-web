@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    protected $name;
-
-    public function __constructor($name)
+    public function show()
     {
-        $this->name = $name;
-    }
-
-    public function info()
-    {
-        return $this->name;
+        return resolve('Company')->getInfo();
     }
 }

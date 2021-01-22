@@ -4,7 +4,7 @@ import { FormTitle } from "../../components/form-controls";
 import { t } from "../../utils";
 import { DepartmentForm } from "../../view-components";
 
-function defineDepartment(props) {
+function define(props) {
     return (
         <div className="">
             <PageHeaderBar className="form-header">
@@ -17,4 +17,4 @@ function defineDepartment(props) {
     );
 }
 
-export default defineDepartment;
+export default define;

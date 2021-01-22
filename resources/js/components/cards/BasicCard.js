@@ -14,6 +14,8 @@ function CardBase({
     title_complements_global = null,
     title_tail_local = null,
     title_tail_global = null,
+    title_field_local = "full_title",
+    title_field_global = "full_title_en",
     ...props
 }) {
     // console.log("from branch card", item);
@@ -21,12 +23,12 @@ function CardBase({
     const lang = useContext(AppContext).locale;
 
     return (
-        <div className="card-container flex row">
-            <div className="card-title-action-box flex column">
+        <div className="card-container flex row ">
+            <div className="card-title-box flex column">
                 <div className="card-title">
-                    <div className="card-title-box">
-                        {item.full_title
-                            ? item.full_title
+                    <div className="card-name-box">
+                        {item[title_field_local]
+                            ? item[title_field_local]
                             : item.type + " " + item.title}
                         {title_tail_local && (
                             <span className="basic-card-title-tail">
@@ -41,12 +43,12 @@ function CardBase({
                     </div>
                     {lang != "en" && (
                         <div
-                            className="card-title-box global"
+                            className="card-name-box global"
                             style={{ fontSize: "12px" }}
                         >
-                            {item.full_title_en
-                                ? item.full_title_en
-                                : item.type_en + " " + item.title_en}
+                            {item[title_field_global]
+                                ? item[title_field_global]
+                                : item.title_en + " " + item.type_en}
                             {title_tail_global && (
                                 <span className="basic-card-title-tail">
                                     {title_tail_global}

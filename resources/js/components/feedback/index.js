@@ -7,3 +7,4 @@ export { default as FormDialog } from "./form-dialog";
 export { default as ConfirmDialog } from "./confirm-dialog";
 export { default as Loading } from "./loading";
 export { default as WaitingDialog } from "./waiting-for-execution";
+export { default as DeleteDialog } from "./deleteDialog";

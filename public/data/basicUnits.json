@@ -5,23 +5,44 @@
             "fa": "منابع انسانی",
             "en": "Human Resources"
         },
-        "department": "global-branch-administrative-dep"
+        "holderType": "company",
+        "holder": null
     },
     {
-        "slug": "it-unit",
+        "slug": "legal-unit",
+        "title": {
+            "fa": "حقوقی",
+            "en": "Legal"
+        },
+        "holderType": null,
+        "holder": null
+    },
+    {
+        "slug": "ramadel-brand-it-unit",
         "title": {
             "fa": "فناوری اطلاعات",
             "en": "IT"
         },
-        "department": "global-branch-administrative-dep"
+        "holderType": "branch",
+        "holder": "ramadel-brand"
     },
     {
-        "slug": "software-unit",
+        "slug": "devarch-studio-software-unit",
         "title": {
             "fa": "تولید نرم‌افزار",
             "en": "Software Production"
         },
-        "department": "global-branch-technical-dep"
+        "holderType": "branch",
+        "holder": "devarch-studio"
+    },
+    {
+        "slug": "administrative-dep-accounting-unit",
+        "title": {
+            "fa": "حسابداری",
+            "en": "Accounting"
+        },
+        "holderType": "department",
+        "holder": "administrative-dep"
     },
     {
         "slug": "accounting-unit",
@@ -29,6 +50,7 @@
             "fa": "حسابداری",
             "en": "Accounting"
         },
-        "department": null
+        "holderType": "company",
+        "holder": null
     }
 ]

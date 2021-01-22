@@ -1,26 +1,42 @@
 [
     {
-        "slug": "global-branch-administrative-dep",
+        "slug": "administrative-dep",
         "title": {
             "fa": "اداری",
             "en": "Administrative"
         },
-        "branch": "global-branch"
+        "branch": null
     },
     {
-        "slug": "global-branch-technical-dep",
+        "slug": "rashban-branch-administrative-dep",
+        "title": {
+            "fa": "اداری",
+            "en": "Administrative"
+        },
+        "branch": "rashban-brand"
+    },
+    {
+        "slug": "ramadel-brand-technical-dep",
         "title": {
             "fa": "فنی",
             "en": "Technical"
         },
-        "branch": "global-branch"
+        "branch": "ramadel-brand"
     },
     {
-        "slug": "business-dep",
+        "slug": "ramadel-brand-business-dep",
         "title": {
             "fa": "تجاری",
             "en": "Business"
         },
-        "branch": null
+        "branch": "ramadel-brand"
+    },
+    {
+        "slug": "rashban-brand-technical-dep",
+        "title": {
+            "fa": "فنی",
+            "en": "Technical"
+        },
+        "branch": "rashban-brand"
     }
 ]
