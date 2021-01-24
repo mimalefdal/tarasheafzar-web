@@ -18,17 +18,34 @@ import {
     UpdateDepartment
 } from "../../services";
 
-export default function Form({ preset = "general", ...props }) {
-    // props.item && console.log("DefineForm", props.item);
+export default function Form({ preset = "add", ...props }) {
+    props.item && console.log("DefineForm", props.item);
     // console.log("DefineForm", props);
 
-    const [dropdowns, setDropdowns] = useState([]);
-    const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
-    const [initialValues, setInitialValues] = useState({});
+
+    useEffect(() => {
+        if (preset == "edit") {
+            if (props.item && props.item.holder_id) {
+                //means Item has a branch
+                if (props.item.holder.deleted) {
+                    // item branch was deleted
+                    console.log("deleted branch");
+                    setInitialAlert({
+                        show: true,
+                        type: "warning",
+                        message: props.item.deleted_holder_warning
+                    });
+                }
+            }
+        }
+    }, []);
 
     let presets = {
         general: {
+            inputProps: {}
+        },
+        add: {
             dataService: AddDepartment,
             submitValue: t("labels.submit-add"),
             fields: ["all"],
@@ -41,7 +58,10 @@ export default function Form({ preset = "general", ...props }) {
             inputProps: {
                 branch: {
                     // readonly: true,
-                    initialOptionIndex: initialValues.branchIndex
+                    initialValue:
+                        props.item.holder_id && !props.item.holder.deleted
+                            ? props.item.holder.slug
+                            : null
                 },
                 title: {
                     initialValue: {
@@ -53,63 +73,21 @@ export default function Form({ preset = "general", ...props }) {
         }
     };
 
-    useEffect(() => {
-        // props.item && console.log("DefineForm", props.item);
-
-        const fields = ["branch"];
-        GetValidValues(
-            fields,
-            response => {
-                // console.log("DefineForm Values", response.data);
-                setDropdowns(response.data);
-                if (preset == "edit") {
-                    if (props.item && props.item.branch) {
-                        //means Item has a branch
-                        if (props.item.branch.deleted == true) {
-                            // item branch was deleted
-                            // console.log("deleted branch");
-                            setInitialAlert({
-                                show: true,
-                                type: "warning",
-                                message: "شاخه پاک شده است"
-                            });
-                        } else {
-                            // set branch as selected
-                            let _initialIndex = getMatchIndexOf(
-                                response.data.branch,
-                                "value",
-                                props.item.branch.slug
-                            );
-                            setInitialValues({
-                                ...initialValues,
-                                branchIndex: _initialIndex
-                            });
-                        }
-                    }
-                }
-                setReady(true);
-            },
-            error => {
-                console.error("DepartmentForm ERROR", error);
-                setReady(true);
-            }
-        );
-    }, []);
-
     return (
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
-            ready={ready}
             item={props.item}
             showAlert={initialAlert}
+            listedFields={["branch"]}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("branch")) && (
                 <AutoCompleteSelect
                     name="branch"
                     label={t("labels.branch")}
-                    options={dropdowns.branch}
+                    options="branch"
+                    {...presets["general"].inputProps["branch"]}
                     {...presets[preset].inputProps["branch"]}
                 />
             )}
@@ -119,6 +97,7 @@ export default function Form({ preset = "general", ...props }) {
                 <BilingualTextInput
                     name="title"
                     validation={{ required: true }}
+                    {...presets["general"].inputProps["title"]}
                     {...presets[preset].inputProps["title"]}
                 />
             )}

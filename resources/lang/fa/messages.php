@@ -20,6 +20,8 @@ return [
     'newrecordـcreated' => ':attribute جدید ثبت شد.',
     'recordـcreated' => ':title ثبت شد.',
     'recordـupdated' => 'ویرایش :title با موفقیت انجام شد.',
-    'recordـdeleted' => ':title با موفقیت پاک شد.'
+    'recordـdeleted' => ':title با موفقیت پاک شد.',
+    'deleted_warning' => 'این :blocktype پاک شده است.',
+    'deleted_holder_warning' => ':holdertype این :blocktype (:deleted) پاک شده است.'
 
 ];

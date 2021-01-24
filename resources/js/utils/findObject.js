@@ -4,5 +4,6 @@ export const findObjectInsideArray = (array, attr, targetValue) => {
 };
 
 export const getIndexOfMatchInsideArray = (array, attr, targetValue) => {
+    // console.log("getIndexOfMatchInsideArray", array, attr, targetValue);
     return array.indexOf(findObjectInsideArray(array, attr, targetValue));
 };

@@ -20,16 +20,21 @@ const Control = (
 ) => {
     // console.log("AutoCompleteDualLabel", loadingData);
     // console.log("AutoCompleteDualLabel", options);
-    // console.log("AutoCompleteDualLabel", initialOptionIndex);
-    // console.log("AutoCompleteDualLabel", options[initialOptionIndex]);
+    // console.log("AutoCompleteDualLabel initialOptionIndex", initialOptionIndex);
+    // console.log(
+    //     "AutoCompleteDualLabel initialOption",
+    //     options[initialOptionIndex]
+    // );
     // console.log("AutoCompleteDualLabel", props);
     // console.log("AutoCompleteDualLabel validation:", validation);
     // console.log("AutoCompleteDualLabel register:", register);
     // console.log("AutoCompleteDualLabel ref:", ref);
+    // console.log(
+    //     "AutoCompleteDualLabel (props.initialOptionCheck)",
+    //     props.initialOptionCheck
+    // );
 
-    const [value, setValue] = useState(
-        initialOptionIndex != null ? options[initialOptionIndex] : null
-    );
+    const [value, setValue] = useState(null);
     const [inputValue, setInputValue] = useState("");
     const [loading, setLoading] = useState(loadingData);
 
@@ -41,6 +46,10 @@ const Control = (
     useEffect(() => {
         if (props.disabled & isDependent) setValue(null);
     }, [props.disabled]);
+
+    useEffect(() => {
+        initialOptionIndex != null && setValue(options[initialOptionIndex]);
+    }, [initialOptionIndex]);
 
     return (
         <DualLabelFormControl {...props}>
@@ -79,11 +88,12 @@ const Control = (
                     // console.log("newValue", event);
                     setValue(newValue);
                     props.onChange &&
-                        props.onChange(
-                            props.dependentOptions,
-                            newValue,
-                            props.dependentFieldName
-                        );
+                        props.onChange({
+                            event: event,
+                            target: props.dependentOptions,
+                            value: newValue,
+                            focus: props.dependentFieldName
+                        });
                     // props.changeFocus();
                 }}
                 inputValue={inputValue}

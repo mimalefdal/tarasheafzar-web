@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import DualLabelFormControl from "./dual-label-form-control";
 import { MenuItem, Select } from "@material-ui/core";
 
-const Control = ({ items = [], item, initialValue = null, ...props }, ref) => {
+const Control = (
+    { options = [], item, initialValue = null, ...props },
+    ref
+) => {
     // console.log("DropDownDualLabel->initialValue:", initialValue);
+    // console.log("DropDownDualLabel->options:", options);
+
     const [value, setValue] = useState("");
     const [selectedItem, setSelectedItem] = useState({});
 
@@ -53,7 +58,7 @@ const Control = ({ items = [], item, initialValue = null, ...props }, ref) => {
             >
                 {/* {!props.readonly && <MenuItem value="">Delete</MenuItem>} */}
                 {!props.readonly &&
-                    items.map((item, key) => {
+                    options.map((item, key) => {
                         return (
                             <MenuItem key={key} value={item.value}>
                                 {item.label}

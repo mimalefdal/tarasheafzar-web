@@ -8,6 +8,7 @@ use App\Models\Value;
 use Bilang;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Lang;
 
 class DepartmentItem extends JsonResource
 {
@@ -38,12 +39,17 @@ class DepartmentItem extends JsonResource
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 
         $item['deleted'] = $this->trashed();
+        if ($item['deleted'])
+            $item['deleted_warning'] = Lang::get('messages.deleted_warning', ['blocktype' => Lang::get('values.Department')]);
         $item['slug'] = $this->slug;
 
         //transform may-related branch info
-        if ($this->branch_id != null)
-            $item['holder'] = new BranchItem(Branch::withTrashed()->find($this->branch_id));
-        else
+        if ($this->branch_id != null) {
+            $branch = Branch::withTrashed()->find($this->branch_id);
+            $item['holder'] = BranchItem::make($branch);
+            if ($branch->trashed())
+                $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['deleted' => $branch->fullTitle(), 'blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.Branch')]);
+        } else
             $item['holder'] = ['title' => resolve('Company')->getShortName()];
         return $item;
     }

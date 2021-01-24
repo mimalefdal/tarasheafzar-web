@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 
 import { FormAlert, LineProgress, Loading, RedirectBar } from "../feedback";
-import { getNextFocusIndex, t } from "../../utils";
+import { getNextFocusIndex, getObjectFromArray, t } from "../../utils";
 import { ApiClient, GetValidValues } from "../../services";
 import StaffContext from "../../context/staffContext";
 import { useHistory } from "react-router-dom";
@@ -25,7 +25,6 @@ function FormBase({
     ...props
 }) {
     // console.log("SingleColumnFormBase", props);
-    // console.log("SingleColumnFormBase", listedFields);
 
     const token = useContext(StaffContext).token;
     let history = useHistory();
@@ -52,32 +51,35 @@ function FormBase({
     });
     const [focusTarget, setFocusTarget] = useState(null);
     const [focusIndex, setFocusIndex] = useState(null);
-    const [validValues, setValidValues] = useState([]);
+    const [validValues, setValidValues] = useState(false);
     const [loadDependentData, setLoadDependentData] = useState(null);
     const [loadingData, setLoadingData] = useState(false);
 
     useEffect(() => {
-        // console.log("SingleColumnFormBase listedFields:", listedFields);
+        // console.log("SingleColumnFormBase (listedFields)", listedFields);
+        // props.item &&
+        //     console.log("SingleColumnFormBase (props.item)", props.item);
 
         const fields = listedFields;
         GetValidValues(
             fields,
             response => {
-                // console.log("DefineForm Values", response.data);
+                // console.log("SingleColumnFormBase GetValidValues ResponseData", response.data);
                 setValidValues(response.data);
-                // if (preset == "edit") {
-                // }
                 setReady(true);
             },
             error => {
-                console.error("SingleColumnFormBase []Effect ERROR", error);
+                console.error(
+                    "SingleColumnFormBase GetValidValues ResponseERROR",
+                    error
+                );
                 setReady(true);
             }
         );
     }, []);
 
     useEffect(() => {
-        if (ready) {
+        if (ready & !props.item) {
             // console.log("SingleFormBase [ready]:", focusRefs);
             setFocusTarget(0);
         }
@@ -231,15 +233,23 @@ function FormBase({
                 options: child.props.options
                     ? validValues[child.props.options]
                     : null,
-                onChange: child.props.dependentOptions
-                    ? (target, value, focus = null) =>
-                          setLoadDependentData({
-                              target: target,
-                              value: value,
-                              focus: focus
-                          })
-                    : () => focusNext(),
-                onFocus: e => setFocusIndex(e.target.name),
+                initialOptionIndex:
+                    props.item &&
+                    validValues[child.props.options] &&
+                    child.props.initialValue &&
+                    getIndexOfMatchInsideArray(
+                        validValues[child.props.options],
+                        "value",
+                        child.props.initialValue
+                    ),
+                onChange: data => {
+                    child.props.dependentOptions
+                        ? setLoadDependentData(data)
+                        : data.event.target.value != undefined && focusNext();
+                },
+                onFocus: e => {
+                    setFocusIndex(e.target.name);
+                },
                 loadingData:
                     child.props.isDependent == true
                         ? loadingData == child.props.options

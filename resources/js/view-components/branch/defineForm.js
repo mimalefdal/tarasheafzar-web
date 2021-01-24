@@ -15,16 +15,15 @@ import {
     UpdateBranch
 } from "../../services";
 
-export default function Form({ preset = "general", ...props }) {
+export default function Form({ preset = "add", ...props }) {
     // props.item && console.log("defineFormBranches->item:", props.item);
-
-    const [dropdowns, setDropdowns] = useState([]);
-    const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
-    const [initialValues, setInitialValues] = useState({});
 
     let presets = {
         general: {
+            inputProps: {}
+        },
+        add: {
             dataService: AddBranch,
             submitValue: t("labels.submit-add"),
             fields: ["all"],
@@ -37,8 +36,7 @@ export default function Form({ preset = "general", ...props }) {
             inputProps: {
                 type: {
                     // readonly: true,
-                    // initialValue: props.item.type_object
-                    initialValue: initialValues.type
+                    initialValue: props.item.type_slug
                 },
                 title: {
                     initialValue: {
@@ -50,51 +48,22 @@ export default function Form({ preset = "general", ...props }) {
         }
     };
 
-    useEffect(() => {
-        const fields = ["branchtypes"];
-        GetValidValues(
-            fields,
-            response => {
-                // console.log(
-                //     "defineFormBranches->useEffect->getValues->Response:",
-                //     response.data
-                // );
-                setDropdowns(response.data);
-                if (preset == "edit") {
-                    let _initialType = getObjectFromArray(
-                        response.data.branchtypes,
-                        "value",
-                        props.item.type_slug
-                    );
-                    setInitialValues({ ...initialValues, type: _initialType });
-                }
-                setReady(true);
-            },
-            error => {
-                console.error(
-                    "defineFormBranches->useEffect->getValues->ERROR:",
-                    error
-                );
-                setReady(true);
-            }
-        );
-    }, []);
-
     return (
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
-            ready={ready}
             item={props.item}
             showAlert={initialAlert}
+            listedFields={["branchtypes"]}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("type")) && (
-                <DropDownSelect
+                <AutoCompleteSelect
                     name="type"
                     label={t("labels.branchType")}
                     validation={{ required: true }}
-                    items={dropdowns.branchtypes}
+                    options="branchtypes"
+                    {...presets["general"].inputProps["type"]}
                     {...presets[preset].inputProps["type"]}
                 />
             )}
@@ -104,6 +73,7 @@ export default function Form({ preset = "general", ...props }) {
                 <BilingualTextInput
                     name="title"
                     validation={{ required: true }}
+                    {...presets["general"].inputProps["title"]}
                     {...presets[preset].inputProps["title"]}
                 />
             )}

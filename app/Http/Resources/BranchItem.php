@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\Value;
 use Bilang;
+use Illuminate\Support\Facades\Lang;
 
 class BranchItem extends JsonResource
 {
@@ -17,26 +18,28 @@ class BranchItem extends JsonResource
     public function toArray($request)
     {
 
-        // $branch = parent::toArray($request);
+        // $item = parent::toArray($request);
 
-        $branch = [];
+        $item = [];
 
-        $branch['id'] = $this->id;
+        $item['id'] = $this->id;
 
         $type = Value::where('field', 'branchtypes')->where('slug', $this->type)->first();
 
-        $branch['type_slug'] = $this->type;
-        $branch['type_en'] = $type->title;
-        $branch['type'] = \Lang::get('values.' . $type->title);
+        $item['type_slug'] = $this->type;
+        $item['type_en'] = $type->title;
+        $item['type'] = \Lang::get('values.' . $type->title);
 
-        $branch['full_title'] = $this->fullTitle();
-        $branch['full_title_en'] = $this->fullTitle('en');
-        $branch['title_en'] = Bilang::getEnTitle($this->title);
-        $branch['title'] = Bilang::getLocalTitle($this->title, true);
+        $item['full_title'] = $this->fullTitle();
+        $item['full_title_en'] = $this->fullTitle('en');
+        $item['title_en'] = Bilang::getEnTitle($this->title);
+        $item['title'] = Bilang::getLocalTitle($this->title, true);
 
-        $branch['deleted'] = $this->trashed();
-        $branch['slug'] = $this->slug;
+        $item['deleted'] = $this->trashed();
+        if ($item['deleted'])
+            $item['deleted_warning'] = Lang::get('messages.deleted_warning', ['blocktype' => Lang::get('values.Branch')]);
+        $item['slug'] = $this->slug;
 
-        return $branch;
+        return $item;
     }
 }
