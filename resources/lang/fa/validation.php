@@ -87,7 +87,7 @@ return [
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => ':attribute دست کم :min کاراکتر باشد.',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
@@ -161,7 +161,9 @@ return [
         'national_id' => "کدملی",
         'idcert_no' => "شماره‌شناسنامه",
         'email' => "ایمیل",
-        'title' => "عنوان"
+        'title' => "عنوان",
+        'title_fa' => "عنوان فارسی",
+        'title_en' => "عنوان انگلیسی",
 
     ],
 

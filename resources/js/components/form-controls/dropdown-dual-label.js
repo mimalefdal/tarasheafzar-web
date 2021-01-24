@@ -44,6 +44,7 @@ const Control = ({ items = [], item, initialValue = null, ...props }, ref) => {
                 }}
                 inputProps={props.readonly && { readOnly: true }}
                 value={value}
+                onFocus={props.onFocus && props.onFocus}
                 onChange={event => {
                     setValue(event.target.value);
                 }}

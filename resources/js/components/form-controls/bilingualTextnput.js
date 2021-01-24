@@ -6,7 +6,7 @@ import { LocalGasStation } from "@material-ui/icons";
 
 function Input({ name, errors, backendErrors, loading, ...props }, ref) {
     const [value, setValue] = useState({ local: "", en: "" });
-    // console.log(props);
+    // console.log("biLingualTextInput Props", props);
 
     useEffect(() => {
         if (props.initialValue) {
@@ -19,6 +19,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
         <div>
             {currentLang() == "fa" && (
                 <DualLabelTextInput
+                    {...props}
                     ref={ref}
                     name={name + "_fa"}
                     label={t("labels.title")}
@@ -34,6 +35,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
             )}
 
             <DualLabelTextInput
+                {...props}
                 ref={ref}
                 name={name + "_en"}
                 lang="en"

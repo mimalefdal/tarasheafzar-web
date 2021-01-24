@@ -14,35 +14,22 @@ import "../../styles/forms.css";
 import { SingleColumnFormBase } from "../../components/forms";
 import { AddUnit, GetValidValues, UpdateUnit } from "../../services";
 
-export default function Form({ preset = "general", ...props }) {
+export default function Form({ preset = "add", ...props }) {
     // props.item && console.log("DefineForm", props.item);
     // console.log("DefineForm", props);
 
-    const [dropdowns, setDropdowns] = useState([]);
-    const [ready, setReady] = useState(false);
     const [initialAlert, setInitialAlert] = useState();
     const [initialValues, setInitialValues] = useState({});
 
-    const [holderType, setHolderType] = useState(null);
-    const [holder, setHolder] = useState(false);
-    const [dependentFields] = useState([]);
-    const [loadingDependentData, setLoadingDependentData] = useState({});
-
     let presets = {
         general: {
+            inputProps: {}
+        },
+        add: {
             dataService: AddUnit,
             submitValue: t("labels.submit-add"),
             fields: ["all"],
-            inputProps: {
-                holderType: {
-                    disabled: loadingDependentData.holdertypes,
-                    onChange: e => setHolderType(e)
-                },
-                holder: {
-                    disabled: !holder,
-                    loadingData: loadingDependentData.holdertypes
-                }
-            }
+            inputProps: {}
         },
         edit: preset == "edit" && {
             dataService: UpdateUnit,
@@ -58,77 +45,18 @@ export default function Form({ preset = "general", ...props }) {
                         local: props.item.title,
                         en: props.item.title_en
                     }
-                },
-                holder: {
-                    disabled: !holder
                 }
             }
         }
     };
 
-    useEffect(() => {
-        // props.item && console.log("DefineForm", props.item);
-
-        const fields = ["holdertypes"];
-        GetValidValues(
-            fields,
-            response => {
-                // console.log("DefineForm Values", response.data);
-                setDropdowns(response.data);
-                if (preset == "edit") {
-                }
-                setReady(true);
-            },
-            error => {
-                console.error("DepartmentForm ERROR", error);
-                setReady(true);
-            }
-        );
-    }, []);
-
-    useEffect(() => {
-        // console.log(holderType);
-        if (holderType == null || holderType.value == "company") {
-            setHolder(false);
-        } else {
-            setLoadingDependentData({
-                ...loadingDependentData,
-                holdertypes: true
-            });
-            GetValidValues(
-                [holderType.value],
-                response => {
-                    console.log("UnitForm Values", response.data);
-                    setDropdowns({
-                        ...dropdowns,
-                        holder: response.data[holderType.value]
-                    });
-
-                    setHolder(true);
-                    setLoadingDependentData({
-                        ...loadingDependentData,
-                        holdertypes: false
-                    });
-                },
-                error => {
-                    console.error("UnitForm ERROR", error);
-                    setHolder(false);
-                    setLoadingDependentData({
-                        ...loadingDependentData,
-                        holdertypes: false
-                    });
-                }
-            );
-        }
-    }, [holderType]);
-
     return (
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
-            ready={ready}
             item={props.item}
             showAlert={initialAlert}
+            listedFields={["holdertypes"]}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("holderType")) && (
@@ -136,17 +64,21 @@ export default function Form({ preset = "general", ...props }) {
                     name="holderType"
                     validation={{ required: true }}
                     label={t("labels.holderType")}
-                    options={dropdowns.holdertypes}
+                    options="holdertypes"
+                    {...presets["general"].inputProps["holderType"]}
                     {...presets[preset].inputProps["holderType"]}
+                    dependentOptions="holders"
+                    dependentFieldName="holder"
                 />
             )}
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("holder")) && (
                 <AutoCompleteSelect
                     name="holder"
-                    validation={{ required: holder }}
+                    validation={{ required: true }}
                     label={t("labels.holder")}
-                    options={dropdowns.holder}
+                    options="holders"
+                    {...presets["general"].inputProps["holder"]}
                     {...presets[preset].inputProps["holder"]}
                     isDependent={true}
                 />
@@ -156,6 +88,7 @@ export default function Form({ preset = "general", ...props }) {
                 <BilingualTextInput
                     name="title"
                     validation={{ required: true }}
+                    {...presets["general"].inputProps["title"]}
                     {...presets[preset].inputProps["title"]}
                 />
             )}

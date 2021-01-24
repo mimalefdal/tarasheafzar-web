@@ -12,7 +12,7 @@ class UnitController extends Controller
 {
     public function create(StoreUnitRequest $request)
     {
-        return response(["message" => "Under Implementation", $request->all()], 200);
+        return response(["message" => "Under Implementation", $request->all()], 400);
     }
 
     public function index()

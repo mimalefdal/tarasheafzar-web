@@ -3,7 +3,7 @@ import "../../styles/dual-label-inputs.css";
 import { t } from "../../utils";
 
 function DualLabelFormControl(props) {
-    // console.log(props);
+    // console.log("DualLabelFormControl", props);
     const errorMessage = props.errors && props.errors[props.name] && (
         <div className="input-error-message">
             {t("errors." + props.errors[props.name]["type"])}

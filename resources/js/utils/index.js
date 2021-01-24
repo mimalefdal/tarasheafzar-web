@@ -13,3 +13,5 @@ export { default as orderByPattern } from "./orderByPattern";
 
 export { findObjectInsideArray as getObjectFromArray } from "./findObject";
 export { getIndexOfMatchInsideArray as getMatchIndexOf } from "./findObject";
+
+export { _getNextFocusIndex as getNextFocusIndex } from "./forms";

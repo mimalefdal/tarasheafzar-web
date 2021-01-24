@@ -27,8 +27,12 @@ class StoreUnitRequest extends FormRequest
      */
     public function rules()
     {
+        $lang = \Lang::getLocale();
+
         return [
-            //
+            'title_en' => 'required|string|min:3',
+            'title_' . $lang => 'required|string|min:3',
+            'holderType' => 'required',
         ];
     }
 
@@ -39,5 +43,31 @@ class StoreUnitRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
+        $titles = Bilang::makeTitleObject($this->title);
+
+        $holder = null;
+        $holderSlug = null;
+        switch ($this->holderType) {
+            case 'company':
+                $holder = resolve('Company');
+                break;
+            case 'branch':
+                $holder = Branch::where('slug', $this->holder)->first();
+                break;
+            case 'department':
+                $holder = Department::where('slug', $this->holder)->first();
+                break;
+            default:
+                break;
+        }
+        $holderSlug = $holder->slug;
+        $slugTemplate = $holderSlug . ' ' . $this->title_en . ' unit';
+
+        $this->merge([
+            'slug' => Str::slug(Str::slug($slugTemplate, '-')),
+            'title' => $titles,
+            'holder' => $holder,
+            'deleted_at' => null,
+        ]);
     }
 }

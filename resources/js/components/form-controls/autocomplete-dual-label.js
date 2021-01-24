@@ -57,6 +57,7 @@ const Control = (
                     <TextField
                         name={"_" + props.name}
                         inputRef={ref}
+                        onFocus={props.onFocus && props.onFocus}
                         {...params}
                         inputProps={{
                             ...params.inputProps,
@@ -75,9 +76,14 @@ const Control = (
                 )}
                 value={value}
                 onChange={(event, newValue) => {
-                    // console.log("newValue", newValue);
+                    // console.log("newValue", event);
                     setValue(newValue);
-                    props.onChange && props.onChange(newValue);
+                    props.onChange &&
+                        props.onChange(
+                            props.dependentOptions,
+                            newValue,
+                            props.dependentFieldName
+                        );
                     // props.changeFocus();
                 }}
                 inputValue={inputValue}
