@@ -7,10 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreBranchRequest;
 use App\Models\Branch;
 use App\Http\Resources\BranchItem;
-use App\Models\Value;
-use Debugbar;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class BranchController extends Controller
 {
@@ -77,10 +74,20 @@ class BranchController extends Controller
             $relatedDepartments = $item->departments;
             foreach ($relatedDepartments as $department) {
                 $department->slug = Str::replaceFirst($oldSlug, $request->slug, $department->slug);
+                $depUnits = $department->units;
+                foreach ($depUnits as $unit) {
+                    $unit->slug = Str::replaceFirst($oldSlug, $request->slug, $unit->slug);
+                    $unit->save();
+                }
                 $department->save();
             }
-            $relatedDepartments = $item->departments;
+            $relatedUnits = $item->units;
+            foreach ($relatedUnits as $unit) {
+                $unit->slug = Str::replaceFirst($oldSlug, $request->slug, $unit->slug);
+                $unit->save();
+            }
         }
+
 
         $resourceItem = new BranchItem($item);
         $message = \Lang::get('messages.recordـupdated', ['title' => $item->fullTitle()]);

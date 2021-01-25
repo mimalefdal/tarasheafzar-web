@@ -9,11 +9,11 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log('DepartmentAdd Service,response);
+            // console.log('DepartmentAdd Service',response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log('DepartmentAdd Service,error.response);
+            console.log("DepartmentAdd Service", error);
             failureCallback(error.response);
         });
 };

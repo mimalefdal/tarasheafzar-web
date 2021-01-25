@@ -8,12 +8,14 @@ use App\Traits\ManagesPositions;
 use App\Models\Department;
 use App\Traits\ChecksUniqueness;
 use App\Http\Resources\BranchItem;
+use App\Traits\ManagesUnits;
 use Bilang;
 use Illuminate\Support\Facades\Lang;
 
 class Branch extends Model
 {
     use ManagesPositions;
+    use ManagesUnits;
     use ChecksUniqueness;
     use SoftDeletes;
 

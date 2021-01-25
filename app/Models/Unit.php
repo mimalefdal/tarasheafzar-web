@@ -3,17 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Department;
-use App\Models\Position;
+use App\Traits\ChecksUniqueness;
 use App\Traits\ManagesPositions;
-use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
+use Bilang;
 
 class Unit extends Model
 {
     use ManagesPositions;
     use SoftDeletes;
+    use ChecksUniqueness;
+
 
     protected $fillable = [
         'title', 'slug', 'department_id'

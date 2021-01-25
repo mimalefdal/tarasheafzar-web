@@ -8,6 +8,7 @@ function feedback({ value, ...props }) {
     return (
         <LinearProgress
             classes={{
+                root: "form-redirect",
                 colorPrimary: "form-redirect primary",
                 barColorPrimary: "form-redirect barPrimary"
             }}

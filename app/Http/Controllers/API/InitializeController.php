@@ -76,7 +76,6 @@ class InitializeController extends Controller
 
         try {
             $ceo = Staff::create($validatedRequest);
-
             $ceo->setPosition('ceo');
             $this->updateInitializeStatus(["defineCeo" => true,]);
 

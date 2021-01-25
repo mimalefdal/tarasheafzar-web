@@ -3,9 +3,10 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
 import { BasicCard } from "../../components/cards";
+import { DeleteDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { CardList } from "../../components/lists";
-import { GetUnitsList } from "../../services";
+import { DeleteUnit, GetUnitsList } from "../../services";
 import { t } from "../../utils";
 import { UnitCard } from "../../view-components";
 
@@ -31,9 +32,9 @@ function ManageUnits(props) {
         }
     ];
     function handleDelete(item) {
-        console.log("handle DELETE called", item);
-        // setItem(item);
-        // setDeleteRequest(true);
+        // console.log("handle DELETE called", item);
+        setItem(item);
+        setDeleteRequest(true);
     }
 
     function handleShow(item) {
@@ -63,6 +64,17 @@ function ManageUnits(props) {
                 cardComponent={<UnitCard />}
                 entryOperations={entryOperations}
                 trigger={trigReload}
+            />
+
+            <DeleteDialog
+                dataService={DeleteUnit}
+                request={deleteRequest}
+                item={item}
+                onClose={updateNeeded => {
+                    if (updateNeeded) setTrigReload(!trigReload);
+                    setDeleteRequest(false);
+                    setItem({});
+                }}
             />
         </>
     );

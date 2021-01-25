@@ -9,12 +9,7 @@ import StaffContext from "../../context/staffContext";
 import { useHistory } from "react-router-dom";
 import { getIndexOfMatchInsideArray } from "../../utils/findObject";
 
-// FormBase.propTypes = {
-//     submitUrl: PropTypes.string,
-//     ready: PropTypes.bool,
-//     handleSubmit: PropTypes.func,
-//     showAlert: PropTypes.object
-// };
+// TODO : must Documented
 
 function FormBase({
     dataService,
@@ -54,19 +49,22 @@ function FormBase({
     const [validValues, setValidValues] = useState(false);
     const [loadDependentData, setLoadDependentData] = useState(null);
     const [loadingData, setLoadingData] = useState(false);
+    const [triggerEditMode, setTriggerEditMode] = useState(false);
 
     useEffect(() => {
-        // console.log("SingleColumnFormBase (listedFields)", listedFields);
-        // props.item &&
-        //     console.log("SingleColumnFormBase (props.item)", props.item);
-
         const fields = listedFields;
         GetValidValues(
             fields,
             response => {
-                // console.log("SingleColumnFormBase GetValidValues ResponseData", response.data);
                 setValidValues(response.data);
-                setReady(true);
+
+                if (props.item) {
+                    // edit mode
+                    setTriggerEditMode(true);
+                } else {
+                    // mode others than edit
+                    setReady(true);
+                }
             },
             error => {
                 console.error(
@@ -86,7 +84,44 @@ function FormBase({
     }, [ready]);
 
     useEffect(() => {
-        // console.log("SingleFormBase loadDependentData:", loadDependentData);
+        // edit mode
+        // console.log("edit Mode validValues", validValues);
+        if (triggerEditMode) {
+            React.Children.map(props.children, child => {
+                if (React.isValidElement(child)) {
+                    if (props.item && child.props.dependentOptions) {
+                        // console.log("edit Mode", child.props);
+                        GetValidValues(
+                            [child.props.initialValue],
+                            response => {
+                                let _validValues =
+                                    response.data[child.props.initialValue];
+                                if (_validValues.length > 0) {
+                                    setValidValues({
+                                        ...validValues,
+                                        [child.props
+                                            .dependentOptions]: _validValues
+                                    });
+                                } else {
+                                    delete validValues[
+                                        child.props.dependentOptions
+                                    ];
+                                    setValidValues({ ...validValues });
+                                }
+                            },
+                            error => {
+                                console.log(error);
+                            }
+                        );
+                    }
+                }
+            });
+            setReady(true);
+        }
+    }, [triggerEditMode]);
+
+    useEffect(() => {
+        console.log("SingleFormBase loadDependentData:", loadDependentData);
         if (loadDependentData)
             if (loadDependentData.value != null) {
                 setLoadingData(loadDependentData.target);
@@ -94,12 +129,6 @@ function FormBase({
                 GetValidValues(
                     [loadDependentData.value.value],
                     response => {
-                        // console.log(
-                        //     "UnitForm Values",
-                        //     loadDependentData.target,
-                        //     _validValues,
-                        //     focusTarget
-                        // );
                         let _validValues =
                             response.data[loadDependentData.value.value];
                         if (_validValues.length > 0) {
@@ -167,10 +196,10 @@ function FormBase({
 
         // add item to request data for possible uses in backend controller
         if (props.item) data["item"] = props.item;
-        dataService(data, token, successResponse, errorResponse);
+        dataService(data, token, submitResponse, submitError);
     };
 
-    function successResponse(response) {
+    function submitResponse(response) {
         console.log(response.data);
         setLoading(false);
         setShowAlert({
@@ -181,12 +210,12 @@ function FormBase({
         setBackendErrors(false);
         if (!props.item) {
             // means form is not in edit mode
-            props.reset();
+            reset();
         }
         response.data.redirect && setRedirect(true);
     }
 
-    function errorResponse(error) {
+    function submitError(error) {
         console.log("SingleColumnFormBase", error);
         setLoading(false);
 
@@ -234,7 +263,6 @@ function FormBase({
                     ? validValues[child.props.options]
                     : null,
                 initialOptionIndex:
-                    props.item &&
                     validValues[child.props.options] &&
                     child.props.initialValue &&
                     getIndexOfMatchInsideArray(
@@ -288,7 +316,9 @@ function FormBase({
     return (
         <div className="form-container general-shadow">
             {!ready ? (
-                <Loading type="ball" />
+                <div>
+                    <Loading type="ball" />
+                </div>
             ) : (
                 <form
                     className="form-body"

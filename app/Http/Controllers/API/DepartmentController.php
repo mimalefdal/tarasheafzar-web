@@ -9,6 +9,7 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Rules\bilangUnique;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class DepartmentController extends Controller
@@ -67,9 +68,7 @@ class DepartmentController extends Controller
 
         //update record
         $item = Department::find($item['id']);
-
         if ($item->slug != $request->slug) {
-            // TODO: this must been handled by an event
             $flagRelated = true;
             $oldSlug = $item->slug;
         }
@@ -78,7 +77,14 @@ class DepartmentController extends Controller
 
         //update related records if needed
         if ($flagRelated) {
+            // TODO: this must been handled by an event
+            $relatedUnits = $item->units;
+            foreach ($relatedUnits as $unit) {
+                $unit->slug = Str::replaceFirst($oldSlug, $request->slug, $unit->slug);
+                $unit->save();
+            }
         }
+
 
         $resourceItem = new DepartmentItem($item);
         $message = \Lang::get('messages.recordـupdated', ['title' => $item->fullTitle()]);

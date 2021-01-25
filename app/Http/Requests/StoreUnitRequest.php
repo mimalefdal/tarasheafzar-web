@@ -30,7 +30,7 @@ class StoreUnitRequest extends FormRequest
         $lang = \Lang::getLocale();
 
         return [
-            'title_en' => 'required|string|min:3',
+            'title_en' => 'required|string|min:2',
             'title_' . $lang => 'required|string|min:3',
             'holderType' => 'required',
         ];
@@ -49,7 +49,7 @@ class StoreUnitRequest extends FormRequest
         $holderSlug = null;
         switch ($this->holderType) {
             case 'company':
-                $holder = resolve('Company');
+                $holder = null;
                 break;
             case 'branch':
                 $holder = Branch::where('slug', $this->holder)->first();
@@ -60,7 +60,8 @@ class StoreUnitRequest extends FormRequest
             default:
                 break;
         }
-        $holderSlug = $holder->slug;
+        if ($holder != null)
+            $holderSlug = $holder->slug;
         $slugTemplate = $holderSlug . ' ' . $this->title_en . ' unit';
 
         $this->merge([

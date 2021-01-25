@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { getObjectFromArray, t } from "../../utils";
 import { useState } from "react";
 import {
+    AutoCompleteSelect,
     DropDownSelect,
     DualLabelTextInput
 } from "../../components/form-controls";
@@ -9,18 +10,19 @@ import "../../styles/forms.css";
 import { SingleColumnFormBase } from "../../components/forms";
 import { AddStaff, GetValidValues, InitializeCEO } from "../../services";
 
-export default function Form({ preset = "general", ...props }) {
-    // console.log("DefineFormStaff->preset:", preset);
+export default function Form({ preset = "add", ...props }) {
+    console.log("DefineFormStaff->preset:", preset);
 
-    const [ready, setReady] = useState(false);
-    const [dropdowns, setDropdowns] = useState([]);
+    const [initialAlert, setInitialAlert] = useState();
     const [initialValues, setInitialValues] = useState({});
 
     let presets = {
         general: {
+            inputProps: {}
+        },
+        add: {
             dataService: AddStaff,
             submitValue: t("labels.submit-add"),
-
             fields: ["all"],
             inputProps: {}
         },
@@ -38,76 +40,43 @@ export default function Form({ preset = "general", ...props }) {
             ],
             inputProps: {
                 position: {
-                    readonly: true,
-                    initialValue: initialValues.position
+                    disabled: true,
+                    initialValue: "ceo"
                 }
             }
         }
     };
 
-    useEffect(() => {
-        const fields = ["gender", "position"];
-        GetValidValues(
-            fields,
-            response => {
-                // console.log(
-                //     "defineFormStaff->useEffect->getValues->Response:",
-                //     response.data.position
-                // );
-                setDropdowns(response.data);
-                switch (preset) {
-                    case "ceo":
-                        let _initialPosition = getObjectFromArray(
-                            response.data.position,
-                            "value",
-                            "ceo"
-                        );
-                        setInitialValues({
-                            ...initialValues,
-                            position: _initialPosition
-                        });
-                        break;
-
-                    default:
-                        break;
-                }
-
-                setReady(true);
-            },
-            error => {
-                console.log(error);
-                setReady(true);
-            }
-        );
-    }, []);
-
     return (
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
-            ready={ready}
+            item={props.item}
             showAlert={props.showAlert}
+            listedFields={["position", "gender"]}
             // redirectDelay={2000}
             redirectTarget="/enterprise-management/initialize"
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("position")) && (
-                <DropDownSelect
+                <AutoCompleteSelect
                     name="position"
                     validation={{ required: true }}
                     label={t("labels.position")}
                     labelComment=""
-                    items={dropdowns.position}
+                    options="position"
+                    {...presets["general"].inputProps["position"]}
                     {...presets[preset].inputProps["position"]}
                 />
             )}
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("gender")) && (
-                <DropDownSelect
+                <AutoCompleteSelect
                     name="gender"
                     validation={{ required: true }}
                     label={t("labels.gender")}
-                    items={dropdowns.gender}
+                    options="gender"
+                    {...presets["general"].inputProps["gender"]}
                     {...presets[preset].inputProps["gender"]}
                 />
             )}
@@ -119,6 +88,7 @@ export default function Form({ preset = "general", ...props }) {
                     validation={{ required: true }}
                     label={t("labels.name")}
                     labelComment=""
+                    {...presets["general"].inputProps["firstname"]}
                     {...presets[preset].inputProps["firstname"]}
                 />
             )}
@@ -129,6 +99,7 @@ export default function Form({ preset = "general", ...props }) {
                     validation={{ required: true }}
                     label={t("labels.lastname")}
                     labelComment=""
+                    {...presets["general"].inputProps["lastname"]}
                     {...presets[preset].inputProps["lastname"]}
                 />
             )}
@@ -139,6 +110,7 @@ export default function Form({ preset = "general", ...props }) {
                     validation={{ required: true }}
                     label={t("labels.national_id")}
                     labelComment=""
+                    {...presets["general"].inputProps["national_id"]}
                     {...presets[preset].inputProps["national_id"]}
                 />
             )}
@@ -149,6 +121,7 @@ export default function Form({ preset = "general", ...props }) {
                     validation={{ required: true }}
                     label={t("labels.idcert_no")}
                     labelComment=""
+                    {...presets["general"].inputProps["idcert_no"]}
                     {...presets[preset].inputProps["idcert_no"]}
                 />
             )}
@@ -160,6 +133,7 @@ export default function Form({ preset = "general", ...props }) {
                     validation={{ required: true }}
                     label={t("labels.username")}
                     labelComment=""
+                    {...presets["general"].inputProps["username"]}
                     {...presets[preset].inputProps["username"]}
                 />
             )}
@@ -169,6 +143,7 @@ export default function Form({ preset = "general", ...props }) {
                     name="email"
                     label={t("labels.email")}
                     labelComment={t("comments.none-company")}
+                    {...presets["general"].inputProps["email"]}
                     {...presets[preset].inputProps["email"]}
                 />
             )}

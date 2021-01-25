@@ -15,7 +15,7 @@ import { SingleColumnFormBase } from "../../components/forms";
 import { AddUnit, GetValidValues, UpdateUnit } from "../../services";
 
 export default function Form({ preset = "add", ...props }) {
-    // props.item && console.log("DefineForm", props.item);
+    // props.item && console.log("Define   Form", props.item);
     // console.log("DefineForm", props);
 
     const [initialAlert, setInitialAlert] = useState();
@@ -36,10 +36,19 @@ export default function Form({ preset = "add", ...props }) {
             submitValue: t("labels.submit-update"),
             fields: ["all"],
             inputProps: {
-                // branch: {
-                //     // readonly: true,
-                //     initialOptionIndex: initialValues.branchIndex
-                // },
+                holderType: {
+                    // disabled: true,
+                    initialValue:
+                        props.item.holder_id && !props.item.holder.deleted
+                            ? props.item.holder_type
+                            : null
+                },
+                holder: {
+                    initialValue:
+                        props.item.holder_id && !props.item.holder.deleted
+                            ? props.item.holder.slug
+                            : null
+                },
                 title: {
                     initialValue: {
                         local: props.item.title,

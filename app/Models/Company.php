@@ -36,4 +36,9 @@ class Company extends Model
     {
         return $this->CompanyTitle;
     }
+
+    public function fullTitle()
+    {
+        return $this->getShortName();
+    }
 }

@@ -20,7 +20,10 @@ const Control = (
 ) => {
     // console.log("AutoCompleteDualLabel", loadingData);
     // console.log("AutoCompleteDualLabel", options);
-    // console.log("AutoCompleteDualLabel initialOptionIndex", initialOptionIndex);
+    // console.log(
+    //     "AutoCompleteDualLabel initialOptionIndex",
+    //     props.name + " " + initialOptionIndex
+    // );
     // console.log(
     //     "AutoCompleteDualLabel initialOption",
     //     options[initialOptionIndex]
@@ -48,7 +51,9 @@ const Control = (
     }, [props.disabled]);
 
     useEffect(() => {
-        initialOptionIndex != null && setValue(options[initialOptionIndex]);
+        initialOptionIndex != null &&
+            initialOptionIndex != -1 &&
+            setValue(options[initialOptionIndex]);
     }, [initialOptionIndex]);
 
     return (
