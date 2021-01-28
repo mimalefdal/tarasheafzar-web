@@ -15,3 +15,6 @@ export { findObjectInsideArray as getObjectFromArray } from "./findObject";
 export { getIndexOfMatchInsideArray as getMatchIndexOf } from "./findObject";
 
 export { _getNextFocusIndex as getNextFocusIndex } from "./forms";
+export { _makeValueListedFieldsArray as ValueFields } from "./forms";
+export { _makeValueListObject as ValuesObject } from "./forms";
+export { _makeUpdatedValidValues as MakeUpdatedValidValues } from "./forms";

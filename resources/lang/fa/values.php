@@ -27,6 +27,5 @@ return [
     'Brand' => 'برند',
     'Department' => 'دپارتمان',
     'Unit' => 'واحد',
-
-
+    'Position' => 'جایگاه',
 ];

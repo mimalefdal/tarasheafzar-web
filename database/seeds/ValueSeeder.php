@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Value;
+use Illuminate\Support\Arr;
 
 class ValueSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class ValueSeeder extends Seeder
                         "field" => $field,
                         "slug" => $value['slug'],
                         "title" => $value['title'],
+                        "tags" =>  Arr::has($value, 'tags') ? $value['tags'] : '',
                     ]);
                 } catch (\Throwable $th) {
                     dump('ERROR');

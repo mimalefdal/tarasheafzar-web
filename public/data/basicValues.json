@@ -38,15 +38,23 @@
     "holdertypes": [
         {
             "slug": "company",
-            "title": "Company"
+            "title": "Company",
+            "tags": "unit,position"
         },
         {
             "slug": "branch",
-            "title": "Branch"
+            "title": "Branch",
+            "tags": "unit,position"
         },
         {
             "slug": "department",
-            "title": "Department"
+            "title": "Department",
+            "tags": "unit,position"
+        },
+        {
+            "slug": "unit",
+            "title": "Unit",
+            "tags": "position"
         }
     ]
 }

@@ -33,7 +33,7 @@ function ManageRights() {
     }
 
     return (
-        <div className="">
+        <>
             <PageHeaderBar>
                 <ListTitle
                     title={t("custum-titles.rightsListTitle")}
@@ -52,7 +52,7 @@ function ManageRights() {
                 tableMap={rightsTableMap}
                 entryOperations={entryOperations}
             />
-        </div>
+        </>
     );
 }
 

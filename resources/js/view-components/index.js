@@ -14,3 +14,6 @@ export { default as DepartmentCard } from "./department/manageCard";
 
 export { default as UnitForm } from "./unit/defineForm";
 export { default as UnitCard } from "./unit/manageCard";
+
+export { default as PositionForm } from "./position/defineForm";
+export { default as PositionCard } from "./position/manageCard";

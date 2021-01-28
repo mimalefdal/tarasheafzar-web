@@ -20,6 +20,8 @@ class Department extends Model
     use SoftDeletes;
     use ChecksUniqueness;
 
+    protected $type = 'Department';
+
     protected $fillable = [
         'title', 'slug', 'deleted_at'
     ];
@@ -39,25 +41,27 @@ class Department extends Model
         return $this->unity('branch_id', DepartmentItem::class);
     }
 
-    //returns type + title(s) of branch object
-    public function fullTitle(string $lang = null)
+    public function holderTitle(string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
-        $type = 'Department';
 
-        $typedName = Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
         if ($this->branch != null) {
             $holderTitle = $this->branch->fullTitle($lang);
         } else
             $holderTitle = resolve('Company')->getShortName()[$lang];
 
-        return Bilang::grammertize($typedName, $holderTitle, $lang);
+        return $holderTitle;
+    }
+
+    public function fullTitle(string $lang = null)
+    {
+        if (!$lang) $lang = Lang::getLocale();
+        return Bilang::grammertize($this->typedTitle($lang), $this->holderTitle($lang), $lang);
     }
 
     public function typedTitle(string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
-        $type = 'Department';
-        return Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
+        return Bilang::grammertize(Value::getLocalValue($this->type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
     }
 }

@@ -43,7 +43,8 @@ class PositionSeeder extends Seeder
                         break;
 
                     default:
-                        $hasposition = resolve('Company');
+                        // $hasposition = resolve('Company');
+                        $hasposition = null;
                         break;
                 }
                 // dump(get_class($hasposition));

@@ -37,7 +37,9 @@
         "branch": "شاخه",
         "stages": "مراحل",
         "holderType": "نوع دارنده",
-        "holder": "دارنده"
+        "holder": "دارنده",
+        "recruit_capacity": "ظرفیت استخدام",
+        "joblevel": "سطح شغلی"
     },
     "comments": {
         "none-company": "غیرسازمانی"
@@ -85,7 +87,8 @@
         "registerCEO": "ثبت اکانت مدیرعامل",
         "defineBranch": "درج شاخه جدید",
         "defineDepartment": "درج دپارتمان جدید",
-        "defineUnit": "درج واحد جدید"
+        "defineUnit": "درج واحد جدید",
+        "definePosition": "درج جایگاه جدید"
     },
     "alerts": {
         "success": "موفقیت",

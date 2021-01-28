@@ -15,6 +15,7 @@ class Unit extends Model
     use SoftDeletes;
     use ChecksUniqueness;
 
+    protected $type = 'Unit';
 
     protected $fillable = [
         'title', 'slug', 'department_id'
@@ -30,26 +31,27 @@ class Unit extends Model
         return $this->hasunit()->associate($holder);
     }
 
-    // returns type + title(s) of branch object
-
-    public function fullTitle(string $lang = null)
+    public function holderTitle(string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
-        $type = 'Unit';
 
-        $typedName = Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
-        if ($this->hasunit != null) {
+        if ($this->hasunit_id != null) {
             $holderTitle = $this->hasunit->fullTitle($lang);
         } else
             $holderTitle = resolve('Company')->getShortName()[$lang];
 
-        return Bilang::grammertize($typedName, $holderTitle, $lang);
+        return $holderTitle;
+    }
+
+    public function fullTitle(string $lang = null)
+    {
+        if (!$lang) $lang = Lang::getLocale();
+        return Bilang::grammertize($this->typedTitle($lang), $this->holderTitle($lang), $lang);
     }
 
     public function typedTitle(string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
-        $type = 'Unit';
-        return Bilang::grammertize(Value::getLocalValue($type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
+        return Bilang::grammertize(Value::getLocalValue($this->type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
     }
 }

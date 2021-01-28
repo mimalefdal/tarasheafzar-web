@@ -21,7 +21,12 @@ import {
 } from "../../views/departments";
 import { CompanyInformation, CompanyStructure } from "../../views/company";
 import { DefineUnit, EditUnit, ManageUnits, ShowUnit } from "../../views/units";
-import { ManagePositions } from "../../views/positions";
+import {
+    DefinePosition,
+    EditPosition,
+    ManagePositions,
+    ShowPosition
+} from "../../views/positions";
 
 export default function CompanyPanel() {
     let match = useRouteMatch();
@@ -131,11 +136,34 @@ export default function CompanyPanel() {
             />
 
             {/* Positions */}
-
             <GuardedRoute
                 exact
                 path={`${match.path}/positions`}
                 component={ManagePositions}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/positions/define`}
+                component={DefinePosition}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/positions/:slug`}
+                component={ShowPosition}
+                meta={{
+                    [REQUIRED_RIGHT]: "access-structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/positions/edit/:slug/`}
+                component={EditPosition}
                 meta={{
                     [REQUIRED_RIGHT]: "access-structure-management-panel"
                 }}

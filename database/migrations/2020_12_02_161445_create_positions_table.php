@@ -25,6 +25,7 @@ class CreatePositionsTable extends Migration
             $table->string('joblevel_id')->nullable();
             $table->foreign('joblevel_id')->references('id')->on('job_levels')->onDelete('cascade');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

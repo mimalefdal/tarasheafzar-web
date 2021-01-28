@@ -39,6 +39,12 @@ Route::post('unit/remove', 'API\UnitController@delete');
 Route::get('units', 'API\UnitController@index');
 Route::get('unit', 'API\UnitController@show');
 
+Route::post('position/add', 'API\PositionController@create');
+Route::post('position/update', 'API\PositionController@update');
+Route::post('position/remove', 'API\PositionController@delete');
+Route::get('positions', 'API\PositionController@index');
+Route::get('position', 'API\PositionController@show');
+
 Route::post('right/add', 'API\RightController@create');
 Route::get('rights', 'API\RightController@index');
 

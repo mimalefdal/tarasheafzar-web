@@ -4,13 +4,14 @@ import StaffContext from "../../context/staffContext";
 import { ApiClient } from "../../services";
 import { renderActionComponent } from "../../utils";
 import { Loading } from "../feedback";
+import { BasicCard } from "../cards";
 
 CardListBase.propTypes = {};
 
 function CardListBase({
     type = "basic",
     dataService,
-    cardComponent,
+    cardComponent = <BasicCard />,
     entryOperations,
     trigger,
     ...props
@@ -38,19 +39,16 @@ function CardListBase({
         dataService(
             token,
             response => {
-                // console.log(
-                //     "CardListBase->useEffect(dataService)->response",
-                //     response.data
-                // );
+                console.log(
+                    "CardListBase:dataService:response:",
+                    response.data
+                );
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
                 setLoading(false);
             },
             error => {
-                console.log(
-                    "CardListBase->useEffect(dataService)->ERROR",
-                    error
-                );
+                console.log("CardListBase->dataService->ERROR", error);
                 setLoading(false);
             }
         );

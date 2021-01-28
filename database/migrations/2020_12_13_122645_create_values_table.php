@@ -17,6 +17,7 @@ class CreateValuesTable extends Migration
             $table->id();
 
             $table->string('field');
+            $table->string('tags')->nullable();
             $table->string('slug')->unique();
             $table->string('title');
 

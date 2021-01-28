@@ -29,7 +29,7 @@ function CardBase({
                     <div className="card-name-box">
                         {item[title_field_local]
                             ? item[title_field_local]
-                            : item.type + " " + item.title}
+                            : (item.type ? item.type + " " : "") + item.title}
                         {title_tail_local && (
                             <span className="basic-card-title-tail">
                                 {title_tail_local}
@@ -48,7 +48,8 @@ function CardBase({
                         >
                             {item[title_field_global]
                                 ? item[title_field_global]
-                                : item.title_en + " " + item.type_en}
+                                : item.title_en +
+                                  (item.type_en ? " " + item.type_en : "")}
                             {title_tail_global && (
                                 <span className="basic-card-title-tail">
                                     {title_tail_global}

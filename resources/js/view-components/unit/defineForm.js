@@ -65,7 +65,7 @@ export default function Form({ preset = "add", ...props }) {
             submitValue={presets[preset].submitValue}
             item={props.item}
             showAlert={initialAlert}
-            listedFields={["holdertypes"]}
+            listedFields={["holdertypes.unit"]}
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("holderType")) && (
@@ -76,7 +76,7 @@ export default function Form({ preset = "add", ...props }) {
                     options="holdertypes"
                     {...presets["general"].inputProps["holderType"]}
                     {...presets[preset].inputProps["holderType"]}
-                    dependentOptions="holders"
+                    dependentOptions={{ holders: "" }}
                     dependentFieldName="holder"
                 />
             )}

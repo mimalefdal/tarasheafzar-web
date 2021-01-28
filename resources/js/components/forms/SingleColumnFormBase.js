@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 
 import { FormAlert, LineProgress, Loading, RedirectBar } from "../feedback";
-import { getNextFocusIndex, getObjectFromArray, t } from "../../utils";
+import {
+    getNextFocusIndex,
+    getObjectFromArray,
+    MakeUpdatedValidValues,
+    t,
+    ValueFields,
+    ValuesObject
+} from "../../utils";
 import { ApiClient, GetValidValues } from "../../services";
 import StaffContext from "../../context/staffContext";
 import { useHistory } from "react-router-dom";
@@ -33,8 +40,8 @@ function FormBase({
         clearErrors,
         trigger
     } = useForm();
-    const focusRefs = useRef([]);
 
+    const focusRefs = useRef([]);
     const [backendErrors, setBackendErrors] = useState(false);
     const [ready, setReady] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -48,7 +55,7 @@ function FormBase({
     const [focusIndex, setFocusIndex] = useState(null);
     const [validValues, setValidValues] = useState(false);
     const [loadDependentData, setLoadDependentData] = useState(null);
-    const [loadingData, setLoadingData] = useState(false);
+    const [loadingData, setLoadingData] = useState(null);
     const [triggerEditMode, setTriggerEditMode] = useState(false);
 
     useEffect(() => {
@@ -78,7 +85,7 @@ function FormBase({
 
     useEffect(() => {
         if (ready & !props.item) {
-            // console.log("SingleFormBase [ready]:", focusRefs);
+            // console.log("SingleFormBase:[ready]:", focusRefs);
             setFocusTarget(0);
         }
     }, [ready]);
@@ -87,77 +94,119 @@ function FormBase({
         // edit mode
         // console.log("edit Mode validValues", validValues);
         if (triggerEditMode) {
+            let fields = [];
+            let valuesMap = {};
             React.Children.map(props.children, child => {
                 if (React.isValidElement(child)) {
                     if (props.item && child.props.dependentOptions) {
                         // console.log("edit Mode", child.props);
-                        GetValidValues(
-                            [child.props.initialValue],
-                            response => {
-                                let _validValues =
-                                    response.data[child.props.initialValue];
-                                if (_validValues.length > 0) {
-                                    setValidValues({
-                                        ...validValues,
-                                        [child.props
-                                            .dependentOptions]: _validValues
-                                    });
-                                } else {
-                                    delete validValues[
-                                        child.props.dependentOptions
-                                    ];
-                                    setValidValues({ ...validValues });
-                                }
-                            },
-                            error => {
-                                console.log(error);
-                            }
+                        fields.push(
+                            ...ValueFields(
+                                child.props.dependentOptions,
+                                child.props.initialValue
+                            )
                         );
+                        valuesMap = {
+                            ...valuesMap,
+                            ...ValuesObject(
+                                child.props.dependentOptions,
+                                child.props.initialValue
+                            )
+                        };
+                        // console.log("edit Mode", valuesMap);
                     }
                 }
             });
-            setReady(true);
+
+            GetValidValues(
+                fields,
+                response => {
+                    // console.log(
+                    //     "UnitForm:[triggerEditMode]:Response",
+                    //     response.data
+                    // );
+
+                    let updatedValidValues = MakeUpdatedValidValues(
+                        validValues,
+                        response.data,
+                        valuesMap
+                    );
+                    setLoadingData(false);
+                    setValidValues(
+                        MakeUpdatedValidValues(
+                            validValues,
+                            response.data,
+                            valuesMap
+                        )
+                    );
+                    setReady(true);
+
+                    // focusNext();
+                },
+                error => {
+                    console.error("UnitForm:[triggerEditMode]:ERROR", error);
+                }
+            );
         }
     }, [triggerEditMode]);
 
     useEffect(() => {
-        console.log("SingleFormBase loadDependentData:", loadDependentData);
+        // console.log("SingleFormBase:loadDependentData:", loadDependentData);
         if (loadDependentData)
             if (loadDependentData.value != null) {
-                setLoadingData(loadDependentData.target);
+                // master field value selected
+                setLoadingData(Object.keys(loadDependentData.target));
 
+                let fields = ValueFields(
+                    loadDependentData.target,
+                    loadDependentData.value.value
+                );
+                let valuesMap = ValuesObject(
+                    loadDependentData.target,
+                    loadDependentData.value.value
+                );
+
+                // console.log("_valueObject", _valueObject);
                 GetValidValues(
-                    [loadDependentData.value.value],
+                    fields,
                     response => {
-                        let _validValues =
-                            response.data[loadDependentData.value.value];
-                        if (_validValues.length > 0) {
-                            setValidValues({
-                                ...validValues,
-                                [loadDependentData.target]: _validValues
-                            });
-                        } else {
-                            delete validValues[loadDependentData.target];
-                            setValidValues({ ...validValues });
-                        }
+                        let updatedValidValues = MakeUpdatedValidValues(
+                            validValues,
+                            response.data,
+                            valuesMap
+                        );
                         setLoadingData(false);
-                        // focusNext("_" + loadDependentData.focus);
+                        setValidValues(
+                            MakeUpdatedValidValues(
+                                validValues,
+                                response.data,
+                                valuesMap
+                            )
+                        );
                         focusNext();
                     },
                     error => {
-                        console.error("UnitForm []Effect ERROR", error);
+                        console.error("UnitForm:[]:ERROR", error);
                         setLoadingData(false);
                     }
                 );
             } else {
-                delete validValues[loadDependentData.target];
+                // cleared master field
+                Object.keys(loadDependentData.target).map(key => {
+                    delete validValues[key];
+                });
                 setValidValues({ ...validValues });
             }
+        // setLoadDependentData(null);
     }, [loadDependentData]);
 
-    useEffect(() => {
-        // console.log("UnitForm [validValues]Effect", validValues);
-    }, [validValues]);
+    // useEffect(() => {
+    //     console.log("UnitForm:[validValues]:validValues", validValues);
+    // }, [validValues]);
+
+    // useEffect(() => {
+    //     // console.log("UnitForm:[loadingData]", loadingData);
+    // }, [loadingData]);
 
     useEffect(() => {
         setShowAlert({
@@ -234,66 +283,71 @@ function FormBase({
         // error.data.redirect && history.push(redirectTarget);
     }
 
-    focusRefs.current = [];
-    const childrenWithProps = React.Children.map(props.children, child => {
-        if (React.isValidElement(child)) {
-            return React.cloneElement(child, {
-                backendErrors: backendErrors,
-                loading: loading,
-                errors: errors,
-                ref: element => {
-                    if (element) {
-                        // console.log(element.getAttribute("name").charAt(0));
-                        element.getAttribute("type") != "hidden" &&
-                            focusRefs.current.push(element);
-                        element.getAttribute("name").charAt(0) != "_" &&
-                            register(
-                                element,
-                                child.props.isDependent
-                                    ? validValues[child.props.options]
-                                        ? child.props.validation
-                                        : {
-                                              required: false
-                                          }
-                                    : child.props.validation
-                            );
-                    }
-                },
-                options: child.props.options
-                    ? validValues[child.props.options]
-                    : null,
-                initialOptionIndex:
-                    validValues[child.props.options] &&
-                    child.props.initialValue &&
-                    getIndexOfMatchInsideArray(
-                        validValues[child.props.options],
-                        "value",
-                        child.props.initialValue
-                    ),
-                onChange: data => {
-                    child.props.dependentOptions
-                        ? setLoadDependentData(data)
-                        : data.event.target.value != undefined && focusNext();
-                },
-                onFocus: e => {
-                    setFocusIndex(e.target.name);
-                },
-                loadingData:
-                    child.props.isDependent == true
-                        ? loadingData == child.props.options
-                        : undefined,
-                disabled:
-                    child.props.disabled ||
-                    (child.props.dependentOptions &&
-                        loadingData == child.props.dependentOptions) ||
-                    (child.props.isDependent &&
-                        !validValues[child.props.options])
-            });
-        }
-        return child;
-    });
+    function renderFields() {
+        focusRefs.current = [];
+        let childrenWithProps = React.Children.map(props.children, child => {
+            if (React.isValidElement(child)) {
+                return React.cloneElement(child, {
+                    backendErrors: backendErrors,
+                    loading: loading,
+                    errors: errors,
+                    ref: element => {
+                        if (element) {
+                            // console.log(element.getAttribute("name").charAt(0));
+                            element.getAttribute("type") != "hidden" &&
+                                focusRefs.current.push(element);
+                            element.getAttribute("name").charAt(0) != "_" &&
+                                register(
+                                    element,
+                                    child.props.isDependent
+                                        ? validValues[child.props.options]
+                                            ? child.props.validation
+                                            : {
+                                                  required: false
+                                              }
+                                        : child.props.validation
+                                );
+                        }
+                    },
+                    options: child.props.options
+                        ? validValues[child.props.options]
+                        : null,
+                    initialOptionIndex:
+                        validValues[child.props.options] &&
+                        child.props.initialValue &&
+                        getIndexOfMatchInsideArray(
+                            validValues[child.props.options],
+                            "value",
+                            child.props.initialValue
+                        ),
+                    onChange: data => {
+                        child.props.dependentOptions
+                            ? setLoadDependentData(data)
+                            : data.event.target.value != undefined &&
+                              focusNext();
+                    },
+                    onFocus: e => {
+                        setFocusIndex(e.target.name);
+                    },
+                    loadingData:
+                        child.props.isDependent == true
+                            ? loadingData &&
+                              loadingData.includes(child.props.options)
+                            : undefined,
+                    disabled:
+                        child.props.disabled ||
+                        (child.props.isDependent &&
+                            !validValues[child.props.options])
+                });
+            }
+            return child;
+        });
+
+        return childrenWithProps;
+    }
 
     function focusNext(targetFieldName = null) {
+        // console.log("focusNext->focusIndex", focusIndex, targetFieldName);
         let targetIndex = getNextFocusIndex(
             focusRefs.current,
             focusIndex,
@@ -339,7 +393,7 @@ function FormBase({
                         message={showAlert.message}
                     />
 
-                    {childrenWithProps}
+                    {renderFields()}
 
                     {!redirect && (
                         <input
