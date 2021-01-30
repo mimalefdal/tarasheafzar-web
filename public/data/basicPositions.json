@@ -1,7 +1,11 @@
 [
     {
-        "slug": "ceo",
+        "slug": "executive-chief-officer",
         "title": {
+            "fa": "اجرایی",
+            "en": "Executive"
+        },
+        "display_title": {
             "fa": "مدیرعامل",
             "en": "CEO"
         },
@@ -14,10 +18,14 @@
         ]
     },
     {
-        "slug": "cto",
+        "slug": "ramadel-brand-technology-chief-officer",
         "title": {
+            "fa": "فناوری",
+            "en": "Technology"
+        },
+        "display_title": {
             "fa": "مدیر ارشد فناوری",
-            "en": "Chief Technology Officer"
+            "en": "CTO"
         },
         "job-level": "chief-officer",
         "recruit_capacity": 1,

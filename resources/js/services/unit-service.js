@@ -9,11 +9,11 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log('DepartmentAdd Service',response);
+            // console.log('UnitAdd Service',response);
             successCallback(response);
         })
         .catch(error => {
-            console.log("DepartmentAdd Service", error);
+            console.log("UnitAdd Service", error);
             failureCallback(error.response);
         });
 };
@@ -26,11 +26,11 @@ export const getIndex = (token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log("DepartmentIndex Service", response);
+            // console.log("UnitIndex Service", response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("DepartmentIndex Service",error.response);
+            // console.log("UnitIndex Service",error.response);
             failureCallback(error.response);
         });
 };
@@ -44,11 +44,11 @@ export const getItem = (params, token, successCallback, failureCallback) => {
         params: params
     })
         .then(response => {
-            // console.log("DepartmentShow Service",response);
+            // console.log("UnitShow Service",response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("DepartmentShow Service", error.response);
+            // console.log("UnitShow Service", error.response);
             failureCallback(error.response);
         });
 };
@@ -61,11 +61,11 @@ export const tryUpdate = (data, token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log('DepartmentUpdate Service',response);
+            // console.log('UnitUpdate Service',response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log('DepartmentUpdate Service',error.response);
+            // console.log('UnitUpdate Service',error.response);
             failureCallback(error.response);
         });
 };
@@ -82,11 +82,11 @@ export const tryDelete = (item, token, successCallback, failureCallback) => {
         }
     )
         .then(response => {
-            // console.log("DepartmentDelete Service",response);
+            // console.log("UnitDelete Service",response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("DepartmentDelete Service",error.response);
+            // console.log("UnitDelete Service",error.response);
             failureCallback(error.response);
         });
 };

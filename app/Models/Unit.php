@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\UnitItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ChecksUniqueness;
 use App\Traits\ManagesPositions;
@@ -29,6 +30,11 @@ class Unit extends Model
     public function setHasUnit($holder)
     {
         return $this->hasunit()->associate($holder);
+    }
+
+    public function isUnique()
+    {
+        return $this->unity(['hasunit' => 'morph'], UnitItem::class, true);
     }
 
     public function holderTitle(string $lang = null)

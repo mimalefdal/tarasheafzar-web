@@ -9,11 +9,11 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log('DepartmentAdd Service',response);
+            // console.log('PositionAdd Service',response);
             successCallback(response);
         })
         .catch(error => {
-            console.log("DepartmentAdd Service", error);
+            // console.error("PositionAdd Service", error);
             failureCallback(error.response);
         });
 };
@@ -26,11 +26,11 @@ export const getIndex = (token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log("DepartmentIndex Service", response);
+            // console.log("PositionIndex Service", response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("DepartmentIndex Service",error.response);
+            // console.log("PositionIndex Service",error.response);
             failureCallback(error.response);
         });
 };
@@ -44,11 +44,11 @@ export const getItem = (params, token, successCallback, failureCallback) => {
         params: params
     })
         .then(response => {
-            // console.log("DepartmentShow Service",response);
+            // console.log("PositionShow Service",response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("DepartmentShow Service", error.response);
+            // console.log("PositionShow Service", error.response);
             failureCallback(error.response);
         });
 };
@@ -61,11 +61,11 @@ export const tryUpdate = (data, token, successCallback, failureCallback) => {
         }
     })
         .then(response => {
-            // console.log('DepartmentUpdate Service',response);
+            // console.log('PositionUpdate Service',response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log('DepartmentUpdate Service',error.response);
+            // console.log('PositionUpdate Service',error.response);
             failureCallback(error.response);
         });
 };
@@ -82,11 +82,11 @@ export const tryDelete = (item, token, successCallback, failureCallback) => {
         }
     )
         .then(response => {
-            // console.log("DepartmentDelete Service",response);
+            // console.log("PositionDelete Service",response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("DepartmentDelete Service",error.response);
+            // console.log("PositionDelete Service",error.response);
             failureCallback(error.response);
         });
 };

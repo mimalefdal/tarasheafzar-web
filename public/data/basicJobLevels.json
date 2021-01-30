@@ -2,10 +2,73 @@
     {
         "slug": "chief-officer",
         "title": {
-            "fa": "مدیر ارشد",
+            "fa": "رئیس کل",
             "en": "Chief Officer"
         },
-        "scope": "Company",
-        "priority": 0
+        "scope": "company",
+        "priority": 10
+    },
+    {
+        "slug": "officer",
+        "title": {
+            "fa": "رئیس",
+            "en": "‌Officer"
+        },
+        "scope": "company,branch,department",
+        "priority": 20
+    },
+    {
+        "slug": "director",
+        "title": {
+            "fa": "مدیر راهبر",
+            "en": "Director"
+        },
+        "scope": "department",
+        "priority": 30
+    },
+    {
+        "slug": "manager",
+        "title": {
+            "fa": "مدیر",
+            "en": "Manager"
+        },
+        "scope": "unit",
+        "priority": 40
+    },
+    {
+        "slug": "supervisor",
+        "title": {
+            "fa": "سرپرست",
+            "en": "Supervisor"
+        },
+        "scope": "team",
+        "priority": 50
+    },
+    {
+        "slug": "expert",
+        "title": {
+            "fa": "کارشناس",
+            "en": "Expert"
+        },
+        "scope": null,
+        "priority": 60
+    },
+    {
+        "slug": "advisor",
+        "title": {
+            "fa": "مشاور",
+            "en": "ؤیرهسخق"
+        },
+        "scope": "company,branch,department",
+        "priority": 45
+    },
+    {
+        "slug": "employee",
+        "title": {
+            "fa": "کارمند",
+            "en": "employee"
+        },
+        "scope": null,
+        "priority": 70
     }
 ]

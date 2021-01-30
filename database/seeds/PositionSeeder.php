@@ -25,6 +25,7 @@ class PositionSeeder extends Seeder
             $newPosition = new Position([
                 "slug" => $position['slug'],
                 "title" => json_encode($position['title']),
+                "display_title" => json_encode($position['display_title']),
                 "recruit_capacity" => $position['recruit_capacity'],
             ]);
             $newPosition->save();

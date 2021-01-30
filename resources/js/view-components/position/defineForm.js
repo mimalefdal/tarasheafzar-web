@@ -9,6 +9,7 @@ import { useState } from "react";
 import {
     AutoCompleteSelect,
     BilingualTextInput,
+    DualLabelNumberInput,
     DualLabelTextInput
 } from "../../components/form-controls";
 import "../../styles/forms.css";
@@ -113,16 +114,30 @@ export default function Form({ preset = "add", ...props }) {
                 <BilingualTextInput
                     name="title"
                     validation={{ required: true }}
+                    title_official
+                    label={t("labels.title_official")}
                     {...presets["general"].inputProps["title"]}
                     {...presets[preset].inputProps["title"]}
                 />
             )}
             {(presets[preset].fields.includes("all") ||
+                presets[preset].fields.includes("diaplayTitle")) && (
+                <BilingualTextInput
+                    name="displayTitle"
+                    validation={{}}
+                    label={t("labels.title_display")}
+                    {...presets["general"].inputProps["displayTitle"]}
+                    {...presets[preset].inputProps["displayTitle"]}
+                />
+            )}
+            {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("recruit_capacity")) && (
-                <DualLabelTextInput
+                <DualLabelNumberInput
                     name="recruit_capacity"
                     validation={{ required: true }}
                     label={t("labels.recruit_capacity")}
+                    // numberProps={{ min: 1 }}
+                    value={1}
                     {...presets["general"].inputProps["recruit_capacity"]}
                     {...presets[preset].inputProps["recruit_capacity"]}
                 />

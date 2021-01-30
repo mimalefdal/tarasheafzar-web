@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Http\Resources\PositionItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ManagesRoles;
 use App\Models\JobLevel;
 use App\Models\Role;
+use App\Traits\ChecksUniqueness;
 use App\Traits\HandleBilangTitles;
 use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,6 +18,7 @@ class Position extends Model
     use ManagesRoles;
     use SoftDeletes;
     use HandleBilangTitles;
+    use ChecksUniqueness;
 
     protected $fillable = [
         'title', 'slug', 'recruit_capacity'
@@ -46,6 +49,11 @@ class Position extends Model
     public function joblevel()
     {
         return $this->belongsTo(JobLevel::class);
+    }
+
+    public function isUnique()
+    {
+        return $this->unity(['hasposition' => 'morph', 'joblevel_id' => 'column'], PositionItem::class);
     }
 
     public function holderTitle(string $lang = null)

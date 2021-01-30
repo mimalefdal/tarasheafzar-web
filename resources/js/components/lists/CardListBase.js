@@ -39,16 +39,13 @@ function CardListBase({
         dataService(
             token,
             response => {
-                console.log(
-                    "CardListBase:dataService:response:",
-                    response.data
-                );
+                console.log("CardListBase:[trigger]:response:", response.data);
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
                 setLoading(false);
             },
             error => {
-                console.log("CardListBase->dataService->ERROR", error);
+                console.log("CardListBase:[trigger]:ERROR", error);
                 setLoading(false);
             }
         );

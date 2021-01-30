@@ -85,7 +85,7 @@ return [
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => ':attribute دست‌کم باید :min باشد.',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'string' => ':attribute دست کم :min کاراکتر باشد.',
         'array' => 'The :attribute must have at least :min items.',
@@ -136,8 +136,7 @@ return [
         'contact' => [
             'digits' => 'تعداد ارقام شماره تلفن باید ۱۱ رقم باشد',
             'email' => 'نشانی ایمیل معتبر نیست'
-        ]
-
+        ],
     ],
 
     /*

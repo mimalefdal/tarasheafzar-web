@@ -16,10 +16,8 @@ class UnitController extends Controller
         $newItem->setHasUnit($request->holder);
         // return response([$request->all(), $newItem], 250);
 
-
         $newItem->validateUnity();
         //unity check passed
-
 
         $newItem->save();
         $resourceItem = new UnitItem($newItem);
@@ -53,8 +51,6 @@ class UnitController extends Controller
 
     public function update(StoreUnitRequest $request)
     {
-
-
         // return $request->all();
         $flagRelated = false; //determine relations update required if become true
 

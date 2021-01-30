@@ -151,7 +151,7 @@ function FormBase({
     }, [triggerEditMode]);
 
     useEffect(() => {
-        // console.log("SingleFormBase:loadDependentData:", loadDependentData);
+        // console.log("SingleFormBase:[loadDependentData]:loadDependentData", loadDependentData);
         if (loadDependentData)
             if (loadDependentData.value != null) {
                 // master field value selected
@@ -270,6 +270,12 @@ function FormBase({
 
         if (error.status == 422) {
             setBackendErrors(error.data.errors);
+            if ("slug" in error.data.errors)
+                setShowAlert({
+                    show: true,
+                    type: "error",
+                    message: error.data.errors.slug
+                });
         } else {
             // console.log(error.response);
             setBackendErrors(false);
@@ -285,7 +291,7 @@ function FormBase({
 
     function renderFields() {
         focusRefs.current = [];
-        let childrenWithProps = React.Children.map(props.children, child => {
+        return React.Children.map(props.children, child => {
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     backendErrors: backendErrors,
@@ -323,8 +329,9 @@ function FormBase({
                     onChange: data => {
                         child.props.dependentOptions
                             ? setLoadDependentData(data)
-                            : data.event.target.value != undefined &&
-                              focusNext();
+                            : child.props.options
+                            ? focusNext()
+                            : null;
                     },
                     onFocus: e => {
                         setFocusIndex(e.target.name);
@@ -342,8 +349,6 @@ function FormBase({
             }
             return child;
         });
-
-        return childrenWithProps;
     }
 
     function focusNext(targetFieldName = null) {

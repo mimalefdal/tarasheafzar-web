@@ -22,7 +22,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                     {...props}
                     ref={ref}
                     name={name + "_fa"}
-                    label={t("labels.title")}
+                    label={props.label ? props.label : t("labels.title")}
                     labelComment={t("languages.fa")}
                     errors={errors}
                     backendErrors={backendErrors}
@@ -39,7 +39,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                 ref={ref}
                 name={name + "_en"}
                 lang="en"
-                label={t("labels.title")}
+                label={props.label ? props.label : t("labels.title")}
                 labelComment="English"
                 errors={errors}
                 backendErrors={backendErrors}

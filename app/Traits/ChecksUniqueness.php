@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use Bilang;
 use Illuminate\Validation\ValidationException;
 use stdClass;
 
@@ -16,15 +15,16 @@ trait ChecksUniqueness
         }
     }
 
-    public function isNamedUnique(string $nameChecksWith = null)
+    public function isNamedUnique($combiner = null)
     {
+
         $lang = \Lang::getLocale();
         $globalNameCheck = null;
         $localNameCheck = null;
 
         $errors = collect();
         $globalNameCheck = $this->isGlobalNameUnique();
-        if ($lang != 'en') $localNameCheck = $this->isLocalNameUnique($nameChecksWith);
+        if ($lang != 'en') $localNameCheck = $this->isLocalNameUnique($combiner, $multiple = is_array($combiner));
 
         if ($globalNameCheck != null) $errors = $errors->merge($globalNameCheck);
         if ($localNameCheck != null) $errors = $errors->merge($localNameCheck);
@@ -32,16 +32,36 @@ trait ChecksUniqueness
         return $errors->toArray();
     }
 
-    public function isLocalNameUnique($nameChecksWith = null)
+    public function isLocalNameUnique($combiner = null, $multiple = false)
     {
         $lang = \Lang::getLocale();
 
         $title = json_decode($this->title);
         $localTitle = $title->$lang;
-        if ($nameChecksWith != null)
-            $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->where($nameChecksWith, $this[$nameChecksWith])->first();
-        else
+        if ($combiner != null) {
+            if ($multiple == false)
+                $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->where($combiner, $this[$combiner])->first();
+            else
+            // means combliner is an array
+            {
+                $query = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle);
+                foreach ($combiner as $key => $type) {
+                    switch ($type) {
+                        case 'column':
+                            $query = $query->where($key, $this[$key]);
+                            break;
+
+                        case 'morph':
+                            $query = $query->where($key . '_type', $this[$key . '_type'])->where($key . '_id', $this[$key . '_id']);
+                            break;
+                    }
+                }
+                $localTitleCheck = $query->first();
+            }
+        } else
+            // means combliner is null
             $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->first();
+
 
         if ($localTitleCheck != null) {
             if ($localTitleCheck->id != $this->id) {
@@ -69,10 +89,10 @@ trait ChecksUniqueness
         return $this->unity();
     }
 
-    private function unity(string $combinerField = null, $resourceClass = null)
+    private function unity($combinerObject = null,  $resourceClass = null)
     {
         $unity = new stdClass();
-        $isNamedUnique = $this->isNamedUnique($nameChecksWith = $combinerField);
+        $isNamedUnique = $this->isNamedUnique($combiner = $combinerObject);
 
         if ($isNamedUnique == null) {
             $unity->check = true;

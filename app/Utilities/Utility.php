@@ -1,9 +1,29 @@
 <?php
 
+use App\Models\Branch;
+use App\Models\Department;
+use App\Models\Unit;
+
 class Utility
 {
-    public static function makeResponseData()
+    public static function getHolder($holderType, $slug)
     {
-        # code...
+        switch ($holderType) {
+            case 'company':
+                $holder = null;
+                break;
+            case 'branch':
+                $holder = Branch::where('slug', $slug)->first();
+                break;
+            case 'department':
+                $holder = Department::where('slug', $slug)->first();
+                break;
+            case 'unit':
+                $holder = Unit::where('slug', $slug)->first();
+                break;
+            default:
+                break;
+        }
+        return $holder;
     }
 }

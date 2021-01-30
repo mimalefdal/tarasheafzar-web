@@ -3,15 +3,25 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePositionRequest;
 use App\Http\Resources\PositionItem;
+use App\Models\Joblevel;
 use App\Models\Position;
 use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
-    public function create(Request $request)
+    public function create(StorePositionRequest $request)
     {
-        return response(["message" => "Not Implemented", $request], 400);
+        $newItem = new Position($request->all());
+        $newItem->setHasPosition($request->holder);
+        $newItem->joblevel()->associate(Joblevel::find($request->joblevel_id));
+        // return response([$request->all(), $newItem], 250);
+
+        $newItem->validateUnity();
+        //unity check passed
+
+        return response(["message" => "Not Implemented", $newItem], 400);
     }
 
     public function index()

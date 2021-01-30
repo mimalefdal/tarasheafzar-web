@@ -18,7 +18,7 @@ class CreateJobLevelsTable extends Migration
 
             $table->json('title');
             $table->string('slug')->unique();
-            $table->string('scope');
+            $table->string('scope')->nullable();
             $table->integer('priority')->unique();
 
             $table->timestamps();

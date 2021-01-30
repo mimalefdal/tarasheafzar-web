@@ -17,6 +17,7 @@ class CreatePositionsTable extends Migration
             $table->id();
 
             $table->json('title');
+            $table->json('display_title')->nullable();
             $table->string('slug')->unique();
             $table->integer('recruit_capacity');
 

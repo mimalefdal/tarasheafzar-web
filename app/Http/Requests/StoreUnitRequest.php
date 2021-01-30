@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Branch;
-use App\Models\Department;
 use Bilang;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use Utility;
 
 class StoreUnitRequest extends FormRequest
 {
@@ -45,23 +44,11 @@ class StoreUnitRequest extends FormRequest
     {
         $titles = Bilang::makeTitleObject($this->title);
 
-        $holder = null;
-        $holderSlug = null;
-        switch ($this->holderType) {
-            case 'company':
-                $holder = null;
-                break;
-            case 'branch':
-                $holder = Branch::where('slug', $this->holder)->first();
-                break;
-            case 'department':
-                $holder = Department::where('slug', $this->holder)->first();
-                break;
-            default:
-                break;
-        }
-        if ($holder != null)
-            $holderSlug = $holder->slug;
+        $holder = Utility::getHolder($this->holderType, $this->holder);
+        ($holder != null) ?
+            $holderSlug = $holder->slug :
+            $holderSlug = null;
+
         $slugTemplate = $holderSlug . ' ' . $this->title_en . ' unit';
 
         $this->merge([

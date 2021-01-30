@@ -50,7 +50,10 @@ class ValuelistController extends Controller
                 break;
 
             case 'joblevel':
-                return DropdownItem::collection(Joblevel::orderBy('title', 'asc')->get());
+                if ($tag == null)
+                    return DropdownItem::collection(Joblevel::orderBy('priority', 'desc')->get());
+                else
+                    return DropdownItem::collection(Joblevel::where('scope', 'LIKE', '%' . $tag . '%')->orWhere('scope', null)->orderBy('priority', 'desc')->get());
                 break;
 
             default:
