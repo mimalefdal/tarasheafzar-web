@@ -30,12 +30,12 @@ export default function PanelsHome(props) {
                     {t("panels.structure-management")}
                 </Link>
                 {/* Temp */}
-                <Link className="panel-link" to={`/rights`}>
+                {/* <Link className="panel-link" to={`/rights`}>
                     {t("tools.rightsManagement")}
-                </Link>
-                <Link className="panel-link" to={`/staff`}>
+                </Link> */}
+                {/* <Link className="panel-link" to={`/staff`}>
                     {t("tools.staffManagement")}
-                </Link>
+                </Link> */}
                 {/* Temp End */}
             </>
         );

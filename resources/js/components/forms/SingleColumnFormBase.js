@@ -117,36 +117,40 @@ function FormBase({
                     }
                 }
             });
+            fields.length == 0
+                ? setReady(true)
+                : GetValidValues(
+                      fields,
+                      response => {
+                          // console.log(
+                          //     "UnitForm:[triggerEditMode]:Response",
+                          //     response.data
+                          // );
 
-            GetValidValues(
-                fields,
-                response => {
-                    // console.log(
-                    //     "UnitForm:[triggerEditMode]:Response",
-                    //     response.data
-                    // );
+                          let updatedValidValues = MakeUpdatedValidValues(
+                              validValues,
+                              response.data,
+                              valuesMap
+                          );
+                          setLoadingData(false);
+                          setValidValues(
+                              MakeUpdatedValidValues(
+                                  validValues,
+                                  response.data,
+                                  valuesMap
+                              )
+                          );
+                          setReady(true);
 
-                    let updatedValidValues = MakeUpdatedValidValues(
-                        validValues,
-                        response.data,
-                        valuesMap
-                    );
-                    setLoadingData(false);
-                    setValidValues(
-                        MakeUpdatedValidValues(
-                            validValues,
-                            response.data,
-                            valuesMap
-                        )
-                    );
-                    setReady(true);
-
-                    // focusNext();
-                },
-                error => {
-                    console.error("UnitForm:[triggerEditMode]:ERROR", error);
-                }
-            );
+                          // focusNext();
+                      },
+                      error => {
+                          console.error(
+                              "UnitForm:[triggerEditMode]:ERROR",
+                              error
+                          );
+                      }
+                  );
         }
     }, [triggerEditMode]);
 
@@ -330,7 +334,9 @@ function FormBase({
                         child.props.dependentOptions
                             ? setLoadDependentData(data)
                             : child.props.options
-                            ? focusNext()
+                            ? data.target &&
+                              data.target.value != null &&
+                              focusNext()
                             : null;
                     },
                     onFocus: e => {

@@ -5,7 +5,7 @@ import { FormTitle } from "../../components/form-controls";
 import { t } from "../../utils";
 import { RightAddForm } from "../../view-components";
 
-function AddRight() {
+function define() {
     return (
         <div className="">
             <PageHeaderBar>
@@ -21,4 +21,4 @@ function AddRight() {
     );
 }
 
-export default AddRight;
+export default define;

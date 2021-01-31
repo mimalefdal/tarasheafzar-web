@@ -102,10 +102,10 @@ function show(props) {
     function closeEditForm() {
         setReady(false);
         setShowEdit(false);
-        GetUnit({ id: item.id }, token, getUnitResponse, getUnitError);
+        GetUnit({ id: item.id }, token, getResponse, getError);
     }
 
-    function getUnitResponse(response) {
+    function getResponse(response) {
         let responseItem = response.data.data;
         if (item.slug != responseItem.slug) {
             history.replace(
@@ -115,7 +115,8 @@ function show(props) {
         setItem(response.data.data);
         setReady(true);
     }
-    function getUnitError(failure) {
+
+    function getError(failure) {
         console.log(failure);
     }
 }

@@ -21,7 +21,7 @@ class Position extends Model
     use ChecksUniqueness;
 
     protected $fillable = [
-        'title', 'slug', 'recruit_capacity'
+        'title', 'display_title', 'slug', 'recruit_capacity'
     ];
 
     protected $type = 'Position';
@@ -71,12 +71,27 @@ class Position extends Model
     public function fullTitle(string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
-        return Bilang::grammertize($this->typedTitle($lang), $this->holderTitle($lang), $lang);
+        return Bilang::grammertize($this->levelTitle($lang), $this->holderTitle($lang), $lang);
+    }
+
+    public function displayTitle(string $lang = null)
+    {
+        if ($this->display_title != null) {
+            if (!$lang) $lang = Lang::getLocale();
+            return Bilang::grammertize(Bilang::getLocalTitle($this->display_title, false, $lang), $this->holderTitle($lang), $lang);
+        }
+        return null;
     }
 
     public function typedTitle(string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
         return Bilang::grammertize(Value::getLocalValue($this->type, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
+    }
+
+    public function levelTitle(string $lang = null)
+    {
+        if (!$lang) $lang = Lang::getLocale();
+        return Bilang::grammertize(Bilang::getLocalTitle($this->joblevel->title, false, $lang), Bilang::getLocalTitle($this->title, false, $lang), $lang);
     }
 }

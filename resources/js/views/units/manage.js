@@ -38,7 +38,7 @@ function ManageUnits(props) {
     }
 
     function handleShow(item) {
-        console.log("handle VIEW called", item);
+        // console.log("handle VIEW called", item);
         history.push({
             pathname: `${match.path}/${item.slug}`,
             state: {

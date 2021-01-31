@@ -38,10 +38,7 @@ export default function Form({ preset = "add", ...props }) {
             inputProps: {
                 holderType: {
                     // disabled: true,
-                    initialValue:
-                        props.item.holder_id && !props.item.holder.deleted
-                            ? props.item.holder_type
-                            : null
+                    initialValue: props.item.holder_type
                 },
                 holder: {
                     initialValue:

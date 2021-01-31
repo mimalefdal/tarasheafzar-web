@@ -32,6 +32,7 @@ function CardBase({
                             : (item.type ? item.type + " " : "") + item.title}
                         {title_tail_local && (
                             <span className="basic-card-title-tail">
+                                {" "}
                                 {title_tail_local}
                             </span>
                         )}
@@ -52,6 +53,7 @@ function CardBase({
                                   (item.type_en ? " " + item.type_en : "")}
                             {title_tail_global && (
                                 <span className="basic-card-title-tail">
+                                    {" "}
                                     {title_tail_global}
                                 </span>
                             )}

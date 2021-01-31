@@ -1,2 +1,2 @@
-export { default as RightsManagement } from "./manage";
-export { default as RightsAdd } from "./add";
+export { default as ManageRights } from "./manage";
+export { default as DefineRight } from "./define";

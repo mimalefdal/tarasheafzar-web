@@ -20,6 +20,14 @@ function Card({ item, entryActions, ...props }) {
             : item.holder.title["en"];
     }
 
+    const localDisplayTitle = item.display_title
+        ? "(" + item.display_title + ")"
+        : "";
+
+    const globalDisplayTitle = item.display_title_en
+        ? "(" + item.display_title_en + ")"
+        : "";
+
     return (
         <BasicCard
             item={item}
@@ -28,6 +36,8 @@ function Card({ item, entryActions, ...props }) {
             title_complements_global={globalTitleCompliment}
             title_field_local="short_title"
             title_field_global="short_title_en"
+            title_tail_local={localDisplayTitle}
+            title_tail_global={globalDisplayTitle}
         >
             <div className="card-info-box">{item.recruit_capacity}</div>
         </BasicCard>

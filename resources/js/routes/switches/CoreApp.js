@@ -11,6 +11,7 @@ import AppContext from "../../context/appContext";
 import StaffContext from "../../context/staffContext";
 import { NotFound, Unathorized } from "../../views/errors";
 import PanelsHome from "../../views/PanelsHome";
+import { DefineRight } from "../../views/rights";
 import ManageRights from "../../views/rights/manage";
 import { StaffManagementManage } from "../../views/staff-management";
 import { REQUIRED_RIGHT } from "../guards/types";
@@ -74,16 +75,23 @@ function CoreApp(props) {
                             component={ManageRights}
                             meta={{
                                 [REQUIRED_RIGHT]:
-                                    "access-structure-management-panel"
+                                    "access-rights-adminstration-tool"
                             }}
                         />
+
+                        <Route
+                            exact
+                            path={`/right/add`}
+                            component={DefineRight}
+                        />
+
                         <GuardedRoute
                             exact
                             path={`/staff`}
                             component={StaffManagementManage}
                             meta={{
                                 [REQUIRED_RIGHT]:
-                                    "access-structure-management-panel"
+                                    "access-rights-adminstration-tool"
                             }}
                         />
                         {/* Temp END */}

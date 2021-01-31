@@ -39,7 +39,7 @@ function CardListBase({
         dataService(
             token,
             response => {
-                console.log("CardListBase:[trigger]:response:", response.data);
+                // console.log("CardListBase:[trigger]:response:", response.data);
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
                 setLoading(false);

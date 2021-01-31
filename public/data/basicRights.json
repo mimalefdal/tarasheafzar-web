@@ -18,8 +18,16 @@
     {
         "slug": "access-structure-management-panel",
         "title": {
-            "fa": "دترسی به پنل مدیریت شرکت",
+            "fa": "دسترسی به پنل مدیریت شرکت",
             "en": "Access Company Management Panel"
+        },
+        "activation": true
+    },
+    {
+        "slug": "access-rights-adminstration-tool",
+        "title": {
+            "fa": "دسترسی به ابزار ادارهٔ دسترسی‌ها",
+            "en": "Access System Rights Tool"
         },
         "activation": true
     }

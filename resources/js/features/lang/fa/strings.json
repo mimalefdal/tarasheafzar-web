@@ -22,6 +22,7 @@
         "submit-add": "درج",
         "submit-define-ceo": "درج مدیرعامل",
         "submit-update": "درج ویرایش",
+        "submit-new": "درج جدید",
         "slug": "تگ سیستمی",
         "activation": "فعالسازی",
         "active": "فعال",
@@ -85,6 +86,7 @@
         "unitsManagement": "مدیریت واحدها",
         "positionsManagement": "مدیریت جایگاه‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی",
+        "rightsAdministration": "ادارهٔ دسترسی‌ها",
         "staffManagement": "مدیریت کارکنان"
     },
     "forms": {

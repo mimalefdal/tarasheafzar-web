@@ -108,15 +108,10 @@ function show(props) {
     function closeEditForm() {
         setReady(false);
         setShowEdit(false);
-        GetDepartment(
-            { id: item.id },
-            token,
-            getDepartmentResponse,
-            getDepartmentError
-        );
+        GetDepartment({ id: item.id }, token, getResponse, getError);
     }
 
-    function getDepartmentResponse(response) {
+    function getResponse(response) {
         let responseItem = response.data.data;
         if (item.slug != responseItem.slug) {
             history.replace(
@@ -126,7 +121,7 @@ function show(props) {
         setItem(response.data.data);
         setReady(true);
     }
-    function getDepartmentError(failure) {
+    function getError(failure) {
         console.log(failure);
     }
 }

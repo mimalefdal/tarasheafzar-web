@@ -90,10 +90,10 @@ function show(props) {
     function closeEditForm() {
         setReady(false);
         setShowEdit(false);
-        GetBranch({ id: item.id }, token, getBranchResponse, getBranchError);
+        GetBranch({ id: item.id }, token, getResponse, getError);
     }
 
-    function getBranchResponse(response) {
+    function getResponse(response) {
         let responseItem = response.data.data;
         if (item.slug != responseItem.slug) {
             history.replace(
@@ -103,7 +103,7 @@ function show(props) {
         setItem(response.data.data);
         setReady(true);
     }
-    function getBranchError(failure) {
+    function getError(failure) {
         console.log(failure);
     }
 }

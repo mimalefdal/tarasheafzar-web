@@ -5,7 +5,7 @@ import { EditButton } from "../../components/buttons";
 import { Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog, Loading } from "../../components/feedback";
-import { ApiClient, GetUnit } from "../../services";
+import { ApiClient, GetPosition } from "../../services";
 import { Badge } from "@material-ui/core";
 import StaffContext from "../../context/staffContext";
 import { PositionForm, UnitForm } from "../../view-components";
@@ -28,7 +28,7 @@ function show(props) {
             setReady(true);
         } else {
             // console.log(location);
-            GetUnit(
+            GetPosition(
                 { slug: slug },
                 token,
                 response => {
@@ -107,10 +107,10 @@ function show(props) {
     function closeEditForm() {
         setReady(false);
         setShowEdit(false);
-        GetUnit({ id: item.id }, token, getUnitResponse, getUnitError);
+        GetPosition({ id: item.id }, token, getResponse, getError);
     }
 
-    function getUnitResponse(response) {
+    function getResponse(response) {
         let responseItem = response.data.data;
         if (item.slug != responseItem.slug) {
             history.replace(
@@ -120,7 +120,7 @@ function show(props) {
         setItem(response.data.data);
         setReady(true);
     }
-    function getUnitError(failure) {
+    function getError(failure) {
         console.log(failure);
     }
 }

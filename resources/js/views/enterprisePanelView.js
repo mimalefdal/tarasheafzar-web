@@ -14,11 +14,11 @@ export default function viewComponent() {
         );
     }
 
-    let ManageRightsLink;
-    if (getIsAllowed("access-rights-management-tool")) {
-        ManageRightsLink = (
-            <Link className="panel-link" to={`${match.url}/rights`}>
-                {t("tools.rightsManagement")}
+    let AdminRightsLink;
+    if (getIsAllowed("access-rights-adminstration-tool")) {
+        AdminRightsLink = (
+            <Link className="panel-link" to={`/rights`}>
+                {t("tools.rightsAdministration")}
             </Link>
         );
     }
@@ -27,7 +27,7 @@ export default function viewComponent() {
         <div>
             <div className="panel-links  ">
                 {initializeEnterpriseLink}
-                {ManageRightsLink}
+                {AdminRightsLink}
             </div>
         </div>
     );

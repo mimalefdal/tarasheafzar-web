@@ -73,14 +73,14 @@ class UnitController extends Controller
         $item->setHasUnit($request->holder);
         $item->update($request->all());
 
-        return response(["message" => "Under Implementation", $item], 200);
+        // return response(["message" => "Under Implementation", $item], 200);
         //update related records if needed
         if ($flagRelated) {
         }
 
         $resourceItem = new UnitItem($item);
         $message = \Lang::get('messages.recordـupdated', ['title' => $item->fullTitle()]);
-        $data = ['message' => $message, 'department' => $resourceItem, 'relations update' => $flagRelated];
+        $data = ['message' => $message, 'item' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
 
         // return response(["message" => "Not Implemented", $request->all()], 400);

@@ -8,6 +8,7 @@ use App\Http\Resources\PositionItem;
 use App\Models\Joblevel;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Lang;
 
 class PositionController extends Controller
 {
@@ -16,10 +17,19 @@ class PositionController extends Controller
         $newItem = new Position($request->all());
         $newItem->setHasPosition($request->holder);
         $newItem->joblevel()->associate(Joblevel::find($request->joblevel_id));
-        // return response([$request->all(), $newItem], 250);
+        // return response([$request->all(), $newItem], 400);
 
         $newItem->validateUnity();
         //unity check passed
+
+        $newItem->save();
+        $resourceItem = new PositionItem($newItem);
+
+        $message = \Lang::get('messages.recordـcreated', ['title' => $newItem->fullTitle()]);
+        // $message = \Lang::get('messages.newrecordـcreated', ['attribute' => Value::getLocalValue($type)]);
+
+        $data = ['message' => $message, 'position' => $resourceItem];
+        return response()->json($data, 200);
 
         return response(["message" => "Not Implemented", $newItem], 400);
     }
@@ -32,16 +42,66 @@ class PositionController extends Controller
 
     public function show(Request $request)
     {
+        if ($request->has('slug')) {
+            return PositionItem::make(Position::withTrashed()->where('slug', $request->slug)->first());
+        };
+        if ($request->has('id')) {
+            return PositionItem::make(Position::withTrashed()->find($request->id));
+        }
+        return response('Bad Request', 404);
         return response(["message" => "Not Implemented", $request], 400);
     }
 
-    public function update(Request $request)
+    public function update(StorePositionRequest $request)
     {
-        return response(["message" => "Not Implemented", $request], 400);
+
+
+        // return $request->all();
+        $flagRelated = false; //determine relations update required if become true
+
+        $item = $request->get('item');
+        $editedItem = new Position($request->all());
+        $editedItem->id = $item['id'];
+        $editedItem->setHasPosition($request->holder);
+
+        $editedItem->validateUnity();
+        //unity check passed
+
+        //update record
+        $item = Position::find($item['id']);
+
+        if ($item->slug != $request->slug) {
+            // TODO: this must been handled by an event
+            $flagRelated = true;
+            $oldSlug = $item->slug;
+        }
+        $item->setHasPosition($request->holder);
+        $item->update($request->all());
+
+        // return response(["message" => "Under Implementation", $item], 200);
+        //update related records if needed
+        if ($flagRelated) {
+        }
+
+        $resourceItem = new PositionItem($item);
+        $message = \Lang::get('messages.recordـupdated_with_type', ['title' => $item->fullTitle(), 'type' => Lang::get('values.Position')]);
+        $data = ['message' => $message, 'item' => $resourceItem, 'relations update' => $flagRelated];
+        return response($data);
+
+        // return response(["message" => "Not Implemented", $request->all()], 400);
     }
 
     public function delete(Request $request)
     {
-        return response(["message" => "Not Implemented", $request], 400);
+        $item = $request->item;
+        $item = Position::find($item['id']);
+        $item->delete();
+
+        $resourceItem = new PositionItem($item);
+        $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
+        $data = ['message' => $message, 'unit' => $resourceItem];
+
+        return response($data);
+        return response(["message" => "Not Implemented", $request->all()], 400);
     }
 }

@@ -36,14 +36,12 @@ export default function Form({ preset = "add", ...props }) {
         edit: preset == "edit" && {
             dataService: UpdatePosition,
             submitValue: t("labels.submit-update"),
+            submitNew: t("labels.submit-update"),
             fields: ["all"],
             inputProps: {
                 holderType: {
                     // disabled: true,
-                    initialValue:
-                        props.item.holder_id && !props.item.holder.deleted
-                            ? props.item.holder_type
-                            : null
+                    initialValue: props.item.holder_type
                 },
                 holder: {
                     initialValue:
@@ -51,10 +49,19 @@ export default function Form({ preset = "add", ...props }) {
                             ? props.item.holder.slug
                             : null
                 },
+                joblevel: {
+                    initialValue: props.item.joblevel
+                },
                 title: {
                     initialValue: {
                         local: props.item.title,
                         en: props.item.title_en
+                    }
+                },
+                displayTitle: {
+                    initialValue: {
+                        local: props.item.display_title,
+                        en: props.item.display_title_en
                     }
                 }
             }
@@ -65,6 +72,7 @@ export default function Form({ preset = "add", ...props }) {
         <SingleColumnFormBase
             dataService={presets[preset].dataService}
             submitValue={presets[preset].submitValue}
+            submitNew={presets[preset].submitNew}
             item={props.item}
             showAlert={initialAlert}
             listedFields={["holdertypes.position"]}
@@ -121,7 +129,7 @@ export default function Form({ preset = "add", ...props }) {
                 />
             )}
             {(presets[preset].fields.includes("all") ||
-                presets[preset].fields.includes("diaplayTitle")) && (
+                presets[preset].fields.includes("displayTitle")) && (
                 <BilingualTextInput
                     name="displayTitle"
                     validation={{}}

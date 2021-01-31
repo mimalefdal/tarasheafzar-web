@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ import {
 } from "../../components/form-controls";
 import "../../styles/forms.css";
 import { ApiClient } from "../../services";
+import StaffContext from "../../context/staffContext";
 
 export default function App() {
     const { register, handleSubmit, watch, errors } = useForm();

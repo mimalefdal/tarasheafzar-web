@@ -30,8 +30,28 @@ class PositionItem extends JsonResource
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 
         $item['recruit_capacity'] = $this->recruit_capacity;
-        $item['joblevel'] = Bilang::getLocalTitle($this->joblevel->title);
-        $item['joblevel_en'] = Bilang::getEnTitle($this->joblevel->title);
+
+        $item['joblevel'] = $this->joblevel->slug;
+        $item['joblevel_title'] = Bilang::getLocalTitle($this->joblevel->title);
+        $item['joblevel_title_en'] = Bilang::getEnTitle($this->joblevel->title);
+
+        $item['short_title'] = $this->levelTitle();
+        $item['short_title_en'] = $this->levelTitle('en');
+
+        $item['full_title'] = $this->fullTitle();
+        $item['full_title_en'] = $this->fullTitle('en');
+
+        if ($this->display_title != null) {
+
+            if (Bilang::getLocalTitle($this->display_title) <> "") {
+                $item['display_title'] = Bilang::getLocalTitle($this->display_title);
+                $item['display_fulltitle'] = $this->displayTitle();
+            }
+            if (Bilang::getLocalTitle($this->display_title, false, 'en') <> "") {
+                $item['display_title_en'] = Bilang::getLocalTitle($this->display_title, false, 'en');
+                $item['display_fulltitle_en'] = $this->displayTitle('en');
+            }
+        }
 
         $item['deleted'] = $this->trashed();
         $item['slug'] = $this->slug;
