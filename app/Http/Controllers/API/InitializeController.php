@@ -45,6 +45,19 @@ class InitializeController extends Controller
         return response()->json($systemInitialize, 200);
     }
 
+    public function installLicence(Request $request)
+    {
+        $this->updateInitializeStatus(["installLicence" => true,]);
+        return response()->json(
+            [
+                'data' => $this->getSystemInitializeContent()['file'],
+                'message' => Lang::get('messages.licenceInstalled'),
+                'redirect' => false
+            ],
+            200
+        );
+    }
+
     public function defineceo(Request $request)
     {
         if ($this->currentCeo() != null) {
@@ -102,14 +115,26 @@ class InitializeController extends Controller
 
     private function updateInitializeStatus($status)
     {
-        $path = base_path() . '/public/data/systemInitialize.json';
-        $systemInitialize = file_get_contents($path);
-        $systemInitialize = json_decode($systemInitialize, true);
+        // $path = base_path() . '/public/data/systemInitialize.json';
+        // $systemInitialize = file_get_contents($path);
+        // $systemInitialize = json_decode($systemInitialize, true);
 
+        $initializeContent = $this->getSystemInitializeContent();
+
+        $systemInitialize = $initializeContent['file'];
         foreach ($status as $key => $value) {
             $systemInitialize[$key] = $value;
         }
 
-        file_put_contents($path, json_encode($systemInitialize));
+        file_put_contents($initializeContent['path'], json_encode($systemInitialize));
+    }
+
+    private function getSystemInitializeContent()
+    {
+        $path = base_path() . '/public/data/systemInitialize.json';
+        $systemInitialize = file_get_contents($path);
+        $systemInitialize = json_decode($systemInitialize, true);
+
+        return ['file' => $systemInitialize, 'path' => $path];
     }
 }

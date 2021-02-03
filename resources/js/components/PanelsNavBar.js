@@ -3,7 +3,7 @@ import { HomeButton, BackButton } from "./buttons";
 import { useLocation } from "react-router-dom";
 import { t } from "../utils";
 import { useSelector } from "react-redux";
-import { navBarTitle } from "../features/redux/navSlice";
+import { navBarTitle } from "../utils/redux/navSlice";
 
 function PanelsNavBar() {
     let location = useLocation();

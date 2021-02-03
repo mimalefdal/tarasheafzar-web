@@ -1,0 +1,14 @@
+[
+    {
+        "feature": "enterprise-administration-panel",
+        "slug": "enterprise-initialize-tool",
+        "title": {
+            "fa": "ابزار راه‌اندازی سامانه",
+            "en": "Enterprise Initialize Tool"
+        },
+        "activation": true,
+        "rights": [
+            "access"
+        ]
+    }
+]

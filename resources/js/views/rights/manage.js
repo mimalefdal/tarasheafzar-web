@@ -10,7 +10,7 @@ import { GetRightList } from "../../services";
 import { t } from "../../utils";
 import { RightEntry } from "../../view-components";
 
-function ManageRights() {
+function _manage() {
     const rightsTableMap = {
         index: "id",
         title: "title",
@@ -40,7 +40,7 @@ function ManageRights() {
                     btnSet={
                         <AddButton
                             className="header-operation-btn"
-                            target="right/add"
+                            target="rights/define"
                         />
                     }
                 />
@@ -56,4 +56,4 @@ function ManageRights() {
     );
 }
 
-export default ManageRights;
+export default _manage;

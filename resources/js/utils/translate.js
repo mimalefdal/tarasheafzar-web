@@ -1,5 +1,5 @@
 import { currentLang } from ".";
-import { fa_trans, en_trans } from "../features/lang";
+import { fa_trans, en_trans } from "../utils/lang";
 
 function translate(key) {
     // console.log(key, keys, lang);

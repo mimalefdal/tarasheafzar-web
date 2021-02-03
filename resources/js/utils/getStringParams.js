@@ -1,4 +1,4 @@
-import { slice } from "../features/redux/navSlice";
+import { slice } from "../utils/redux/navSlice";
 
 export default function utility(string) {
     let from = string.indexOf(":");

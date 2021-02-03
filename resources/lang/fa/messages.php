@@ -15,6 +15,7 @@ return [
 
     'generalsuccess' => 'درخواست با موفقیت انجام شد',
     'generalfailure' => 'درخواست قابل انجام نیست.',
+    'licenceInstalled' => 'لایسنس شما با موفقیت ثبت شد.',
     'ceodefinedsuccesfully' => 'اکانت مدیرعامل با موفقیت ثبت شد.',
     'ceoalreadydefined' => 'اکانت مدیرعامل قبلاً ثبت شده‌است.',
     'newrecordـcreated' => ':attribute جدید ثبت شد.',

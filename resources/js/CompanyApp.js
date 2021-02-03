@@ -5,15 +5,15 @@ import { GuardProvider, GuardedRoute } from "react-router-guards";
 import PanelsNavBar from "./components/PanelsNavBar";
 import Scrolltotop from "./components/ScrollToTop";
 import { requireRight, waitOneSecond } from "./routes/guards";
-import CoreApp from "./routes/switches/CoreApp";
 import { Provider } from "react-redux";
-import store from "./features/redux/store";
 import { ApiClient } from "./services";
 import StaffContext from "./context/staffContext";
 import AppContext from "./context/appContext";
 import "./styles/styles.css";
 import Layout from "./Layout";
 import { Loading } from "./components/feedback";
+import { CompanyPanel } from "./routes/switches";
+import store from "./utils/redux/store";
 
 function CompanyApp(props) {
     sessionStorage.clear();
@@ -43,8 +43,6 @@ function CompanyApp(props) {
     }
     sessionStorage.setItem("currentLanguage", props.locale);
     sessionStorage.setItem("ENV", props.env);
-
-    // sessionStorage.setItem("StaffAccessToken", token);
 
     // ApiClient.get("sanctum/csrf-cookie")
     //     .then(response => {
@@ -76,7 +74,7 @@ function CompanyApp(props) {
                                 SideArea
                             </div>
                             <div className="responsive-inner-width panel-body ">
-                                <CoreApp />
+                                <CompanyPanel />
                             </div>
                             <div className="panel-side-area layout-content">
                                 SideArea

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { PageHeaderBar } from "../../components";
 import { FormTitle } from "../../components/form-controls";
 import { t } from "../../utils";
-import { RightAddForm } from "../../view-components";
+import { RightForm } from "../../view-components";
 
 function define() {
     return (
@@ -15,7 +15,7 @@ function define() {
                 />
             </PageHeaderBar>
             <div className="main-content general-shadow">
-                <RightAddForm />
+                <RightForm />
             </div>
         </div>
     );
