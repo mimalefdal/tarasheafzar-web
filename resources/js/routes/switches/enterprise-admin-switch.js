@@ -5,7 +5,7 @@ import { GuardedRoute } from "react-router-guards";
 
 import { REQUIRED_RIGHT } from "../guards/types";
 
-import { DefineRight, ManageRights } from "../../views/rights";
+import { ManageRights } from "../../views/rights";
 import { InitializeCeo, InitializeStart } from "../../views/initialize";
 import { EnterprisePanelView } from "../../views";
 import { Loading } from "../../components/feedback";
@@ -38,14 +38,6 @@ function EnterprisePanel(props) {
                 exact
                 path={`${match.path}/rights`}
                 component={ManageRights}
-                meta={{
-                    [REQUIRED_RIGHT]: "access-rights-adminstration-tool"
-                }}
-            />
-            <GuardedRoute
-                exact
-                path={`${match.path}/rights/define`}
-                component={DefineRight}
                 meta={{
                     [REQUIRED_RIGHT]: "access-rights-adminstration-tool"
                 }}

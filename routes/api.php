@@ -45,7 +45,6 @@ Route::post('position/remove', 'API\PositionController@delete');
 Route::get('positions', 'API\PositionController@index');
 Route::get('position', 'API\PositionController@show');
 
-Route::post('right/add', 'API\RightController@create');
 Route::get('rights', 'API\RightController@index');
 
 Route::post('staff/add', 'API\StaffController@create');
@@ -54,6 +53,7 @@ Route::get('anstaff', 'API\StaffController@show');
 
 Route::get('/initialize/status', 'API\InitializeController@status');
 Route::post('/initialize/setlicence', 'API\InitializeController@installLicence');
+Route::post('/initialize/installfeatures', 'API\InitializeController@installFeatures');
 Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');
 
 Route::get('/valuelist', 'API\ValuelistController@index');

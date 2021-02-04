@@ -14,21 +14,5 @@
             "en": "Access Enterprise Initialize Tool"
         },
         "activation": true
-    },
-    {
-        "slug": "access-structure-management-panel",
-        "title": {
-            "fa": "دسترسی به پنل مدیریت شرکت",
-            "en": "Access Company Management Panel"
-        },
-        "activation": true
-    },
-    {
-        "slug": "access-rights-adminstration-tool",
-        "title": {
-            "fa": "دسترسی به ابزار ادارهٔ دسترسی‌ها",
-            "en": "Access System Rights Tool"
-        },
-        "activation": true
     }
 ]

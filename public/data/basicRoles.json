@@ -21,16 +21,5 @@
             "access-enterprise-adminstration-panel",
             "access-system-initialize-tool"
         ]
-    },
-    {
-        "slug": "company-structure-manager",
-        "title": {
-            "fa": "مدیریت ساختار شرکت",
-            "en": "Company Structure Management"
-        },
-        "activation": true,
-        "rights": [
-            "access-structure-management-panel"
-        ]
     }
 ]

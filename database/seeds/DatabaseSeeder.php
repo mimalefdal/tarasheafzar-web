@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         $this->call([
             ValueSeeder::class,
+            FeaturesSeeder::class,
+            ToolsSeeder::class,
             RightsSeeder::class,
             RolesSeeder::class,
             BranchSeeder::class,
@@ -22,6 +24,6 @@ class DatabaseSeeder extends Seeder
             JobLevelSeeder::class,
             PositionSeeder::class,
             StaffSeeder::class,
-            ]);
+        ]);
     }
 }

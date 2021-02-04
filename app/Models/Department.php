@@ -6,7 +6,6 @@ use App\Http\Resources\DepartmentItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ManagesPositions;
 use App\Models\Branch;
-use App\Models\Unit;
 use App\Traits\ChecksUniqueness;
 use App\Traits\ManagesUnits;
 use Bilang;

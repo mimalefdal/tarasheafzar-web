@@ -11,7 +11,6 @@ import AppContext from "../../context/appContext";
 import StaffContext from "../../context/staffContext";
 import { NotFound, Unathorized } from "../../views/errors";
 import PanelsHome from "../../views/PanelsHome";
-import { DefineRight } from "../../views/rights";
 import ManageRights from "../../views/rights/manage";
 import { StaffManagementManage } from "../../views/staff-management";
 import { REQUIRED_RIGHT } from "../guards/types";

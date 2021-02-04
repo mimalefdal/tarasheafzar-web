@@ -6,20 +6,6 @@
             "en": "Enterprise Administration Panel"
         },
         "activation": true,
-        "rights": [
-            "access",
-            "modify-activation"
-        ]
-    },
-    {
-        "slug": "structure-management-panel",
-        "title": {
-            "fa": "پنل مدیریت ساختار",
-            "en": "Structure Management Panel"
-        },
-        "activation": true,
-        "rights": [
-            "access"
-        ]
+        "state": "built-in"
     }
 ]

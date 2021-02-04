@@ -7,8 +7,6 @@
             "en": "Enterprise Initialize Tool"
         },
         "activation": true,
-        "rights": [
-            "access"
-        ]
+        "state": "built-in"
     }
 ]

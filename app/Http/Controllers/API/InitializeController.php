@@ -47,10 +47,17 @@ class InitializeController extends Controller
 
     public function installLicence(Request $request)
     {
+        // TODO : here
+        // feature & tools (and maybe individual-rights)
+        // file must been fetched from companeo server
+        // in curret implementation this step faked by basicXxx.json files
+
+        $data = $this->getSystemInitializeContent()['file'];
+
         $this->updateInitializeStatus(["installLicence" => true,]);
         return response()->json(
             [
-                'data' => $this->getSystemInitializeContent()['file'],
+                'data' => $data,
                 'message' => Lang::get('messages.licenceInstalled'),
                 'redirect' => false
             ],
@@ -60,6 +67,7 @@ class InitializeController extends Controller
 
     public function defineceo(Request $request)
     {
+        // TODO : this function must implement via sheared trait with staffController to add
         if ($this->currentCeo() != null) {
             // TODO : Send alert/notification to current ceo account and superadmin [Security Reasons]
 

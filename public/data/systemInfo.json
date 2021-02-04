@@ -1,0 +1,37 @@
+{
+    "Features": [
+        {
+            "slug": "structure-management-panel",
+            "title": {
+                "fa": "پنل مدیریت ساختار",
+                "en": "Structure Management Panel"
+            },
+            "activation": false,
+            "state": "readyToInstall"
+        }
+    ],
+    "Tools": [],
+    "Rights": [
+        {
+            "slug": "access-structure-management-panel",
+            "title": {
+                "fa": "دسترسی به پنل مدیریت شرکت",
+                "en": "Access Company Management Panel"
+            },
+            "activation": true
+        }
+    ],
+    "Roles": [
+        {
+            "slug": "company-structure-manager",
+            "title": {
+                "fa": "مدیریت ساختار شرکت",
+                "en": "Company Structure Management"
+            },
+            "activation": true,
+            "rights": [
+                "access-structure-management-panel"
+            ]
+        }
+    ]
+}
