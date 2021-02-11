@@ -1,0 +1,14 @@
+{
+    "platform": "laravel",
+    "app": "tarasheafzar",
+    "disks": [
+        {
+            "name": "disk1",
+            "mountTo": "storage"
+        },
+        {
+            "name": "disk2",
+            "mountTo": "public/data"
+        }
+    ]
+}

@@ -21,7 +21,7 @@ class ToolsSeeder extends Seeder
             $newItem = new Tool(Arr::except($item, ['feature']));
             $newItem->title = json_encode($item['title']);
             $newItem->save();
-            dump($item['feature']);
+            // dump($item['feature']);
             $newItem->setFeature($item['feature']);
         }
     }

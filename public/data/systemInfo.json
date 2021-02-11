@@ -6,8 +6,7 @@
                 "fa": "پنل مدیریت ساختار",
                 "en": "Structure Management Panel"
             },
-            "activation": false,
-            "state": "readyToInstall"
+            "activation": false
         }
     ],
     "Tools": [],
@@ -31,6 +30,26 @@
             "activation": true,
             "rights": [
                 "access-structure-management-panel"
+            ]
+        }
+    ],
+    "Positions": [
+        {
+            "slug": "executive-chief-officer",
+            "title": {
+                "fa": "اجرایی",
+                "en": "Executive"
+            },
+            "display_title": {
+                "fa": "مدیرعامل",
+                "en": "CEO"
+            },
+            "job-level": "chief-officer",
+            "recruit_capacity": 1,
+            "holderType": "company",
+            "holder": null,
+            "roles": [
+                "company-structure-manager"
             ]
         }
     ]

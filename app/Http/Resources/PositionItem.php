@@ -5,7 +5,6 @@ namespace App\Http\Resources;
 use App\Models\Company;
 use Bilang;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Arr;
 use Lang;
 
 class PositionItem extends JsonResource
@@ -87,7 +86,8 @@ class PositionItem extends JsonResource
         // if ($this->hasposition_id != null)
         $item['holder_id'] = $this->hasposition_id;
 
-        if (Arr::has($item['holder'], 'deleted'))
+        // if (Arr::has($item['holder'], 'deleted'))
+        if (isset($item['holder']->deleted))
             if ($item['holder']['deleted']) {
                 $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.' . $item['holder_type'])]);
             }

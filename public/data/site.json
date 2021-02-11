@@ -9,6 +9,11 @@
             "title": "about-us",
             "link": "#",
             "show": true
+        },
+        {
+            "title": "staff-panel",
+            "sub": "panels",
+            "show": true
         }
     ]
 }

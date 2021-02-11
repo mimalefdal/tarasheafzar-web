@@ -1,1 +1,5 @@
-{"installLicence":true,"initializeFeatures":false,"defineCeo":false}
+{
+    "installLicence": false,
+    "initiateSystem": false,
+    "defineCeo": false
+}

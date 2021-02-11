@@ -90,7 +90,6 @@ export default function Form({ preset = "add", ...props }) {
                         holders: "",
                         joblevels: "joblevel"
                     }}
-                    dependentFieldName="holder"
                 />
             )}
             {(presets[preset].fields.includes("all") ||
@@ -103,6 +102,7 @@ export default function Form({ preset = "add", ...props }) {
                     {...presets["general"].inputProps["holder"]}
                     {...presets[preset].inputProps["holder"]}
                     isDependent={true}
+                    optionAlertField="holderType"
                 />
             )}
             {(presets[preset].fields.includes("all") ||

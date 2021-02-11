@@ -14,8 +14,8 @@ class CreateRolesRightsTable extends Migration
     public function up()
     {
         Schema::create('roles_rights', function (Blueprint $table) {
-            $table->unsignedInteger('role_id');
-            $table->unsignedInteger('right_id');
+            $table->bigInteger('role_id')->unsigned()->index();
+            $table->bigInteger('right_id')->unsigned()->index();
 
             //FOREIGN KEY CONSTRAINTS
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');

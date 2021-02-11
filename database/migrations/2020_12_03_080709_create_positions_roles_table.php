@@ -12,11 +12,10 @@ class CreatePositionsRolesTable extends Migration
      * @return void
      */
     public function up()
-    {
-        {
+    { {
             Schema::create('positions_roles', function (Blueprint $table) {
-                $table->unsignedInteger('position_id');
-                $table->unsignedInteger('role_id');
+                $table->bigInteger('position_id')->unsigned()->index();
+                $table->bigInteger('role_id')->unsigned()->index();
 
                 //FOREIGN KEY CONSTRAINTS
                 $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
@@ -27,7 +26,6 @@ class CreatePositionsRolesTable extends Migration
                 // $table->timestamps();
             });
         }
-
     }
 
     /**
@@ -36,8 +34,7 @@ class CreatePositionsRolesTable extends Migration
      * @return void
      */
     public function down()
-    {
-        {
+    { {
             Schema::dropIfExists('positions_roles');
         }
     }

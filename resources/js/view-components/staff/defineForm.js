@@ -41,7 +41,7 @@ export default function Form({ preset = "add", ...props }) {
             inputProps: {
                 position: {
                     disabled: true,
-                    initialValue: "ceo"
+                    initialValue: "executive-chief-officer"
                 }
             }
         }

@@ -27,24 +27,25 @@
         "activation": "فعالسازی",
         "active": "فعال",
         "deactive": "غیرفعال",
-        "department": "دپارتمان",
-        "position": "سمت",
-        "role": "نقش",
         "personnel_id": "کد پرسنلی",
         "username": "نام کاربری",
         "email": "ایمیل",
         "operation": "عملیات",
-        "depunit": "دپارتمان/واحد",
         "status": "وضعیت",
         "comments": "توضیحات",
         "type": "نوع",
-        "branchType": "نوع شاخه",
-        "branch": "شاخه",
-        "stages": "مراحل",
         "holderType": "نوع دارنده",
         "holder": "دارنده",
+        "branchType": "نوع شاخه",
+        "branch": "شاخه",
+        "department": "دپارتمان",
+        "unit": "واحد",
+        "position": "سمت",
+        "role": "نقش",
+        "stages": "مراحل",
+        "joblevel": "سطح شغلی",
         "recruit_capacity": "ظرفیت استخدام",
-        "joblevel": "سطح شغلی"
+        "return": "بازگشت"
     },
     "comments": {
         "none-company": "غیرسازمانی"
@@ -86,7 +87,7 @@
         "branchesManagement": "مدیریت شاخه‌ها",
         "departmentsManagement": "مدیریت دپارتمان‌ها",
         "unitsManagement": "مدیریت واحدها",
-        "positionsManagement": "مدیریت جایگاه‌ها",
+        "positionsManagement": "مدیریت سمت‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی",
         "rightsAdministration": "ادارهٔ دسترسی‌ها",
         "staffManagement": "مدیریت کارکنان"
@@ -96,7 +97,7 @@
         "defineBranch": "درج شاخه جدید",
         "defineDepartment": "درج دپارتمان جدید",
         "defineUnit": "درج واحد جدید",
-        "definePosition": "درج جایگاه جدید"
+        "definePosition": "درج سمت جدید"
     },
     "alerts": {
         "success": "موفقیت",
@@ -104,7 +105,8 @@
         "info": "اطلاعات",
         "warning": "اخطار",
         "confirm": "تأیید",
-        "deleted": "پاک‌شده"
+        "deleted": "پاک‌شده",
+        "emptyList": "لیست خالی"
     },
     "languages": {
         "en": "English",
@@ -114,6 +116,18 @@
         "sureDelete": "پاک شود؟",
         "executing": "در حال اجرا",
         "executed": "پایان اجرا",
-        "deleteing": "در حال پاک کردن"
+        "deleteing": "در حال پاک کردن",
+        "noItemsToShow": "هنوز هیچ موردی تعریف نکرده‌اید",
+        "noOptionsToSelect": "انتخابی وجود ندارد",
+        "noOptionsDefined": "برای فیلد :field، انتخابی تعریف نشده است",
+        "suggestDialogDefaultTitle": "پیشنهاد سامانه"
+    },
+    "itemTypes": {
+        "Branch": "شاخه"
+    },
+    "blocks": {
+        "noSuggestionsFound": "متاسفانه هیچ پیشنهادی پیدا نشد",
+        "noOptionSuggestion": " شما می‌توانید با استفاده از لینک زیر برای تعریف :attribute (ها) اقدام فرمائید",
+        "referToTool": " لطفاً به ابزار مدیریت :attribute ها مراجعه فرمائید"
     }
 }

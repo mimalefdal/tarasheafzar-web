@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Http\Resources\PositionItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ManagesRoles;
-use App\Models\JobLevel;
+use App\Models\Joblevel;
 use App\Models\Role;
 use App\Traits\ChecksUniqueness;
 use App\Traits\HandleBilangTitles;
@@ -48,7 +48,7 @@ class Position extends Model
 
     public function joblevel()
     {
-        return $this->belongsTo(JobLevel::class);
+        return $this->belongsTo(Joblevel::class);
     }
 
     public function isUnique()

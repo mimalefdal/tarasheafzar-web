@@ -26,4 +26,11 @@ class Utility
         }
         return $holder;
     }
+
+    public static function noItemResponse($type, $anyy = false)
+    {
+        if ($anyy)
+            return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.anyy')])], 203);
+        return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.any')])], 203);
+    }
 }

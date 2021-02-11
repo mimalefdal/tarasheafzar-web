@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import DualLabelFormControl from "./dual-label-form-control";
 import { CircularProgress, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
+import { t } from "../../utils";
 
 const Control = (
     {
@@ -19,23 +20,6 @@ const Control = (
     ref
 ) => {
     // console.log("AutoCompleteDualLabel", loadingData);
-    // console.log("AutoCompleteDualLabel", options);
-    // console.log(
-    //     "AutoCompleteDualLabel initialOptionIndex",
-    //     props.name + " " + initialOptionIndex
-    // );
-    // console.log(
-    //     "AutoCompleteDualLabel initialOption",
-    //     options[initialOptionIndex]
-    // );
-    // console.log("AutoCompleteDualLabel", props);
-    // console.log("AutoCompleteDualLabel validation:", validation);
-    // console.log("AutoCompleteDualLabel register:", register);
-    // console.log("AutoCompleteDualLabel ref:", ref);
-    // console.log(
-    //     "AutoCompleteDualLabel (props.initialOptionCheck)",
-    //     props.initialOptionCheck
-    // );
 
     const [value, setValue] = useState(null);
     const [inputValue, setInputValue] = useState("");
@@ -67,9 +51,15 @@ const Control = (
                 loading={loading}
                 options={options}
                 getOptionLabel={option => option.label}
+                noOptionsText={t("expressions.noOptionsToSelect")}
                 renderInput={params => (
                     <TextField
                         name={"_" + props.name}
+                        placeholder={
+                            options.length == 0 && !props.disabled
+                                ? t("expressions.noOptionsToSelect")
+                                : ""
+                        }
                         inputRef={ref}
                         onFocus={props.onFocus && props.onFocus}
                         {...params}
@@ -96,8 +86,7 @@ const Control = (
                         props.onChange({
                             event: event,
                             target: props.dependentOptions,
-                            value: newValue,
-                            focus: props.dependentFieldName
+                            value: newValue
                         });
                     // props.changeFocus();
                 }}
@@ -106,6 +95,8 @@ const Control = (
                     // console.log("newInputValue", newInputValue);
                     setInputValue(newInputValue);
                 }}
+                onFocus={props.optionsAlert && props.optionsAlert}
+                onBlur={props.onBlur && props.onBlur}
             />
             <input
                 type="hidden"

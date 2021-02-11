@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
             ToolsSeeder::class,
             RightsSeeder::class,
             RolesSeeder::class,
-            BranchSeeder::class,
-            DepartmentSeeder::class,
-            UnitSeeder::class,
-            JobLevelSeeder::class,
-            PositionSeeder::class,
+            // BranchSeeder::class,
+            // DepartmentSeeder::class,
+            // UnitSeeder::class,
+            joblevelSeeder::class,
+            // PositionSeeder::class,
             StaffSeeder::class,
         ]);
     }

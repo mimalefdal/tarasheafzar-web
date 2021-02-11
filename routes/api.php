@@ -53,7 +53,7 @@ Route::get('anstaff', 'API\StaffController@show');
 
 Route::get('/initialize/status', 'API\InitializeController@status');
 Route::post('/initialize/setlicence', 'API\InitializeController@installLicence');
-Route::post('/initialize/installfeatures', 'API\InitializeController@installFeatures');
+Route::post('/initialize/initiateSystem', 'API\InitializeController@initiateSystem');
 Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');
 
 Route::get('/valuelist', 'API\ValuelistController@index');

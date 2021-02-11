@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStaffRightsTable extends Migration
+class CreateStaffRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateStaffRightsTable extends Migration
      */
     public function up()
     {
-        Schema::create('staff_rights', function (Blueprint $table) {
-            $table->unsignedInteger('staff_id');
-            $table->unsignedInteger('right_id');
+        Schema::create('staff_roles', function (Blueprint $table) {
+            $table->bigInteger('staff_id')->unsigned()->index();
+            $table->bigInteger('role_id')->unsigned()->index();
 
             //FOREIGN KEY CONSTRAINTS
             $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
-            $table->foreign('right_id')->references('id')->on('rights')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
             //SETTING THE PRIMARY KEYS
-            $table->primary(['staff_id', 'right_id']);
+            $table->primary(['staff_id', 'role_id']);
+
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateStaffRightsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff_rights');
+        Schema::dropIfExists('staff_roles');
     }
 }

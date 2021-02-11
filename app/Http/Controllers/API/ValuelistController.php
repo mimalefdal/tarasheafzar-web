@@ -33,8 +33,8 @@ class ValuelistController extends Controller
     {
         $lang = Lang::getLocale();
         switch ($field) {
-            case 'position':
-                return DropdownItem::collection(Position::all());
+            case 'company':
+                return 'NoPossibleValue';
                 break;
 
             case 'branch':
@@ -47,6 +47,10 @@ class ValuelistController extends Controller
 
             case 'unit':
                 return DropdownItem::collection(Unit::orderBy('title', 'asc')->get());
+                break;
+
+            case 'position':
+                return DropdownItem::collection(Position::all());
                 break;
 
             case 'joblevel':

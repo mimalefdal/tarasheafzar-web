@@ -16,6 +16,7 @@ return [
     'generalsuccess' => 'درخواست با موفقیت انجام شد',
     'generalfailure' => 'درخواست قابل انجام نیست.',
     'licenceInstalled' => 'لایسنس شما با موفقیت ثبت شد.',
+    'featuresInstalled' => 'اجزای سامانه با موفقیت نصب شد.',
     'ceodefinedsuccesfully' => 'اکانت مدیرعامل با موفقیت ثبت شد.',
     'ceoalreadydefined' => 'اکانت مدیرعامل قبلاً ثبت شده‌است.',
     'newrecordـcreated' => ':attribute جدید ثبت شد.',
@@ -24,6 +25,7 @@ return [
     'recordـupdated_with_type' => 'ویرایش :type :title با موفقیت انجام شد.',
     'recordـdeleted' => ':title با موفقیت پاک شد.',
     'deleted_warning' => 'این :blocktype پاک شده است.',
-    'deleted_holder_warning' => ':holdertype این :blocktype (:deleted) پاک شده است.'
+    'deleted_holder_warning' => ':holdertype این :blocktype (:deleted) پاک شده است.',
+    'noRecordsExists' => 'هیچ :type درج نشده است.'
 
 ];

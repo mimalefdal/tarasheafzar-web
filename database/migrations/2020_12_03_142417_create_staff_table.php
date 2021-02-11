@@ -30,7 +30,7 @@ class CreateStaffTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('verification_status')->nullable();
 
-            $table->string('position_id')->nullable();
+            $table->bigInteger('position_id')->unsigned()->nullable();
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
 
             $table->string('password');

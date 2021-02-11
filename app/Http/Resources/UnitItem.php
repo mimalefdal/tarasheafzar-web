@@ -4,7 +4,6 @@ namespace App\Http\Resources;
 
 use Bilang;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Lang;
 
 class UnitItem extends JsonResource
@@ -64,7 +63,8 @@ class UnitItem extends JsonResource
         }
         // if ($this->hasunit_id != null)
         $item['holder_id'] = $this->hasunit_id;
-        if (Arr::has($item['holder'], 'deleted'))
+        // if (Arr::has($item['holder'], 'deleted'))
+        if (isset($item['holder']->deleted))
             if ($item['holder']['deleted']) {
                 $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.' . $item['holder_type'])]);
             }

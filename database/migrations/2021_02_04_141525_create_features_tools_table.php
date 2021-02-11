@@ -14,8 +14,8 @@ class CreateFeaturesToolsTable extends Migration
     public function up()
     {
         Schema::create('features_tools', function (Blueprint $table) {
-            $table->unsignedInteger('feature_id');
-            $table->unsignedInteger('tool_id');
+            $table->bigInteger('feature_id')->unsigned()->index();
+            $table->bigInteger('tool_id')->unsigned()->index();
 
             //FOREIGN KEY CONSTRAINTS
             $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade');

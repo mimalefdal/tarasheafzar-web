@@ -5,11 +5,22 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Staff;
-use App\Models\Position;
+use App\Traits\ControlsFeatures;
+use App\Traits\ControlsPositions;
+use App\Traits\ControlsRights;
+use App\Traits\ControlsRoles;
+use App\Traits\ControlsTools;
 use Illuminate\Support\Facades\Lang;
 
 class InitializeController extends Controller
 {
+
+    use ControlsFeatures;
+    use ControlsTools;
+    use ControlsRights;
+    use ControlsRoles;
+    use ControlsPositions;
+
     public function __construct()
     {
         $this->middleware('auth:sanctum');
@@ -55,10 +66,55 @@ class InitializeController extends Controller
         $data = $this->getSystemInitializeContent()['file'];
 
         $this->updateInitializeStatus(["installLicence" => true,]);
+        $data = $this->getSystemInitializeContent()['file'];
         return response()->json(
             [
                 'data' => $data,
                 'message' => Lang::get('messages.licenceInstalled'),
+                'redirect' => false
+            ],
+            200
+        );
+    }
+
+    public function initiateSystem(Request $request)
+    {
+
+        // TODO : these information must fetched from companue server via http request
+        $path = base_path() . '/public/data/systemInfo.json';
+        $systemInfo = file_get_contents($path);
+        $systemInfo = json_decode($systemInfo, true);
+
+        try {
+            // Add Features
+            $this->createFeatures($systemInfo['Features']);
+
+            // Add Tools
+            $this->createTools($systemInfo['Tools']);
+
+            // Define Rights
+            $this->createRights($systemInfo['Rights']);
+
+            // Define Roles
+            $this->createRoles($systemInfo['Roles']);
+
+            // Define Positions
+            $this->createPositions($systemInfo['Positions']);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => $th,
+                'message' => Lang::get('messages.generalfailure'),
+                'request' => $request->all(),
+                'redirect' => true
+            ], 500);;
+        }
+
+        $this->updateInitializeStatus(['initiateSystem' => true,]);
+
+        return response()->json(
+            [
+                'data' => $this->getSystemInitializeContent()['file'],
+                'message' => Lang::get('messages.featuresInstalled'),
                 'redirect' => false
             ],
             200
@@ -97,7 +153,7 @@ class InitializeController extends Controller
 
         try {
             $ceo = Staff::create($validatedRequest);
-            $ceo->setPosition('ceo');
+            $ceo->setPosition($request->get('position'));
             $this->updateInitializeStatus(["defineCeo" => true,]);
 
             return response()->json(

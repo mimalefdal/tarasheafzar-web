@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Feature extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'description', 'activation', 'state'
+        'title', 'slug', 'activation', 'state', 'description'
     ];
 
     public function tools()

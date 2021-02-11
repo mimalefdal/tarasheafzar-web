@@ -8,6 +8,8 @@ use App\Http\Requests\StoreBranchRequest;
 use App\Models\Branch;
 use App\Http\Resources\BranchItem;
 use Illuminate\Support\Str;
+use Lang;
+use Utility;
 
 class BranchController extends Controller
 {
@@ -34,6 +36,10 @@ class BranchController extends Controller
 
     public function index()
     {
+        $items = BranchItem::collection(Branch::all());
+        if (count($items) == 0)
+            return Utility::noItemResponse('Branch', true);
+
         return BranchItem::collection(Branch::all());
     }
 

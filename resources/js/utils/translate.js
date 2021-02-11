@@ -1,35 +1,45 @@
 import { currentLang } from ".";
 import { fa_trans, en_trans } from "../utils/lang";
 
-function translate(key) {
+function translate(key, attr = null) {
     // console.log(key, keys, lang);
 
     var keys = key.split(".");
     var lang = currentLang();
     var trans;
+    var result;
 
     switch (lang) {
         case "fa":
             trans = fa_trans(key);
             // console.log(trans);
             if (trans) {
-                return fa_trans(key);
+                result = fa_trans(key);
             } else {
-                return "_".concat(key);
+                result = "_".concat(key);
             }
             break;
         case "en":
             trans = en_trans(key);
             // console.log(trans);
             if (trans) {
-                return en_trans(key);
+                result = en_trans(key);
             } else {
-                return "_".concat(key);
+                result = "_".concat(key);
             }
             break;
         default:
-            return key;
+            result = key;
             break;
     }
+
+    if (attr != null) {
+        Object.keys(attr).map(key => {
+            // console.log(key, attr[key]);
+            result = result.replace(":" + key, attr[key]);
+        });
+    }
+
+    return result;
 }
 export default translate;

@@ -2,7 +2,13 @@ import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 
-import { FormAlert, LineProgress, Loading, RedirectBar } from "../feedback";
+import {
+    FormAlert,
+    LineProgress,
+    Loading,
+    RedirectBar,
+    SuggestDialog
+} from "../feedback";
 import {
     getNextFocusIndex,
     getObjectFromArray,
@@ -15,6 +21,7 @@ import { ApiClient, GetValidValues } from "../../services";
 import StaffContext from "../../context/staffContext";
 import { useHistory } from "react-router-dom";
 import { getIndexOfMatchInsideArray } from "../../utils/findObject";
+import { EMPTY_LIST } from "../../utils/constants";
 
 // TODO : must Documented
 
@@ -42,6 +49,7 @@ function FormBase({
     } = useForm();
 
     const focusRefs = useRef([]);
+    const valueRefs = useRef([]);
     const [backendErrors, setBackendErrors] = useState(false);
     const [ready, setReady] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -57,6 +65,8 @@ function FormBase({
     const [loadDependentData, setLoadDependentData] = useState(null);
     const [loadingData, setLoadingData] = useState(null);
     const [triggerEditMode, setTriggerEditMode] = useState(false);
+    const [suggestModal, setSuggestModal] = useState({ show: false });
+    const [noOptionAlert, setNoOptionAlert] = useState(null);
 
     useEffect(() => {
         const fields = listedFields;
@@ -89,6 +99,28 @@ function FormBase({
             setFocusTarget(0);
         }
     }, [ready]);
+
+    useEffect(() => {
+        if (noOptionAlert != null) {
+            // console.log("FormBase:[noOptionAlert]", noOptionAlert);
+            let _index = getIndexOfMatchInsideArray(
+                valueRefs.current,
+                "name",
+                noOptionAlert.optionAlertField
+            );
+            let _target = valueRefs.current[_index];
+
+            setSuggestModal({
+                ...suggestModal,
+                show: true,
+                preset: EMPTY_LIST,
+                data: {
+                    ...noOptionAlert,
+                    dependerValue: _target.value != "" ? _target.value : null
+                }
+            });
+        }
+    }, [noOptionAlert]);
 
     useEffect(() => {
         // edit mode
@@ -155,7 +187,11 @@ function FormBase({
     }, [triggerEditMode]);
 
     useEffect(() => {
-        // console.log("SingleFormBase:[loadDependentData]:loadDependentData", loadDependentData);
+        // console.log(
+        //     "SingleFormBase:[loadDependentData]:loadDependentData",
+        //     loadDependentData,
+        //     focusIndex
+        // );
         if (loadDependentData)
             if (loadDependentData.value != null) {
                 // master field value selected
@@ -163,17 +199,18 @@ function FormBase({
 
                 let fields = ValueFields(
                     loadDependentData.target,
-                    loadDependentData.value.value
+                    loadDependentData.value
                 );
                 let valuesMap = ValuesObject(
                     loadDependentData.target,
-                    loadDependentData.value.value
+                    loadDependentData.value
                 );
 
                 // console.log("_valueObject", _valueObject);
                 GetValidValues(
                     fields,
                     response => {
+                        // console.log("FormBase:[]:RESPONSE", response.data);
                         let updatedValidValues = MakeUpdatedValidValues(
                             validValues,
                             response.data,
@@ -187,10 +224,13 @@ function FormBase({
                                 valuesMap
                             )
                         );
-                        focusNext();
+
+                        loadDependentData.focusIndex
+                            ? setFocusTarget(loadDependentData.focusIndex)
+                            : focusNext();
                     },
                     error => {
-                        console.error("UnitForm:[]:ERROR", error);
+                        console.error("FormBase:[]:ERROR", error);
                         setLoadingData(false);
                     }
                 );
@@ -221,7 +261,7 @@ function FormBase({
     }, [props.showAlert]);
 
     useEffect(() => {
-        // console.log("SingleFormBase [focusTarget]:", focusTarget, focusRefs);
+        // console.log("SingleFormBase [focusTarget]:", focusTarget);
         if (focusTarget != null) {
             focusRefs.current[focusTarget].focus();
             setFocusTarget(null);
@@ -304,9 +344,11 @@ function FormBase({
                     ref: element => {
                         if (element) {
                             // console.log(element.getAttribute("name").charAt(0));
+
                             element.getAttribute("type") != "hidden" &&
                                 focusRefs.current.push(element);
-                            element.getAttribute("name").charAt(0) != "_" &&
+                            if (element.getAttribute("name").charAt(0) != "_") {
+                                valueRefs.current.push(element);
                                 register(
                                     element,
                                     child.props.isDependent
@@ -317,6 +359,7 @@ function FormBase({
                                               }
                                         : child.props.validation
                                 );
+                            }
                         }
                     },
                     options: child.props.options
@@ -330,9 +373,28 @@ function FormBase({
                             "value",
                             child.props.initialValue
                         ),
+                    optionsAlert:
+                        child.props.optionAlertField &&
+                        child.props.validation &&
+                        child.props.validation.required &&
+                        child.props.validation.required == true
+                            ? () => {
+                                  validValues[child.props.options].length ==
+                                      0 &&
+                                      setNoOptionAlert({
+                                          optionAlertField:
+                                              child.props.optionAlertField,
+                                          targetField: child.props.name,
+                                          valueList: child.props.options
+                                      });
+                              }
+                            : null,
                     onChange: data => {
                         child.props.dependentOptions
-                            ? setLoadDependentData(data)
+                            ? setLoadDependentData({
+                                  target: data.target,
+                                  value: data.value && data.value.value
+                              })
                             : child.props.options
                             ? data.target &&
                               data.target.value != null &&
@@ -341,7 +403,9 @@ function FormBase({
                     },
                     onFocus: e => {
                         setFocusIndex(e.target.name);
+                        setNoOptionAlert(null);
                     },
+
                     loadingData:
                         child.props.isDependent == true
                             ? loadingData &&
@@ -350,7 +414,7 @@ function FormBase({
                     disabled:
                         child.props.disabled ||
                         (child.props.isDependent &&
-                            !validValues[child.props.options])
+                            validValues[child.props.options] == undefined)
                 });
             }
             return child;
@@ -359,6 +423,7 @@ function FormBase({
 
     function focusNext(targetFieldName = null) {
         // console.log("focusNext->focusIndex", focusIndex, targetFieldName);
+
         let targetIndex = getNextFocusIndex(
             focusRefs.current,
             focusIndex,
@@ -385,36 +450,63 @@ function FormBase({
                     <Loading type="ball" />
                 </div>
             ) : (
-                <form
-                    className="form-body"
-                    onSubmit={handleSubmit(onSubmit)}
-                    onKeyDown={e => checkKeyDown(e)}
-                >
-                    {loading && <LineProgress />}
-                    {redirect && (
-                        <RedirectBar
-                            delay={redirectDelay}
-                            target={redirectTarget}
-                            // type="asc"
+                <>
+                    <form
+                        className="form-body"
+                        onSubmit={handleSubmit(onSubmit)}
+                        onKeyDown={e => checkKeyDown(e)}
+                    >
+                        {loading && <LineProgress />}
+                        {redirect && (
+                            <RedirectBar
+                                delay={redirectDelay}
+                                target={redirectTarget}
+                                // type="asc"
+                            />
+                        )}
+                        <FormAlert
+                            show={showAlert.show}
+                            type={showAlert.type}
+                            message={showAlert.message}
                         />
-                    )}
-                    <FormAlert
-                        show={showAlert.show}
-                        type={showAlert.type}
-                        message={showAlert.message}
+
+                        {renderFields()}
+
+                        {!redirect && (
+                            <input
+                                className="btn btn-primary btn-submit-add general-shadow"
+                                type="submit"
+                                value={submitValue}
+                                disabled={loading}
+                            />
+                        )}
+                    </form>
+
+                    <SuggestDialog
+                        show={suggestModal.show}
+                        preset={suggestModal.preset}
+                        // title="TITLE"
+                        // message="MESSAGE"
+                        // actionGuide="ACTIONGUIDE"
+                        // actions={
+                        //     <button className="btn btn-error">OLAGH</button>
+                        // }
+                        data={suggestModal.data ? suggestModal.data : null}
+                        onClose={data => {
+                            setSuggestModal({ show: false });
+                            if (data && data.refreshNeeded) {
+                                setFocusTarget(focusIndex - 1);
+                                setLoadDependentData({
+                                    target: { [data.optionsLabel]: "" },
+                                    value: data.dependerValue,
+                                    focusIndex: focusIndex
+                                });
+                            } else {
+                                focusNext();
+                            }
+                        }}
                     />
-
-                    {renderFields()}
-
-                    {!redirect && (
-                        <input
-                            className="btn btn-primary btn-submit-add general-shadow"
-                            type="submit"
-                            value={submitValue}
-                            disabled={loading}
-                        />
-                    )}
-                </form>
+                </>
             )}
         </div>
     );

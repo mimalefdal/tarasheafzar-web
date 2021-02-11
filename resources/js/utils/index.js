@@ -18,3 +18,5 @@ export { _getNextFocusIndex as getNextFocusIndex } from "./forms";
 export { _makeValueListedFieldsArray as ValueFields } from "./forms";
 export { _makeValueListObject as ValuesObject } from "./forms";
 export { _makeUpdatedValidValues as MakeUpdatedValidValues } from "./forms";
+
+export { _getDefineFormFor as DefineFormOf } from "./models";

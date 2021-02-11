@@ -11,6 +11,8 @@ use App\Rules\bilangUnique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Lang;
+use Utility;
 
 class DepartmentController extends Controller
 {
@@ -37,7 +39,10 @@ class DepartmentController extends Controller
 
     public function index()
     {
-        return DepartmentItem::collection(Department::with('branch')->get());
+        $items = DepartmentItem::collection(Department::with('branch')->get());
+        if (count($items) == 0)
+            return Utility::noItemResponse('Department');
+        return $items;
     }
 
     public function show(Request $request)

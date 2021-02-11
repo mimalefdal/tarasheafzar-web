@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUnitRequest;
 use App\Http\Resources\UnitItem;
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Utility;
 
 class UnitController extends Controller
 {
@@ -33,7 +34,10 @@ class UnitController extends Controller
 
     public function index()
     {
-        return UnitItem::collection(Unit::with('hasunit')->get());
+        $items = UnitItem::collection(Unit::with('hasunit')->get());
+        if (count($items) == 0)
+            return Utility::noItemResponse('Unit');
+        return $items;
         return response(["message" => "Not Implemented"], 400);
     }
 

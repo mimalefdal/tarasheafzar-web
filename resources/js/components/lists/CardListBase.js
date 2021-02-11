@@ -5,6 +5,7 @@ import { ApiClient } from "../../services";
 import { renderActionComponent } from "../../utils";
 import { Loading } from "../feedback";
 import { BasicCard } from "../cards";
+import { NoItems } from "../list-controls";
 
 CardListBase.propTypes = {};
 
@@ -19,6 +20,7 @@ function CardListBase({
     // console.log("CardListBase", entryOperations);
 
     const [items, setItems] = useState([]);
+    const [emptyMessage, setEmptyMessage] = useState(null);
     const [loading, setLoading] = useState(true);
     const token = useContext(StaffContext).token;
 
@@ -39,9 +41,15 @@ function CardListBase({
         dataService(
             token,
             response => {
-                // console.log("CardListBase:[trigger]:response:", response.data);
-                if (response.data.data) setItems(response.data.data);
-                else setItems(response.data);
+                // console.log("CardListBase:[trigger]:response:", response);
+                if (response.status == 203) {
+                    setEmptyMessage(response.data.message);
+                } else {
+                    setEmptyMessage(null);
+                    if (response.data.data) setItems(response.data.data);
+                    else setItems(response.data);
+                }
+
                 setLoading(false);
             },
             error => {
@@ -59,7 +67,7 @@ function CardListBase({
         >
             {loading ? (
                 <Loading />
-            ) : (
+            ) : !emptyMessage ? (
                 items.map((item, index) => {
                     if (!loading) {
                         // build entryActions Here
@@ -79,6 +87,8 @@ function CardListBase({
                         null
                     );
                 })
+            ) : (
+                <NoItems message={emptyMessage} />
             )}
         </div>
     );

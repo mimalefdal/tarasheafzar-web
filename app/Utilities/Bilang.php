@@ -33,7 +33,8 @@ class Bilang
 
         $titles = json_decode($titleSet);
 
-        if (Arr::has($titles, $lang))
+        // if (Arr::has($titles, $lang))
+        if (isset($titles->$lang))
             return $titles->$lang;
         else {
             if ($returnNull)
@@ -45,7 +46,6 @@ class Bilang
 
     public static function getEnTitle(string $titleSet)
     {
-        Debugbar::info($titleSet);
         $titles = json_decode($titleSet);
         return $titles->en;
     }

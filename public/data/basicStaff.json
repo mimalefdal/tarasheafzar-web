@@ -30,33 +30,5 @@
         "roles": [
             "enterprise-admin"
         ]
-    },
-    {
-        "personnel_id": "8518",
-        "username": "mimalefdal",
-        "password": "secret",
-        "firstname": "محمدامین",
-        "nickname": "دلوار",
-        "lastname": "دلورانی",
-        "national_id": "0071044434",
-        "idcert_no": "8518",
-        "gender": "male",
-        "email": "mimalefdal@yahoo.com",
-        "position": "executive-chief-officer",
-        "roles": null
-    },
-    {
-        "personnel_id": "3578",
-        "username": "s.sadeghi",
-        "password": "secret",
-        "firstname": "صبا",
-        "nickname": "فرفر",
-        "lastname": "صادقی",
-        "national_id": "0451657713",
-        "idcert_no": "3578",
-        "gender": "female",
-        "email": "saba_sadeghi7@yahoo.com",
-        "position": null,
-        "roles": null
     }
 ]

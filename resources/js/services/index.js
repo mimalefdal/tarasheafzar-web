@@ -27,8 +27,9 @@ export { tryDelete as DeletePosition } from "./position-service";
 export { tryAdd as AddStaff } from "./staff-service";
 export { getIndex as GetStaffList } from "./staff-service";
 
-export { getStatus as GetInitializeStatus } from "./initialize-service";
-export { installLicence as InitializeLicence } from "./initialize-service";
+export { _getStatus as GetInitializeStatus } from "./initialize-service";
+export { _installLicence as InitializeLicence } from "./initialize-service";
+export { _initiateSystem as InitiateSystem } from "./initialize-service";
 export { defineCeo as InitializeCEO } from "./initialize-service";
 
 export { tryAdd as AddRight } from "./right-service";

@@ -44,15 +44,13 @@ function CompanyApp(props) {
     sessionStorage.setItem("currentLanguage", props.locale);
     sessionStorage.setItem("ENV", props.env);
 
-    // ApiClient.get("sanctum/csrf-cookie")
-    //     .then(response => {
-    //         // console.log(response);
-    //         setReady(true);
-    //     })
-    //     .catch(error => {
-    //         console.log("");
-    //         console.log(error.response);
-    //     });
+    ApiClient.get("sanctum/csrf-cookie")
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
 
     return (
         <BrowserRouter>

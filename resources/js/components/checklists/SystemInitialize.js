@@ -6,9 +6,14 @@ import {
     ChecklistHeaderTripleColumn,
     ChecklistRowTripleColumn
 } from "../checklist-controls";
-import { GetInitializeStatus, InitializeLicence } from "../../services";
+import {
+    GetInitializeStatus,
+    InitializeLicence,
+    InitiateSystem
+} from "../../services";
 import StaffContext from "../../context/staffContext";
 import { error } from "jquery";
+import { installFeatures } from "../../services/initialize-service";
 
 function SystemInitialize(props) {
     const [status, setStatus] = useState({});
@@ -20,12 +25,18 @@ function SystemInitialize(props) {
             {},
             token,
             response => {
-                // console.log("Initialize View", response);
+                // console.log(
+                //     "SystemInitialize:GetInitializeStatus:RESPONSE",
+                //     response
+                // );
                 setStatus(response.data);
                 setLoading(false);
             },
             error => {
-                // console.log("Initialize View", error);
+                // console.log(
+                //     "SystemInitialize:GetInitializeStatus:ERROR",
+                //     error
+                // );
                 setLoading(false);
             }
         );
@@ -50,6 +61,20 @@ function SystemInitialize(props) {
         );
     };
 
+    const initiateSystem = () => {
+        // console.log("Initialize System");
+        InitiateSystem(
+            token,
+            response => {
+                setStatus(response.data.data);
+                console.log(response);
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    };
+
     return (
         <div className="list-container ">
             <div className="list-body  ">
@@ -69,10 +94,10 @@ function SystemInitialize(props) {
                         <ChecklistRowTripleColumn
                             loadstate={loading}
                             itemTitle="نصب اولیه امکانات و ابزار"
-                            itemStatus={status && status.initializeFeatures}
+                            itemStatus={status && status.initiateSystem}
                             prerequisite={status && status.installLicence}
                             itemComment=""
-                            callback={() => console.log("Initialize Features")}
+                            callback={initiateSystem}
                             label={t("buttons.InstallFeatures")}
                         />
                         <ChecklistRowTripleColumn
@@ -82,7 +107,7 @@ function SystemInitialize(props) {
                             prerequisite={
                                 status &&
                                 status.installLicence &&
-                                status.initializeFeatures
+                                status.initiateSystem
                             }
                             itemComment=""
                             target="ceo"

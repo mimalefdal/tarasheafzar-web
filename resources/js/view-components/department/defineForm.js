@@ -89,6 +89,7 @@ export default function Form({ preset = "add", ...props }) {
                     options="branch"
                     {...presets["general"].inputProps["branch"]}
                     {...presets[preset].inputProps["branch"]}
+                    optionAlertField="branch"
                 />
             )}
 

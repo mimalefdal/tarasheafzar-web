@@ -8,13 +8,13 @@ export const _makeUpdatedValidValues = (
     let _validValues = { ...currentLists };
     Object.keys(valueObject).map(key => {
         let _valueList = loadedLists[valueObject[key]];
-        if (_valueList.length > 0) {
+        if (_valueList == "NoPossibleValue") {
+            delete _validValues[key];
+        } else {
             _validValues = {
                 ..._validValues,
                 [key]: _valueList
             };
-        } else {
-            delete _validValues[key];
         }
     });
     return _validValues;

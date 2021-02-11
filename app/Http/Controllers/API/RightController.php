@@ -14,7 +14,6 @@ class RightController extends Controller
         // $this->middleware('auth:staff');
         $this->middleware('auth:sanctum');
     }
-    //
 
     public function index()
     {

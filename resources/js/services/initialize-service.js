@@ -1,7 +1,7 @@
 import { ApiClient } from ".";
 
-export const getStatus = (params, token, successCallback, failureCallback) => {
-    // console.log("InitializeStatus Service:params:", params);
+export const _getStatus = (params, token, successCallback, failureCallback) => {
+    // console.log("InitializeService:getStatus:params:", params);
     ApiClient.get("/initialize/status", {
         headers: {
             Accept: "application/json",
@@ -10,16 +10,16 @@ export const getStatus = (params, token, successCallback, failureCallback) => {
         params: params
     })
         .then(response => {
-            // console.log("InitializeStatus Service", response);
+            // console.log("InitializeService:getStatus:RESPONSE", response);
             successCallback(response);
         })
         .catch(error => {
-            // console.log("InitializeStatus Service", error.response);
+            // console.log("InitializeService:getStatus:ERROR", error);
             failureCallback(error.response);
         });
 };
 
-export const installLicence = (
+export const _installLicence = (
     data,
     token,
     successCallback,
@@ -36,7 +36,24 @@ export const installLicence = (
             successCallback(response);
         })
         .catch(error => {
-            // console.log("InitializeCEO Service", error.response);
+            // console.log("InitializeCEO Service", error);
+            failureCallback(error.response);
+        });
+};
+
+export const _initiateSystem = (token, successCallback, failureCallback) => {
+    ApiClient.post("/initialize/initiateSystem", [], {
+        headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+        }
+    })
+        .then(response => {
+            // console.log("InitializeFeatures Service", response);
+            successCallback(response);
+        })
+        .catch(error => {
+            // console.log("InitializeFeatures Service", error.response);
             failureCallback(error.response);
         });
 };

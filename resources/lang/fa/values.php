@@ -27,5 +27,7 @@ return [
     'Brand' => 'برند',
     'Department' => 'دپارتمان',
     'Unit' => 'واحد',
-    'Position' => 'جایگاه',
+    'Position' => 'سمت',
+    'any' => 'ی',
+    'anyy' => '‌ای',
 ];
