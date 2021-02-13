@@ -26,7 +26,7 @@
 
         <div class="side-container" id="right-container">
             <div class="sub-container" id="title-container">
-                <a href="{{ env('APP_ENV') == 'local' ? 'http://localhost:8000' : 'https://tarasheafzar.ir' }}"
+                <a href="{{ env('APP_ENV') == 'local' ? 'http://localhost:8000' : env('APP_URL') }}"
                     style="cursor: default;">
                     <img id="company-logo" class="logo-main" src="{{ asset('image/talogo-nocap.png') }}"
                         alt="company logo" />
@@ -41,8 +41,8 @@
 
             </div>
             <!-- <div class="sub-container" id="news">
-                        گزارش مالی هیئت مدیره مربوط به عملکر سال ۱۳۹۸ منتشر شد
-                    </div> -->
+                            گزارش مالی هیئت مدیره مربوط به عملکر سال ۱۳۹۸ منتشر شد
+                        </div> -->
         </div>
 
 

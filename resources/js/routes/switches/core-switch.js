@@ -47,7 +47,7 @@ function _Switch(props) {
                 unmountOnExit={true}
                 mountOnEnter={false}
             >
-                <div className="panel-main-content layout-content">
+                <div className="panel-main-content">
                     <Switch location={location}>
                         <Route exact path="/home" component={PanelsHome} />
                         <GuardedRoute

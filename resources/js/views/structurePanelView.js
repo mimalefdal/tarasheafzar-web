@@ -8,7 +8,7 @@ export default function viewComponent() {
     let match = useRouteMatch();
     return (
         <Fragment>
-            <div className="panel-links  ">
+            <div className="tool-links">
                 {/* <Link
                     className="panel-link"
                     to={`${match.url}/company/information`}
@@ -23,7 +23,7 @@ export default function viewComponent() {
                 </Link> */}
 
                 <Link
-                    className="panel-link"
+                    className="tool-link"
                     // to={`${match.url}/branches`}
                     to={{
                         pathname: `${match.url}/branches`,
@@ -34,21 +34,21 @@ export default function viewComponent() {
                     {t("tools.branchesManagement")}
                 </Link>
                 <Link
-                    className="panel-link"
+                    className="tool-link"
                     to={`${match.url}/departments`}
                     style={{ order: 2 }}
                 >
                     {t("tools.departmentsManagement")}
                 </Link>
                 <Link
-                    className="panel-link"
+                    className="tool-link"
                     to={`${match.url}/units`}
                     style={{ order: 3 }}
                 >
                     {t("tools.unitsManagement")}
                 </Link>
                 <Link
-                    className="panel-link"
+                    className="tool-link"
                     to={`${match.url}/positions`}
                     style={{ order: 4 }}
                 >

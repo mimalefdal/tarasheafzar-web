@@ -4,6 +4,13 @@
     {{ $companyData['company-info']['name'] }}
 @endsection
 
+@section('keywords')
+    {{ $companyData['company-info']['keywords'] }}
+@endsection
+@section('description')
+    {{ $companyData['company-info']['description'] }}
+@endsection
+
 @push('styles')
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet" />
 @endpush

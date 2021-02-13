@@ -68,15 +68,11 @@ function CompanyApp(props) {
                 <AppContext.Provider value={appContextValue}>
                     <StaffContext.Provider value={staffContextValue}>
                         <Layout>
-                            <div className="panel-side-area layout-content">
-                                SideArea
-                            </div>
-                            <div className="responsive-inner-width panel-body ">
+                            <div className="panel-side-area">SideArea</div>
+                            <div className="panel-body responsive-inner-width flex-center">
                                 <CompanyPanel />
                             </div>
-                            <div className="panel-side-area layout-content">
-                                SideArea
-                            </div>
+                            <div className="panel-side-area">SideArea</div>
                         </Layout>
                     </StaffContext.Provider>
                 </AppContext.Provider>

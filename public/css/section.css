@@ -1,8 +1,7 @@
 #section-bkg {
     /* width: 100vw; */
-    background-color: goldenrod;
     background-color: inherit;
-    min-height: 100vh;
+    min-height: 92vh;
     /* border-bottom: 1px solid #ddd; */
 }
 

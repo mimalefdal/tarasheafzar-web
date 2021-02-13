@@ -1,6 +1,5 @@
 body {
     background-color: #ddd;
-
 }
 
 .flex-center {
@@ -12,7 +11,6 @@ body {
     flex-direction: row;
     /* margin-top: 50px; */
     width: 100vw;
-
 }
 
 .side-container {
@@ -42,7 +40,6 @@ body {
 #left-container {
     /* padding-left: 5vw; */
     background-color: white;
-
 }
 
 .logo-main {
@@ -63,8 +60,6 @@ body {
     transition: all 0.5s;
 }
 
-
-
 #company-name {
     font-size: 16px;
     color: white;
@@ -74,16 +69,12 @@ body {
     font-size: 21px;
     font-weight: 500;
     color: white;
-
 }
 
 #title-container {
     /* height: 20%; */
     /* margin-top: 5vh; */
-
 }
-
-
 
 #form-container {
     display: flex;
@@ -92,7 +83,6 @@ body {
     align-items: center;
     width: 90%;
     /* height: inherit; */
-
 }
 
 #bottom-container {
@@ -104,8 +94,6 @@ body {
 .login-info {
     /* margin-bottom: 5vh; */
     color: #3498db;
-
-
 }
 
 .staff-name {
@@ -145,13 +133,12 @@ body {
 
 .form-title {
     width: 100%;
-    background-color: #28B463;
+    background-color: #28b463;
     background-color: darkorange;
     padding: 10px;
     color: white;
 
     /* border-radius: 25px; */
-
 }
 
 .login-form {
@@ -179,14 +166,13 @@ body {
     display: none;
 }
 
-
 .input-label {
     /* text-align: left; */
     /* text-align: left;
     width: 25%; */
     font-size: 12px;
     font-weight: 500;
-    color: #28B463;
+    color: #28b463;
     margin: 0;
 }
 
@@ -222,14 +208,13 @@ body {
 }
 
 .btn-login {
-    background-color: #28B463;
+    background-color: #28b463;
     width: 70%;
     max-width: 25%;
     color: white;
     border-radius: 25px;
     padding: 10px;
     transition: all 0.5s;
-
 }
 
 .btn-login:hover {
@@ -243,7 +228,8 @@ body {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1281px) {
-    #main-container {}
+    #main-container {
+    }
 }
 
 @media screen and (max-width: 1281px) {
@@ -259,7 +245,7 @@ body {
 
     #company-name,
     #panel-name {
-        color: inherit
+        color: inherit;
     }
 
     #right-container {
@@ -272,22 +258,32 @@ body {
         padding: 0;
         background-color: initial;
         justify-content: start;
-
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+}
 
 @media screen and (max-width: 767px) {
-
-
     #company-name {
-        font-size: 21px;
+        font-size: 14px;
     }
-
+    #panel-name {
+        font-size: 16px;
+    }
     .logo-main {
         width: 40vw;
+        margin-bottom: 3vh;
+    }
+
+    .input-auth {
+        width: 100%;
+    }
+
+    .btn-login {
+        max-width: inherit;
     }
 }
 
-@media screen and (max-width: 767px) and (orientation:landscape) {}
+@media screen and (max-width: 767px) and (orientation: landscape) {
+}

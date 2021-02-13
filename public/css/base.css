@@ -252,7 +252,7 @@ textarea {
     flex: 1;
     border: none;
     background: none;
-    border-bottom: 1px solid #01579b;
+    border-bottom: 1px solid #263238;
     font-family: iranyekanfa;
     padding: 10px;
 }
@@ -333,7 +333,7 @@ button:focus {
 }
 
 .responsive-inner-width {
-    width: 50vw;
+    width: 50%;
 }
 
 .responseive-width-full {
@@ -350,7 +350,7 @@ button:focus {
 
 @media screen and (max-width: 1281px) {
     .responsive-inner-width {
-        width: 70vw;
+        width: 70%;
     }
 }
 
@@ -362,7 +362,7 @@ button:focus {
 
 @media screen and (max-width: 767px) {
     .responsive-inner-width {
-        width: 90vw;
+        width: 90%;
     }
 }
 

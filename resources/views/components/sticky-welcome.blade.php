@@ -60,9 +60,9 @@
             </div>
             <div id='company-info'>
 
-                <div id="company-name" class="large-title">
+                <h1 id="company-name" class="large-title">
                     {{ $info['name'] }}
-                </div>
+                </h1>
 
                 <x-web-menu />
 

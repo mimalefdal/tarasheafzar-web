@@ -6,7 +6,7 @@
 
 <div id='mobile-menu' class='mobile-menu'>
     <div id="menu-content" class="menu-content">
-        <div>
+        <div id="toggler-box">
             <svg onclick="togglemenu()" id="mobile-menu-collapser" class="collapser"
                 enable-background="new 0 0 515.555 515.555" viewBox="0 0 515.555 515.555"
                 xmlns="http://www.w3.org/2000/svg">

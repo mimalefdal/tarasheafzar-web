@@ -3,7 +3,7 @@
     flex-direction: row;
     /* height: 45vh; */
     width: 100%;
-    background-color: #e8eaf6;
+    background-color: #263238;
     /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -13,18 +13,19 @@
     padding: 40px;
     display: flex;
     flex-direction: column;
-    background-color: ghostwhite;
+    /* background-color: ghostwhite; */
 }
 
 .contact-form {
     flex: 3.5;
+    background-color: whitesmoke;
 }
 
 .contact-info {
     flex: 2;
-    background-color: #01579b;
-    background-color: goldenrod;
+    /* background-color: #ff5733; */
     color: white;
+    border-right: 1px solid whitesmoke;
 }
 
 .title {
@@ -39,16 +40,15 @@
 
 .form-title {
     color: black;
-    color: #01579b;
-    color: goldenrod;
-
-    /* color: goldenrod; */
+    color: #263238;
+    /* color: whitesmoke; */
     align-items: flex-end;
 }
 
 #callyou {
     font-weight: inherit;
     font-size: 12px;
+    color: #ff5733;
 }
 
 .contacts-title {
@@ -85,15 +85,17 @@
 
 .alert-success {
     color: green;
+    color: white;
     font-size: 12px;
     font-weight: 500;
-    text-align: left;
+    /* text-align: left; */
     border: none;
 }
 
 #sent-alert {
     /* display: none; */
     background-color: lightgreen;
+    background-color: green;
     visibility: hidden;
     /* border-radius: 5px; */
     margin-top: 0;
@@ -118,13 +120,14 @@
     color: white;
     font-size: 12px;
     font-weight: 500;
-    text-align: left;
+    /* text-align: left; */
     border: none;
 }
 
 #failure-alert {
     /* display: none; */
     background-color: lightcoral;
+    background-color: darkred;
     visibility: hidden;
     /* border-radius: 5px; */
     margin-top: 0;
@@ -155,9 +158,9 @@ textarea {
     flex: 1;
     border: none;
     background: none;
-    border-bottom: 1px solid #01579b;
-    border-bottom: 1px solid goldenrod;
-
+    border-bottom: 1px solid #263238;
+    /* border-bottom: 1px solid whitesmoke; */
+    /* color: whitesmoke; */
     font-family: iranyekanfa;
     padding: 10px;
 }
@@ -179,7 +182,7 @@ textarea {
 
     padding: 10px;
     text-align: center;
-    color: white;
+    color: whitesmoke;
     border-radius: 5px;
     /* width: 25%; */
     cursor: pointer;
@@ -190,11 +193,8 @@ textarea {
     float: left;
     margin-top: 1vh;
 
-    background-color: white;
-    color: #01579b;
-    color: goldenrod;
-    border: 1px solid #01579b;
-    border: 1px solid goldenrod;
+    background-color: #ff5733;
+    /* border: 1px solid #ff5733; */
 }
 
 #sendBtnLoading,
@@ -211,8 +211,8 @@ textarea {
     font-size: 14px;
     padding: 10px;
     font-weight: 500;
-    color: #01579b;
-    color: goldenrod;
+    color: #263238;
+    /* color: whitesmoke; */
 }
 
 .shoma {
@@ -258,7 +258,7 @@ textarea {
 
 @media screen and (max-width: 767px) {
     .main-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
 

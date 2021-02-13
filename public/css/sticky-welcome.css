@@ -63,7 +63,6 @@
     align-items: center;
     width: 35px;
     height: 35px;
-
 }
 
 .expander {
@@ -83,7 +82,6 @@
     transition: all 0.5s;
     width: 20px;
     fill: #aaa;
-
 }
 
 .expander#contact-btn {
@@ -93,6 +91,8 @@
 .large-title {
     flex: 1;
     font-size: 48px;
+    font-weight: inherit;
+    margin: inherit;
     transition: all 0.5s;
 }
 
@@ -141,7 +141,6 @@
     font-size: 12px;
     width: 35%;
     transition: all 0.5s;
-
 }
 
 #main-container {
@@ -160,7 +159,6 @@
 
 #arrow-container {
     margin-bottom: 3vh;
-
 }
 
 #arrow-down {
@@ -193,8 +191,6 @@
 }
 
 @media screen and (min-width: 992px) and (max-width: 1281px) {
-
-
     .title-section {
         width: 75vw;
         margin-bottom: 8vh;
@@ -211,7 +207,6 @@
     .large-title.stucked {
         font-size: 18px;
     }
-
 
     .title-section.stucked {
         height: 9vh;
@@ -242,12 +237,9 @@
     .company-description {
         width: 40%;
     }
-
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-
-
     .page-title {
         font-size: 2.5vw;
         width: 70vw;
@@ -293,12 +285,9 @@
     .company-description {
         width: 45%;
     }
-
 }
 
 @media screen and (max-width: 767px) {
-
-
     .page-title {
         font-size: 2.5vw;
         width: 80vw;
@@ -309,7 +298,8 @@
     }
 
     .large-title {
-        font-size: 6vw;
+        font-size: 7vw;
+        /* font-weight: bold; */
     }
 
     .section {
@@ -338,7 +328,6 @@
         width: 25px;
     }
 
-
     .title-section {
         width: 90vw;
         margin-bottom: 15vh;
@@ -348,8 +337,15 @@
         height: 12vh;
     }
 
+    .title-ribbon {
+        min-height: 15vh;
+    }
+    .title-ribbon .btn-box {
+        align-self: flex-end;
+    }
     .title-ribbon.stucked {
         width: 90vw;
+        min-height: inherit;
     }
 
     .large-title.stucked {
@@ -358,7 +354,15 @@
         /* margin-right: inherit; */
         /* background-color: #eee; */
     }
-
+    .pre-title {
+        font-size: 9px;
+    }
+    #company-info {
+        align-self: flex-start;
+    }
+    .title-ribbon.stucked #company-info {
+        align-self: inherit;
+    }
     .company-description {
         font-size: 10px;
         width: 60%;
@@ -367,16 +371,10 @@
 
     #arrow-container {
         margin-bottom: 6vh;
-
     }
-
-
-
-
 }
 
-@media screen and (max-width: 767px) and (orientation:landscape) {
-
+@media screen and (max-width: 767px) and (orientation: landscape) {
     .company-description {
         text-overflow: ellipsis;
         overflow: hidden;

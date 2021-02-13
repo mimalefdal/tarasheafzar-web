@@ -1,8 +1,8 @@
 #main-bkg {
     width: 100vw;
-    min-height: 100vh;
-    background: #2196f3;
-    background: inherit;
+    min-height: 92vh;
+    /* background: #263238; */
+    background: whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,13 +18,13 @@
 }
 
 #main-title {
-    color: #01579b;
-    color: goldenrod;
-    /* color: inherit; */
-    font-weight: 800;
+    color: #263238;
+    color: #ff5733;
+    /* font-weight: 800; */
     font-size: 24px;
     margin-bottom: 2vh;
-    margin-right: 1vw;
+    /* margin-right: 1vw; */
+    width: 100%;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1281px) {
@@ -51,7 +51,8 @@
     }
 
     #main-title {
-        margin: 20px;
+        /* margin: 20px; */
+        text-align: center;
     }
 }
 

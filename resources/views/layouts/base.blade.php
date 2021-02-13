@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
     <title>@yield('title')</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{ asset('css/base.css') }}" rel="stylesheet" />
-    @if(Config::get('app.locale') == 'fa')
+    @if (Config::get('app.locale') == 'fa')
         <link href="{{ asset('css/appfa.css') }}" rel="stylesheet" />
     @endif
 

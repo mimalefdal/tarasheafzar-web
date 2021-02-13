@@ -14,7 +14,10 @@ function HomeButton(props) {
                 replace
                 to={{
                     pathname: "/home",
-                    state: { transition: "slide-right", timeout: 1000 }
+                    state: {
+                        transition: "slide-right",
+                        timeout: { appear: 1000, enter: 1000, exit: 1000 }
+                    }
                 }}
             >
                 <ReactSVG src={Home} />
