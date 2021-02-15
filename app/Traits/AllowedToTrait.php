@@ -74,11 +74,7 @@ trait AllowedToTrait
             }
         }
         return false;
-
     }
-
-
-
 
     public function allRights()
     {
@@ -105,9 +101,9 @@ trait AllowedToTrait
 
     protected function allowed($right)
     {
-
         return (bool) $this->rights->where('slug', $right->slug)->count();
     }
+
     public function rights()
     {
         return $this->belongsToMany(Right::class);
@@ -116,6 +112,4 @@ trait AllowedToTrait
     {
         return Right::whereIn('slug', $rights)->get();
     }
-
-
 }

@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ManagesRoleRights;
 use App\Models\Position;
-
+use App\Traits\ManagesAccess;
+use App\Traits\ManagesRights;
 
 class Role extends Model
 {
     //
-    use ManagesRoleRights;
+    // use ManagesRoleRights;
+    use ManagesRights;
 
     protected $fillable = [
-        'title', 'slug', 'description', 'activation','unit_id'
+        'title', 'slug', 'description', 'activation', 'unit_id'
     ];
-    public function rights()
-    {
-        return $this->belongsToMany(Right::class, 'roles_rights');
-    }
 
     public function staff()
     {
@@ -27,8 +25,6 @@ class Role extends Model
 
     public function positions()
     {
-        return $this->belongsToMany(Position::class,'positions_roles');
+        return $this->belongsToMany(Position::class, 'positions_roles');
     }
-
-
 }

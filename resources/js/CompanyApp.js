@@ -18,7 +18,7 @@ import store from "./utils/redux/store";
 function CompanyApp(props) {
     sessionStorage.clear();
     // const [ready, setReady] = useState(false);
-
+    console.log("Companue App", JSON.parse(props.user));
     const appContextValue = {
         rights: JSON.parse(props.rights),
         locale: props.locale,

@@ -18,6 +18,11 @@ class Right extends Model
 
     public function staff()
     {
-        return $this->belongsToMany(Staff::class, 'staff_rights');
+        return $this->morphedByMany(Staff::class, 'right_holders');
+    }
+
+    public function positions()
+    {
+        return $this->morphedByMany(Position::class, 'right_holders');
     }
 }

@@ -52,6 +52,10 @@ trait ControlsPositions
                 $jobLevel->positions()->save($newItem);
             }
 
+            if ($position['rights'] != null) {
+                $newItem->giveRightsTo($position['rights']);
+            }
+
             if ($position['roles'] != null) {
                 $newItem->setRoles($position['roles']);
             }

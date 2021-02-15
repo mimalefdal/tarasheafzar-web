@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Traits\AllowedToTrait;
+use App\Traits\ManagesAccess;
 use App\Traits\ManagesRoles;
 use App\Traits\ManagesPosition;
+use App\Traits\ManagesRights;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -12,10 +13,11 @@ use Laravel\Sanctum\HasApiTokens;
 class Staff extends Authenticatable
 {
     use Notifiable;
-    use AllowedToTrait;
     use HasApiTokens;
+    use ManagesRights;
     use ManagesRoles;
     use ManagesPosition;
+    use ManagesAccess;
 
     protected $guard = 'staff';
 
@@ -31,16 +33,6 @@ class Staff extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'staff_roles');
-    }
-
-    public function rights()
-    {
-        return $this->belongsToMany(Right::class, 'staff_rights');
-    }
-
     public function rolesThroughPosition()
     {
         // dd($this->position->roles);
@@ -54,10 +46,5 @@ class Staff extends Authenticatable
     public function allRoles()
     {
         return $this->roles->merge($this->rolesThroughPosition());
-    }
-
-    public function position()
-    {
-        return $this->belongsTo(Position::class);
     }
 }

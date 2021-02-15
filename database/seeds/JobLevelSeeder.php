@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Joblevel;
 
-class joblevelSeeder extends Seeder
+class JoblevelSeeder extends Seeder
 {
     /**
      * Run the database seeds.

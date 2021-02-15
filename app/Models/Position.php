@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Resources\PositionItem;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\ManagesRights;
 use App\Traits\ManagesRoles;
 use App\Models\Joblevel;
 use App\Models\Role;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Lang;
 
 class Position extends Model
 {
+    use ManagesRights;
     use ManagesRoles;
     use SoftDeletes;
     use HandleBilangTitles;
@@ -36,9 +38,9 @@ class Position extends Model
         return $this->hasposition()->associate($holder);
     }
 
-    public function roles()
+    public function rights()
     {
-        return $this->belongsToMany(Role::class, 'positions_roles');
+        return $this->morphToMany(Right::class, 'right_holder');
     }
 
     public function staff()

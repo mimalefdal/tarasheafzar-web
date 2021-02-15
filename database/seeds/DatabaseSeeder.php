@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             // BranchSeeder::class,
             // DepartmentSeeder::class,
             // UnitSeeder::class,
-            joblevelSeeder::class,
+            JoblevelSeeder::class,
             // PositionSeeder::class,
             StaffSeeder::class,
         ]);

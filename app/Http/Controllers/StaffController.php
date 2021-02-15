@@ -10,13 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('auth:staff');
     }
-
 
     public function showHome()
     {
@@ -31,7 +28,9 @@ class StaffController extends Controller
             $user->title = $titles->$lang;
         }
 
-        return view('staff.home')->with('user',$user);
+        $user->rights = $user->rights;
+
+        return view('staff.home')->with('user', $user);
     }
 
     /**
@@ -75,7 +74,7 @@ class StaffController extends Controller
     {
         //
         // dd(Auth::user()->toArray());
-        return view('staff.profile')->with('user',$staff);;
+        return view('staff.profile')->with('user', $staff);;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Right;
 use App\Models\Role;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -16,7 +17,7 @@ trait ControlsRoles
         foreach ($roles as $role) {
             Validator::make($role, ['slug' => 'required|unique:roles'])->validate();
 
-            $newItem = new Role($role);
+            $newItem = new Role(Arr::only($role, ['slug', 'title', 'activation', 'description']));
             $newItem->title = json_encode($role['title']);
             $newItem->save();
 
