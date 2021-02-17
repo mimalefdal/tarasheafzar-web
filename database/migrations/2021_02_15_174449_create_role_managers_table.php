@@ -15,6 +15,11 @@ class CreateRoleManagersTable extends Migration
     {
         Schema::create('role_managers', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('role_id')->unsigned()->index();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+
+            $table->morphs('role_manager');
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             // DepartmentSeeder::class,
             // UnitSeeder::class,
             JoblevelSeeder::class,
-            // PositionSeeder::class,
+            PositionSeeder::class,
             StaffSeeder::class,
         ]);
     }

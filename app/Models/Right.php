@@ -13,7 +13,7 @@ class Right extends Model
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'roles_rights');
+        return $this->morphedByMany(Role::class, 'role_holders');
     }
 
     public function staff()

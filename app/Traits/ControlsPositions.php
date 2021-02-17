@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Joblevel;
 use App\Models\Position;
 use App\Models\Unit;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -19,7 +20,7 @@ trait ControlsPositions
         foreach ($positions as $position) {
             Validator::make($position, ['slug' => 'required|unique:positions'])->validate();
 
-            $newItem = new Position($position);
+            $newItem = new Position(Arr::only($position, ['slug', 'title', 'display_title', 'recruit_capacity']));
             $newItem->title = json_encode($position['title']);
             $newItem->display_title = json_encode($position['display_title']);
             $newItem->save();
@@ -56,8 +57,24 @@ trait ControlsPositions
                 $newItem->giveRightsTo($position['rights']);
             }
 
+            if (isset($position['ownedRights']) && $position['ownedRights'] != null) {
+                $newItem->setOwnerOfRights($position['ownedRights']);
+            }
+
+            if (isset($position['managedByRights']) && $position['managedByRights'] != null) {
+                $newItem->setManagerOfRights($position['managedByRights']);
+            }
+
             if ($position['roles'] != null) {
                 $newItem->setRoles($position['roles']);
+            }
+
+            if (isset($position['ownedRoles']) && $position['ownedRoles'] != null) {
+                $newItem->setOwnerOfRoles($position['ownedRoles']);
+            }
+
+            if (isset($position['managedByRoles']) && $position['managedByRoles'] != null) {
+                $newItem->setManagerOfRoles($position['managedByRoles']);
             }
         }
     }

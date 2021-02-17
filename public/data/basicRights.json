@@ -5,9 +5,7 @@
             "fa": "دسترسی به پنل مدیریت سامانه",
             "en": "Access Enterprise Adminstration Panel"
         },
-        "activation": true,
-        "owner": null,
-        "manager": null
+        "activation": true
     },
     {
         "slug": "access-system-initialize-tool",
@@ -15,9 +13,7 @@
             "fa": "دسترسی به ابزار راه‌اندازی سامانه",
             "en": "Access Enterprise Initialize Tool"
         },
-        "activation": true,
-        "owner": null,
-        "manager": null
+        "activation": true
     },
     {
         "slug": "test-right",
@@ -25,8 +21,6 @@
             "fa": "مجوز آزمون",
             "en": "ُTest Right"
         },
-        "activation": true,
-        "owner": null,
-        "manager": null
+        "activation": true
     }
 ]

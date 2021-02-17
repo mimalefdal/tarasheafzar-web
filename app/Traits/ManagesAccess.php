@@ -11,18 +11,18 @@ trait ManagesAccess
     public function allRights()
     {
         $roles = $this->allRoles();
-        // dd($roles->toArray());
-        // $role = $roles->first();
-        // $rightsThrouhRole = $role->rights;
         $rightsThrouhRole = collect([]);
         foreach ($roles as $role) {
             $rightsThrouhRole = $rightsThrouhRole->merge($role->rights);
         }
-        $rightsIndividual = $this->rights;
-        $allRights = $rightsThrouhRole->merge($rightsIndividual);
-        // dd($allRights->toArray());
-        // dd($rightsThrouhRole->toArray(), $rightsIndividual->toArray());
 
+        $rightsThrouhPosition = collect([]);
+        if (isset($this->position))
+            $rightsThrouhPosition = $this->position->rights;
+
+        $rightsIndividual = $this->rights;
+
+        $allRights = $rightsThrouhRole->merge($rightsIndividual)->merge($rightsThrouhPosition);
         return $allRights;
     }
 
@@ -35,5 +35,20 @@ trait ManagesAccess
     protected function allowed($right)
     {
         return (bool) $this->rights->where('slug', $right->slug)->count();
+    }
+
+    public function rolesThroughPosition()
+    {
+        // dd($this->position->roles);
+        if ($this->position != null) {
+            return $this->position->roles;
+        }
+        return collect([]);
+        // return $this->hasManyThrough(Role::class,Position::class);
+    }
+
+    public function allRoles()
+    {
+        return $this->roles->merge($this->rolesThroughPosition());
     }
 }

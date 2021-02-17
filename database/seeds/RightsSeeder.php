@@ -1,11 +1,13 @@
 <?php
 
+use App\Traits\ControlsRights;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
 
 class RightsSeeder extends Seeder
 {
+    use ControlsRights;
     /**
      * Run the database seeds.
      *
@@ -17,12 +19,15 @@ class RightsSeeder extends Seeder
         $path = base_path() . '/public/data/basicRights.json';
         $basicRights = file_get_contents($path);
         $basicRights = json_decode($basicRights, true);
-        foreach ($basicRights as $right) {
-            DB::table('rights')->insert([
-                "slug" => $right['slug'],
-                "title" => json_encode($right['title']),
-                "activation" => $right['activation'],
-            ]);
-        }
+
+        $this->createRights($basicRights);
+
+        // foreach ($basicRights as $right) {
+        //     DB::table('rights')->insert([
+        //         "slug" => $right['slug'],
+        //         "title" => json_encode($right['title']),
+        //         "activation" => $right['activation'],
+        //     ]);
+        // }
     }
 }

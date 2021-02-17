@@ -38,11 +38,6 @@ class Position extends Model
         return $this->hasposition()->associate($holder);
     }
 
-    public function rights()
-    {
-        return $this->morphToMany(Right::class, 'right_holder');
-    }
-
     public function staff()
     {
         return $this->hasMany(Staff::class);

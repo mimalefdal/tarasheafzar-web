@@ -21,5 +21,17 @@
             "access-enterprise-adminstration-panel",
             "access-system-initialize-tool"
         ]
+    },
+    {
+        "slug": "sag",
+        "title": {
+            "fa": "نقش آزمون",
+            "en": "Test Role"
+        },
+        "activation": true,
+        "rights": [
+            "access-enterprise-adminstration-panel",
+            "access-system-initialize-tool"
+        ]
     }
 ]

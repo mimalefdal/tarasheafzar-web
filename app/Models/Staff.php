@@ -32,19 +32,4 @@ class Staff extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function rolesThroughPosition()
-    {
-        // dd($this->position->roles);
-        if ($this->position != null) {
-            return $this->position->roles;
-        }
-        return collect([]);
-        // return $this->hasManyThrough(Role::class,Position::class);
-    }
-
-    public function allRoles()
-    {
-        return $this->roles->merge($this->rolesThroughPosition());
-    }
 }

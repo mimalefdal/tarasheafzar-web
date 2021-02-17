@@ -1,0 +1,68 @@
+[
+    {
+        "slug": "test-officer-1",
+        "title": {
+            "fa": "آزمون 1",
+            "en": "Test 1"
+        },
+        "display_title": {
+            "fa": "تست 1",
+            "en": "TEST 1"
+        },
+        "job-level": "chief-officer",
+        "recruit_capacity": 1,
+        "holderType": "company",
+        "holder": null,
+        "roles": [
+            "test-role"
+        ],
+        "ownedRoles": [
+            "test-role"
+        ],
+        "managenByRoles": [
+            "test-role"
+        ],
+        "rights": [
+            "test-right"
+        ],
+        "ownedRights": [
+            "test-right"
+        ],
+        "managedByRights": [
+            "test-right"
+        ]
+    },
+    {
+        "slug": "test-officer-2",
+        "title": {
+            "fa": "آزمون 2",
+            "en": "Test 2"
+        },
+        "display_title": {
+            "fa": "تست 2",
+            "en": "TEST 2"
+        },
+        "job-level": "chief-officer",
+        "recruit_capacity": 1,
+        "holderType": "company",
+        "holder": null,
+        "roles": [
+            "sag"
+        ],
+        "ownedRoles": [
+            "sag"
+        ],
+        "managedByRoles": [
+            "sag"
+        ],
+        "rights": [
+            "test-right"
+        ],
+        "ownedRights": [
+            "test-right"
+        ],
+        "managedByRights": [
+            "test-right"
+        ]
+    }
+]

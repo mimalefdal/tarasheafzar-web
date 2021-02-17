@@ -17,9 +17,7 @@
                 "fa": "دسترسی به پنل مدیریت شرکت",
                 "en": "Access Company Management Panel"
             },
-            "activation": true,
-            "owner": null,
-            "manager": null
+            "activation": true
         },
         {
             "slug": "access-access-adminstration-panel",
@@ -27,9 +25,7 @@
                 "fa": "دسترسی به پنل مدیریت دسترسی",
                 "en": "Access Enterprise Initialize Tool"
             },
-            "activation": true,
-            "owner": null,
-            "manager": null
+            "activation": true
         }
     ],
     "Roles": [
@@ -65,6 +61,15 @@
             ],
             "rights": [
                 "test-right"
+            ],
+            "ownedRights": [
+                "test-right",
+                "access-access-adminstration-panel"
+            ],
+            "managedByRights": [
+                "test-right",
+                "access-structure-management-panel",
+                "access-access-adminstration-panel"
             ]
         }
     ]
