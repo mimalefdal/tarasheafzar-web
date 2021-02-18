@@ -1,5 +1,1 @@
-{
-    "installLicence": false,
-    "initiateSystem": false,
-    "defineCeo": false
-}
+{"installLicence":true,"initiateSystem":true,"defineCeo":true}

@@ -1,0 +1,98 @@
+{
+    "Features": [
+        {
+            "slug": "structure-management-panel",
+            "title": {
+                "fa": "پنل مدیریت ساختار",
+                "en": "Structure Management Panel"
+            },
+            "activation": false
+        }
+    ],
+    "Tools": [],
+    "Rights": [
+        {
+            "slug": "access-structure-panel",
+            "title": {
+                "fa": "دسترسی به پنل مدیریت شرکت",
+                "en": "Access Company Management Panel"
+            },
+            "activation": true
+        },
+        {
+            "slug": "access-access-panel",
+            "title": {
+                "fa": "دسترسی به پنل مدیریت دسترسی",
+                "en": "Access Enterprise Initialize Tool"
+            },
+            "activation": true
+        }
+    ],
+    "Roles": [
+        {
+            "slug": "company-structure-manager",
+            "title": {
+                "fa": "مدیریت ساختار شرکت",
+                "en": "Company Structure Management"
+            },
+            "activation": true,
+            "rights": [
+                "access-structure-panel",
+                "access-access-panel"
+            ]
+        }
+    ],
+    "Positions": [
+        {
+            "slug": "executive-chief-officer",
+            "title": {
+                "fa": "اجرایی",
+                "en": "Executive"
+            },
+            "display_title": {
+                "fa": "مدیرعامل",
+                "en": "CEO"
+            },
+            "job-level": "chief-officer",
+            "recruit_capacity": 1,
+            "holderType": "company",
+            "holder": null,
+            "roles": [
+                "company-structure-manager"
+            ],
+            "rights": [
+                "access-access-panel"
+            ],
+            "ownedRights": [
+                "test-right",
+                "access-access-panel"
+            ],
+            "managedByRights": [
+                "test-right",
+                "access-structure-panel",
+                "access-access-panel"
+            ]
+        }
+    ],
+    "Staff": [
+        {
+            "personnel_id": "5005",
+            "username": "ceo",
+            "password": "secret",
+            "firstname": "جیسون",
+            "nickname": "قاراپت",
+            "lastname": "قاراپتیان",
+            "national_id": "1000500500",
+            "idcert_no": "5005",
+            "gender": "Empty",
+            "email": "ceo@companydomain.com",
+            "position": "executive-chief-officer",
+            "roles": [
+                "enterprise-admin"
+            ],
+            "rights": [
+                "test-right"
+            ]
+        }
+    ]
+}

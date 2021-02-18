@@ -12,7 +12,7 @@
     "Tools": [],
     "Rights": [
         {
-            "slug": "access-structure-management-panel",
+            "slug": "access-structure-panel",
             "title": {
                 "fa": "دسترسی به پنل مدیریت شرکت",
                 "en": "Access Company Management Panel"
@@ -20,7 +20,7 @@
             "activation": true
         },
         {
-            "slug": "access-access-adminstration-panel",
+            "slug": "access-access-panel",
             "title": {
                 "fa": "دسترسی به پنل مدیریت دسترسی",
                 "en": "Access Enterprise Initialize Tool"
@@ -37,7 +37,8 @@
             },
             "activation": true,
             "rights": [
-                "access-structure-management-panel"
+                "access-structure-panel",
+                "access-access-panel"
             ]
         }
     ],
@@ -60,17 +61,18 @@
                 "company-structure-manager"
             ],
             "rights": [
-                "test-right"
+                "access-access-panel"
             ],
             "ownedRights": [
                 "test-right",
-                "access-access-adminstration-panel"
+                "access-access-panel"
             ],
             "managedByRights": [
                 "test-right",
-                "access-structure-management-panel",
-                "access-access-adminstration-panel"
+                "access-structure-panel",
+                "access-access-panel"
             ]
         }
-    ]
+    ],
+    "Staff": []
 }

@@ -18,7 +18,7 @@
         },
         "activation": true,
         "rights": [
-            "access-enterprise-adminstration-panel",
+            "access-enterprise-panel",
             "access-system-initialize-tool"
         ]
     },
@@ -30,7 +30,7 @@
         },
         "activation": true,
         "rights": [
-            "access-enterprise-adminstration-panel",
+            "access-enterprise-panel",
             "access-system-initialize-tool"
         ]
     }

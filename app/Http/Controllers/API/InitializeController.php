@@ -5,21 +5,14 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Staff;
-use App\Traits\ControlsFeatures;
-use App\Traits\ControlsPositions;
-use App\Traits\ControlsRights;
-use App\Traits\ControlsRoles;
-use App\Traits\ControlsTools;
+use App\Traits\ControlsInitialize;
+
 use Illuminate\Support\Facades\Lang;
 
 class InitializeController extends Controller
 {
 
-    use ControlsFeatures;
-    use ControlsTools;
-    use ControlsRights;
-    use ControlsRoles;
-    use ControlsPositions;
+    use ControlsInitialize;
 
     public function __construct()
     {
@@ -86,20 +79,7 @@ class InitializeController extends Controller
         $systemInfo = json_decode($systemInfo, true);
 
         try {
-            // Add Features
-            $this->createFeatures($systemInfo['Features']);
-
-            // Add Tools
-            $this->createTools($systemInfo['Tools']);
-
-            // Define Rights
-            $this->createRights($systemInfo['Rights']);
-
-            // Define Roles
-            $this->createRoles($systemInfo['Roles']);
-
-            // Define Positions
-            $this->createPositions($systemInfo['Positions']);
+            $this->initializeSystemInfo($systemInfo);
         } catch (\Throwable $th) {
             return response()->json([
                 'error' => $th,
@@ -175,30 +155,5 @@ class InitializeController extends Controller
         return Staff::with('Position')->whereHas('position', function ($query) {
             $query->where('slug', 'ceo');
         })->first();
-    }
-
-    private function updateInitializeStatus($status)
-    {
-        // $path = base_path() . '/public/data/systemInitialize.json';
-        // $systemInitialize = file_get_contents($path);
-        // $systemInitialize = json_decode($systemInitialize, true);
-
-        $initializeContent = $this->getSystemInitializeContent();
-
-        $systemInitialize = $initializeContent['file'];
-        foreach ($status as $key => $value) {
-            $systemInitialize[$key] = $value;
-        }
-
-        file_put_contents($initializeContent['path'], json_encode($systemInitialize));
-    }
-
-    private function getSystemInitializeContent()
-    {
-        $path = base_path() . '/public/data/systemInitialize.json';
-        $systemInitialize = file_get_contents($path);
-        $systemInitialize = json_decode($systemInitialize, true);
-
-        return ['file' => $systemInitialize, 'path' => $path];
     }
 }
