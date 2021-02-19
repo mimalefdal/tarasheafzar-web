@@ -10,7 +10,7 @@ function StaffDashboard(props) {
     return (
         <div className="">
             <PageHeaderBar>
-                <ListTitle title={t("custum-titles.staffListTitle")} />
+                <ListTitle title={t("lists.staffListTitle")} />
             </PageHeaderBar>
         </div>
     );

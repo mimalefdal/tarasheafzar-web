@@ -10,7 +10,7 @@ function Start() {
         <div className="">
             <PageHeaderBar>
                 <ChecklistTitle
-                    title={t("custum-titles.initializeChecklistTitle")}
+                    title={t("lists.initializeChecklistTitle")}
                     btnSet={null}
                 />
             </PageHeaderBar>

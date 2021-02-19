@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
@@ -8,6 +9,7 @@ import { OperationTable } from "../../components/tables";
 import { GetRightList } from "../../services";
 
 import { t } from "../../utils";
+import { clearTitle, setTitle } from "../../utils/redux/navSlice";
 import { RightEntry } from "../../view-components";
 
 function _manage() {
@@ -18,10 +20,16 @@ function _manage() {
         status: "activation"
     };
 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setTitle(t("tools.rightsManagement")));
+        return () => {
+            dispatch(clearTitle());
+        };
+    }, []);
+
     const entryOperations = [
-        { type: "view", actionType: "link", action: "right/:slug/" },
-        { type: "edit", actionType: "callback", action: handleEdit },
-        { type: "delete", actionType: "callback", action: handleDelete }
+        { type: "view", actionType: "link", action: "right/:slug/" }
     ];
 
     function handleDelete(item) {
@@ -35,15 +43,7 @@ function _manage() {
     return (
         <>
             <PageHeaderBar>
-                <ListTitle
-                    title={t("custum-titles.rightsListTitle")}
-                    btnSet={
-                        <AddButton
-                            className="header-operation-btn"
-                            target="rights/define"
-                        />
-                    }
-                />
+                <ListTitle title={t("lists.rightsListTitle")} />
             </PageHeaderBar>
             <TableList
                 dataService={GetRightList}

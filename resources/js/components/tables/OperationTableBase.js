@@ -25,7 +25,7 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
                         <th key={key}> {t("labels." + key)} </th>
                     ))}
 
-                    <th className=""></th>
+                    <th className="operations"></th>
                 </tr>
             </thead>
             <tbody>

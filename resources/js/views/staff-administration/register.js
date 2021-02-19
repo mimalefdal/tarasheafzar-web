@@ -10,7 +10,7 @@ export default function register() {
             <PageHeaderBar>
                 <FormTitle
                     className=""
-                    title={t("custum-titles.registerStaff")}
+                    title={t("page-titles.registerStaff")}
                 />
             </PageHeaderBar>
             <div className="form-container">

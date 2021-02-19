@@ -1,4 +1,5 @@
 export { default as CompanyPanel } from "./core-switch";
-export { default as EnterpriseAdministrationPanel } from "./enterprise-admin-switch";
-export { default as StructureManagementPanel } from "./structure-manage-switch";
-export { default as StaffAdministrationPanel } from "./staff-admin-switch";
+export { default as EnterprisePanel } from "./enterprise-panel-switch";
+export { default as StructurePanel } from "./structure-panel-switch";
+export { default as StaffPanel } from "./staff-panel-switch";
+export { default as AccessPanel } from "./access-panel-switch";

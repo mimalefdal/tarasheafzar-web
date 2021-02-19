@@ -2,15 +2,11 @@ import React, { Fragment, useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { GuardedRoute } from "react-router-guards";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import {
-    StructureManagementPanel,
-    EnterpriseAdministrationPanel,
-    StaffAdministrationPanel
-} from ".";
+import { StructurePanel, EnterprisePanel, StaffPanel, AccessPanel } from ".";
 import AppContext from "../../context/appContext";
 import StaffContext from "../../context/staffContext";
 import { NotFound, Unathorized } from "../../views/errors";
-import PanelsHome from "../../views/PanelsHome";
+import { PanelsHome } from "../../views/panels";
 import ManageRights from "../../views/rights/manage";
 import { StaffManagementManage } from "../../views/staff-management";
 import { REQUIRED_RIGHT } from "../guards/types";
@@ -51,26 +47,32 @@ function _Switch(props) {
                     <Switch location={location}>
                         <Route exact path="/home" component={PanelsHome} />
                         <GuardedRoute
-                            path="/enterprise-management"
-                            component={EnterpriseAdministrationPanel}
+                            path="/enterprise"
+                            component={EnterprisePanel}
                             meta={{
-                                [REQUIRED_RIGHT]:
-                                    "access-enterprise-adminstration-panel"
+                                [REQUIRED_RIGHT]: "access-enterprise-panel"
                             }}
                         />
 
                         <GuardedRoute
-                            path="/structure-management"
-                            component={StructureManagementPanel}
+                            path="/structure"
+                            component={StructurePanel}
                             meta={{
-                                [REQUIRED_RIGHT]:
-                                    "access-structure-management-panel"
+                                [REQUIRED_RIGHT]: "access-structure-panel"
+                            }}
+                        />
+
+                        <GuardedRoute
+                            path="/access"
+                            component={AccessPanel}
+                            meta={{
+                                [REQUIRED_RIGHT]: "access-access-panel"
                             }}
                         />
 
                         <GuardedRoute
                             path="/staff-management"
-                            component={StaffAdministrationPanel}
+                            component={StaffPanel}
                             meta={{
                                 [REQUIRED_RIGHT]:
                                     "access-staff-adminstration-panel"

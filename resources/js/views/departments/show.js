@@ -53,7 +53,7 @@ function show(props) {
                                 <Link
                                     className="text-tail"
                                     to={
-                                        "/structure-management/branches/" +
+                                        "/structure/branches/" +
                                         item.branch.slug
                                     }
                                 >

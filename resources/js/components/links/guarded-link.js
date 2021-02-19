@@ -5,7 +5,10 @@ import { getIsAllowed } from "../../utils";
 function _link({ requiredRight, to, label, right, ...props }) {
     if (getIsAllowed(requiredRight)) {
         return (
-            <Link className="panel-link" to={to}>
+            <Link
+                className={props.className ? props.className : "panel-link"}
+                to={to}
+            >
                 {label}
             </Link>
         );

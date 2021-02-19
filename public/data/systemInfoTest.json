@@ -26,19 +26,64 @@
                 "en": "Access Enterprise Initialize Tool"
             },
             "activation": true
+        },
+        {
+            "slug": "access-rights-adminstration-tool",
+            "title": {
+                "fa": "دسترسی به ابزار ادارهٔ حقوق دسترسی",
+                "en": "Access Rights Administration Initialize Tool"
+            },
+            "activation": true
+        },
+        {
+            "slug": "access-rights-management-tool",
+            "title": {
+                "fa": "دسترسی به ابزار مدیریت  حقوق دسترسی",
+                "en": "Access Rights Management Tool"
+            },
+            "activation": true
+        },
+        {
+            "slug": "access-roles-adminstration-tool",
+            "title": {
+                "fa": "دسترسی به ابزار ادارهٔ نقش‌ها",
+                "en": "Access Roles Administration Tool"
+            },
+            "activation": true
+        },
+        {
+            "slug": "access-roles-management-tool",
+            "title": {
+                "fa": "دسترسی به ابزار مدیریت نقش‌ها",
+                "en": "Access Roles Management Tool"
+            },
+            "activation": true
         }
     ],
     "Roles": [
         {
             "slug": "company-structure-manager",
             "title": {
-                "fa": "مدیریت ساختار شرکت",
+                "fa": "مدیر ساختار شرکت",
                 "en": "Company Structure Management"
             },
             "activation": true,
             "rights": [
                 "access-structure-panel",
                 "access-access-panel"
+            ]
+        },
+        {
+            "slug": "access-head-administrator",
+            "title": {
+                "fa": "مدیر مختار حقوق دسترسی",
+                "en": "Head Access Adminstartor"
+            },
+            "activation": true,
+            "rights": [
+                "access-access-panel",
+                "access-rights-adminstration-tool",
+                "access-rights-management-tool"
             ]
         }
     ],
@@ -58,11 +103,10 @@
             "holderType": "company",
             "holder": null,
             "roles": [
-                "company-structure-manager"
+                "company-structure-manager",
+                "access-head-administrator"
             ],
-            "rights": [
-                "access-access-panel"
-            ],
+            "rights": [],
             "ownedRights": [
                 "test-right",
                 "access-access-panel"
@@ -87,9 +131,7 @@
             "gender": "Empty",
             "email": "ceo@companydomain.com",
             "position": "executive-chief-officer",
-            "roles": [
-                "enterprise-admin"
-            ],
+            "roles": [],
             "rights": [
                 "test-right"
             ]

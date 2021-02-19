@@ -53,17 +53,19 @@
     "errors": {
         "required": "لطفاً این فیلد را پر فرمائید"
     },
-    "custum-titles": {
+    "page-titles": {
         "welcome": "خوش آمدید",
         "welcomeCompanyManagement": "به پنل مدیریت ساختار خوش آمدید",
         "welcomeStaffManagement": "به پنل مدیریت کارکنان خوش آمدید",
         "welcomePanelHome": "به پنل کاری تراشه افزار خوش آمدید",
         "welcomeEnterpriseManagement": "به پنل مدیریت سامانه نرم‌افزاری شرکت خوش آمدید",
         "welcomeHumanResources": "به پنل مدیریت منابع انسانی خوش آمدید",
-        "defineRight": "ثبت حق دسترسی",
-        "rightsListTitle": "لیست مجوزها",
+        "defineRight": "ثبت حق دسترسی"
+    },
+    "lists": {
+        "initializeChecklistTitle": "چک لیست راه‌اندازی سامانه",
         "staffListTitle": "لیست کارکنان",
-        "initializeChecklistTitle": "چک لیست راه‌اندازی سامانه"
+        "rightsListTitle": "لیست مجوزها"
     },
     "buttons": {
         "Home": "خانه",
@@ -77,6 +79,7 @@
         "structure-management": "مدیریت ساختار",
         "staff-management": "مدیریت کارکنان",
         "system-management": "مدیریت سامانه",
+        "access-management": "مدیریت دسترسی",
         "crm": "ارتباط با مشتریان",
         "hr": "منابع انسانی",
         "cms": "مدیریت محتوا",
@@ -89,7 +92,7 @@
         "unitsManagement": "مدیریت واحدها",
         "positionsManagement": "مدیریت سمت‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی",
-        "rightsAdministration": "ادارهٔ دسترسی‌ها",
+        "rightsAdministration": "ادارهٔ حقوق دسترسی",
         "staffManagement": "مدیریت کارکنان"
     },
     "forms": {

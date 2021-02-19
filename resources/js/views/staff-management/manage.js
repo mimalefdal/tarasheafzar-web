@@ -36,10 +36,7 @@ function Manage(props) {
     return (
         <div className="">
             <PageHeaderBar>
-                <ListTitle
-                    title={t("custum-titles.staffListTitle")}
-                    btnSet={null}
-                />
+                <ListTitle title={t("lists.staffListTitle")} btnSet={null} />
             </PageHeaderBar>
             <TableList
                 dataService={GetStaffList}
