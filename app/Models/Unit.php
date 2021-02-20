@@ -5,14 +5,14 @@ namespace App\Models;
 use App\Http\Resources\UnitItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ChecksUniqueness;
-use App\Traits\ManagesPositions;
+use App\Traits\AdministratesPositions;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
 use Bilang;
 
 class Unit extends Model
 {
-    use ManagesPositions;
+    use AdministratesPositions;
     use SoftDeletes;
     use ChecksUniqueness;
 

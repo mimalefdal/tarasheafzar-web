@@ -29,6 +29,14 @@ trait ControlsRoles
                 }
                 $newItem->giveRightsTo($rights);
             }
+
+            if (isset($role['ownedRights']) && $role['ownedRights'] != null) {
+                $newItem->setOwnerOfRights($role['ownedRights']);
+            }
+
+            if (isset($role['managedByRights']) && $role['managedByRights'] != null) {
+                $newItem->setOwnerOfRights($role['managedByRights']);
+            }
         }
     }
 }

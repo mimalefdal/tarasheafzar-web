@@ -2,6 +2,8 @@
 
 use App\Models\Branch;
 use App\Models\Department;
+use App\Models\Right;
+use App\Models\Role;
 use App\Models\Unit;
 
 class Utility
@@ -32,5 +34,15 @@ class Utility
         if ($anyy)
             return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.anyy')])], 203);
         return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.any')])], 203);
+    }
+
+    public static function getAllRights(array $rights)
+    {
+        return Right::whereIn('slug', $rights)->get();
+    }
+
+    public static function getAllRoles(array $roles)
+    {
+        return Role::whereIn('slug', $roles)->get();
     }
 }

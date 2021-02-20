@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\ManagesPositions;
+use App\Traits\AdministratesPositions;
 use App\Models\Department;
 use App\Traits\ChecksUniqueness;
 use App\Http\Resources\BranchItem;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Lang;
 
 class Branch extends Model
 {
-    use ManagesPositions;
+    use AdministratesPositions;
     use ManagesUnits;
     use ChecksUniqueness;
     use SoftDeletes;

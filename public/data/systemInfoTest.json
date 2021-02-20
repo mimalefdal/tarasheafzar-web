@@ -71,7 +71,11 @@
             "rights": [
                 "access-structure-panel",
                 "access-access-panel"
-            ]
+            ],
+            "ownedRights": [
+                "test-right"
+            ],
+            "managedByRights": null
         },
         {
             "slug": "access-head-administrator",
@@ -108,11 +112,9 @@
             ],
             "rights": [],
             "ownedRights": [
-                "test-right",
                 "access-access-panel"
             ],
             "managedByRights": [
-                "test-right",
                 "access-structure-panel",
                 "access-access-panel"
             ]

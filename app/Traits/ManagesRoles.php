@@ -11,34 +11,17 @@ trait ManagesRoles
         return $this->morphToMany(Role::class, 'role_holder');
     }
 
-    public function ownedRoles()
+    public function rolesThroughPosition()
     {
-        return $this->morphToMany(Role::class, 'role_owner');
-    }
-
-    public function managedByRoles()
-    {
-        return $this->morphToMany(Role::class, 'role_manager');
-    }
-
-    public function setOwnerOfRoles($roles)
-    {
-        $roles = $this->getAllRoles($roles);
-        if ($roles === null) {
-            return $this;
+        if (isset($this->position) && $this->position != null) {
+            return $this->position->roles;
         }
-        $this->ownedRoles()->attach($roles);
-        return $this;
+        return collect([]);
     }
 
-    public function setManagerOfRoles($roles)
+    public function allRoles()
     {
-        $roles = $this->getAllRoles($roles);
-        if ($roles === null) {
-            return $this;
-        }
-        $this->managedByRoles()->attach($roles);
-        return $this;
+        return $this->roles->merge($this->rolesThroughPosition());
     }
 
     public function setRoles($roles)
@@ -59,10 +42,5 @@ trait ManagesRoles
     {
         $this->roles()->detach($roles);
         $this->setRoles($roles);
-    }
-
-    private function getAllRoles(array $roles)
-    {
-        return Role::whereIn('slug', $roles)->get();
     }
 }

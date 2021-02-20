@@ -31,6 +31,7 @@ function TableListBase({
         dataService(
             token,
             response => {
+                console.log("TableListBase", response.data);
                 if (response.data.data) setItems(response.data.data);
                 else setItems(response.data);
                 setLoading(false);

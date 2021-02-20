@@ -8,6 +8,8 @@ use App\Traits\ManagesRights;
 use App\Traits\ManagesRoles;
 use App\Models\Joblevel;
 use App\Models\Role;
+use App\Traits\CanManageRights;
+use App\Traits\CanOwnRights;
 use App\Traits\ChecksUniqueness;
 use App\Traits\HandleBilangTitles;
 use Bilang;
@@ -18,6 +20,8 @@ class Position extends Model
 {
     use ManagesRights;
     use ManagesRoles;
+    use CanOwnRights;
+    use CanManageRights;
     use SoftDeletes;
     use HandleBilangTitles;
     use ChecksUniqueness;

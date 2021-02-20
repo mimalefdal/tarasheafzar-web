@@ -12,7 +12,7 @@ trait AllowedToTrait
 
     public function giveRightsTo($rights)
     {
-        $rights = $this->getAllRights($rights);
+        $rights = Utility::getAllRights($rights);
         // dd($rights);
         if ($rights === null) {
             return $this;
@@ -24,7 +24,7 @@ trait AllowedToTrait
 
     public function withdrawRightsTo($rights)
     {
-        $rights = $this->getAllRights($rights);
+        $rights = Utility::getAllRights($rights);
         $this->rights()->detach($rights);
         return $this;
     }
