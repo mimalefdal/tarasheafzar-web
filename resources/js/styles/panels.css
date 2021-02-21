@@ -162,6 +162,8 @@ body {
 
 .panel-link {
     /* flex: 0.25; */
+    position: relative;
+    flex-direction: column;
     width: 25%;
     order: 100;
     /* width: calc(100% / 5); */
@@ -169,7 +171,8 @@ body {
     padding: 15px;
     color: grey;
     /* border: 2px solid var(--titlebkg); */
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-weight: 300;
     border-radius: 5px;
     margin: 5px;
     transition: all 0.25s;
@@ -179,6 +182,31 @@ body {
     background-color: transparent;
     color: var(--titlebkg);
     box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
+}
+
+.disabled {
+    pointer-events: none;
+}
+.panel-link.disabled {
+    background-color: #ddd;
+    color: #aaa;
+    justify-content: space-evenly;
+}
+
+.panel-link.notinstalled {
+}
+
+.panel-link.notactivated {
+}
+
+.panel-link > .link-tag {
+    font-size: 8px;
+    color: darkred;
+    background-color: #aaa;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    width: 40%;
+    bottom: 1rem;
 }
 
 .panel-link:hover {
@@ -201,6 +229,7 @@ body {
 
 .tool-link {
     /* flex: 0.25; */
+    position: relative;
     width: 100%;
     order: 100;
     /* width: calc(100% / 5); */
@@ -208,15 +237,16 @@ body {
     padding: 15px;
     color: grey;
     /* border: 2px solid var(--titlebkg); */
-    font-weight: bold;
+    /* font-weight: bold; */
     border-radius: 5px;
     margin: 5px;
     transition: all 0.25s;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--taDark);
     color: var(--titlebkg);
+    background-color: var(--taDark);
+    color: whitesmoke;
     /* box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important; */
 }
 
@@ -226,6 +256,41 @@ body {
     background-color: var(--titlebkg);
     /* font-size: calc(100% + 1px); */
 }
+
+.tool-link.disabled {
+    background-color: #ddd;
+    color: #aaa;
+    /* justify-content: space-evenly; */
+}
+
+.tool-link > .link-tag {
+    font-size: 8px;
+    color: red;
+    background-color: #aaa;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    width: 10%;
+    left: 1rem;
+}
+
+.tool-link.notinstalled {
+}
+
+.tool-link.notactivated {
+}
+
+.link-tag {
+    position: absolute;
+}
+.link-tag.notinstalled {
+    background-color: indianred;
+    color: whitesmoke;
+}
+.link-tag.notactivated {
+    color: whitesmoke;
+    background-color: tomato;
+}
+
 .panels-nav-bar {
     display: flex;
     position: sticky;
@@ -266,7 +331,7 @@ body {
 
 .nav-title {
     font-size: 16px;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: var(--primaryColor);
 }
 

@@ -7,9 +7,48 @@
                 "en": "Structure Management Panel"
             },
             "activation": false
+        },
+        {
+            "slug": "access-management-panel",
+            "title": {
+                "fa": "پنل مدیریت دسترسی",
+                "en": "Access Management Panel"
+            },
+            "activation": true
         }
     ],
-    "Tools": [],
+    "Tools": [
+        {
+            "feature": "access-management-panel",
+            "slug": "rights-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت حقوق دسترسی",
+                "en": "Rights Management Tool"
+            },
+            "activation": false,
+            "state": "built-in"
+        },
+        {
+            "feature": "access-management-panel",
+            "slug": "rights-administration-tool",
+            "title": {
+                "fa": "ابزار سازمانداری حقوق دسترسی",
+                "en": "Rights Administration Tool"
+            },
+            "activation": true,
+            "state": "built-in"
+        },
+        {
+            "feature": "structure-management-panel",
+            "slug": "branches-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت شاخه‌ها",
+                "en": "Branches Management Tool"
+            },
+            "activation": true,
+            "state": "built-in"
+        }
+    ],
     "Rights": [
         {
             "slug": "access-structure-panel",
@@ -110,7 +149,9 @@
                 "company-structure-manager",
                 "access-head-administrator"
             ],
-            "rights": [],
+            "rights": [
+                ""
+            ],
             "ownedRights": [
                 "access-access-panel"
             ],

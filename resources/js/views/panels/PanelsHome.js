@@ -24,18 +24,21 @@ export default function _View(props) {
                     pathname: "/structure",
                     state: { prev: location.pathname }
                 }}
+                feature="structure-management-panel"
                 requiredRight="access-structure-panel"
                 label={t("panels.structure-management")}
             />
 
             <GuardedLink
                 to="/enterprise"
+                feature="enterprise-administration-panel"
                 requiredRight="access-enterprise-panel"
                 label={t("panels.system-management")}
             />
 
             <GuardedLink
                 to="/access"
+                feature="access-management-panel"
                 requiredRight="access-access-panel"
                 label={t("panels.access-management")}
             />

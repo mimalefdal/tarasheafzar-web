@@ -7,13 +7,13 @@ function BackButton(props) {
     let history = useHistory();
     // let location = useLocation();
     // console.log("from BackButton", location.state && location.state.prev);
-    // console.log("from BackButton", history.location);
+    // console.log("from BackButton", history);
 
     return (
         <button
             className="nav-btn"
             style={props.style}
-            onClick={() => history.go(-1)}
+            onClick={() => history.goBack()}
         >
             <ReactSVG src={Back} />
         </button>

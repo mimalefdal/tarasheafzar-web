@@ -4,7 +4,7 @@ import { GuardedRoute } from "react-router-guards";
 import { NotFound } from "../../views/errors";
 import { AccessPanelView } from "../../views/panels";
 import { AdministrateRights, ManageRights } from "../../views/rights";
-import { REQUIRED_RIGHT } from "../guards/types";
+import { FEATURE_READY } from "../guards/types";
 
 function _Switch(props) {
     let match = useRouteMatch();
@@ -12,19 +12,19 @@ function _Switch(props) {
         <Switch>
             <Route exact path={match.path} component={AccessPanelView} />
             <GuardedRoute
-                exact
+                // exact
                 path={`${match.path}/rights_administration`}
                 component={AdministrateRights}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-rights-adminstration-tool"
+                    [FEATURE_READY]: "rights-administration-tool"
                 }}
             />
             <GuardedRoute
-                exact
+                // exact
                 path={`${match.path}/rights_management`}
                 component={ManageRights}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-rights-management-tool"
+                    [FEATURE_READY]: "rights-management-tool"
                 }}
             />
 

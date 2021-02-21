@@ -8,7 +8,7 @@ use Utility;
 /**
  *
  */
-trait CanaManageRoles
+trait CanManageRoles
 {
     public function managedByRoles()
     {

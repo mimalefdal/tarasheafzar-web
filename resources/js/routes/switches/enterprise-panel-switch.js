@@ -3,7 +3,7 @@ import React from "react";
 import { useRouteMatch, Switch, Route } from "react-router-dom";
 import { GuardedRoute } from "react-router-guards";
 
-import { REQUIRED_RIGHT } from "../guards/types";
+import { FEATURE_READY } from "../guards/types";
 
 import { ManageRights } from "../../views/rights";
 import { InitializeCeo, InitializeStart } from "../../views/initialize";
@@ -22,7 +22,7 @@ function _Switch(props) {
                 component={InitializeStart}
                 loading={Loading}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-system-initialize-tool"
+                    [FEATURE_READY]: "enterprise-initialize-tool"
                 }}
             />
             <GuardedRoute
@@ -31,7 +31,7 @@ function _Switch(props) {
                 component={InitializeCeo}
                 loading={Loading}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-system-initialize-tool"
+                    [FEATURE_READY]: "enterprise-initialize-tool"
                 }}
             />
         </Switch>

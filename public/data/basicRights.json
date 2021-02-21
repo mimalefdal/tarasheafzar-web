@@ -8,7 +8,7 @@
         "activation": true
     },
     {
-        "slug": "access-system-initialize-tool",
+        "slug": "access-enterprise-initialize-tool",
         "title": {
             "fa": "دسترسی به ابزار راه‌اندازی سامانه",
             "en": "Access Enterprise Initialize Tool"

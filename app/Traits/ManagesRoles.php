@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Role;
+use Utility;
 
 trait ManagesRoles
 {
@@ -26,14 +27,14 @@ trait ManagesRoles
 
     public function setRoles($roles)
     {
-        $roles = $this->getAllRoles($roles);
+        $roles = Utility::getAllRoles($roles);
         $this->roles()->attach($roles);
         return $this;
     }
 
     public function withdrawRoles($roles)
     {
-        $roles = $this->getAllRoles($roles);
+        $roles = Utility::getAllRoles($roles);
         $this->roles()->detach($roles);
         return $this;
     }

@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
 import PanelsNavBar from "./components/PanelsNavBar";
 import Scrolltotop from "./components/ScrollToTop";
-import { requireRight, waitOneSecond } from "./routes/guards";
+import { featureReady, requireRight, waitOneSecond } from "./routes/guards";
 import { Provider } from "react-redux";
 import { ApiClient } from "./services";
 import StaffContext from "./context/staffContext";
@@ -19,7 +19,7 @@ function CompanyApp(props) {
     sessionStorage.clear();
     // const [ready, setReady] = useState(false);
     // console.log("Companue App", JSON.parse(props.user));
-    console.log("Companue App", JSON.parse(props.rights));
+    console.log("Companue App", JSON.parse(props.features));
 
     const appContextValue = {
         rights: JSON.parse(props.rights),
@@ -33,8 +33,22 @@ function CompanyApp(props) {
         token: JSON.parse(props.user).api_token
     };
 
-    const rights = JSON.parse(props.rights);
+    sessionStorage.setItem("features", props.features);
 
+    const features = JSON.parse(props.features);
+    if (features != null) {
+        let featuresArray = [];
+        features.map(feature => {
+            // sessionStorage.setItem(right.slug, true);
+            featuresArray.push({
+                slug: feature.slug,
+                activation: feature.activation
+            });
+        });
+        sessionStorage.setItem("features", JSON.stringify(featuresArray));
+    }
+
+    const rights = JSON.parse(props.rights);
     if (rights != null) {
         let rightsArray = [];
         rights.map(right => {
@@ -64,7 +78,7 @@ function CompanyApp(props) {
                 </Route>
             </Switch>
             <GuardProvider
-                guards={[requireRight, waitOneSecond]}
+                guards={[requireRight, waitOneSecond, featureReady]}
                 loading={Loading}
             >
                 <AppContext.Provider value={appContextValue}>

@@ -5,11 +5,16 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { StructurePanel, EnterprisePanel, StaffPanel, AccessPanel } from ".";
 import AppContext from "../../context/appContext";
 import StaffContext from "../../context/staffContext";
-import { NotFound, Unathorized } from "../../views/errors";
+import {
+    NotActivated,
+    NotFound,
+    NotInstalled,
+    Unathorized
+} from "../../views/errors";
 import { PanelsHome } from "../../views/panels";
 import ManageRights from "../../views/rights/manage";
 import { StaffManagementManage } from "../../views/staff-management";
-import { REQUIRED_RIGHT } from "../guards/types";
+import { FEATURE_READY } from "../guards/types";
 
 function _Switch(props) {
     let location = useLocation();
@@ -50,7 +55,8 @@ function _Switch(props) {
                             path="/enterprise"
                             component={EnterprisePanel}
                             meta={{
-                                [REQUIRED_RIGHT]: "access-enterprise-panel"
+                                [FEATURE_READY]:
+                                    "enterprise-administration-panel"
                             }}
                         />
 
@@ -58,7 +64,7 @@ function _Switch(props) {
                             path="/structure"
                             component={StructurePanel}
                             meta={{
-                                [REQUIRED_RIGHT]: "access-structure-panel"
+                                [FEATURE_READY]: "structure-management-panel"
                             }}
                         />
 
@@ -66,7 +72,7 @@ function _Switch(props) {
                             path="/access"
                             component={AccessPanel}
                             meta={{
-                                [REQUIRED_RIGHT]: "access-access-panel"
+                                [FEATURE_READY]: "access-management-panel"
                             }}
                         />
 
@@ -74,8 +80,7 @@ function _Switch(props) {
                             path="/staff-management"
                             component={StaffPanel}
                             meta={{
-                                [REQUIRED_RIGHT]:
-                                    "access-staff-adminstration-panel"
+                                [FEATURE_READY]: "staff-management-panel"
                             }}
                         />
 
@@ -83,6 +88,20 @@ function _Switch(props) {
                             exact
                             path="/unathorized"
                             component={Unathorized}
+                            loading="redirecting..."
+                        />
+
+                        <Route
+                            exact
+                            path="/notinstalled"
+                            component={NotInstalled}
+                            loading="redirecting..."
+                        />
+
+                        <Route
+                            exact
+                            path="/notactivated"
+                            component={NotActivated}
                             loading="redirecting..."
                         />
 

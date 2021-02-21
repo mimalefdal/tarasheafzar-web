@@ -1,6 +1,6 @@
 import react, { useContext } from "react";
 
-function getLocale() {
+function _getLocale() {
     return sessionStorage.getItem("currentLanguage");
 }
-export default getLocale;
+export default _getLocale;

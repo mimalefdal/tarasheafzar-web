@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Unathorized = () => (
+const _Unathorized = () => (
     <div>
         <h3>Unathorized</h3>
         <h2>Sorry, you are not allowed to access this panel</h2>
@@ -10,4 +10,4 @@ const Unathorized = () => (
     </div>
 );
 
-export default Unathorized;
+export default _Unathorized;

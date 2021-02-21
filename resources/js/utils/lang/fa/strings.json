@@ -45,7 +45,9 @@
         "stages": "مراحل",
         "joblevel": "سطح شغلی",
         "recruit_capacity": "ظرفیت استخدام",
-        "return": "بازگشت"
+        "return": "بازگشت",
+        "notinstalled": "نصب نشده",
+        "notactivated": "غیرفعال"
     },
     "comments": {
         "none-company": "غیرسازمانی"
@@ -92,7 +94,7 @@
         "unitsManagement": "مدیریت واحدها",
         "positionsManagement": "مدیریت سمت‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی",
-        "rightsAdministration": "ادارهٔ حقوق دسترسی",
+        "rightsAdministration": "سازمانداری حقوق دسترسی",
         "staffManagement": "مدیریت کارکنان"
     },
     "forms": {

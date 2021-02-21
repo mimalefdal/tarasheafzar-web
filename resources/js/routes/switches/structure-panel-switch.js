@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import { NotFound } from "../../views/errors";
 import { GuardedRoute } from "react-router-guards";
-import { REQUIRED_RIGHT } from "../guards/types";
+import { FEATURE_READY } from "../guards/types";
 
 import { DefineBranch, ManageBranchs, ShowBranch } from "../../views/branches";
 import {
@@ -32,12 +32,16 @@ export default function _Switch() {
     let match = useRouteMatch();
     return (
         <Switch>
-            <Route exact path={match.path} component={StructurePanelView} />
+            <GuardedRoute
+                exact
+                path={match.path}
+                component={StructurePanelView}
+            />
             <GuardedRoute
                 path={`${match.path}/company/information`}
                 component={CompanyInformation}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 
@@ -45,31 +49,31 @@ export default function _Switch() {
                 path={`${match.path}/company/structure`}
                 component={CompanyStructure}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             {/* Branches */}
             <GuardedRoute
-                exact
+                // exact
                 path={`${match.path}/branches`}
                 component={ManageBranchs}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "branches-management-tool"
                 }}
             />
             <GuardedRoute
                 path={`${match.path}/branches/define`}
                 component={DefineBranch}
-                meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
-                }}
+                // meta={{
+                //     [FEATURE_READY]: "branches-management-tool"
+                // }}
             />
             <GuardedRoute
                 exact
                 path={`${match.path}/branches/:slug`}
                 component={ShowBranch}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "branches-management-tool"
                 }}
             />
 
@@ -79,7 +83,7 @@ export default function _Switch() {
                 path={`${match.path}/departments`}
                 component={ManageDepartments}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             <GuardedRoute
@@ -87,7 +91,7 @@ export default function _Switch() {
                 path={`${match.path}/departments/define`}
                 component={DefineDepartment}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             <GuardedRoute
@@ -95,7 +99,7 @@ export default function _Switch() {
                 path={`${match.path}/departments/:slug`}
                 component={ShowDepartment}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 
@@ -105,7 +109,7 @@ export default function _Switch() {
                 path={`${match.path}/units`}
                 component={ManageUnits}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 
@@ -114,7 +118,7 @@ export default function _Switch() {
                 path={`${match.path}/units/define`}
                 component={DefineUnit}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 
@@ -123,7 +127,7 @@ export default function _Switch() {
                 path={`${match.path}/units/:slug`}
                 component={ShowUnit}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             <GuardedRoute
@@ -131,7 +135,7 @@ export default function _Switch() {
                 path={`${match.path}/units/edit/:slug/`}
                 component={EditUnit}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 
@@ -141,7 +145,7 @@ export default function _Switch() {
                 path={`${match.path}/positions`}
                 component={ManagePositions}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             <GuardedRoute
@@ -149,7 +153,7 @@ export default function _Switch() {
                 path={`${match.path}/positions/define`}
                 component={DefinePosition}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             <GuardedRoute
@@ -157,7 +161,7 @@ export default function _Switch() {
                 path={`${match.path}/positions/:slug`}
                 component={ShowPosition}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
             <GuardedRoute
@@ -165,7 +169,7 @@ export default function _Switch() {
                 path={`${match.path}/positions/edit/:slug/`}
                 component={EditPosition}
                 meta={{
-                    [REQUIRED_RIGHT]: "access-structure-panel"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 

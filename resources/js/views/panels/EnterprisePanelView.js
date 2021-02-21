@@ -11,13 +11,9 @@ export default function _View() {
             <GuardedLink
                 className="tool-link"
                 to={`${match.url}/initialize`}
-                requiredRight="access-system-initialize-tool"
+                feature="enterprise-initialize-tool"
+                requiredRight="access-enterprise-initialize-tool"
                 label={t("tools.systemInitialize")}
-            />
-            <GuardedLink
-                to={`${match.url}/rights`}
-                requiredRight="access-rights-adminstration-tool"
-                label={t("tools.rightsAdministration")}
             />
         </div>
     );

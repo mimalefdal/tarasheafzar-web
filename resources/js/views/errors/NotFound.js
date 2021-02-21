@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BackButton, HomeButton } from "../../components/buttons";
 
-const NotFound = () => (
+const _NotFound = () => (
     <div>
         <h1>Page not found</h1>
         <p>Look for something else</p>
@@ -10,4 +10,4 @@ const NotFound = () => (
     </div>
 );
 
-export default NotFound;
+export default _NotFound;
