@@ -2,9 +2,8 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Company;
-use Bilang;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Bilang;
 use Lang;
 
 class PositionItem extends JsonResource
@@ -91,6 +90,8 @@ class PositionItem extends JsonResource
             if ($item['holder']['deleted']) {
                 $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.' . $item['holder_type'])]);
             }
+
+
         return $item;
     }
 }

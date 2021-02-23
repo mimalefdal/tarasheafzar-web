@@ -9,6 +9,8 @@ import { ManageRights } from "../../views/rights";
 import { InitializeCeo, InitializeStart } from "../../views/initialize";
 import { Loading } from "../../components/feedback";
 import { EnterprisePanelView } from "../../views/panels";
+import { ManageFeatures } from "../../views/features";
+import { NotFound } from "../../views/errors";
 
 function _Switch(props) {
     let match = useRouteMatch();
@@ -17,7 +19,7 @@ function _Switch(props) {
         <Switch>
             <Route exact path={match.path} component={EnterprisePanelView} />
             <GuardedRoute
-                exact
+                // exact
                 path={`${match.path}/initialize`}
                 component={InitializeStart}
                 loading={Loading}
@@ -34,6 +36,16 @@ function _Switch(props) {
                     [FEATURE_READY]: "enterprise-initialize-tool"
                 }}
             />
+            <GuardedRoute
+                // exact
+                path={`${match.path}/features`}
+                component={ManageFeatures}
+                loading={Loading}
+                meta={{
+                    [FEATURE_READY]: "features-management-tool"
+                }}
+            />
+            <Route path="*" component={NotFound} />
         </Switch>
     );
 }

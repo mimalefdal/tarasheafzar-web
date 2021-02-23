@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-listTitle.propTypes = {
+_listTitle.propTypes = {
     title: PropTypes.string
 };
 
-function listTitle(props) {
+function _listTitle(props) {
     return (
         <div className="list-title">
             <div className="items-ribbon">
@@ -17,4 +17,4 @@ function listTitle(props) {
     );
 }
 
-export default listTitle;
+export default _listTitle;

@@ -10,6 +10,10 @@ class Feature extends Model
         'title', 'slug', 'activation', 'state', 'description'
     ];
 
+    protected $cast = [
+        'activation' => 'boolean',
+    ];
+
     public function tools()
     {
         return $this->belongsToMany(Tool::class, 'features_tools');

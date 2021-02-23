@@ -16,6 +16,14 @@
         "activation": true
     },
     {
+        "slug": "access-features-management-tool",
+        "title": {
+            "fa": "دسترسی به ابزار مدیریت امکانات سامانه",
+            "en": "Access Features Management Tool"
+        },
+        "activation": true
+    },
+    {
         "slug": "test-right",
         "title": {
             "fa": "مجوز آزمون",

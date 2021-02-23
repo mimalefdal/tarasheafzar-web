@@ -6,7 +6,7 @@ import { ReactSVG } from "react-svg";
 import { Button, SvgIcon } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
-function AddButton(props) {
+function _AddButton(props) {
     return (
         <Link
             className={"operation-icon-btn " + props.className}
@@ -19,4 +19,4 @@ function AddButton(props) {
     );
 }
 
-export default AddButton;
+export default _AddButton;

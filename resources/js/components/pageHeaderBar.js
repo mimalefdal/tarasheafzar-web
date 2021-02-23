@@ -1,6 +1,6 @@
 import React from "react";
 
-function pageHeaderBar(props) {
+function _pageHeaderBar(props) {
     return (
         <div
             className={
@@ -13,4 +13,4 @@ function pageHeaderBar(props) {
     );
 }
 
-export default pageHeaderBar;
+export default _pageHeaderBar;

@@ -8,5 +8,15 @@
         },
         "activation": true,
         "state": "built-in"
+    },
+    {
+        "feature": "enterprise-administration-panel",
+        "slug": "features-management-tool",
+        "title": {
+            "fa": "ابزار مدیریت امکانات سامانه",
+            "en": "Features Management Tool"
+        },
+        "activation": true,
+        "state": "built-in"
     }
 ]

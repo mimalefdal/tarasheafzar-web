@@ -19,9 +19,10 @@ function CompanyApp(props) {
     sessionStorage.clear();
     // const [ready, setReady] = useState(false);
     // console.log("Companue App", JSON.parse(props.user));
-    console.log("Companue App", JSON.parse(props.features));
+    // console.log("Companue App", JSON.parse(props.features));
 
     const appContextValue = {
+        features: JSON.parse(props.features),
         rights: JSON.parse(props.rights),
         locale: props.locale,
         env: props.env
@@ -62,10 +63,10 @@ function CompanyApp(props) {
 
     ApiClient.get("sanctum/csrf-cookie")
         .then(response => {
-            console.log(response);
+            // console.log(response);
         })
         .catch(error => {
-            console.log(error.response);
+            console.log(error);
         });
 
     return (

@@ -16,3 +16,5 @@ export { default as UnitCard } from "./unit/manageCard";
 
 export { default as PositionForm } from "./position/defineForm";
 export { default as PositionCard } from "./position/manageCard";
+
+export { default as FeatureCard } from "./feature/manageCard";

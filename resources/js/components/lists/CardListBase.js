@@ -7,17 +7,17 @@ import { Loading } from "../feedback";
 import { BasicCard } from "../cards";
 import { NoItems } from "../list-controls";
 
-CardListBase.propTypes = {};
+_CardListBase.propTypes = {};
 
-function CardListBase({
+function _CardListBase({
     type = "basic",
     dataService,
     cardComponent = <BasicCard />,
-    entryOperations,
-    trigger,
+    entryOperations = [],
+    trigger = true,
     ...props
 }) {
-    // console.log("CardListBase", entryOperations);
+    // console.log("_CardListBase", entryOperations);
 
     const [items, setItems] = useState([]);
     const [emptyMessage, setEmptyMessage] = useState(null);
@@ -36,27 +36,29 @@ function CardListBase({
     }
 
     useEffect(() => {
-        // console.log("CardListBase->useEffect(trigger)", trigger);
-        setLoading(true);
-        dataService(
-            token,
-            response => {
-                // console.log("CardListBase:[trigger]:response:", response);
-                if (response.status == 203) {
-                    setEmptyMessage(response.data.message);
-                } else {
-                    setEmptyMessage(null);
-                    if (response.data.data) setItems(response.data.data);
-                    else setItems(response.data);
-                }
+        // console.log("_CardListBase->useEffect(trigger)", trigger);
+        if (trigger != null) {
+            setLoading(true);
+            dataService(
+                token,
+                response => {
+                    // console.log("_CardListBase:[trigger]:response:", response);
+                    if (response.status == 203) {
+                        setEmptyMessage(response.data.message);
+                    } else {
+                        setEmptyMessage(null);
+                        if (response.data.data) setItems(response.data.data);
+                        else setItems(response.data);
+                    }
 
-                setLoading(false);
-            },
-            error => {
-                console.log("CardListBase:[trigger]:ERROR", error);
-                setLoading(false);
-            }
-        );
+                    setLoading(false);
+                },
+                error => {
+                    console.log("_CardListBase:[trigger]:ERROR", error);
+                    setLoading(false);
+                }
+            );
+        }
     }, [trigger]);
 
     return (
@@ -69,6 +71,7 @@ function CardListBase({
                 <Loading />
             ) : !emptyMessage ? (
                 items.map((item, index) => {
+                    // console.log(item);
                     if (!loading) {
                         // build entryActions Here
                         var entryActions = renderActionComponent(
@@ -80,6 +83,7 @@ function CardListBase({
                     return cloneElement(
                         cardComponent,
                         {
+                            id: item.slug,
                             key: item.id,
                             item: item,
                             entryActions: entryActions
@@ -94,4 +98,4 @@ function CardListBase({
     );
 }
 
-export default CardListBase;
+export default _CardListBase;

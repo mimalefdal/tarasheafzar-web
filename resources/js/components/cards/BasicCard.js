@@ -18,12 +18,20 @@ function CardBase({
     title_field_global = "full_title_en",
     ...props
 }) {
-    // console.log("from branch card", item);
+    // console.log("BasicCard", item.slug);
 
     const lang = useContext(AppContext).locale;
 
     return (
-        <div className="card-container flex row ">
+        <div
+            className={
+                "card-container flex row " +
+                props.className +
+                " " +
+                (props.expanded == true ? " expanded" : "")
+            }
+            id={props.id}
+        >
             <div className="card-title-box flex column">
                 <div className="card-title">
                     <div className="card-name-box">
@@ -68,7 +76,9 @@ function CardBase({
                 <div className="btn-set card-btn-set">{entryActions}</div>
             </div>
 
-            <div className="filler">{props.children}</div>
+            <div className="filler" id="basic-card-free-fill-area">
+                {props.children}
+            </div>
         </div>
     );
 }

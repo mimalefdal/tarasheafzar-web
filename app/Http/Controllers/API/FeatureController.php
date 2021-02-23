@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FeatureToolsItem;
+use App\Models\Feature;
 use Illuminate\Http\Request;
 
 class FeatureController extends Controller
@@ -10,10 +12,16 @@ class FeatureController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:sanctum');
+        // $this->middleware('auth:sanctum');
+    }
 
-        $path = base_path() . '/public/data/systemInfo.json';
-        $systemInfo = file_get_contents($path);
-        $systemInfo = json_decode($systemInfo, true);
+    public function index()
+    {
+        $collection = FeatureToolsItem::collection(Feature::with('tools')->get());
+        $collection = $collection->sortBy('title');
+        $collection = $collection->values()->all();
+        return $collection;
+
+        return FeatureToolsItem::collection(Feature::with('tools')->get());
     }
 }

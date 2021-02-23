@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BackButton, HomeButton } from "../../components/buttons";
 
-function NewPage(props) {
+function _NewPage(props) {
+    console.log("NewPage Title is ", props.title);
     return (
         <div>
             <h2>New Page</h2>
             <h3>{props.title}</h3>
-            <HomeButton />
-            <BackButton />
+            {/* <HomeButton />
+            <BackButton /> */}
         </div>
     );
 }
 
-export default NewPage;
+export default _NewPage;

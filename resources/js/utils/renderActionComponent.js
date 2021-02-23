@@ -22,6 +22,7 @@ export default function utility(entryOperations, item, key) {
                 return selectActionComponent(type, {
                     onClick: () => onClick(item),
                     key: key,
+                    item: item,
                     ...attr
                 });
                 break;

@@ -95,7 +95,8 @@
         "positionsManagement": "مدیریت سمت‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی",
         "rightsAdministration": "سازمانداری حقوق دسترسی",
-        "staffManagement": "مدیریت کارکنان"
+        "staffManagement": "مدیریت کارکنان",
+        "featuresManagement": "مدیریت امکانات سامانه"
     },
     "forms": {
         "registerCEO": "ثبت اکانت مدیرعامل",

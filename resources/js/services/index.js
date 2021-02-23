@@ -36,3 +36,5 @@ export { tryAdd as AddRight } from "./right-service";
 export { getIndex as GetRightList } from "./right-service";
 
 export { getValues as GetValidValues } from "./values-service";
+
+export { getIndex as GetFeaturesList } from "./feature-service";

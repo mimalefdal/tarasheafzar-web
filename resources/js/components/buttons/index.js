@@ -4,3 +4,4 @@ export { default as EditButton } from "./editButton";
 export { default as DeleteButton } from "./deleteButton";
 export { default as ViewButton } from "./viewButton";
 export { default as AddButton } from "./addButton";
+export { default as ExpandButton } from "./expandButton";

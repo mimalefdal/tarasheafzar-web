@@ -15,6 +15,13 @@ export default function _View() {
                 requiredRight="access-enterprise-initialize-tool"
                 label={t("tools.systemInitialize")}
             />
+            <GuardedLink
+                className="tool-link"
+                to={`${match.url}/features`}
+                feature="features-management-tool"
+                requiredRight="access-features-management-tool"
+                label={t("tools.featuresManagement")}
+            />
         </div>
     );
 }
