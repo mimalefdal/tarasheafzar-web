@@ -45,10 +45,10 @@ Route::post('position/remove', 'API\PositionController@delete');
 Route::get('positions', 'API\PositionController@index');
 Route::get('position', 'API\PositionController@show');
 
-
 Route::post('staff/add', 'API\StaffController@create');
 Route::get('staff', 'API\StaffController@index');
 Route::get('anstaff', 'API\StaffController@show');
+Route::get('scope', 'API\DirtyController@scope');
 
 Route::get('/initialize/status', 'API\InitializeController@status');
 Route::post('/initialize/setlicence', 'API\InitializeController@installLicence');

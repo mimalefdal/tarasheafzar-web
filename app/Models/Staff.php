@@ -36,4 +36,27 @@ class Staff extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scope()
+    {
+        $position = $this->position;
+        $joblevel = $position->joblevel;
+        // $holderBlock = $position->hasposition == null ? resolve('Company') : $position->hasposition;
+        $holderBlock = $position->hasposition;
+
+        if ($holderBlock != null) {
+            $holderBlock['class'] = $position->hasposition_type;
+        } else {
+            $holderBlock = resolve('Company')->make();
+            $holderBlock['class'] = get_class(resolve('Company'));
+        }
+
+        // return ['joblevel' => $joblevel, 'holder' => $holderBlock];
+
+        if (method_exists($holderBlock, 'childBlocks')) {
+            $childBlocks = $holderBlock->childBlocks();
+            return ['joblevel' => $joblevel, 'holder' => $holderBlock, 'childBlocks' => $childBlocks];
+        }
+        return ['joblevel' => $joblevel, 'holder' => $holderBlock];
+    }
 }
