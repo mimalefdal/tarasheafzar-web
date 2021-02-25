@@ -20,11 +20,14 @@ class DepartmentItem extends JsonResource
      */
     public function toArray($request)
     {
-
+        // return parent::toArray($request);
         // $item = parent::toArray($request);
+
         $item = [];
 
         $item['id'] = $this->id;
+        $item['slug'] = $this->slug;
+
         $item['holder_id'] = $this->branch_id;
 
         $type = 'Department';
@@ -38,10 +41,14 @@ class DepartmentItem extends JsonResource
         $item['title_en'] = Bilang::getEnTitle($this->title);
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 
+        if (isset($this->units))
+            $item['units'] = BlockItem::collection($this->units);
+        if (isset($this->positions))
+            $item['positions'] =  PositionSimpleItem::collection($this->positions);
+
         $item['deleted'] = $this->trashed();
         if ($item['deleted'])
             $item['deleted_warning'] = Lang::get('messages.deleted_warning', ['blocktype' => Lang::get('values.Department')]);
-        $item['slug'] = $this->slug;
 
         //transform may-related branch info
         if ($this->branch_id != null) {

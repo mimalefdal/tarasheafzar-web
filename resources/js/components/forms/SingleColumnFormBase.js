@@ -283,7 +283,7 @@ function FormBase({
     }, [focusIndex]);
 
     const onSubmit = data => {
-        console.log("submit", data);
+        // console.log("submit", data);
         setLoading(true);
         setShowAlert({ show: false, type: showAlert.type });
 

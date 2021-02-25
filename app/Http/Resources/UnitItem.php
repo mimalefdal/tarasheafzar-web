@@ -35,6 +35,10 @@ class UnitItem extends JsonResource
         $item['title_en'] = Bilang::getEnTitle($this->title);
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 
+        if (isset($this->positions)) {
+            $item['positions'] = PositionSimpleItem::collection($this->positions);
+        }
+
         $item['deleted'] = $this->trashed();
         $item['slug'] = $this->slug;
 
@@ -61,13 +65,16 @@ class UnitItem extends JsonResource
                 $item['holder_type'] = $this->hasunit_type;
                 break;
         }
-        // if ($this->hasunit_id != null)
+
         $item['holder_id'] = $this->hasunit_id;
-        // if (Arr::has($item['holder'], 'deleted'))
         if (isset($item['holder']->deleted))
             if ($item['holder']['deleted']) {
                 $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.' . $item['holder_type'])]);
             }
+
+
+
+
         return $item;
     }
 }

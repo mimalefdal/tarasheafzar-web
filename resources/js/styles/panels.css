@@ -236,7 +236,8 @@ body {
     height: 10vh;
     padding: 15px;
     color: grey;
-    /* border: 2px solid var(--titlebkg); */
+    /* background-color: var(--titlebkg); */
+    border: 1px solid var(--titlebkg);
     /* font-weight: bold; */
     border-radius: 5px;
     margin: 5px;
@@ -245,8 +246,8 @@ body {
     justify-content: center;
     align-items: center;
     color: var(--titlebkg);
-    background-color: var(--taDark);
-    color: whitesmoke;
+    /* background-color: var(--taDark);
+    color: whitesmoke; */
     /* box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important; */
 }
 
@@ -260,6 +261,7 @@ body {
 .tool-link.disabled {
     background-color: #ddd;
     color: #aaa;
+    border: none;
     /* justify-content: space-evenly; */
 }
 

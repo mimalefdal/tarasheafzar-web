@@ -9,6 +9,7 @@ import { ApiClient, GetDepartment } from "../../services";
 import { Badge } from "@material-ui/core";
 import StaffContext from "../../context/staffContext";
 import { DepartmentForm } from "../../view-components";
+import { SimpleList } from "../../components/lists";
 
 function show(props) {
     const { slug } = useParams();
@@ -92,6 +93,22 @@ function show(props) {
                     />
                 )}
             </PageHeaderBar>
+            {ready && (
+                <>
+                    <SimpleList
+                        title={t("labels.units")}
+                        items={item.units}
+                        dataField="short_title"
+                        itemType="unit"
+                    />
+                    <SimpleList
+                        title={t("labels.positions")}
+                        items={item.positions}
+                        dataField="short_title"
+                        itemType="position"
+                    />
+                </>
+            )}
             <FormDialog
                 show={showEdit}
                 onClose={closeEditForm}

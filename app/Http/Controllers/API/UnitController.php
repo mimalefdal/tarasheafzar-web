@@ -34,7 +34,7 @@ class UnitController extends Controller
 
     public function index()
     {
-        $items = UnitItem::collection(Unit::with('hasunit')->get());
+        $items = UnitItem::collection(Unit::with('hasunit', 'positions')->get());
         if (count($items) == 0)
             return Utility::noItemResponse('Unit');
         return $items;

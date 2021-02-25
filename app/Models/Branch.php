@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\AdministratesPositions;
-use App\Models\Department;
-use App\Traits\ChecksUniqueness;
-use App\Http\Resources\BranchItem;
-use App\Traits\ManagesUnits;
 use Bilang;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Resources\BranchItem;
+use App\Models\Department;
+use App\Traits\AdministratesPositions;
+use App\Traits\ChecksUniqueness;
+use App\Traits\HandlesChildBlocks;
+use App\Traits\ManagesUnits;
 
 class Branch extends Model
 {
@@ -18,6 +19,7 @@ class Branch extends Model
     use ManagesUnits;
     use ChecksUniqueness;
     use SoftDeletes;
+    use HandlesChildBlocks;
 
     protected $fillable = [
         'title', 'slug', 'type', 'deleted_at'
@@ -25,7 +27,7 @@ class Branch extends Model
 
     public function departments()
     {
-        return $this->hasMany(Department::class);
+        return $this->hasMany(Department::class)->with('units');
     }
 
     public function setDepartments($departments)

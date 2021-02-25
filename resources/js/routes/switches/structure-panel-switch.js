@@ -54,7 +54,7 @@ export default function _Switch() {
             />
             {/* Branches */}
             <GuardedRoute
-                // exact
+                exact
                 path={`${match.path}/branches`}
                 component={ManageBranchs}
                 meta={{
@@ -62,18 +62,19 @@ export default function _Switch() {
                 }}
             />
             <GuardedRoute
+                exact
                 path={`${match.path}/branches/define`}
                 component={DefineBranch}
-                // meta={{
-                //     [FEATURE_READY]: "branches-management-tool"
-                // }}
+                meta={{
+                    [FEATURE_READY]: "structure-management-panel"
+                }}
             />
             <GuardedRoute
                 exact
                 path={`${match.path}/branches/:slug`}
                 component={ShowBranch}
                 meta={{
-                    [FEATURE_READY]: "branches-management-tool"
+                    [FEATURE_READY]: "structure-management-panel"
                 }}
             />
 

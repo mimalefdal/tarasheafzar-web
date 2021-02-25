@@ -36,11 +36,11 @@ class BranchController extends Controller
 
     public function index()
     {
-        $items = BranchItem::collection(Branch::all());
+        $items = BranchItem::collection(Branch::with('departments', 'units', 'positions')->get());
         if (count($items) == 0)
             return Utility::noItemResponse('Branch', true);
 
-        return BranchItem::collection(Branch::all());
+        return $items;
     }
 
     public function show(Request $request)

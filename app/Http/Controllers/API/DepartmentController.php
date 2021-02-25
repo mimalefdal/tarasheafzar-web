@@ -39,9 +39,11 @@ class DepartmentController extends Controller
 
     public function index()
     {
-        $items = DepartmentItem::collection(Department::with('branch')->get());
+        $items = DepartmentItem::collection(Department::with('branch', 'units', 'positions')->get());
+
         if (count($items) == 0)
             return Utility::noItemResponse('Department');
+
         return $items;
     }
 

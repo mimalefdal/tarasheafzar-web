@@ -1,6 +1,6 @@
 // import { slice } from "../utils/redux/navSlice";
 
-export default function utility(string) {
+export default function _utility(string) {
     let from = string.indexOf(":");
     let parameter = string.slice(from + 1);
     let to = parameter.indexOf("/");

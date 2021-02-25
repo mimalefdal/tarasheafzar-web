@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\AdministratesPositions;
 use App\Models\Branch;
 use App\Traits\ChecksUniqueness;
+use App\Traits\HandlesChildBlocks;
 use App\Traits\ManagesUnits;
 use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,6 +19,7 @@ class Department extends Model
     use ManagesUnits;
     use SoftDeletes;
     use ChecksUniqueness;
+    use HandlesChildBlocks;
 
     protected $type = 'Department';
 
@@ -27,7 +29,7 @@ class Department extends Model
 
     public function branch()
     {
-        return $this->belongsTo(Branch::class);
+        return $this->belongsTo(Branch::class)->with('departments', 'units');
     }
 
     public function setBranch($branch)

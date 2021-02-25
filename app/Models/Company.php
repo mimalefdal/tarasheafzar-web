@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HandlesChildBlocks;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+
+    use HandlesChildBlocks;
+
     protected $name;
     protected $shortName;
     protected $CompanyTitle;
@@ -15,6 +19,21 @@ class Company extends Model
         $this->shortName = ["fa" => 'تراشه‌افزار', "en" => 'Tarashe Afzar'];
         $this->name = ["fa" => 'تراشه افزار سامانه ایرانیان', "en" => 'Tarashe Afzar Samaneh Iranian'];
         $this->CompanyTitle = ["fa" => 'شرکت', "en" => 'Company'];
+    }
+
+    public function branches()
+    {
+        return Branch::with('departments', 'units')->get();
+    }
+
+    public function departments()
+    {
+        return Department::where('branch_id', null)->with('units')->get();
+    }
+
+    public function units()
+    {
+        return Unit::where('hasunit_type', null)->get();
     }
 
     public function get()
