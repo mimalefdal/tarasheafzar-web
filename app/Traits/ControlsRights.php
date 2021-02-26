@@ -17,7 +17,7 @@ trait ControlsRights
             Validator::make($right, ['slug' => 'required|unique:rights'])->validate();
 
             $newItem = new Right(Arr::only($right, ['slug', 'title', 'activation']));
-            $newItem->title = json_encode($right['title']);
+            // $newItem->title = json_encode($right['title']);
             $newItem->save();
         }
     }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BackButton, HomeButton } from "../../components/buttons";
 
 function _NewPage(props) {
-    console.log("NewPage Title is ", props.title);
+    // console.log("NewPage Title is ", props.title);
     return (
         <div>
             <h2>New Page</h2>

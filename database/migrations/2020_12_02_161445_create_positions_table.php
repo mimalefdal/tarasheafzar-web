@@ -16,9 +16,9 @@ class CreatePositionsTable extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
 
+            $table->string('slug')->unique();
             $table->json('title');
             $table->json('display_title')->nullable();
-            $table->string('slug')->unique();
             $table->integer('recruit_capacity');
 
             $table->nullableMorphs('hasposition');

@@ -16,8 +16,8 @@ trait ControlsFeatures
             Validator::make($feature, ['slug' => 'required|unique:features'])->validate();
 
             $newItem = new Feature($feature);
-            $newItem->title = json_encode($feature['title']);
-            $newItem->state = 'installed';
+            if (!isset($newItem->state))
+                $newItem->state = 'installed';
             $newItem->save();
         }
     }

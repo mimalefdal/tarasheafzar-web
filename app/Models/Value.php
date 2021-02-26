@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Bilang;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Lang;
 

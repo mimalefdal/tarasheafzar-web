@@ -18,8 +18,8 @@ import store from "./utils/redux/store";
 function CompanyApp(props) {
     sessionStorage.clear();
     // const [ready, setReady] = useState(false);
-    console.log("Companue App", JSON.parse(props.user).api_token);
     // console.log("Companue App", JSON.parse(props.features));
+    // console.log("Companue App", JSON.parse(props.user).api_token);
 
     const appContextValue = {
         features: JSON.parse(props.features),

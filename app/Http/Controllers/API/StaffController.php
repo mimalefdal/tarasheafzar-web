@@ -16,17 +16,6 @@ class StaffController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function scope(Request $request)
-    {
-        $scope = $request->user()->scope();
-
-        $joblevelItem = JoblevelItem::make($scope['joblevel']);
-        $holder = BlockItem::make($scope['holder']);
-        $holder = $scope['holder'];
-
-        return ['joblevel' => $joblevelItem, 'holder' => $holder];
-    }
-
     public function index()
     {
         return Staff::whereNotNull('national_id')->with('position', 'position.roles')->get();

@@ -18,7 +18,7 @@ trait ControlsRoles
             Validator::make($role, ['slug' => 'required|unique:roles'])->validate();
 
             $newItem = new Role(Arr::only($role, ['slug', 'title', 'activation', 'description']));
-            $newItem->title = json_encode($role['title']);
+            // $newItem->title = json_encode($role['title']);
             $newItem->save();
 
             if ($role['rights'] != null) {

@@ -10,6 +10,10 @@ class Tool extends Model
         'title', 'slug', 'description', 'activation', 'state'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+    ];
+
     public function features()
     {
         return $this->belongsToMany(Feature::class, 'features_tools');

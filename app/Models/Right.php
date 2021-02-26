@@ -11,6 +11,10 @@ class Right extends Model
         'title', 'slug', 'description', 'activation'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+    ];
+
     public function roles()
     {
         return $this->morphedByMany(Role::class, 'role_holders');

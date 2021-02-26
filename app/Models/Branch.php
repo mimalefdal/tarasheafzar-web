@@ -25,6 +25,10 @@ class Branch extends Model
         'title', 'slug', 'type', 'deleted_at'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+    ];
+
     public function departments()
     {
         return $this->hasMany(Department::class)->with('units');

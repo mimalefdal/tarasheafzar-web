@@ -18,6 +18,10 @@ class Role extends Model
         'title', 'slug', 'description', 'activation', 'unit_id'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+    ];
+
     public function staff()
     {
         return $this->morphedByMany(Staff::class, 'roles_holders');

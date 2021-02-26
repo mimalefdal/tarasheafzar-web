@@ -22,6 +22,10 @@ class Unit extends Model
         'title', 'slug', 'department_id'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+    ];
+
     public function hasunit()
     {
         return $this->morphTo();

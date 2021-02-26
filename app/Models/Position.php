@@ -17,6 +17,7 @@ use App\Traits\HandleBilangTitles;
 use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 class Position extends Model
 {
@@ -32,6 +33,11 @@ class Position extends Model
 
     protected $fillable = [
         'title', 'display_title', 'slug', 'recruit_capacity'
+    ];
+
+    protected $casts = [
+        'title' => 'array',
+        'display_title' => 'array',
     ];
 
     protected $type = 'Position';

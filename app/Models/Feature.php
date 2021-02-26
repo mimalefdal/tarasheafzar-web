@@ -10,8 +10,9 @@ class Feature extends Model
         'title', 'slug', 'activation', 'state', 'description'
     ];
 
-    protected $cast = [
-        'activation' => 'boolean',
+    protected $casts = [
+        'title' => 'array',
+        'activation' => 'boolean'
     ];
 
     public function tools()

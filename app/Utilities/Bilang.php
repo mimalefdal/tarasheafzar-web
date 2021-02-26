@@ -27,27 +27,41 @@ class Bilang
         }
     }
 
-    public static function getLocalTitle(string $titleSet, bool $returnNull = false, string $lang = null)
+    public static function getLocalTitle($titleSet, bool $returnNull = false, string $lang = null)
     {
         if (!$lang) $lang = Lang::getLocale();
 
-        $titles = json_decode($titleSet);
-
-        // if (Arr::has($titles, $lang))
-        if (isset($titles->$lang))
-            return $titles->$lang;
-        else {
-            if ($returnNull)
-                return '';
-            else
-                return Lang::get('terms.no-title');
+        if (is_string($titleSet)) {
+            $titles = json_decode($titleSet);
+            if (isset($titles->$lang))
+                return $titles->$lang;
+            else {
+                if ($returnNull)
+                    return '';
+                else
+                    return Lang::get('terms.no-title');
+            }
+        } else if (is_array($titleSet)) {
+            $titles = $titleSet;
+            if (isset($titles[$lang]))
+                return $titles[$lang];
+            else {
+                if ($returnNull)
+                    return '';
+                else
+                    return Lang::get('terms.no-title');
+            }
         }
     }
 
-    public static function getEnTitle(string $titleSet)
+    public static function getEnTitle($titleSet)
     {
-        $titles = json_decode($titleSet);
-        return $titles->en;
+        if (is_string($titleSet)) {
+            $titles = json_decode($titleSet);
+            return $titles->en;
+        } elseif (is_array($titleSet)) {
+            return $titleSet['en'];
+        }
     }
 
     public static function makeTitleObject(string $titles, string $lang = null)

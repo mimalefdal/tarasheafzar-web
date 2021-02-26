@@ -17,7 +17,7 @@ trait ControlsTools
             Validator::make($tool, ['slug' => 'required|unique:tools'])->validate();
 
             $newItem = new Tool(Arr::except($tool, ['feature']));
-            $newItem->title = json_encode($tool['title']);
+            // $newItem->title = json_encode($tool['title']);
             $newItem->save();
             $newItem->setFeature($tool['feature']);
         }

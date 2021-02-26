@@ -35,6 +35,7 @@ class Staff extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'title' => 'array'
     ];
 
     public function scope()

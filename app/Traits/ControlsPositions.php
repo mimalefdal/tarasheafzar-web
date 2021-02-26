@@ -18,13 +18,12 @@ trait ControlsPositions
     public function createPositions(array $positions)
     {
         foreach ($positions as $position) {
+            // dump($position);
+
             Validator::make($position, ['slug' => 'required|unique:positions'])->validate();
 
             $newItem = new Position(Arr::only($position, ['slug', 'title', 'display_title', 'recruit_capacity']));
-            $newItem->title = json_encode($position['title']);
-            $newItem->display_title = json_encode($position['display_title']);
             $newItem->save();
-
             if ($position['holderType'] != null) {
                 switch ($position['holderType']) {
                     case 'branch':

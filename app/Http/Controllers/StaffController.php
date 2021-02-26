@@ -21,8 +21,7 @@ class StaffController extends Controller
 
         $user = Auth::user();
         if ($user->position != null) {
-            $titles = json_decode($user->position->title);
-            $user->title = $titles->$lang;
+            $user->title = $user->position->title[$lang];
         } else {
             $titles = json_decode($user->roles->first()->title);
             $user->title = $titles->$lang;

@@ -27,6 +27,10 @@ class Department extends Model
         'title', 'slug', 'deleted_at'
     ];
 
+    protected $casts = [
+        'title' => 'array',
+    ];
+
     public function branch()
     {
         return $this->belongsTo(Branch::class)->with('departments', 'units');
