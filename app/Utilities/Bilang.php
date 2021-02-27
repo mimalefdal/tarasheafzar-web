@@ -69,10 +69,12 @@ class Bilang
         if (!$lang) $lang = Lang::getLocale();
 
         $titles = json_decode($titles);
-        return self::ifLocal(
-            json_encode(['en' => $titles->en, $lang => $titles->local]),
-            json_encode(['en' => $titles->en])
-        );
+        // if (isset($titles->local))
+        //     return json_encode(self::ifLocal(
+        //         array("en" => $titles->en, $lang => $titles->local),
+        //         array("en" => $titles->en)
+        //     ));
+        return $titles;
     }
 
     private static function langDirection(string $lang)

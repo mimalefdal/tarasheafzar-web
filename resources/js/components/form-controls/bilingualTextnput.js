@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { LocalGasStation } from "@material-ui/icons";
 
 function Input({ name, errors, backendErrors, loading, ...props }, ref) {
-    const [value, setValue] = useState({ local: "", en: "" });
+    const [value, setValue] = useState({ en: "" });
     // console.log("biLingualTextInput Props", props);
 
     useEffect(() => {
@@ -14,6 +14,10 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
             setValue(props.initialValue);
         }
     }, []);
+
+    useEffect(() => {
+        // console.log(value);
+    }, [value]);
 
     return (
         <div>
@@ -29,7 +33,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                     disabled={loading}
                     value={props.initialValue ? props.initialValue.local : null}
                     onChange={event => {
-                        setValue({ ...value, local: event.target.value });
+                        setValue({ ...value, fa: event.target.value });
                     }}
                 />
             )}

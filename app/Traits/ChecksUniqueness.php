@@ -9,6 +9,8 @@ trait ChecksUniqueness
 {
     public function validateUnity()
     {
+        // return [$this->title, is_string($this->title)];
+
         $isUnique = $this->isUnique();
         if (!$isUnique->check) {
             throw ValidationException::withMessages($isUnique->errors);
@@ -35,14 +37,19 @@ trait ChecksUniqueness
     public function isLocalNameUnique($combiner = null, $multiple = false)
     {
         $lang = \Lang::getLocale();
+        if (is_string($this->title)) {
+            $title = json_decode($this->title);
+            $localTitle = $title->$lang;
+        } else {
+            $title = $this->title;
+            $localTitle = $title[$lang];
+        }
 
-        $title = json_decode($this->title);
-        $localTitle = $title->$lang;
         if ($combiner != null) {
             if ($multiple == false)
                 $localTitleCheck = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle)->where($combiner, $this[$combiner])->first();
             else
-            // means combliner is an array
+            // means combiner is an array
             {
                 $query = get_class($this)::withTrashed()->where('title->' . $lang, $localTitle);
                 foreach ($combiner as $key => $type) {
