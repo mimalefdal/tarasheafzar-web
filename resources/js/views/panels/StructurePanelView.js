@@ -49,11 +49,20 @@ export default function _View() {
 
                 <GuardedLink
                     className="tool-link"
+                    to={`${match.url}/joblevels`}
+                    // feature="joblevels-management-tool"
+                    requiredRight="access-structure-panel"
+                    label={t("tools.joblevelsManagement")}
+                    style={{ order: 4 }}
+                />
+
+                <GuardedLink
+                    className="tool-link"
                     to={`${match.url}/positions`}
                     // feature="positions-management-tool"
                     requiredRight="access-structure-panel"
                     label={t("tools.positionsManagement")}
-                    style={{ order: 4 }}
+                    style={{ order: 5 }}
                 />
 
                 {/* <Link className="panel-link" to={`${match.url}/company`}>

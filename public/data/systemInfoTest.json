@@ -6,7 +6,7 @@
                 "fa": "پنل مدیریت ساختار",
                 "en": "Structure Management Panel"
             },
-            "activation": false
+            "activation": true
         },
         {
             "slug": "access-management-panel",
@@ -14,7 +14,7 @@
                 "fa": "پنل مدیریت دسترسی",
                 "en": "Access Management Panel"
             },
-            "activation": true
+            "activation": false
         }
     ],
     "Tools": [

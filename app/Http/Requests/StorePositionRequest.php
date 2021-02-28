@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Models\Joblevel;
-use Bilang;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use Bilang;
 use Utility;
 
 class StorePositionRequest extends FormRequest

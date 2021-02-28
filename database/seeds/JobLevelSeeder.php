@@ -2,9 +2,14 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Joblevel;
+use App\Traits\ControlsJoblevel;
+use Illuminate\Support\Arr;
 
 class JoblevelSeeder extends Seeder
 {
+
+    use ControlsJoblevel;
+
     /**
      * Run the database seeds.
      *
@@ -15,14 +20,7 @@ class JoblevelSeeder extends Seeder
         $path = base_path() . '/public/data/basicJoblevels.json';
         $basicjoblevels = file_get_contents($path);
         $basicjoblevels = json_decode($basicjoblevels, true);
-        foreach ($basicjoblevels as $joblevel) {
-            $newjoblevel = new Joblevel([
-                "slug" => $joblevel['slug'],
-                "title" => json_encode($joblevel['title']),
-                "scope" => $joblevel['scope'],
-                "priority" => $joblevel['priority'],
-            ]);
-            $newjoblevel->save();
-        }
+
+        $this->createJoblevels($basicjoblevels);
     }
 }

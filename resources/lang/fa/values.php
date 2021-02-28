@@ -27,6 +27,7 @@ return [
     'Brand' => 'برند',
     'Department' => 'دپارتمان',
     'Unit' => 'واحد',
+    'Joblevel' => 'سطح شغلی',
     'Position' => 'سمت',
     'any' => 'ی',
     'anyy' => '‌ای',

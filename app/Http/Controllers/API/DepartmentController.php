@@ -7,11 +7,8 @@ use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Resources\DepartmentItem;
 use App\Models\Branch;
 use App\Models\Department;
-use App\Rules\bilangUnique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
-use Lang;
 use Utility;
 
 class DepartmentController extends Controller

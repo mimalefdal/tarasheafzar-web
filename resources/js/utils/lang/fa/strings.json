@@ -45,6 +45,8 @@
         "position": "سمت",
         "positions": "سمت‌ها",
         "role": "نقش",
+        "scopes": "حوزه‌ها",
+        "priority": "اولویت",
         "stages": "مراحل",
         "joblevel": "سطح شغلی",
         "recruit_capacity": "ظرفیت استخدام",
@@ -95,6 +97,7 @@
         "branchesManagement": "مدیریت شاخه‌ها",
         "departmentsManagement": "مدیریت دپارتمان‌ها",
         "unitsManagement": "مدیریت واحدها",
+        "joblevelsManagement": "مدیریت سطوح شغلی",
         "positionsManagement": "مدیریت سمت‌ها",
         "rightsManagement": "مدیریت حقوق دسترسی",
         "rightsAdministration": "سازمانداری حقوق دسترسی",
@@ -106,6 +109,7 @@
         "defineBranch": "درج شاخه جدید",
         "defineDepartment": "درج دپارتمان جدید",
         "defineUnit": "درج واحد جدید",
+        "defineJoblevel": "درج سطح شغلی جدید",
         "definePosition": "درج سمت جدید"
     },
     "alerts": {

@@ -54,8 +54,6 @@ class PositionController extends Controller
 
     public function update(StorePositionRequest $request)
     {
-
-
         // return $request->all();
         $flagRelated = false; //determine relations update required if become true
 
@@ -99,7 +97,7 @@ class PositionController extends Controller
 
         $resourceItem = new PositionItem($item);
         $message = \Lang::get('messages.recordـdeleted', ['title' => $item->fullTitle()]);
-        $data = ['message' => $message, 'unit' => $resourceItem];
+        $data = ['message' => $message, 'position' => $resourceItem];
 
         return response($data);
         return response(["message" => "Not Implemented", $request->all()], 400);

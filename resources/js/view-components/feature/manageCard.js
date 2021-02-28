@@ -7,7 +7,7 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React, { useEffect, useState } from "react";
 import { ExpandButton } from "../../components/buttons";
-import { BasicCard } from "../../components/cards";
+import { BasicCard, SimpleCard } from "../../components/cards";
 import { findObjectInsideArray } from "../../utils/findObject";
 
 function _manageCard(props) {
@@ -25,15 +25,16 @@ function _manageCard(props) {
 
     return (
         <>
-            <BasicCard expanded={expanded} {...props}>
+            {/* <BasicCard expanded={expanded} {...props}>
                 <p>نصب : {props.item.state}</p>
                 <p>حالت : {props.item.activation}</p>
                 <p>ابزار : {props.item.tools.length}</p>
-            </BasicCard>
+            </BasicCard> */}
+            <SimpleCard expanded={expanded} {...props} />
             <Collapse in={expanded} style={{ width: "100%" }} timeout={900}>
                 <div className="sub-cards-list">
                     {props.item.tools.map(tool => (
-                        <BasicCard
+                        <SimpleCard
                             className="sub-card"
                             key={tool.id}
                             item={tool}

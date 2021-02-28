@@ -62,8 +62,8 @@ class ValuelistController extends Controller
 
             default:
                 if ($tag !== null)
-                    return DropdownItem::collection(Value::where('field', 'LIKE', $field)->where('tags', 'LIKE', '%' . $tag . '%')->get());
-                return DropdownItem::collection(Value::where('field', 'LIKE', $field)->get());
+                    return DropdownItem::collection(Value::where('field', 'LIKE', '%' . $field . '%')->where('tags', 'LIKE', '%' . $tag . '%')->get());
+                return DropdownItem::collection(Value::where('field', 'LIKE', '%' . $field . '%')->get());
 
                 break;
         }

@@ -35,7 +35,7 @@
             "title": "Studio"
         }
     ],
-    "holdertypes": [
+    "holdertypes,blocks": [
         {
             "slug": "company",
             "title": "Company",

@@ -27,6 +27,12 @@ import {
     ShowPosition
 } from "../../views/positions";
 import { StructurePanelView } from "../../views/panels";
+import {
+    DefineJoblevel,
+    EditJoblevel,
+    ManageJoblevels,
+    ShowJoblevel
+} from "../../views/joblevels";
 
 export default function _Switch() {
     let match = useRouteMatch();
@@ -135,6 +141,40 @@ export default function _Switch() {
                 exact
                 path={`${match.path}/units/edit/:slug/`}
                 component={EditUnit}
+                meta={{
+                    [FEATURE_READY]: "structure-management-panel"
+                }}
+            />
+
+            {/* Joblevels */}
+            <GuardedRoute
+                exact
+                path={`${match.path}/joblevels`}
+                component={ManageJoblevels}
+                meta={{
+                    [FEATURE_READY]: "structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/joblevels/define`}
+                component={DefineJoblevel}
+                meta={{
+                    [FEATURE_READY]: "structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/joblevels/:slug`}
+                component={ShowJoblevel}
+                meta={{
+                    [FEATURE_READY]: "structure-management-panel"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/joblevels/edit/:slug/`}
+                component={EditJoblevel}
                 meta={{
                     [FEATURE_READY]: "structure-management-panel"
                 }}

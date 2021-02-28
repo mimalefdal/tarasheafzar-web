@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import "../../styles/cards.css";
 import AppContext from "../../context/appContext";
 
-CardBase.propTypes = {
+_card.propTypes = {
     item: PropTypes.any
 };
 
-function CardBase({
+function _card({
     item,
     entryActions,
     title_complements_local = null,
@@ -25,15 +25,15 @@ function CardBase({
     return (
         <div
             className={
-                "card-container flex row " +
+                "card-container basic flex row " +
                 props.className +
                 " " +
                 (props.expanded == true ? " expanded" : "")
             }
             id={props.id}
         >
-            <div className="card-title-box flex column">
-                <div className="card-title">
+            <div className="card-title-box basic flex column">
+                <div className="card-title basic">
                     <div className="card-name-box">
                         {item[title_field_local]
                             ? item[title_field_local]
@@ -73,7 +73,7 @@ function CardBase({
                         </div>
                     )}
                 </div>
-                <div className="btn-set card-btn-set">{entryActions}</div>
+                <div className="btn-set card-btn-set basic">{entryActions}</div>
             </div>
 
             <div className="filler" id="basic-card-free-fill-area">
@@ -83,4 +83,4 @@ function CardBase({
     );
 }
 
-export default CardBase;
+export default _card;

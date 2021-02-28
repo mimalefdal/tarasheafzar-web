@@ -57,7 +57,7 @@
         "slug": "advisor",
         "title": {
             "fa": "مشاور",
-            "en": "ؤیرهسخق"
+            "en": "Consultant"
         },
         "scope": "company,branch,department",
         "priority": 45

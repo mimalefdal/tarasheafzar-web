@@ -39,6 +39,12 @@ Route::post('unit/remove', 'API\UnitController@delete');
 Route::get('units', 'API\UnitController@index');
 Route::get('unit', 'API\UnitController@show');
 
+Route::post('joblevel/add', 'API\JoblevelController@create');
+Route::post('joblevel/update', 'API\JoblevelController@update');
+Route::post('joblevel/remove', 'API\JoblevelController@delete');
+Route::get('joblevels', 'API\JoblevelController@index');
+Route::get('joblevel', 'API\JoblevelController@show');
+
 Route::post('position/add', 'API\PositionController@create');
 Route::post('position/update', 'API\PositionController@update');
 Route::post('position/remove', 'API\PositionController@delete');

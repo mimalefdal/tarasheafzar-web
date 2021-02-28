@@ -18,6 +18,12 @@ export { getItem as GetUnit } from "./unit-service";
 export { tryUpdate as UpdateUnit } from "./unit-service";
 export { tryDelete as DeleteUnit } from "./unit-service";
 
+export { tryAdd as AddJoblevel } from "./joblevel-service";
+export { getIndex as GetJoblevelsList } from "./joblevel-service";
+export { getItem as GetJoblevel } from "./joblevel-service";
+export { tryUpdate as UpdateJoblevel } from "./joblevel-service";
+export { tryDelete as DeleteJoblevel } from "./joblevel-service";
+
 export { tryAdd as AddPosition } from "./position-service";
 export { getIndex as GetPositionsList } from "./position-service";
 export { getItem as GetPosition } from "./position-service";
