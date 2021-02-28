@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import {
+    currentLang,
     findObject,
     getMatchIndexOf,
     getObjectFromArray,
@@ -48,7 +49,7 @@ export default function Form({ preset = "add", ...props }) {
                 },
                 title: {
                     initialValue: {
-                        local: props.item.title,
+                        [currentLang()]: props.item.title,
                         en: props.item.title_en
                     }
                 }

@@ -4,23 +4,22 @@ namespace App\Models;
 
 use App\Http\Resources\PositionItem;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\ChecksUniqueness;
 use App\Traits\ManagesRights;
 use App\Traits\ManagesRoles;
 use App\Models\Joblevel;
-use App\Models\Role;
 use App\Traits\CanManageRights;
 use App\Traits\CanManageRoles;
 use App\Traits\CanOwnRights;
 use App\Traits\CanOwnRoles;
-use App\Traits\ChecksUniqueness;
 use App\Traits\HandleBilangTitles;
 use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 class Position extends Model
 {
+    use ChecksUniqueness;
     use ManagesRights;
     use ManagesRoles;
     use CanOwnRights;
@@ -29,7 +28,6 @@ class Position extends Model
     use CanManageRoles;
     use SoftDeletes;
     use HandleBilangTitles;
-    use ChecksUniqueness;
 
     protected $fillable = [
         'title', 'display_title', 'slug', 'recruit_capacity'

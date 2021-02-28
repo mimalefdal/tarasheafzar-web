@@ -31,7 +31,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                     errors={errors}
                     backendErrors={backendErrors}
                     disabled={loading}
-                    value={props.initialValue ? props.initialValue.local : null}
+                    value={props.initialValue ? props.initialValue.fa : null}
                     onChange={event => {
                         setValue({ ...value, fa: event.target.value });
                     }}

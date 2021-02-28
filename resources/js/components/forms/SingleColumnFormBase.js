@@ -70,9 +70,11 @@ function FormBase({
 
     useEffect(() => {
         const fields = listedFields;
+        // console.log(fields);
         GetValidValues(
             fields,
             response => {
+                // console.log(response.data);
                 setValidValues(response.data);
 
                 if (props.item) {
@@ -365,14 +367,7 @@ function FormBase({
                     options: child.props.options
                         ? validValues[child.props.options]
                         : null,
-                    initialOptionIndex:
-                        validValues[child.props.options] &&
-                        child.props.initialValue &&
-                        getIndexOfMatchInsideArray(
-                            validValues[child.props.options],
-                            "value",
-                            child.props.initialValue
-                        ),
+
                     optionsAlert:
                         child.props.optionAlertField &&
                         child.props.validation &&

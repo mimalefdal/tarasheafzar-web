@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getObjectFromArray, t } from "../../utils";
+import { currentLang, getObjectFromArray, t } from "../../utils";
 import { useState } from "react";
 import {
     AutoCompleteSelect,
@@ -40,7 +40,7 @@ export default function Form({ preset = "add", ...props }) {
                 },
                 title: {
                     initialValue: {
-                        local: props.item.title,
+                        [currentLang()]: props.item.title,
                         en: props.item.title_en
                     }
                 }
