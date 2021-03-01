@@ -72,7 +72,7 @@ export default function _Switch() {
                 path={`${match.path}/branches/define`}
                 component={DefineBranch}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "branches-management-tool"
                 }}
             />
             <GuardedRoute
@@ -80,7 +80,7 @@ export default function _Switch() {
                 path={`${match.path}/branches/:slug`}
                 component={ShowBranch}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "branches-management-tool"
                 }}
             />
 
@@ -90,7 +90,7 @@ export default function _Switch() {
                 path={`${match.path}/departments`}
                 component={ManageDepartments}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "departments-management-tool"
                 }}
             />
             <GuardedRoute
@@ -98,7 +98,7 @@ export default function _Switch() {
                 path={`${match.path}/departments/define`}
                 component={DefineDepartment}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "departments-management-tool"
                 }}
             />
             <GuardedRoute
@@ -106,7 +106,7 @@ export default function _Switch() {
                 path={`${match.path}/departments/:slug`}
                 component={ShowDepartment}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "departments-management-tool"
                 }}
             />
 
@@ -116,7 +116,7 @@ export default function _Switch() {
                 path={`${match.path}/units`}
                 component={ManageUnits}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "units-management-tool"
                 }}
             />
 
@@ -125,7 +125,7 @@ export default function _Switch() {
                 path={`${match.path}/units/define`}
                 component={DefineUnit}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "units-management-tool"
                 }}
             />
 
@@ -134,7 +134,7 @@ export default function _Switch() {
                 path={`${match.path}/units/:slug`}
                 component={ShowUnit}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "units-management-tool"
                 }}
             />
             <GuardedRoute
@@ -142,7 +142,7 @@ export default function _Switch() {
                 path={`${match.path}/units/edit/:slug/`}
                 component={EditUnit}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "units-management-tool"
                 }}
             />
 
@@ -152,7 +152,7 @@ export default function _Switch() {
                 path={`${match.path}/joblevels`}
                 component={ManageJoblevels}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "joblevels-management-tool"
                 }}
             />
             <GuardedRoute
@@ -160,7 +160,7 @@ export default function _Switch() {
                 path={`${match.path}/joblevels/define`}
                 component={DefineJoblevel}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "joblevels-management-tool"
                 }}
             />
             <GuardedRoute
@@ -168,7 +168,7 @@ export default function _Switch() {
                 path={`${match.path}/joblevels/:slug`}
                 component={ShowJoblevel}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "joblevels-management-tool"
                 }}
             />
             <GuardedRoute
@@ -176,7 +176,7 @@ export default function _Switch() {
                 path={`${match.path}/joblevels/edit/:slug/`}
                 component={EditJoblevel}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "joblevels-management-tool"
                 }}
             />
 
@@ -186,7 +186,7 @@ export default function _Switch() {
                 path={`${match.path}/positions`}
                 component={ManagePositions}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "positions-management-tool"
                 }}
             />
             <GuardedRoute
@@ -194,7 +194,7 @@ export default function _Switch() {
                 path={`${match.path}/positions/define`}
                 component={DefinePosition}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "positions-management-tool"
                 }}
             />
             <GuardedRoute
@@ -202,7 +202,7 @@ export default function _Switch() {
                 path={`${match.path}/positions/:slug`}
                 component={ShowPosition}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "positions-management-tool"
                 }}
             />
             <GuardedRoute
@@ -210,7 +210,7 @@ export default function _Switch() {
                 path={`${match.path}/positions/edit/:slug/`}
                 component={EditPosition}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    [FEATURE_READY]: "positions-management-tool"
                 }}
             />
 

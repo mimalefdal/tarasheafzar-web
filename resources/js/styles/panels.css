@@ -153,7 +153,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     /* padding: 10px; */
     /* height: 30vh; */
     /* width: 40%; */
@@ -161,7 +161,7 @@ body {
 }
 
 .panel-link {
-    /* flex: 0.25; */
+    flex: 0 0 30%;
     position: relative;
     flex-direction: column;
     width: 25%;
@@ -220,7 +220,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     /* padding: 10px; */
     /* height: 30vh; */
     /* width: 40%; */
@@ -279,6 +279,48 @@ body {
 }
 
 .tool-link.notactivated {
+}
+
+.panel-links.horizontal,
+.tool-links.horizontal {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: scroll;
+    height: 20vh;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.panel-link.horizontal,
+.tool-link.horizontal {
+    width: inherit;
+    flex: 0 0 30%;
+    box-shadow: inherit !important;
+    /* background-color: indianred; */
+    height: 90%;
+    border: 1px solid var(--titlebkg);
+}
+
+.tool-link.horizontal {
+    flex-basis: 20%;
+}
+
+.panel-links::-webkit-scrollbar,
+.tool-links::-webkit-scrollbar {
+    /* if scrollbar have a value problems will occured when mui modal opens   */
+    height: 10px;
+}
+
+.panel-links::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+    background-clip: content-box;
+}
+
+.panel-links::-webkit-scrollbar-thumb {
+    background-color: var(--titlebkg);
+    max-width: 10px;
+    /* outline: 1px solid slategrey; */
+    /* width: 5px; */
 }
 
 .link-tag {

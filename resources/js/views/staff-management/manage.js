@@ -15,8 +15,7 @@ function Manage(props) {
         index: "id",
         personnel_id: "personnel_id",
         name: "name",
-        position: "position",
-        depunit: ""
+        position: "position"
     };
 
     const entryOperations = [

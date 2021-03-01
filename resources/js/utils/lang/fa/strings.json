@@ -83,10 +83,10 @@
         "returnredirtect": "هدایت خواهید شد"
     },
     "panels": {
-        "structure-management": "مدیریت ساختار",
-        "staff-management": "مدیریت کارکنان",
-        "system-management": "مدیریت سامانه",
-        "access-management": "مدیریت دسترسی",
+        "structure-management": "پنل مدیریت ساختار",
+        "staff-management": "پنل مدیریت کارکنان",
+        "enterprise-management": "پنل مدیریت سامانه",
+        "access-management": "پنل مدیریت دسترسی",
         "crm": "ارتباط با مشتریان",
         "hr": "منابع انسانی",
         "cms": "مدیریت محتوا",

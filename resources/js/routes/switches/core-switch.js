@@ -77,7 +77,7 @@ function _Switch(props) {
                         />
 
                         <GuardedRoute
-                            path="/staff-management"
+                            path="/staff"
                             component={StaffPanel}
                             meta={{
                                 [FEATURE_READY]: "staff-management-panel"

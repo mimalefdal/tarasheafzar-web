@@ -15,6 +15,14 @@
                 "en": "Access Management Panel"
             },
             "activation": false
+        },
+        {
+            "slug": "staff-management-panel",
+            "title": {
+                "fa": "پنل مدیریت کارکنان",
+                "en": "Staff Management Panel"
+            },
+            "activation": true
         }
     ],
     "Tools": [
@@ -47,6 +55,56 @@
             },
             "activation": true,
             "state": "built-in"
+        },
+        {
+            "feature": "structure-management-panel",
+            "slug": "departments-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت دپارتمان‌ها",
+                "en": "Departments Management Tool"
+            },
+            "activation": true,
+            "state": "built-in"
+        },
+        {
+            "feature": "structure-management-panel",
+            "slug": "units-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت واحدها",
+                "en": "َUnits Management Tool"
+            },
+            "activation": true,
+            "state": "built-in"
+        },
+        {
+            "feature": "structure-management-panel",
+            "slug": "joblevels-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت سطوح شغلی",
+                "en": "Joblevels Management Tool"
+            },
+            "activation": true,
+            "state": "built-in"
+        },
+        {
+            "feature": "structure-management-panel",
+            "slug": "positions-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت سمت‌ها",
+                "en": "Positions Management Tool"
+            },
+            "activation": true,
+            "state": "built-in"
+        },
+        {
+            "feature": "staff-management-panel",
+            "slug": "staff-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت کارکنان",
+                "en": "Staff Management Tool"
+            },
+            "activation": true,
+            "state": "built-in"
         }
     ],
     "Rights": [
@@ -63,6 +121,22 @@
             "title": {
                 "fa": "دسترسی به پنل مدیریت دسترسی",
                 "en": "Access Enterprise Initialize Tool"
+            },
+            "activation": true
+        },
+        {
+            "slug": "access-staff-management-panel",
+            "title": {
+                "fa": "دسترسی به پنل مدیریت کارکنان",
+                "en": "Access Staff Management Panel"
+            },
+            "activation": true
+        },
+        {
+            "slug": "access-staff-management-tool",
+            "title": {
+                "fa": "دسترسی به ابزار مدیریت کارکنان",
+                "en": "Access Staff Management Tool"
             },
             "activation": true
         },
@@ -178,6 +252,8 @@
             "rights": [
                 "access-enterprise-panel",
                 "access-features-management-tool",
+                "access-staff-management-panel",
+                "access-staff-management-tool",
                 "test-right"
             ]
         }
