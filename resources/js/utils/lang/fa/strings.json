@@ -36,6 +36,7 @@
         "type": "نوع",
         "holderType": "نوع دارنده",
         "holder": "دارنده",
+        "block": "بلوک",
         "branchType": "نوع شاخه",
         "branch": "شاخه",
         "department": "دپارتمان",
@@ -45,6 +46,8 @@
         "position": "سمت",
         "positions": "سمت‌ها",
         "role": "نقش",
+        "roles": "نقش‌ها",
+        "scope": "حوزه‌",
         "scopes": "حوزه‌ها",
         "priority": "اولویت",
         "stages": "مراحل",
@@ -52,7 +55,17 @@
         "recruit_capacity": "ظرفیت استخدام",
         "return": "بازگشت",
         "notinstalled": "نصب نشده",
-        "notactivated": "غیرفعال"
+        "notactivated": "غیرفعال",
+        "allspecs": "همهٔ مشخصات",
+        "specs": "مشخصات :attr",
+        "information": "اطلاعات :attr",
+        "access": "دسترسی",
+        "access_p": "دسترسی‌ها"
+    },
+    "attr": {
+        "personal": "فردی",
+        "carrier": "شغلی",
+        "staffAccount": "حساب کارمندی"
     },
     "comments": {
         "none-company": "غیرسازمانی"
@@ -106,11 +119,13 @@
     },
     "forms": {
         "registerCEO": "ثبت اکانت مدیرعامل",
+        "registerStaff": "ثبت کارکنان",
         "defineBranch": "درج شاخه جدید",
         "defineDepartment": "درج دپارتمان جدید",
         "defineUnit": "درج واحد جدید",
         "defineJoblevel": "درج سطح شغلی جدید",
-        "definePosition": "درج سمت جدید"
+        "definePosition": "درج سمت جدید",
+        "editStaff": "ویرایش کارکنان"
     },
     "alerts": {
         "success": "موفقیت",
@@ -119,6 +134,7 @@
         "warning": "اخطار",
         "confirm": "تأیید",
         "deleted": "پاک‌شده",
+        "suspended": "معلق",
         "emptyList": "لیست خالی"
     },
     "languages": {
@@ -127,6 +143,8 @@
     },
     "expressions": {
         "sureDelete": "پاک شود؟",
+        "sureRun": "انجام شود؟",
+        "sureToggle": "تغییر داده شود؟",
         "executing": "در حال اجرا",
         "executed": "پایان اجرا",
         "deleteing": "در حال پاک کردن",

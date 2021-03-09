@@ -29,6 +29,9 @@ return [
     'Unit' => 'واحد',
     'Joblevel' => 'سطح شغلی',
     'Position' => 'سمت',
+    'Staff_s' => 'نیرو',
+    'Staff_p' => 'کارکنان',
+    'Account' => 'حساب',
     'any' => 'ی',
     'anyy' => '‌ای',
 ];

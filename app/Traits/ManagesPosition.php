@@ -11,13 +11,13 @@ trait ManagesPosition
     public function setPosition($position)
     {
         $position = Position::where('slug', $position)->first();
-        return $this->position()->associate($position)->save();
+        return $this->position()->associate($position);
     }
 
     public function removePosition($position)
     {
         $position = Position::where('slug', $position)->first();
-        return $this->position()->detach($position)->save();
+        return $this->position()->detach($position);
     }
 
     public function refreshPosition($position)

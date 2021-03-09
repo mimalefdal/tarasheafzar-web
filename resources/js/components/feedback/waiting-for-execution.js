@@ -61,7 +61,7 @@ function WaitingFeedback({
             open={show}
             onClose={onClose}
             TransitionComponent={Transition}
-            maxWidth="sm"
+            maxWidth="xs"
             fullWidth={true}
             disableBackdropClick
             disableEscapeKeyDown

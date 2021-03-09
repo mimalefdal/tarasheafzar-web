@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Bilang;
 use Lang;
+use Utility;
 
 class PositionItem extends JsonResource
 {
@@ -55,33 +56,32 @@ class PositionItem extends JsonResource
         $item['slug'] = $this->slug;
 
         //transform may-related hasposition info
+        // TODO must improved via static utility functions & BlockItemResource
         switch ($this->hasposition_type) {
             case null:
             case 'App\Models\Company':
                 $item['holder'] = ['title' => resolve('Company')->getShortName()];
-                $item['holder_type'] = 'company';
                 // $item['holder_title'] = $item['holder']['title'][Lang::getLocale()];
                 break;
 
             case 'App\Models\Branch':
                 $item['holder'] = BranchItem::make($this->hasposition);
-                $item['holder_type'] = 'branch';
                 break;
 
             case 'App\Models\Department':
                 $item['holder'] = DepartmentItem::make($this->hasposition);
-                $item['holder_type'] = 'department';
                 break;
             case 'App\Models\Unit':
                 $item['holder'] = UnitItem::make($this->hasposition);
-                $item['holder_type'] = 'unit';
                 break;
 
             default:
                 $item['holder'] = $this->hasposition;
-                $item['holder_type'] = $this->hasposition_type;
                 break;
         }
+
+        $item['holder_type'] = Utility::getHolderType($this->hasposition_type);
+
         // if ($this->hasposition_id != null)
         $item['holder_id'] = $this->hasposition_id;
 

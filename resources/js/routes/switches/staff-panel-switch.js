@@ -8,11 +8,16 @@ import {
     Route,
     BrowserRouter
 } from "react-router-dom";
-import { StaffManagementManage } from "../../views/staff-management";
 import { StaffManagementPanelView } from "../../views/panels";
 import { GuardedRoute } from "react-router-guards";
 import { FEATURE_READY } from "../guards/types";
 import { NotFound } from "../../views/errors";
+import {
+    DefineStaff,
+    EditStaff,
+    ManageStaff,
+    ShowStaff
+} from "../../views/staff-management";
 
 export default function _Switch() {
     let match = useRouteMatch();
@@ -26,7 +31,31 @@ export default function _Switch() {
             <GuardedRoute
                 exact
                 path={`${match.path}/manage`}
-                component={StaffManagementManage}
+                component={ManageStaff}
+                meta={{
+                    [FEATURE_READY]: "staff-management-tool"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/define`}
+                component={DefineStaff}
+                meta={{
+                    [FEATURE_READY]: "staff-management-tool"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/:personnel_id`}
+                component={ShowStaff}
+                meta={{
+                    [FEATURE_READY]: "staff-management-tool"
+                }}
+            />
+            <GuardedRoute
+                exact
+                path={`${match.path}/edit/:personnel_id`}
+                component={EditStaff}
                 meta={{
                     [FEATURE_READY]: "staff-management-tool"
                 }}

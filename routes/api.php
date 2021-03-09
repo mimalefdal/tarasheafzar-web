@@ -52,6 +52,10 @@ Route::get('positions', 'API\PositionController@index');
 Route::get('position', 'API\PositionController@show');
 
 Route::post('staff/add', 'API\StaffController@create');
+Route::post('staff/update', 'API\StaffController@update');
+Route::post('staff/remove', 'API\StaffController@delete');
+Route::post('staff/restore', 'API\StaffController@restore');
+Route::post('staff/suspend', 'API\StaffController@toggleSuspend');
 Route::get('staff', 'API\StaffController@index');
 Route::get('anstaff', 'API\StaffController@show');
 Route::get('scope', 'API\DirtyController@scope');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\HandlesChildBlocks;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Company extends Model
 {
@@ -41,9 +42,12 @@ class Company extends Model
         return $this;
     }
 
-    public function getShortName()
+    public function getShortName(string $lang = null)
     {
-        return $this->shortName;
+        if (is_null($lang))
+            return $this->shortName;
+        else
+            return $this->shortName[$lang];
     }
 
     public function getName()

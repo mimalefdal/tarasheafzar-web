@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import { Link as Scroll } from "react-scroll";
 
-function _button(props) {
+function _button({ expandIcon = <MenuOpenIcon />, ...props }) {
     // console.log("expandedButton:expanded", expanded);
 
     const [expanded, setExpanded] = useState(false);
@@ -26,7 +26,8 @@ function _button(props) {
                 style={props.style}
                 onClick={props.onClick && props.onClick}
             >
-                <MenuOpenIcon />
+                {expandIcon}
+                {/* <MenuOpenIcon /> */}
             </button>
         </Scroll>
     );

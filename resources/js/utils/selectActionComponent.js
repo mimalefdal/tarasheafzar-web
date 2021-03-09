@@ -3,9 +3,10 @@ import {
     DeleteButton,
     EditButton,
     ExpandButton,
+    StopButton,
+    SuspenseTogglerButton,
     ViewButton
 } from "../components/buttons";
-
 export default function utility(type, props) {
     // console.log("selectActionComponent", type, props);
 
@@ -21,6 +22,10 @@ export default function utility(type, props) {
             break;
         case "expand":
             return <ExpandButton {...props} scrollTarget={props.item.slug} />;
+            break;
+
+        case "suspendToggle":
+            return <SuspenseTogglerButton {...props} />;
             break;
 
         default:

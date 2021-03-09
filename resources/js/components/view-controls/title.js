@@ -1,27 +1,39 @@
 import React from "react";
 
-function viewControl(props) {
+function viewControl({
+    title,
+    pretitle,
+    pretail,
+    posttitle,
+    posttail,
+    btnSet,
+    tags,
+    ...props
+}) {
+    // console.log("Title->tags:", tags);
     return (
         <div className={props.className}>
             <div>
-                {props.pretitle && (
-                    <div className="title-pretitle">{props.pretitle}</div>
-                )}
+                {pretitle && <div className="title-pretitle">{pretitle}</div>}
                 <div className="title-text">
-                    {props.pretail && (
-                        <span className="text-tail pre">{props.pretail}</span>
+                    {pretail && (
+                        <span className="text-tail pre">{pretail}</span>
                     )}{" "}
-                    <span className="">{props.title}</span>{" "}
-                    {props.posttail && (
-                        <span className="text-tail post">{props.posttail}</span>
+                    <span className="">{title}</span>{" "}
+                    {posttail && (
+                        <span className="text-tail post">{posttail}</span>
                     )}{" "}
                 </div>
-                {props.posttitle && (
-                    <div className="title-posttitle">{props.posttitle}</div>
+                {posttitle && (
+                    <div className="title-posttitle">{posttitle}</div>
                 )}
             </div>
+
             <div style={{ flexGrow: 1 }}></div>
-            <div className="btn-set">{props.btnSet}</div>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+                {tags && <div className="flex tag-set">{tags}</div>}
+                {btnSet && <div className="flex btn-set">{btnSet}</div>}
+            </div>
         </div>
     );
 }

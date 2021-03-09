@@ -8,6 +8,7 @@ use App\Traits\ManagesAccess;
 use App\Traits\ManagesRoles;
 use App\Traits\ManagesPosition;
 use App\Traits\ManagesRights;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -22,6 +23,7 @@ class Staff extends Authenticatable
     use ManagesAccess;
     use CanOwnRights;
     use CanManageRights;
+    use SoftDeletes;
 
     protected $guard = 'staff';
 
@@ -37,6 +39,11 @@ class Staff extends Authenticatable
         'email_verified_at' => 'datetime',
         'title' => 'array'
     ];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
 
     public function scope()
     {

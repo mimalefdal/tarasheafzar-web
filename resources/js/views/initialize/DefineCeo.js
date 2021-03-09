@@ -28,7 +28,7 @@ function DefineCeo(props) {
     }, []);
 
     return (
-        <div className="">
+        <>
             <PageHeaderBar className="form-header">
                 <FormTitle className="" title={t("forms.registerCEO")} />
             </PageHeaderBar>
@@ -48,7 +48,7 @@ function DefineCeo(props) {
                     />
                 )}
             </div>
-        </div>
+        </>
     );
 }
 

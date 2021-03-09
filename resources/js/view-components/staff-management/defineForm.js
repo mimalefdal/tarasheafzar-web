@@ -8,10 +8,16 @@ import {
 } from "../../components/form-controls";
 import "../../styles/forms.css";
 import { SingleColumnFormBase } from "../../components/forms";
-import { AddStaff, GetValidValues, InitializeCEO } from "../../services";
+import {
+    AddStaff,
+    GetValidValues,
+    InitializeCEO,
+    UpdateStaff
+} from "../../services";
 
 export default function Form({ preset = "add", ...props }) {
-    console.log("DefineFormStaff->preset:", preset);
+    // console.log("DefineFormStaff->preset:", preset);
+    // console.log("DefineFormStaff->item:", props.item);
 
     const [initialAlert, setInitialAlert] = useState();
     const [initialValues, setInitialValues] = useState({});
@@ -25,6 +31,44 @@ export default function Form({ preset = "add", ...props }) {
             submitValue: t("labels.submit-add"),
             fields: ["all"],
             inputProps: {}
+        },
+        edit: preset == "edit" && {
+            dataService: UpdateStaff,
+            submitValue: t("labels.submit-update"),
+            fields: ["all"],
+            inputProps: {
+                holderType: {
+                    initialValue: props.item.holder_type
+                },
+                holder: {
+                    initialValue: props.item.holder && props.item.holder.slug
+                },
+                position: {
+                    initialValue: props.item.position.slug
+                },
+                gender: {
+                    initialValue: props.item.gender
+                },
+                firstname: {
+                    initialValue: props.item.firstname
+                },
+                lastname: {
+                    initialValue: props.item.lastname
+                },
+                national_id: {
+                    initialValue: props.item.national_id
+                },
+                idcert_no: {
+                    initialValue: props.item.idcert_no
+                },
+                username: {
+                    initialValue: props.item.username
+                },
+                email: {
+                    initialValue: props.item.email
+                }
+                // holderType: {},
+            }
         },
         ceo: {
             dataService: InitializeCEO,
@@ -53,10 +97,41 @@ export default function Form({ preset = "add", ...props }) {
             submitValue={presets[preset].submitValue}
             item={props.item}
             showAlert={props.showAlert}
-            listedFields={["position", "gender"]}
+            listedFields={["holdertypes", "gender"]}
             // redirectDelay={2000}
             redirectTarget="/enterprise/initialize"
         >
+            {(presets[preset].fields.includes("all") ||
+                presets[preset].fields.includes("holderType")) && (
+                <AutoCompleteSelect
+                    name="holderType"
+                    // validation={{ required: true }}
+                    label={t("labels.holderType")}
+                    options="holdertypes"
+                    {...presets["general"].inputProps["holderType"]}
+                    {...presets[preset].inputProps["holderType"]}
+                    dependentOptions={{
+                        holders: "",
+                        positions: "position"
+                    }}
+                />
+            )}
+            {(presets[preset].fields.includes("all") ||
+                presets[preset].fields.includes("holder")) && (
+                <AutoCompleteSelect
+                    name="holder"
+                    // validation={{ required: true }}
+                    label={t("labels.holder")}
+                    options="holders"
+                    {...presets["general"].inputProps["holder"]}
+                    {...presets[preset].inputProps["holder"]}
+                    isDependent={true}
+                    optionAlertField="holderType"
+                    dependentOptions={{
+                        positions: "position"
+                    }}
+                />
+            )}
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("position")) && (
                 <AutoCompleteSelect
@@ -64,9 +139,10 @@ export default function Form({ preset = "add", ...props }) {
                     validation={{ required: true }}
                     label={t("labels.position")}
                     labelComment=""
-                    options="position"
+                    options="positions"
                     {...presets["general"].inputProps["position"]}
                     {...presets[preset].inputProps["position"]}
+                    isDependent={true}
                 />
             )}
             {(presets[preset].fields.includes("all") ||

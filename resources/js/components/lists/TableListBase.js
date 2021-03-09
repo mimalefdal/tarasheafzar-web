@@ -16,6 +16,7 @@ function TableListBase({
     tableComponent,
     entryComponent = null,
     tableMap,
+    trigger = true,
     entryOperations,
     ...props
 }) {
@@ -28,24 +29,27 @@ function TableListBase({
         Authorization: "Bearer " + token
     };
     useEffect(() => {
-        dataService(
-            token,
-            response => {
-                console.log("TableListBase", response.data);
-                if (response.data.data) setItems(response.data.data);
-                else setItems(response.data);
-                setLoading(false);
-            },
-            error => {
-                console.log(error.response);
-                setLoading(false);
-            }
-        );
-    }, []);
+        if (trigger != null) {
+            setLoading(true);
+            dataService(
+                token,
+                response => {
+                    // console.log("TableListBase", response.data);
+                    if (response.data.data) setItems(response.data.data);
+                    else setItems(response.data);
+                    setLoading(false);
+                },
+                error => {
+                    console.log(error.response);
+                    setLoading(false);
+                }
+            );
+        }
+    }, [trigger]);
 
     return (
         <div className="list-container ">
-            <div className="list-body  ">
+            <div className="list-body ">
                 {cloneElement(tableComponent, {
                     items: items,
                     loading: loading,

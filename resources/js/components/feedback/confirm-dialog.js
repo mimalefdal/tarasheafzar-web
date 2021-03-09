@@ -19,6 +19,7 @@ function dialog({
     onClose,
     title = "please set a title",
     content = "Please create a content to show here ...",
+    preContent = null,
     item = "",
     ...props
 }) {
@@ -35,6 +36,7 @@ function dialog({
             <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
+                    {preContent && preContent + " "}
                     <span
                         style={{
                             fontWeight: "bold",

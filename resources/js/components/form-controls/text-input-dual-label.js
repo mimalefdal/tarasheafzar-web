@@ -11,7 +11,7 @@ function Control(props, ref) {
     return (
         <DualLabelFormControl {...props}>
             <input
-                defaultValue={props.value ? props.value : null}
+                defaultValue={props.initialValue ? props.initialValue : null}
                 className={"form-text-input" + latin}
                 name={props.name}
                 placeholder={props.placeholder}

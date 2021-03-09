@@ -11,6 +11,7 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Joblevel;
 use App\Models\Unit;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Lang;
 
@@ -50,7 +51,17 @@ class ValuelistController extends Controller
                 break;
 
             case 'position':
-                return DropdownItem::collection(Position::all());
+                if ($tag == null)
+                    return DropdownItem::collection(Position::all());
+                else {
+                    if ($tag == 'company')
+                        $positions = Position::where('hasposition_id', null)->get();
+                    else
+                        $positions = Position::whereHasMorph('hasposition', [Branch::class, Department::class, Unit::class], function (Builder $query) use ($tag) {
+                            $query->where('slug', $tag);
+                        })->get();
+                    return DropdownItem::collection($positions);
+                }
                 break;
 
             case 'joblevel':

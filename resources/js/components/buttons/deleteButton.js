@@ -11,17 +11,8 @@ function deleteButton({ target = "#", ...props }) {
             style={props.style}
             onClick={props.onClick && props.onClick}
         >
-            {/* <ReactSVG src={Delete} /> */}
             <DeleteIcon />
         </button>
-        // <Link
-        //     className={"operation-icon-btn " + props.className}
-        //     style={props.style}
-        //     to={target}
-        // >
-        //     {/* <ReactSVG src={Delete} /> */}
-        //     <DeleteIcon />
-        // </Link>
     );
 }
 

@@ -146,7 +146,7 @@ const Control = (
                     // props.changeFocus();
                 }}
                 onInputChange={(event, newInputValue) => {
-                    console.log("newInputValue", newInputValue);
+                    // console.log("newInputValue", newInputValue);
                     !props.multiple && setDisplayValue(newInputValue);
                 }}
                 onFocus={props.optionsAlert && props.optionsAlert}

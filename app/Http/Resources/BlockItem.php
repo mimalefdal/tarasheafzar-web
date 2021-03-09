@@ -15,16 +15,22 @@ class BlockItem extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
+        return parent::toArray($request);
+
         $req = parent::toArray($request);
         $item = [];
         $item['id'] = $this->id;
         $item['slug'] = $this->slug;
 
-        $item['full_title'] = $this->fullTitle();
-        $item['full_title_en'] = $this->fullTitle('en');
-        $item['short_title'] = $this->typedTitle();
-        $item['short_title_en'] = $this->typedTitle('en');
+        if (method_exists($this, 'fullTitle')) {
+            $item['full_title'] = $this->fullTitle();
+            $item['full_title_en'] = $this->fullTitle('en');
+        }
+        if (method_exists($this, 'typedTitle')) {
+
+            $item['short_title'] = $this->typedTitle();
+            $item['short_title_en'] = $this->typedTitle('en');
+        }
         $item['title_en'] = Bilang::getEnTitle($this->title);
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 

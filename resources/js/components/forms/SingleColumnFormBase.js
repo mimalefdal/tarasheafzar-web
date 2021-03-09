@@ -151,15 +151,16 @@ function FormBase({
                     }
                 }
             });
+            // console.log("Formbase:[triggerEditMode]:fields->", fields);
             fields.length == 0
                 ? setReady(true)
                 : GetValidValues(
                       fields,
                       response => {
-                          // console.log(
-                          //     "UnitForm:[triggerEditMode]:Response",
-                          //     response.data
-                          // );
+                          //   console.log(
+                          //       "Formbase:[triggerEditMode]:Response",
+                          //       response.data
+                          //   );
 
                           let updatedValidValues = MakeUpdatedValidValues(
                               validValues,
@@ -191,8 +192,7 @@ function FormBase({
     useEffect(() => {
         // console.log(
         //     "SingleFormBase:[loadDependentData]:loadDependentData",
-        //     loadDependentData,
-        //     focusIndex
+        //     loadDependentData
         // );
         if (loadDependentData)
             if (loadDependentData.value != null) {
@@ -209,10 +209,11 @@ function FormBase({
                 );
 
                 // console.log("_valueObject", _valueObject);
+                console.log("fields", fields);
                 GetValidValues(
                     fields,
                     response => {
-                        // console.log("FormBase:[]:RESPONSE", response.data);
+                        console.log("FormBase:[]:RESPONSE", response.data);
                         let updatedValidValues = MakeUpdatedValidValues(
                             validValues,
                             response.data,

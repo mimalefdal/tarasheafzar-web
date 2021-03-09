@@ -3,6 +3,7 @@ export { default as StaffList } from "./staff-management/StaffList";
 export { default as StaffTable } from "./staff-management/StaffTable";
 export { default as StaffRegisterForm } from "./staff-management/defineForm";
 export { default as StaffEntry } from "./staff-management/StaffEntry";
+export { default as StaffManagementInformation } from "./staff-management/StaffManagementInfo";
 
 export { default as RightEntry } from "./right/manageEntry";
 

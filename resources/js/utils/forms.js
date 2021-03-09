@@ -22,13 +22,14 @@ export const _makeUpdatedValidValues = (
 
 export const _makeValueListedFieldsArray = (targetFields, selectedValue) => {
     let fields = [];
-    Object.keys(targetFields).map(key => {
-        let _field =
-            targetFields[key] == ""
-                ? selectedValue
-                : targetFields[key] + "." + selectedValue;
-        fields.push(_field);
-    });
+    if (selectedValue)
+        Object.keys(targetFields).map(key => {
+            let _field =
+                targetFields[key] == ""
+                    ? selectedValue
+                    : targetFields[key] + "." + selectedValue;
+            fields.push(_field);
+        });
     return fields;
 };
 

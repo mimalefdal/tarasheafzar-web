@@ -21,6 +21,7 @@ return [
     'ceoalreadydefined' => 'اکانت مدیرعامل قبلاً ثبت شده‌است.',
     'newrecordـcreated' => ':attribute جدید ثبت شد.',
     'recordـcreated' => ':title ثبت شد.',
+    'recordـcreated_with_type' => ':type جدید با نام :title ثبت شد.',
     'recordـupdated' => 'ویرایش :title با موفقیت انجام شد.',
     'recordـupdated_with_type' => 'ویرایش :type :title با موفقیت انجام شد.',
     'recordـdeleted' => ':title با موفقیت پاک شد.',

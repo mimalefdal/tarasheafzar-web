@@ -8,7 +8,15 @@ import {
     WAIT_FOR_EXECUTION
 } from "../../utils/constants";
 
-function Delete({ dataService, request, item, onClose, ...props }) {
+function Delete({
+    dataService,
+    request,
+    item,
+    confirmMessageData = null,
+    confirmPreContent = null,
+    onClose,
+    ...props
+}) {
     // console.log("DeleteDepartmentDialog", item);
 
     const token = useContext(StaffContext).token;
@@ -64,7 +72,12 @@ function Delete({ dataService, request, item, onClose, ...props }) {
                 onClose={onDelete}
                 title={t("alerts.confirm")}
                 content={t("expressions.sureDelete")}
-                item={item && item.full_title}
+                preContent={confirmPreContent}
+                item={
+                    confirmMessageData
+                        ? confirmMessageData
+                        : item && item.full_title
+                }
             />
 
             <WaitingDialog

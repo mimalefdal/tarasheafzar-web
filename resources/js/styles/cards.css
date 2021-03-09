@@ -28,7 +28,8 @@
 .card-container.expanded {
     /* border-bottom: 1px solid var(--hoverColor); */
     /* border-top: 1px solid var(--hoverColor); */
-    width: 110%;
+    /* width: 110%; */
+    margin-top: 1rem !important;
     border-bottom: 1px solid whitesmoke;
     background-color: #dedede;
     /* box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important; */
@@ -49,7 +50,7 @@
     padding-bottom: 1rem;
     padding-top: 1rem;
     width: 100%;
-    border-bottom: 1px solid var(--hoverColor);
+    border-bottom: 1px solid var(--secondaryColor);
 }
 
 .card-title-box.basic {
@@ -92,12 +93,17 @@
 }
 
 .card-operation-btn.active svg {
+    fill: var(--secondaryColor);
+}
+.card-operation-btn.active:hover svg {
     fill: var(--hoverColor);
-    /* opacity: 0.5; */
+    transition: none;
+}
+
+.active svg {
     transform: rotate(180deg);
     transition: all 500ms linear;
 }
-
 .basic-card-title-tail {
     font-weight: normal;
 }
@@ -114,4 +120,31 @@
 
 #basic-card-free-fill-area p {
     text-align: start;
+}
+
+#spec-card {
+    /* background-color: ivory; */
+    flex-basis: 33.3333%;
+    padding: 0.2rem;
+    text-align: start;
+    margin-bottom: 1rem;
+}
+
+#spec-title {
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: var(--secondaryColor);
+    /* width: 20%; */
+    /* margin: auto; */
+    /* text-align: center; */
+}
+
+#spec-info {
+    font-size: 1.1rem;
+    /* font-weight: 500; */
+    color: var(--showtitlebkg);
+}
+
+#spec-unit {
+    font-size: 10px;
 }

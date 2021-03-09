@@ -11,6 +11,10 @@ function Control({ type = Roll, preset = "default", size = null, ...props }) {
     let fill = "none"; // set for Roll default
     let stroke = "#3490dc"; // set for Roll default
 
+    // TODO : implement wrapping for display inside tables
+    // props.columns && console.log("Loadind", props.columns);
+    // let ContainerTag = props.columns ? "div" : "div";
+
     if (size) {
         props.height = size;
         props.width = size;
@@ -46,6 +50,7 @@ function Control({ type = Roll, preset = "default", size = null, ...props }) {
             break;
     }
     return (
+        // <ContainerTag id="loading-container">
         <ReactSVG
             className={"loading " + props.className}
             src={Loading}
@@ -58,6 +63,7 @@ function Control({ type = Roll, preset = "default", size = null, ...props }) {
                 stroke: stroke
             }}
         />
+        // </ContainerTag>
     );
 }
 

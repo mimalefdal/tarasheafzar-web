@@ -8,7 +8,7 @@
         "lastname": "Super Administrator",
         "national_id": null,
         "idcert_no": null,
-        "gender": "Empty",
+        "gender": null,
         "email": "superadmin@companydomain.com",
         "position": null,
         "roles": [
@@ -25,7 +25,7 @@
         "lastname": "Administrator",
         "national_id": null,
         "idcert_no": null,
-        "gender": "Empty",
+        "gender": null,
         "email": "admin@companydomain.com",
         "position": null,
         "roles": [

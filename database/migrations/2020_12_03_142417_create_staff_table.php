@@ -31,11 +31,17 @@ class CreateStaffTable extends Migration
             $table->integer('verification_status')->nullable();
 
             $table->bigInteger('position_id')->unsigned()->nullable();
-            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('set null');
 
             $table->string('password');
             $table->rememberToken();
 
+            $table->boolean('suspended')->nullable();
+            $table->timestamp('suspended_at')->nullable();
+            $table->bigInteger('suspender_id')->unsigned()->nullable();
+            $table->foreign('suspender_id')->references('id')->on('staff')->onDelete('set null');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

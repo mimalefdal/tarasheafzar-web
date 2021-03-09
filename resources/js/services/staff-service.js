@@ -54,7 +54,8 @@ export const getItem = (params, token, successCallback, failureCallback) => {
 };
 
 export const tryUpdate = (data, token, successCallback, failureCallback) => {
-    ApiClient.post("", data, {
+    // console.log("StaffUpdate Service:data->", data);
+    ApiClient.post("/staff/update", data, {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token
@@ -72,7 +73,49 @@ export const tryUpdate = (data, token, successCallback, failureCallback) => {
 
 export const tryDelete = (item, token, successCallback, failureCallback) => {
     ApiClient.post(
-        "",
+        "/staff/remove",
+        { item: item },
+        {
+            headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + token
+            }
+        }
+    )
+        .then(response => {
+            // console.log("StaffDelete Service",response);
+            successCallback(response);
+        })
+        .catch(error => {
+            // console.log("StaffDelete Service",error.response);
+            failureCallback(error.response);
+        });
+};
+
+export const tryRestore = (item, token, successCallback, failureCallback) => {
+    ApiClient.post(
+        "/staff/restore",
+        { item: item },
+        {
+            headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + token
+            }
+        }
+    )
+        .then(response => {
+            // console.log("StaffDelete Service",response);
+            successCallback(response);
+        })
+        .catch(error => {
+            // console.log("StaffDelete Service",error.response);
+            failureCallback(error.response);
+        });
+};
+
+export const trySupspend = (item, token, successCallback, failureCallback) => {
+    ApiClient.post(
+        "/staff/suspend",
         { item: item },
         {
             headers: {

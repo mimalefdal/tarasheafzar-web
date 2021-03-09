@@ -25,6 +25,11 @@
     color: white; */
 }
 
+.list-option {
+    margin-inline-end: 1rem;
+    text-align: start;
+}
+
 .items-ribbon {
     display: flex;
     flex-direction: row;

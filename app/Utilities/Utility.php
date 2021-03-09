@@ -8,6 +8,34 @@ use App\Models\Unit;
 
 class Utility
 {
+
+    public static function getHolderType($holderClass)
+    {
+        switch ($holderClass) {
+            case null:
+            case 'App\Models\Company':
+                $item['holder'] = ['title' => resolve('Company')->getShortName()];
+                return 'company';
+                // $item['holder_title'] = $item['holder']['title'][Lang::getLocale()];
+                break;
+
+            case 'App\Models\Branch':
+                return 'branch';
+                break;
+
+            case 'App\Models\Department':
+                return 'department';
+                break;
+            case 'App\Models\Unit':
+                return 'unit';
+                break;
+
+            default:
+                return 'unknown';
+                break;
+        }
+    }
+
     public static function getHolder($holderType, $slug)
     {
         switch ($holderType) {

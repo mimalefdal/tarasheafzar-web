@@ -5,3 +5,5 @@ export { default as DeleteButton } from "./deleteButton";
 export { default as ViewButton } from "./viewButton";
 export { default as AddButton } from "./addButton";
 export { default as ExpandButton } from "./expandButton";
+export { default as StopButton } from "./stopButton";
+export { default as SuspenseTogglerButton } from "./suspendTogglerButton";

@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { Collapse } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
-import React, { useEffect, useState } from "react";
 import { t } from "../../utils";
 
 function feedback({ show, type, message = "", ...props }) {

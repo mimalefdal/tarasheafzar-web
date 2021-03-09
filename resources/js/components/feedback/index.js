@@ -9,3 +9,4 @@ export { default as Loading } from "./loading";
 export { default as WaitingDialog } from "./waiting-for-execution";
 export { default as DeleteDialog } from "./deleteDialog";
 export { default as SuggestDialog } from "./suggestDialog";
+export { default as ConfirmAndRunDialog } from "./confirm-and-run-dialog";

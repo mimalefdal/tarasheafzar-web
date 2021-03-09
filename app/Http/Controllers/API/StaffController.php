@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreStaffRequest;
 use App\Http\Resources\BlockItem;
 use App\Http\Resources\JoblevelItem;
+use App\Http\Resources\StaffManageDisplayItem;
+use App\Http\Resources\StaffManageEditItem;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 
@@ -16,18 +19,117 @@ class StaffController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function index()
+    public function create(StoreStaffRequest $request)
     {
-        return Staff::whereNotNull('national_id')->with('position', 'position.roles')->get();
+        $newItem = new Staff($request->all());
+        $newItem->setPosition($request->position);
+        $newItem->save();
+
+        $resourceItem = StaffManageDisplayItem::make($newItem);
+
+        $message = \Lang::get('messages.recordـcreated_with_type', ['title' => $newItem->getFullNameAttribute(), 'type' => \Lang::get('values.Staff_s')]);
+
+        $data = ['message' => $message, 'staff' => $resourceItem];
+        return response()->json($data, 200);
+
+        return response(["message" => "Not Implemented", $newItem], 400);
     }
 
-    public function create(Request $request)
+    public function index()
     {
-        return $request;
+        return StaffManageDisplayItem::collection(Staff::whereNotNull('national_id')->with('position', 'position.roles')->get());
+        return response(["message" => "Not Implemented"], 400);
     }
 
     public function show(Request $request)
     {
-        return ['function must implement'];
+        $resourceClass = StaffManageDisplayItem::class;
+        if ($request->has('mode')) {
+            switch ($request->get('mode')) {
+                case 'editByManager':
+                    $resourceClass = StaffManageEditItem::class;
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        }
+        if ($request->has('id')) {
+            $staffQuery = Staff::withTrashed()->where('id', $request->id);
+        } elseif ($request->has('personnel_id')) {
+            $staffQuery = Staff::withTrashed()->where('personnel_id', $request->personnel_id);
+        } elseif ($request->has('username')) {
+            $staffQuery = Staff::withTrashed()->where('username', $request->username);
+        };
+
+        $staff = $staffQuery->with('position.hasposition')->first();
+        if ($resourceClass == null)
+            return $staff;
+        return $resourceClass::make($staff);
+
+        return response(["message" => "Not Implemented", $request->all()], 400);
+    }
+
+    public function update(StoreStaffRequest $request)
+    {
+
+        // $newItem = new Staff($request->all());
+        // $newItem->setPosition($request->position);
+
+        $item = Staff::find($request->item['id']);
+
+        $item->setPosition($request->position);
+        $item->update($request->all());
+
+        $resourceItem = StaffManageEditItem::make($item);
+
+        $message = \Lang::get('messages.recordـupdated_with_type', ['title' => $item->getFullNameAttribute(), 'type' => \Lang::get('values.Account')]);
+        $data = ['message' => $message, 'staff' => $resourceItem];
+        return response($data);
+
+        return response(["message" => "Not Implemented", $item], 400);
+    }
+
+    public function delete(Request $request)
+    {
+        $item = $request->item;
+        $item = Staff::find($item['id']);
+        $item->delete();
+
+        $message = \Lang::get('messages.recordـdeleted', ['title' => $item->getFullNameAttribute()]);
+        $data = ['message' => $message];
+
+        return response($data);
+        return response(["message" => "Not Implemented", $request], 400);
+    }
+
+    public function restore(Request $request)
+    {
+        // $item = $request->item;
+        // $item = Staff::find($item['id']);
+
+        // $message = \Lang::get('messages.recordـdeleted', ['title' => $item->getFullNameAttribute()]);
+        // $data = ['message' => $message];
+
+        // return response($data);
+        return response(["message" => "Not Implemented", $request], 400);
+    }
+
+    public function toggleSuspend(Request $request)
+    {
+        $item = $request->item;
+        $item = Staff::find($item['id']);
+
+        $item->suspended = !$item->suspended;
+        $item->save();
+
+        $resourceItem = StaffManageDisplayItem::make($item);
+
+        $message = \Lang::get('messages.recordـupdated', ['title' => $item->getFullNameAttribute()]);
+        $data = ['message' => $message, 'staff' => $resourceItem];
+
+        return response($data);
+        return response(["message" => "Not Implemented", $request->all()], 400);
     }
 }

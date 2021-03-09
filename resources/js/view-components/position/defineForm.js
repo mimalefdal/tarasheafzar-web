@@ -18,7 +18,7 @@ import { SingleColumnFormBase } from "../../components/forms";
 import { AddPosition, GetValidValues, UpdatePosition } from "../../services";
 
 export default function Form({ preset = "add", ...props }) {
-    // props.item && console.log("Define   Form", props.item);
+    // props.item && console.log("Define Form", props.item);
     // console.log("DefineForm", props);
 
     const [initialAlert, setInitialAlert] = useState();

@@ -8,8 +8,11 @@
     --primaryColor: var(--blue);
     --primaryBkgColor: #eee;
 
+    --secondaryColor: darkCyan;
+
     --linkedTagColor: lightcoral;
-    --hoverColor: lightcoral;
+    /* --hoverColor: lightcoral; */
+    --hoverColor: #ffc400;
 
     --taDark: #263238;
     --taOrange: #ff5733;
@@ -107,6 +110,10 @@ body {
     background-color: whitesmoke;
 }
 
+a:hover,
+button:hover {
+    color: var(--hoverColor);
+}
 .panel-main-content {
     /* position: absolute; */
     width: 100%;
@@ -443,12 +450,23 @@ body {
     align-items: center;
 }
 
+.btn-set {
+    font-size: 0.6rem;
+    color: white;
+}
+
+.option-set {
+    font-size: 0.6rem;
+    color: white;
+}
+
 .operation-icon-btn {
     width: 30px;
     background: transparent;
     border: none;
     color: inherit;
     padding: 0;
+    transition: all 500ms linear;
 }
 .header-operation-btn {
     display: flex;
@@ -457,15 +475,18 @@ body {
 }
 
 .header-operation-btn svg {
-    fill: #24c239;
-    fill: white;
+    /* fill: #24c239;
+    fill: white; */
 }
 
 .header-operation-btn:hover svg {
-    fill: deepskyblue;
-    fill: #ffc107;
+    /* fill: deepskyblue;
+    fill: #ffc107; */
 }
 
+.header-operation-btn.disabled svg {
+    fill: gray;
+}
 .loading {
     /* margin: auto; */
 }
@@ -476,16 +497,28 @@ body {
     /* fill: none;
     stroke: var(--primaryColor); */
 }
-
+.tag-set {
+    margin-inline-end: 1rem;
+}
 .tag {
-    padding: 0.5rem;
-    background-color: red;
+    padding: 0.4rem;
+    background-color: darkcyan;
     color: white;
-    font-size: 12px;
+    font-size: 0.6rem;
     font-weight: bold;
     border-radius: 0.2rem;
+    width: 3rem;
+    text-align: center;
+    margin-inline-end: 0.1rem;
 }
 
+.tag.deleted {
+    background-color: tomato;
+}
+
+.tag.suspended {
+    background-color: darkorange;
+}
 .alert-action {
     width: 20px !important;
     height: 20px !important;
@@ -503,6 +536,30 @@ body {
 .wait-alert {
     /* transition: all 1s linear; */
     height: 20vh !important;
+}
+
+.expandable-area {
+    flex-wrap: wrap;
+    margin-top: 1rem !important;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--secondaryColor);
+}
+
+.expandable-group-title {
+    text-align: start;
+    font-weight: 200;
+    background-color: var(--secondaryColor);
+    color: white;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.expandable-group-title:hover {
+    font-weight: 300;
+}
+
+.expandable-group-title.disabled {
+    background-color: #aaa;
 }
 
 @media screen and (max-width: 1281px) {

@@ -16,7 +16,7 @@ return [
     'home' => 'خانه',
     'about-us' => 'درباره ما',
     'contact-us' => 'تماس با ما',
-    'staff-panel' => 'پنل همکاران',
+    'staff-panel' => 'پنل سازمانی',
     'Temptest' => 'لینک‌آزمون',
 
 ];

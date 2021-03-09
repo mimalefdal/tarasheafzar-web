@@ -9,7 +9,7 @@
 .form-container {
     padding-top: 3rem;
     padding: 3rem;
-    width: 50%;
+    width: 70%;
     margin: auto;
     background: aliceblue;
 }
@@ -74,13 +74,13 @@
 
 @media screen and (max-width: 1440px) {
     .form-container {
-        width: 70%;
+        width: 80%;
     }
 }
 
 @media screen and (min-width: 1281px) and (max-width: 1339px) {
     .form-container {
-        width: 80%;
+        width: 85%;
     }
 }
 

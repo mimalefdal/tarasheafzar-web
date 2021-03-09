@@ -32,6 +32,11 @@ export { tryDelete as DeletePosition } from "./position-service";
 
 export { tryAdd as AddStaff } from "./staff-service";
 export { getIndex as GetStaffList } from "./staff-service";
+export { getItem as GetStaff } from "./staff-service";
+export { tryUpdate as UpdateStaff } from "./staff-service";
+export { tryDelete as DeleteStaff } from "./staff-service";
+export { tryRestore as RestoreStaff } from "./staff-service";
+export { trySupspend as ToggleSuspendStaff } from "./staff-service";
 
 export { _getStatus as GetInitializeStatus } from "./initialize-service";
 export { _installLicence as InitializeLicence } from "./initialize-service";

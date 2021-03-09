@@ -4,6 +4,7 @@ import "../../styles/tables.css";
 import { LodingTableItems } from "../table-controls";
 import { OperationEntry, RightEntry } from ".";
 import { EditButton, ViewButton, DeleteButton } from "../buttons";
+import { Loading } from "../feedback";
 
 function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
     const [loading, setLoading] = useState(props.loading);
@@ -13,7 +14,6 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
 
     useEffect(() => {
         // console.log("OperatinTableBase", entryOperations);
-
         setLoading(props.loading);
     }, [props.loading]);
 
@@ -22,7 +22,9 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
             <thead>
                 <tr>
                     {Object.keys(tableMap).map(key => (
-                        <th key={key}> {t("labels." + key)} </th>
+                        <th key={key}>
+                            {key.charAt(0) == "_" ? "" : t("labels." + key)}{" "}
+                        </th>
                     ))}
 
                     <th className="operations"></th>
@@ -30,7 +32,13 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
             </thead>
             <tbody>
                 {loading ? (
-                    <LodingTableItems columns={items.size} />
+                    <tr>
+                        <td>
+                            <Loading
+                                columns={Object.keys(tableMap).length + 1}
+                            />
+                        </td>
+                    </tr>
                 ) : (
                     items.map((item, index) => {
                         if (props.loading == false) {

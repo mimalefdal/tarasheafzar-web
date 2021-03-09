@@ -245,8 +245,8 @@
             "lastname": "قاراپتیان",
             "national_id": "1000500500",
             "idcert_no": "5005",
-            "gender": "Empty",
-            "email": "ceo@companydomain.com",
+            "gender": null,
+            "email": "ceo@tarasheafzar.ir",
             "position": "executive-chief-officer",
             "roles": [],
             "rights": [
