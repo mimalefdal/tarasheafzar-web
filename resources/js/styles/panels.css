@@ -1,5 +1,9 @@
 :root {
     --main-bkg: whitesmoke;
+    /* --main-bkg: rgb(52, 76, 98); */
+
+    --link-bkg: rgb(255, 255, 255, 0.6);
+
     --titlebkg: var(--blue);
     --formtitlebkg: var(--indigo);
     --showtitlebkg: #000080;
@@ -186,7 +190,9 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: var(--link-bkg);
+
     color: var(--titlebkg);
     box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
 }
@@ -243,8 +249,6 @@ button:hover {
     height: 10vh;
     padding: 15px;
     color: grey;
-    /* background-color: var(--titlebkg); */
-    border: 1px solid var(--titlebkg);
     /* font-weight: bold; */
     border-radius: 5px;
     margin: 5px;
@@ -253,9 +257,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     color: var(--titlebkg);
-    /* background-color: var(--taDark);
-    color: whitesmoke; */
-    /* box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important; */
+    background-color: var(--link-bkg);
 }
 
 .tool-link:hover {
@@ -303,9 +305,9 @@ button:hover {
     width: inherit;
     flex: 0 0 30%;
     box-shadow: inherit !important;
-    /* background-color: indianred; */
+    /* background-color: var(--link-bkg); */
     height: 90%;
-    border: 1px solid var(--titlebkg);
+    /* border: 1px solid var(--titlebkg); */
 }
 
 .tool-link.horizontal {
@@ -315,17 +317,17 @@ button:hover {
 .panel-links::-webkit-scrollbar,
 .tool-links::-webkit-scrollbar {
     /* if scrollbar have a value problems will occured when mui modal opens   */
-    height: 10px;
+    /* height: 10px; */
 }
 
 .panel-links::-webkit-scrollbar-track {
     /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
-    background-clip: content-box;
+    /* background-clip: content-box; */
 }
 
 .panel-links::-webkit-scrollbar-thumb {
-    background-color: var(--titlebkg);
-    max-width: 10px;
+    /* background-color: var(--titlebkg);
+    max-width: 10px; */
     /* outline: 1px solid slategrey; */
     /* width: 5px; */
 }

@@ -1,5 +1,5 @@
 :root {
-    --table-bkg: white;
+    --table-bkg: rgb(255, 255, 255, 0.4);
     --table-header-bkg: #efefef;
     --table-header-font: initial;
     --table-secondary-color: var(--blue);
@@ -18,12 +18,18 @@ thead {
 }
 
 thead {
-    border-bottom: 2px solid var(--table-secondary-color);
+    /* border-bottom: 2px solid var(--table-secondary-color); */
+}
+
+th,
+td {
+    text-align: start;
+    padding: 0.5rem;
 }
 
 th {
-    padding: 1em;
-    font-size: 16px;
+    /* padding: 1em; */
+    font-size: 1rem;
     font-weight: bold;
     position: sticky;
     top: 23vh;
@@ -31,11 +37,12 @@ th {
 
 tr {
     border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--table-secondary-color);
     height: 75px;
 }
 
 td {
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     cursor: default;
 }
 

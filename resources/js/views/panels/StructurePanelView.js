@@ -7,7 +7,7 @@ export default function _View() {
     let match = useRouteMatch();
     return (
         <Fragment>
-            <div className="tool-links">
+            <div className="tool-links horizontal">
                 {/* <Link
                     className="panel-link"
                     to={`${match.url}/company/information`}
@@ -22,7 +22,7 @@ export default function _View() {
                 </Link> */}
 
                 <GuardedLink
-                    className="tool-link"
+                    className="tool-link horizontal"
                     to={`${match.url}/branches`}
                     feature="branches-management-tool"
                     requiredRight="access-structure-panel"
@@ -30,7 +30,7 @@ export default function _View() {
                     style={{ order: 1 }}
                 />
                 <GuardedLink
-                    className="tool-link"
+                    className="tool-link horizontal"
                     to={`${match.url}/departments`}
                     // feature="departments-management-tool"
                     requiredRight="access-structure-panel"
@@ -39,7 +39,7 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link"
+                    className="tool-link horizontal"
                     to={`${match.url}/units`}
                     // feature="units-management-tool"
                     requiredRight="access-structure-panel"
@@ -48,7 +48,7 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link"
+                    className="tool-link horizontal"
                     to={`${match.url}/joblevels`}
                     // feature="joblevels-management-tool"
                     requiredRight="access-structure-panel"
@@ -57,7 +57,7 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link"
+                    className="tool-link horizontal"
                     to={`${match.url}/positions`}
                     // feature="positions-management-tool"
                     requiredRight="access-structure-panel"

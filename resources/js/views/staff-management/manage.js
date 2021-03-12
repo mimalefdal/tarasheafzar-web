@@ -87,7 +87,7 @@ function _manage(props) {
             </PageHeaderBar>
             <TableList
                 dataService={GetStaffList}
-                tableComponent={<OperationTable className="general-shadow" />}
+                tableComponent={<OperationTable className="" />}
                 entryComponent={<StaffEntry />}
                 tableMap={staffTableMap}
                 entryOperations={entryOperations}

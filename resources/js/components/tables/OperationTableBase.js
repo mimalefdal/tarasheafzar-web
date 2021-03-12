@@ -32,7 +32,7 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
             </thead>
             <tbody>
                 {loading ? (
-                    <tr>
+                    <tr style={{ border: "none" }}>
                         <td>
                             <Loading
                                 columns={Object.keys(tableMap).length + 1}
