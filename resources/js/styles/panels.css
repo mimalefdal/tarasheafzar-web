@@ -54,8 +54,10 @@
 /* SLIDE Right */
 .slide-right-enter,
 .slide-right-appear {
+    position: relative;
     z-index: 10;
     transform: translateX(-100%);
+    background-color: darkgray;
 }
 
 .slide-right-enter-active,
@@ -64,37 +66,43 @@
     transition: transform 1000ms linear;
 }
 .slide-right-exit {
-    transform: translateX(0);
-    z-index: 9;
+    /* transform: translate3d(0%, 0%, 0); */
+    transform: translateY(-100%);
+    z-index: 1;
 }
 .slide-right-exit-active {
-    transform: translateX(100%);
-    transition: transform 1000ms linear;
-}
-
-/* SLIDE UP */
-.slide-up-enter,
-.slide-up-appear {
-    transform: translateY(-100%);
-}
-.slide-up-enter-active,
-.slide-up-appear-active {
+    /* transform: translate3d(0%, 100%, 0); */
     transform: translateY(0%);
     transition: transform 1000ms linear;
 }
 
-.slide-up-exit {
-    transform: translateY(0);
+/* TO HOME TRANSITION */
+.to-home-enter,
+.to-home-appear {
+    transform: translateY(-100%);
 }
-.slide-up-exit-active {
-    transform: translateY(100%);
+.to-home-enter-active,
+.to-home-appear-active {
+    transform: translateY(0%);
     transition: transform 1000ms linear;
+}
+
+.to-home-exit {
+    transform: translateY(-100%);
+    opacity: 0.5;
+}
+.to-home-exit-active {
+    transform: translateY(0%);
+    opacity: 0;
+
+    transition: all 1000ms linear;
 }
 
 /* Fade */
 .fade-enter,
 .fade-appear {
     opacity: 0;
+    /* background-color: darkmagenta; */
 }
 .fade-enter-active,
 .fade-appear-active {
@@ -125,9 +133,6 @@ button:hover {
     /* background-color: yellow; */
 }
 .panel-body {
-    /* background-color: #ddd;   */
-    flex: none; /* is prior to responsive innwe width */
-    /* flex: 1.8; */
 }
 
 .panel-side-area {

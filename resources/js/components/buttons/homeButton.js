@@ -15,7 +15,7 @@ function HomeButton(props) {
                 to={{
                     pathname: "/home",
                     state: {
-                        transition: "slide-right",
+                        transition: "to-home",
                         timeout: { appear: 1000, enter: 1000, exit: 1000 }
                     }
                 }}

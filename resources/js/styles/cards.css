@@ -31,7 +31,7 @@
     background-color: #dedede;
     /* padding-top: 1rem; */
     /* padding-bottom: 1rem; */
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 0.4rem 0.4rem 0 0;
 }
 
 .card-container.expanded .card-title {

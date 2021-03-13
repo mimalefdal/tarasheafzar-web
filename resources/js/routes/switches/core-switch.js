@@ -34,19 +34,19 @@ function _Switch(props) {
                     classNames:
                         location.state && location.state.transition
                             ? location.state.transition
-                            : "null",
+                            : "fade",
                     timeout:
                         location.state && location.state.timeout
                             ? location.state.timeout
-                            : { appear: 0, enter: 0, exit: 0 }
+                            : { appear: 500, enter: 500, exit: 500 }
                 })
             }
         >
             <CSSTransition
                 key={location.key}
                 timeout={{}}
-                unmountOnExit={true}
-                mountOnEnter={false}
+                // unmountOnExit={false}
+                // mountOnEnter={false}
             >
                 <div className="panel-main-content">
                     <Switch location={location}>
