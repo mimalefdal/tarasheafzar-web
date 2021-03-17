@@ -17,7 +17,7 @@ function _CardListBase({
     trigger = true,
     ...props
 }) {
-    // console.log("_CardListBase", entryOperations);
+    // console.log("CardListBase", entryOperations);
 
     const [items, setItems] = useState([]);
     const [emptyMessage, setEmptyMessage] = useState(null);
@@ -42,7 +42,10 @@ function _CardListBase({
             dataService(
                 token,
                 response => {
-                    // console.log("_CardListBase:[trigger]:response:", response);
+                    console.log(
+                        "_CardListBase:[trigger]:response:",
+                        response.data
+                    );
                     if (response.status == 203) {
                         setEmptyMessage(response.data.message);
                     } else {

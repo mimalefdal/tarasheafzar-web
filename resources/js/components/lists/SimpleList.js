@@ -10,6 +10,7 @@ function _list({
     linkPattern = null,
     ...props
 }) {
+    // console.log(title, items);
     return (
         <>
             <div
@@ -30,7 +31,7 @@ function _list({
                     flexDirection: "column"
                 }}
             >
-                {items.length == 0
+                {!items || items.length == 0
                     ? t("expressions.noItemsSetFor", {
                           type: t("labels." + itemType)
                       })

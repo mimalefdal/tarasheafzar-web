@@ -23,8 +23,9 @@ class StaffController extends Controller
         if ($user->position != null) {
             $user->title = $user->position->title[$lang];
         } else {
-            $titles = json_decode($user->roles->first()->title);
-            $user->title = $titles->$lang;
+            // $titles = json_decode($user->roles->first()->title);
+            $titles = $user->roles->first()->title;
+            $user->title = $titles[$lang];
         }
 
         $user->rights = $user->rights;

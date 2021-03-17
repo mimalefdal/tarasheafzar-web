@@ -8,18 +8,14 @@ export default function _View() {
     return (
         <Fragment>
             <div className="tool-links horizontal">
-                {/* <Link
-                    className="panel-link"
-                    to={`${match.url}/company/information`}
-                >
-                    Company Information
-                </Link>
-                <Link
-                    className="panel-link"
-                    to={`${match.url}/company/structure`}
-                >
-                    View Company Structure
-                </Link> */}
+                <GuardedLink
+                    className="tool-link horizontal"
+                    to={`${match.url}/company`}
+                    // feature="company-management-tool"
+                    requiredRight="access-structure-panel"
+                    label={t("tools.companyManagement")}
+                    style={{ order: 1 }}
+                />
 
                 <GuardedLink
                     className="tool-link horizontal"

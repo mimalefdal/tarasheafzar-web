@@ -46,7 +46,7 @@ class UnitItem extends JsonResource
         switch ($this->hasunit_type) {
             case null:
             case 'App\Models\Company':
-                $item['holder'] = ['title' => resolve('Company')->getShortName()];
+                $item['holder'] = ['title' => resolve('Company')->shortTitle()];
                 $item['holder_type'] = 'company';
                 break;
 
@@ -72,8 +72,7 @@ class UnitItem extends JsonResource
                 $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.' . $item['holder_type'])]);
             }
 
-
-
+        $item['directcrew'] = StaffManageDisplayItem::collection($this->directcrew());
 
         return $item;
     }

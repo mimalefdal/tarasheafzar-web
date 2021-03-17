@@ -60,7 +60,7 @@ class PositionItem extends JsonResource
         switch ($this->hasposition_type) {
             case null:
             case 'App\Models\Company':
-                $item['holder'] = ['title' => resolve('Company')->getShortName()];
+                $item['holder'] = ['title' => resolve('Company')->shortTitle()];
                 // $item['holder_title'] = $item['holder']['title'][Lang::getLocale()];
                 break;
 

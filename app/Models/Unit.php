@@ -6,6 +6,7 @@ use App\Http\Resources\UnitItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ChecksUniqueness;
 use App\Traits\AdministratesPositions;
+use App\Traits\HandlesCrew;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
 use Bilang;
@@ -15,6 +16,8 @@ class Unit extends Model
     use AdministratesPositions;
     use SoftDeletes;
     use ChecksUniqueness;
+
+    use HandlesCrew;
 
     protected $type = 'Unit';
 
@@ -48,7 +51,7 @@ class Unit extends Model
         if ($this->hasunit_id != null) {
             $holderTitle = $this->hasunit->fullTitle($lang);
         } else
-            $holderTitle = resolve('Company')->getShortName()[$lang];
+            $holderTitle = resolve('Company')->shortTitle();
 
         return $holderTitle;
     }

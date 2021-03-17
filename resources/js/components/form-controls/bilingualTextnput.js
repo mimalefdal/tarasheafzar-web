@@ -31,7 +31,9 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                     errors={errors}
                     backendErrors={backendErrors}
                     disabled={loading}
-                    value={props.initialValue ? props.initialValue.fa : null}
+                    initialValue={
+                        props.initialValue ? props.initialValue.fa : null
+                    }
                     onChange={event => {
                         setValue({ ...value, fa: event.target.value });
                     }}
@@ -48,7 +50,7 @@ function Input({ name, errors, backendErrors, loading, ...props }, ref) {
                 errors={errors}
                 backendErrors={backendErrors}
                 disabled={loading}
-                value={props.initialValue ? props.initialValue.en : null}
+                initialValue={props.initialValue ? props.initialValue.en : null}
                 onChange={event =>
                     setValue({ ...value, en: event.target.value })
                 }

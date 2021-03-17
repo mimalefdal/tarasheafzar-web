@@ -1,5 +1,7 @@
 export { default as ApiClient } from "./api-service";
 
+export { getInformation as GetCompanyInfo } from "./company-service";
+
 export { tryAdd as AddBranch } from "./branch-service";
 export { getIndex as GetBranchsList } from "./branch-service";
 export { getItem as GetBranch } from "./branch-service";

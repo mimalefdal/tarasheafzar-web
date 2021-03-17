@@ -8,6 +8,7 @@ use App\Traits\AdministratesPositions;
 use App\Models\Branch;
 use App\Traits\ChecksUniqueness;
 use App\Traits\HandlesChildBlocks;
+use App\Traits\HandlesCrew;
 use App\Traits\ManagesUnits;
 use Bilang;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,6 +21,7 @@ class Department extends Model
     use SoftDeletes;
     use ChecksUniqueness;
     use HandlesChildBlocks;
+    use HandlesCrew;
 
     protected $type = 'Department';
 
@@ -53,7 +55,7 @@ class Department extends Model
         if ($this->branch != null) {
             $holderTitle = $this->branch->fullTitle($lang);
         } else
-            $holderTitle = resolve('Company')->getShortName()[$lang];
+            $holderTitle = resolve('Company')->shortTitle();
 
         return $holderTitle;
     }

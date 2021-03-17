@@ -58,7 +58,7 @@ Route::post('staff/restore', 'API\StaffController@restore');
 Route::post('staff/suspend', 'API\StaffController@toggleSuspend');
 Route::get('staff', 'API\StaffController@index');
 Route::get('anstaff', 'API\StaffController@show');
-Route::get('scope', 'API\DirtyController@scope');
+// Route::get('scope', 'API\DirtyController@scope');
 
 Route::get('/initialize/status', 'API\InitializeController@status');
 Route::post('/initialize/setlicence', 'API\InitializeController@installLicence');

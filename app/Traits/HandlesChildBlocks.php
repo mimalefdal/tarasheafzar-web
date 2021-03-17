@@ -2,13 +2,10 @@
 
 namespace App\Traits;
 
-use App\Http\Resources\BlockItem;
-use App\Http\Resources\BranchItem;
-use App\Models\Branch;
-use Illuminate\Support\Arr;
+use stdClass;
 
 /**
- * Handles Child Block og a Block (Company,Branch,Department)
+ * Handles Child Block of an orgaziation block Models (Company,Branch,Department)
  */
 trait HandlesChildBlocks
 {
@@ -17,13 +14,13 @@ trait HandlesChildBlocks
     {
         $childBlocks = [];
         if ($this->childBranches() != [])
-            $childBlocks['branches'] = $this->childBranches();
+            $childBlocks['branch'] = $this->childBranches();
 
         if ($this->childDepartments() != [])
-            $childBlocks['departments'] = $this->childDepartments();
+            $childBlocks['department'] = $this->childDepartments();
 
         if ($this->childUnits() != [])
-            $childBlocks['units'] = $this->childUnits();
+            $childBlocks['unit'] = $this->childUnits();
 
         return $childBlocks;
     }
@@ -57,5 +54,25 @@ trait HandlesChildBlocks
             return $this->units;
         }
         return [];
+    }
+
+    public static function flatted($blocks)
+    {
+        $flatted = [];
+
+        foreach ($blocks as $type => $subblocks) {
+            foreach ($subblocks as $block) {
+                // array_push($flatted, ['type' => $type, 'slug' => $block->slug, 'block' => $block]);
+                array_push($flatted, $block);
+                if (method_exists($block, 'childBlocks'))
+                    $flatted = array_merge($flatted, $block->flatted($block->childBlocks()));
+            }
+        }
+        return $flatted;
+    }
+
+    private static function flatten($block)
+    {
+        // $flattened = ['type' => $type, 'slug' => $block->slug, 'block' => $block];
     }
 }

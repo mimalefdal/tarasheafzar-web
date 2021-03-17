@@ -30,7 +30,7 @@ export const getIndex = (token, successCallback, failureCallback) => {
             successCallback(response);
         })
         .catch(error => {
-            // console.log("StaffIndex Service", error.response);
+            console.log("StaffIndex Service", error);
             failureCallback(error.response);
         });
 };

@@ -11,6 +11,7 @@ use App\Models\Department;
 use App\Traits\AdministratesPositions;
 use App\Traits\ChecksUniqueness;
 use App\Traits\HandlesChildBlocks;
+use App\Traits\HandlesCrew;
 use App\Traits\ManagesUnits;
 
 class Branch extends Model
@@ -20,6 +21,7 @@ class Branch extends Model
     use ChecksUniqueness;
     use SoftDeletes;
     use HandlesChildBlocks;
+    use HandlesCrew;
 
     protected $fillable = [
         'title', 'slug', 'type', 'deleted_at'
@@ -31,6 +33,7 @@ class Branch extends Model
 
     public function departments()
     {
+        // return $this->hasMany(Department::class);
         return $this->hasMany(Department::class)->with('units');
     }
 

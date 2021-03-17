@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use Illuminate\Http\Request;
+use App\Http\Resources\CompanyGeneralInfo;
 
 class CompanyController extends Controller
 {
@@ -15,6 +14,6 @@ class CompanyController extends Controller
 
     public function show()
     {
-        return response(resolve('Company')->get(), 200);
+        return response(CompanyGeneralInfo::make(resolve('Company')), 200);
     }
 }

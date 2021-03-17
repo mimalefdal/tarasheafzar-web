@@ -23,7 +23,7 @@ function Entry({ item, entryActions, ...props }) {
     const name = item.firstname + " " + item.lastname;
     // const position = item.position_id && titles[currentLang()];
     const position = item.position && item.position.short_title;
-    const holder = item.holder_block ? item.holder_block : "NA";
+    const holder = item.holder ? item.holder.short_title : "NA";
 
     const displayItem = {
         index: id,

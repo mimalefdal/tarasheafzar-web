@@ -54,7 +54,7 @@ function _component({
                     />
                     <SpecCard
                         spec={t("labels.block")}
-                        value={staff.holder_block}
+                        value={staff.holder.full_title}
                     />
                 </>
             );

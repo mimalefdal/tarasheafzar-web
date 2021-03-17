@@ -34,7 +34,7 @@ function _show(props) {
             { mode: "viewByManager", personnel_id: personnel_id },
             token,
             response => {
-                // console.log(response);
+                console.log(response.data.data);
                 if (response.data.data) setItem(response.data.data);
                 else setItem(response.data);
                 setReady(true);

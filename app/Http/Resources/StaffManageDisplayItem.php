@@ -29,11 +29,8 @@ class StaffManageDisplayItem extends JsonResource
         $item['position'] = PositionSimpleItem::make($this->position);
         $item['suspended'] = $this->suspended;
         $item['deleted'] = $this->trashed();
-
-        if ($this->position->hasposition == null)
-            $item['holder_block'] = resolve('Company')->getShortName(\Lang::getLocale());
-        else
-            $item['holder_block'] = $this->position->hasposition->fullTitle();
+        $item['holder'] = BlockItem::make($this->holder());
+        $item['manageableCrew'] = $this->manageableCrew();
 
         return $item;
     }

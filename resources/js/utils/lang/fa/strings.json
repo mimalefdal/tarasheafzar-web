@@ -39,6 +39,8 @@
         "block": "بلوک",
         "branchType": "نوع شاخه",
         "branch": "شاخه",
+        "branchy": "شاخه‌ا",
+        "branches": "شاخه‌ها",
         "department": "دپارتمان",
         "departments": "دپارتمان‌ها",
         "unit": "واحد",
@@ -60,7 +62,11 @@
         "specs": "مشخصات :attr",
         "information": "اطلاعات :attr",
         "access": "دسترسی",
-        "access_p": "دسترسی‌ها"
+        "access_p": "دسترسی‌ها",
+        "staffof": "کارکنان :block",
+        "subset": "زیرمجموعه",
+        "staff_s": "پرسنل",
+        "staff_p": "کارکنان"
     },
     "attr": {
         "personal": "فردی",
@@ -107,14 +113,16 @@
     },
     "tools": {
         "systemInitialize": "راه‌اندازی سامانه",
-        "branchesManagement": "مدیریت شاخه‌ها",
-        "departmentsManagement": "مدیریت دپارتمان‌ها",
-        "unitsManagement": "مدیریت واحدها",
-        "joblevelsManagement": "مدیریت سطوح شغلی",
-        "positionsManagement": "مدیریت سمت‌ها",
-        "rightsManagement": "مدیریت حقوق دسترسی",
+        "companyManagement": "شرکت",
+        "organizationInformation": "اطلاعات سازمان",
+        "branchesManagement": "شاخه‌ها",
+        "departmentsManagement": "دپارتمان‌ها",
+        "unitsManagement": "واحدها",
+        "joblevelsManagement": "سطوح شغلی",
+        "positionsManagement": "سمت‌ها",
+        "rightsManagement": "حقوق دسترسی",
         "rightsAdministration": "سازمانداری حقوق دسترسی",
-        "staffManagement": "مدیریت کارکنان",
+        "staffManagement": "کارکنان",
         "featuresManagement": "مدیریت امکانات سامانه"
     },
     "forms": {

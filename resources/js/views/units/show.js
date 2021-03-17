@@ -44,7 +44,7 @@ function show(props) {
     }, []);
 
     useEffect(() => {
-        item && console.log("show", item.positions);
+        // item && console.log("showUnit", item.positions);
     }, [item]);
 
     return (
@@ -90,12 +90,32 @@ function show(props) {
                 )}
             </PageHeaderBar>
             {ready && (
-                <SimpleList
-                    title={t("labels.positions")}
-                    items={item.positions}
-                    dataField="short_title"
-                    itemType="position"
-                />
+                <>
+                    <SimpleList
+                        title={t("labels.positions")}
+                        items={item.positions}
+                        dataField="short_title"
+                        itemType="position"
+                    />
+                    <SimpleList
+                        title={t("labels.staffof", {
+                            block: t("labels.block")
+                        })}
+                        items={item.directcrew}
+                        dataField="fullname"
+                        itemType="staff_s"
+                        linkPattern="/staff/:personnel_id"
+                    />
+                    <SimpleList
+                        title={t("labels.staffof", {
+                            block: t("labels.subset")
+                        })}
+                        items={item.subsetcrew}
+                        dataField="fullname"
+                        itemType="staff_s"
+                        linkPattern="/staff/:personnel_id"
+                    />
+                </>
             )}
             <FormDialog
                 show={showEdit}

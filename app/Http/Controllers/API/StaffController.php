@@ -35,8 +35,9 @@ class StaffController extends Controller
         return response(["message" => "Not Implemented", $newItem], 400);
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        return StaffManageDisplayItem::collection($request->user()->manageableCrew('all'));
         return StaffManageDisplayItem::collection(Staff::whereNotNull('national_id')->with('position', 'position.roles')->get());
         return response(["message" => "Not Implemented"], 400);
     }
@@ -63,7 +64,7 @@ class StaffController extends Controller
             $staffQuery = Staff::withTrashed()->where('username', $request->username);
         };
 
-        $staff = $staffQuery->with('position.hasposition')->first();
+        $staff = $staffQuery->with(['position.hasposition'])->first();
         if ($resourceClass == null)
             return $staff;
         return $resourceClass::make($staff);

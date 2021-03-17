@@ -41,10 +41,14 @@ class DepartmentItem extends JsonResource
         $item['title_en'] = Bilang::getEnTitle($this->title);
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 
+
         if (isset($this->units))
             $item['units'] = BlockItem::collection($this->units);
         if (isset($this->positions))
             $item['positions'] =  PositionSimpleItem::collection($this->positions);
+
+        $item['directcrew'] = StaffManageDisplayItem::collection($this->directcrew());
+        $item['subsetcrew'] = StaffManageDisplayItem::collection($this->subsetcrew());
 
         $item['deleted'] = $this->trashed();
         if ($item['deleted'])
@@ -57,7 +61,7 @@ class DepartmentItem extends JsonResource
             if ($branch->trashed())
                 $item['deleted_holder_warning'] = Lang::get('messages.deleted_holder_warning', ['deleted' => $branch->fullTitle(), 'blocktype' => Lang::get('values.Department'), 'holdertype' => Lang::get('values.Branch')]);
         } else
-            $item['holder'] = ['title' => resolve('Company')->getShortName()];
+            $item['holder'] = ['title' => resolve('Company')->shortTitle()];
         return $item;
     }
 }

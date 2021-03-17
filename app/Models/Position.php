@@ -72,7 +72,7 @@ class Position extends Model
         if ($this->hasposition_id != null) {
             $holderTitle = $this->hasposition->fullTitle($lang);
         } else
-            $holderTitle = resolve('Company')->getShortName()[$lang];
+            $holderTitle = resolve('Company')->shortTitle();
 
         return $holderTitle;
     }

@@ -8,6 +8,7 @@ use App\Traits\ManagesAccess;
 use App\Traits\ManagesRoles;
 use App\Traits\ManagesPosition;
 use App\Traits\ManagesRights;
+use Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,26 +46,35 @@ class Staff extends Authenticatable
         return "{$this->firstname} {$this->lastname}";
     }
 
-    public function scope()
+    public function holder()
     {
-        $position = $this->position;
-        $joblevel = $position->joblevel;
-        // $holderBlock = $position->hasposition == null ? resolve('Company') : $position->hasposition;
-        $holderBlock = $position->hasposition;
+        if ($this->position->hasposition == null)
+            return resolve('Company');
+        return $this->position->hasposition;
+    }
 
-        if ($holderBlock != null) {
-            $holderBlock['class'] = $position->hasposition_type;
-        } else {
-            $holderBlock = resolve('Company')->make();
-            $holderBlock['class'] = get_class(resolve('Company'));
+    public function manageableCrew($mode = 'all')
+    {
+        switch ($mode) {
+            case 'all':
+                $targetCrew = $this->holder()->directCrew()->merge($this->holder()->subsetCrew());
+                break;
+
+            case 'direct':
+                $targetCrew = $this->holder()->directCrew();
+                break;
+
+            case 'subset':
+                $targetCrew = $this->holder()->subsetCrew();
+                break;
+            default:
+                # code...
+                break;
         }
-
-        // return ['joblevel' => $joblevel, 'holder' => $holderBlock];
-
-        if (method_exists($holderBlock, 'childBlocks')) {
-            $childBlocks = $holderBlock->childBlocks();
-            return ['joblevel' => $joblevel, 'holder' => $holderBlock, 'childBlocks' => $childBlocks];
-        }
-        return ['joblevel' => $joblevel, 'holder' => $holderBlock];
+        // return $targetCrew;
+        $manageableCrew = $targetCrew->filter(function ($value, $key) {
+            return $value->position->joblevel->priority > $this->position->joblevel->priority;
+        });
+        return $manageableCrew;
     }
 }

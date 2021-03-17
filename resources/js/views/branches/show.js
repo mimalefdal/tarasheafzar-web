@@ -97,6 +97,24 @@ function show(props) {
                         dataField="short_title"
                         itemType="position"
                     />
+                    <SimpleList
+                        title={t("labels.staffof", {
+                            block: t("labels.block")
+                        })}
+                        items={item.directcrew}
+                        dataField="fullname"
+                        itemType="staff_s"
+                        linkPattern="/staff/:personnel_id"
+                    />
+                    <SimpleList
+                        title={t("labels.staffof", {
+                            block: t("labels.subset")
+                        })}
+                        items={item.subsetcrew}
+                        dataField="fullname"
+                        itemType="staff_s"
+                        linkPattern="/staff/:personnel_id"
+                    />
                 </>
             )}
             <FormDialog

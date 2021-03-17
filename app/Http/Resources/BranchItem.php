@@ -34,8 +34,13 @@ class BranchItem extends JsonResource
 
         $item['full_title'] = $this->fullTitle();
         $item['full_title_en'] = $this->fullTitle('en');
+        // $item['short_title'] = $this->typedTitle();
+        // $item['short_title_en'] = $this->typedTitle('en');
         $item['title_en'] = Bilang::getEnTitle($this->title);
         $item['title'] = Bilang::getLocalTitle($this->title, true);
+
+        $item['directcrew'] = StaffManageDisplayItem::collection($this->directcrew());
+        $item['subsetcrew'] = StaffManageDisplayItem::collection($this->subsetcrew());
 
         if (isset($this->departments))
             $item['departments'] = BlockItem::collection($this->departments);
