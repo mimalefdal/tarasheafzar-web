@@ -15,6 +15,7 @@ import { NotFound } from "../../views/errors";
 import {
     DefineStaff,
     EditStaff,
+    ListStaff,
     ManageStaff,
     ShowStaff
 } from "../../views/staff-management";
@@ -32,6 +33,15 @@ export default function _Switch() {
                 exact
                 path={`${match.path}/manage`}
                 component={ManageStaff}
+                meta={{
+                    [FEATURE_READY]: "staff-management-tool"
+                }}
+            />
+
+            <GuardedRoute
+                exact
+                path={`${match.path}/list`}
+                component={ListStaff}
                 meta={{
                     [FEATURE_READY]: "staff-management-tool"
                 }}

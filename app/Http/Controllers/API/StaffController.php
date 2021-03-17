@@ -35,10 +35,15 @@ class StaffController extends Controller
         return response(["message" => "Not Implemented", $newItem], 400);
     }
 
-    public function index(Request $request)
+    public function index()
+    {
+        return StaffManageDisplayItem::collection(Staff::whereNotNull('national_id')->with('position', 'position.roles')->get());
+        return response(["message" => "Not Implemented"], 400);
+    }
+
+    public function getManageable(Request $request)
     {
         return StaffManageDisplayItem::collection($request->user()->manageableCrew('all'));
-        return StaffManageDisplayItem::collection(Staff::whereNotNull('national_id')->with('position', 'position.roles')->get());
         return response(["message" => "Not Implemented"], 400);
     }
 

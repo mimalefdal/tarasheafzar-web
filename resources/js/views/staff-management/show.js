@@ -119,6 +119,7 @@ function _show(props) {
                         staff={item}
                         title={t("labels.access_p")}
                     />
+                    <StaffManagementInformation preset="crew" staff={item} />
                     <ConfirmAndRunDialog
                         dataService={ToggleSuspendStaff}
                         request={suspendRequest}

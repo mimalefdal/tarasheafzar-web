@@ -19,6 +19,23 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
 };
 
 export const getIndex = (token, successCallback, failureCallback) => {
+    ApiClient.get("/staff/index", {
+        headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+        }
+    })
+        .then(response => {
+            // console.log("StaffIndex Service", response);
+            successCallback(response);
+        })
+        .catch(error => {
+            console.log("StaffIndex Service", error);
+            failureCallback(error.response);
+        });
+};
+
+export const getManageble = (token, successCallback, failureCallback) => {
     ApiClient.get("/staff", {
         headers: {
             Accept: "application/json",

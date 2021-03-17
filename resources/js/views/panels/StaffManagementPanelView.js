@@ -19,6 +19,14 @@ export default function StaffManagement() {
                     label={t("tools.staffManagement")}
                     style={{ order: 1 }}
                 />
+                <GuardedLink
+                    className="tool-link horizontal"
+                    to={`${match.url}/list`}
+                    feature="staff-management-tool"
+                    requiredRight="access-staff-management-tool"
+                    label={t("tools.staffList")}
+                    style={{ order: 1 }}
+                />
             </div>
             {/* <StaffManagementMDashboard /> */}
         </>

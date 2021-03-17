@@ -7,7 +7,12 @@ import { ConfirmAndRunDialog, DeleteDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { TableList } from "../../components/lists";
 import { OperationEntry, OperationTable } from "../../components/tables";
-import { DeleteStaff, GetStaffList, ToggleSuspendStaff } from "../../services";
+import {
+    DeleteStaff,
+    GetManagebleStaffList,
+    GetStaffList,
+    ToggleSuspendStaff
+} from "../../services";
 import { t } from "../../utils";
 import { StaffEntry } from "../../view-components";
 
@@ -69,7 +74,7 @@ function _manage(props) {
         <div className="">
             <PageHeaderBar>
                 <ListTitle
-                    title={t("lists.staffListTitle")}
+                    title={t("tools.staffManagement")}
                     btnSet={
                         <AddButton
                             className="header-operation-btn"
@@ -86,7 +91,7 @@ function _manage(props) {
                 />
             </PageHeaderBar>
             <TableList
-                dataService={GetStaffList}
+                dataService={GetManagebleStaffList}
                 tableComponent={<OperationTable className="" />}
                 entryComponent={<StaffEntry />}
                 tableMap={staffTableMap}

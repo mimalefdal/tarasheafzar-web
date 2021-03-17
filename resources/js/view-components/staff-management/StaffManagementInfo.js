@@ -1,6 +1,7 @@
 import React from "react";
 import { SpecCard } from "../../components/cards";
 import { TitledCollapse } from "../../components/list-controls";
+import { SimpleList } from "../../components/lists";
 import { t } from "../../utils";
 
 function _component({
@@ -60,6 +61,16 @@ function _component({
             );
             break;
 
+        case "crew":
+            displayTitle = t("labels.managebleCrew");
+            specCards = (
+                <>
+                    {staff.manageableCrew.map(staff => {
+                        return <div key={staff.id}>{staff.fullname}</div>;
+                    })}
+                </>
+            );
+            break;
         default:
             // no preset
             displayTitle = t("labels.specs", { attr: "..." });
