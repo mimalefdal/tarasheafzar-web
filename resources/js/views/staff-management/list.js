@@ -38,12 +38,13 @@ function _list(props) {
         },
         {
             type: "suspendToggle",
+            requiredRight: ["suspend-staff"],
             actionType: "callback",
             action: handleSuspend
         },
         {
             type: "delete",
-            requiredRight: ["create-staff", "edit-staff"],
+            requiredRight: ["delete-staff"],
             actionType: "callback",
             action: handleDelete
         }

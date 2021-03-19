@@ -53,6 +53,7 @@ Route::get('position', 'API\PositionController@show');
 
 Route::post('staff/add', 'API\StaffController@create');
 Route::post('staff/update', 'API\StaffController@update');
+// Route::post('staff/remove', 'API\StaffController@delete')->middleware('can:delete-staff');
 Route::post('staff/remove', 'API\StaffController@delete');
 Route::post('staff/restore', 'API\StaffController@restore');
 Route::post('staff/suspend', 'API\StaffController@toggleSuspend');

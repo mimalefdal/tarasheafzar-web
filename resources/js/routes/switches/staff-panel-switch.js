@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import { StaffManagementPanelView } from "../../views/panels";
 import { GuardedRoute } from "react-router-guards";
-import { FEATURE_READY } from "../guards/types";
+import { FEATURE_READY, REQUIRED_RIGHT } from "../guards/types";
 import { NotFound } from "../../views/errors";
 import {
     DefineStaff,
@@ -67,7 +67,8 @@ export default function _Switch() {
                 path={`${match.path}/edit/:personnel_id`}
                 component={EditStaff}
                 meta={{
-                    [FEATURE_READY]: "staff-management-tool"
+                    [FEATURE_READY]: "staff-management-tool",
+                    [REQUIRED_RIGHT]: "edit-staff"
                 }}
             />
 

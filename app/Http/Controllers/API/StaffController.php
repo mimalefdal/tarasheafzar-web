@@ -4,13 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStaffRequest;
-use App\Http\Resources\BlockItem;
-use App\Http\Resources\JoblevelItem;
 use App\Http\Resources\StaffManageDisplayItem;
 use App\Http\Resources\StaffManageEditItem;
 use Illuminate\Http\Request;
 use App\Models\Staff;
-
+use Utility;
 
 class StaffController extends Controller
 {
@@ -83,6 +81,9 @@ class StaffController extends Controller
         // $newItem = new Staff($request->all());
         // $newItem->setPosition($request->position);
 
+        // TODO : this authorization must replaced by automated determinition of required right via feature/tool/operation structure
+        if (!$request->user()->can('edit-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
+
         $item = Staff::find($request->item['id']);
 
         $item->setPosition($request->position);
@@ -99,6 +100,9 @@ class StaffController extends Controller
 
     public function delete(Request $request)
     {
+        // TODO : this authorization must replaced by automated determinition of required right via feature/tool/operation structure
+        if (!$request->user()->can('delete-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
+
         $item = $request->item;
         $item = Staff::find($item['id']);
         $item->delete();

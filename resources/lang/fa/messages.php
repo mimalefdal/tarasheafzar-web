@@ -27,6 +27,7 @@ return [
     'recordـdeleted' => ':title با موفقیت پاک شد.',
     'deleted_warning' => 'این :blocktype پاک شده است.',
     'deleted_holder_warning' => ':holdertype این :blocktype (:deleted) پاک شده است.',
-    'noRecordsExists' => 'هیچ :type درج نشده است.'
+    'noRecordsExists' => 'هیچ :type درج نشده است.',
+    "unathorized" => 'عملیات مجاز نیست'
 
 ];
