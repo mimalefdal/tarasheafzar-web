@@ -32,6 +32,7 @@ function _list(props) {
         { type: "view", actionType: "link", action: "/staff/:personnel_id" },
         {
             type: "edit",
+            requiredRight: "edit-staff",
             actionType: "callback",
             action: handleEdit
         },
