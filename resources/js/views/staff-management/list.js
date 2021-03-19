@@ -41,7 +41,12 @@ function _list(props) {
             actionType: "callback",
             action: handleSuspend
         },
-        { type: "delete", actionType: "callback", action: handleDelete }
+        {
+            type: "delete",
+            requiredRight: ["create-staff", "edit-staff"],
+            actionType: "callback",
+            action: handleDelete
+        }
     ];
 
     function handleDelete(item) {
