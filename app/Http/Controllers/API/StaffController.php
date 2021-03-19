@@ -69,7 +69,7 @@ class StaffController extends Controller
             $staffQuery = Staff::withTrashed()->where('username', $request->username);
         };
 
-        $staff = $staffQuery->with(['position.hasposition'])->first();
+        $staff = $staffQuery->with(['position.hasposition'])->firstOrFail();
         if ($resourceClass == null)
             return $staff;
         return $resourceClass::make($staff);

@@ -1,3 +1,4 @@
+export { default as GuardedAction } from "./_guardedActionButton";
 export { default as BackButton } from "./backButton";
 export { default as HomeButton } from "./homeButton";
 export { default as EditButton } from "./editButton";

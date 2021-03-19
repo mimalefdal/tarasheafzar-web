@@ -11,7 +11,7 @@ function _listTitle(props) {
             <div className="items-ribbon">
                 <div className="title-text list-title-text">{props.title}</div>
                 <div style={{ flexGrow: 1 }}></div>
-                <div className="btn-set">{props.btnSet}</div>
+                <div className="flex row btn-set">{props.btnSet}</div>
             </div>
             {props.options && (
                 <div className="items-ribbon">

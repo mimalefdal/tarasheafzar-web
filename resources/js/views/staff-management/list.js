@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
-import { AddButton } from "../../components/buttons";
+import { GuardedAction } from "../../components/buttons";
 import { ConfirmAndRunDialog, DeleteDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { TableList } from "../../components/lists";
@@ -71,10 +71,14 @@ function _list(props) {
                 <ListTitle
                     title={t("lists.staffListTitle")}
                     btnSet={
-                        <AddButton
-                            className="header-operation-btn"
-                            target="/staff/define"
-                        />
+                        <>
+                            <GuardedAction
+                                action="add"
+                                requiredRight="create-staff"
+                                className="header-operation-btn"
+                                target="/staff/define"
+                            />
+                        </>
                     }
                     // options={
                     //     <>

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+    AddButton,
     DeleteButton,
     EditButton,
     ExpandButton,
@@ -11,6 +12,9 @@ export default function utility(type, props) {
     // console.log("selectActionComponent", type, props);
 
     switch (type) {
+        case "add":
+            return <AddButton {...props} />;
+            break;
         case "view":
             return <ViewButton {...props} />;
             break;

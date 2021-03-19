@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 import { PageHeaderBar } from "../../components";
 import { EditButton, SuspenseTogglerButton } from "../../components/buttons";
 import { SpecCard } from "../../components/cards";
@@ -17,6 +17,7 @@ function _show(props) {
     const [item, setItem] = useState();
     const [ready, setReady] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
+    const [redirect, setRedirect] = useState(null);
     const token = useContext(StaffContext).token;
     const locale = useContext(AppContext).locale;
 
@@ -40,6 +41,8 @@ function _show(props) {
                 setReady(true);
             },
             failure => {
+                console.log(failure.status);
+                if (failure.status == 404) setRedirect("/notfound");
                 console.log(failure);
             }
         );
@@ -97,6 +100,7 @@ function _show(props) {
                     />
                 )}
             </PageHeaderBar>
+            {redirect && <Redirect to={redirect} />}
             {ready && (
                 <>
                     {/* <StaffManagementInformation>
