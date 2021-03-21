@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Bilang;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ToolItem extends JsonResource
+class OperationItem extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -25,8 +25,6 @@ class ToolItem extends JsonResource
 
         $item['state'] = $this->state;
         $item['activation'] = $this->activation;
-
-        $item['operations'] = OperationItem::collection($this->operations);
 
         return $item;
     }

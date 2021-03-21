@@ -22,6 +22,6 @@ class FeatureController extends Controller
         $collection = $collection->values()->all();
         return $collection;
 
-        return FeatureToolsItem::collection(Feature::with('tools')->get());
+        return FeatureToolsItem::collection(Feature::with('tools.operations')->get());
     }
 }

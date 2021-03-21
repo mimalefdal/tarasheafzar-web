@@ -12,11 +12,17 @@ class Tool extends Model
 
     protected $casts = [
         'title' => 'array',
+        'activation' => 'boolean'
     ];
 
     public function features()
     {
         return $this->belongsToMany(Feature::class, 'features_tools');
+    }
+
+    public function operations()
+    {
+        return $this->hasMany(Operation::class);
     }
 
     public function setFeature($featureSlug)

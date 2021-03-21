@@ -42,7 +42,8 @@ function _manage(props) {
 
     function handleExpand(item) {
         if (expandedItems.indexOf(item.id) == -1)
-            setExpandedItems([...expandedItems, item.id]);
+            // setExpandedItems([...expandedItems, item.id]);
+            setExpandedItems([item.id]);
         else {
             setExpandedItems(expandedItems.filter(value => item.id != value));
         }

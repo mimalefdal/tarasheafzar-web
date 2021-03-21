@@ -26,7 +26,10 @@ function _control({ title, initialState = true, btnSet, ...props }) {
                 }
             >
                 <div
-                    style={{ marginInlineEnd: "0.5rem" }}
+                    style={{
+                        marginInlineEnd: "0.5rem",
+                        visibility: state ? "visible" : "hidden"
+                    }}
                     onClick={toggleExpand}
                 >
                     <ExpanderIcon isExpanded={open} />

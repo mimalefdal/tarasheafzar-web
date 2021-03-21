@@ -1,0 +1,38 @@
+[
+    {
+        "tool": "enterprise-initialize-tool",
+        "operations": [
+            {
+                "slug": "install-licence",
+                "title": {
+                    "fa": "نصب گواهی",
+                    "en": "Enterprise Initialize Tool"
+                },
+                "activation": true,
+                "state": "built-in"
+            },
+            {
+                "slug": "initiate-system",
+                "title": {
+                    "fa": "راه‌اندازی امکانات نرم‌افزار",
+                    "en": "Enterprise Initialize Tool"
+                },
+                "activation": true,
+                "state": "built-in"
+            },
+            {
+                "slug": "define-ceo",
+                "title": {
+                    "fa": "تعریف اکانت مدیراجرایی",
+                    "en": "Enterprise Initialize Tool"
+                },
+                "activation": true,
+                "state": "built-in"
+            }
+        ]
+    },
+    {
+        "tool": "features-management-tool",
+        "operations": []
+    }
+]

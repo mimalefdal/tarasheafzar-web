@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React, { useEffect, useState } from "react";
 import { ExpandButton } from "../../components/buttons";
 import { BasicCard, SimpleCard } from "../../components/cards";
+import { TitledCollapse } from "../../components/list-controls";
 import { findObjectInsideArray } from "../../utils/findObject";
 
 function _manageCard(props) {
@@ -34,11 +35,33 @@ function _manageCard(props) {
             <Collapse in={expanded} style={{ width: "100%" }} timeout={900}>
                 <div className="sub-cards-list">
                     {props.item.tools.map(tool => (
-                        <SimpleCard
-                            className="sub-card"
-                            key={tool.id}
-                            item={tool}
-                        />
+                        <TitledCollapse key={tool.slug} title={tool.title}>
+                            {!tool.operations.length
+                                ? null
+                                : tool.operations.map(operation => (
+                                      <SimpleCard
+                                          className="sub-card"
+                                          key={operation.slug}
+                                          item={operation}
+                                      />
+                                  ))}
+                        </TitledCollapse>
+
+                        // <>
+                        //     <SimpleCard
+                        //         className="sub-card"
+                        //         key={tool.slug}
+                        //         item={tool}
+                        //     />
+                        //     {tool.operations.map(operation => (
+
+                        //         <SimpleCard
+                        //             className="sub-card"
+                        //             key={operation.slug}
+                        //             item={operation}
+                        //         />
+                        //     ))}
+                        // </>
                     ))}
                 </div>
             </Collapse>

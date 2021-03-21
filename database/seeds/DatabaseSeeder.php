@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ValueSeeder::class,
             FeaturesSeeder::class,
             ToolsSeeder::class,
+            OperationSeeder::class,
             RightsSeeder::class,
             RolesSeeder::class,
             // BranchSeeder::class,
