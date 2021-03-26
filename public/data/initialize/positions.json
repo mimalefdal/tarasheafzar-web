@@ -1,0 +1,35 @@
+[
+    {
+        "slug": "executive-chief-officer",
+        "title": {
+            "fa": "اجرایی",
+            "en": "Executive"
+        },
+        "display_title": {
+            "fa": "مدیرعامل",
+            "en": "CEO"
+        },
+        "job-level": "chief-officer",
+        "recruit_capacity": 1,
+        "holderType": "company",
+        "holder": null,
+        "roles": [
+            "structure-administrator",
+            "access-administrator"
+        ],
+        "rights": [
+            "access-system-panel",
+            "use-features-management-tool",
+            "access-staff-management-panel",
+            "use-staff-list-tool",
+            "use-staff-management-tool"
+        ],
+        "ownedRights": [
+            "access-access-management-panel"
+        ],
+        "managedByRights": [
+            "access-structure-panel",
+            "access-access-management-panel"
+        ]
+    }
+]

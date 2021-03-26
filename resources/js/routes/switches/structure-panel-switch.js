@@ -12,7 +12,7 @@ import { NotFound } from "../../views/errors";
 import { GuardedRoute } from "react-router-guards";
 import { FEATURE_READY } from "../guards/types";
 
-import { DefineBranch, ManageBranchs, ShowBranch } from "../../views/branches";
+import { DefineBranch, ManageBranches, ShowBranch } from "../../views/branches";
 import {
     DefineDepartment,
     ManageDepartments,
@@ -59,7 +59,7 @@ export default function _Switch() {
             <GuardedRoute
                 exact
                 path={`${match.path}/branches`}
-                component={ManageBranchs}
+                component={ManageBranches}
                 meta={{
                     [FEATURE_READY]: "branches-management-tool"
                 }}

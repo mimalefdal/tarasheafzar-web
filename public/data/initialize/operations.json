@@ -1,0 +1,332 @@
+[
+    {
+        "tool": "branches-management-tool",
+        "operations": [
+            {
+                "slug": "add-branch-operation",
+                "title": {
+                    "fa": "درج شاخه",
+                    "en": "Add Branch"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "add-branch"
+                ]
+            },
+            {
+                "slug": "view-branch-operation",
+                "title": {
+                    "fa": "مشاهده مشخصات شاخه",
+                    "en": "View Branch"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "view-branch"
+                ]
+            },
+            {
+                "slug": "edit-branch-operation",
+                "title": {
+                    "fa": "ویرایش مشخصات شاخه",
+                    "en": "Edit Branch"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "edit-branch"
+                ]
+            },
+            {
+                "slug": "delete-branch-operation",
+                "title": {
+                    "fa": "حذف شاخه",
+                    "en": "Delete Branch"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "delete-branch"
+                ]
+            }
+        ]
+    },
+    {
+        "tool": "departments-management-tool",
+        "operations": [
+            {
+                "slug": "add-department-operation",
+                "title": {
+                    "fa": "درج دپارتمان",
+                    "en": "Add Department"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "add-department"
+                ]
+            },
+            {
+                "slug": "view-department-operation",
+                "title": {
+                    "fa": "مشاهده مشخصات دپارتمان",
+                    "en": "View Department"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "view-department"
+                ]
+            },
+            {
+                "slug": "edit-department-operation",
+                "title": {
+                    "fa": "ویرایش مشخصات دپارتمان",
+                    "en": "Edit Department"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "edit-department"
+                ]
+            },
+            {
+                "slug": "delete-department-operation",
+                "title": {
+                    "fa": "حذف دپارتمان",
+                    "en": "Delete Department"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "delete-department"
+                ]
+            }
+        ]
+    },
+    {
+        "tool": "units-management-tool",
+        "operations": [
+            {
+                "slug": "add-unit-operation",
+                "title": {
+                    "fa": "درج واحد",
+                    "en": "Add Unit"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "add-unit"
+                ]
+            },
+            {
+                "slug": "view-unit-operation",
+                "title": {
+                    "fa": "مشاهده مشخصات واحد",
+                    "en": "View Unit"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "view-unit"
+                ]
+            },
+            {
+                "slug": "edit-unit-operation",
+                "title": {
+                    "fa": "ویرایش مشخصات واحد",
+                    "en": "Edit Unit"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "edit-unit"
+                ]
+            },
+            {
+                "slug": "delete-unit-operation",
+                "title": {
+                    "fa": "حذف واحد",
+                    "en": "Delete Unit"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "delete-unit"
+                ]
+            }
+        ]
+    },
+    {
+        "tool": "joblevels-management-tool",
+        "operations": [
+            {
+                "slug": "add-joblevel-operation",
+                "title": {
+                    "fa": "درج سطح‌شغلی",
+                    "en": "Add Job-Level"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "add-joblevel"
+                ]
+            },
+            {
+                "slug": "view-joblevel-operation",
+                "title": {
+                    "fa": "مشاهده مشخصات سطح‌شغلی",
+                    "en": "View Job-Level"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "view-joblevel"
+                ]
+            },
+            {
+                "slug": "edit-joblevel-operation",
+                "title": {
+                    "fa": "ویرایش مشخصات سطح‌شغلی",
+                    "en": "Edit Job-Level"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "edit-joblevel"
+                ]
+            },
+            {
+                "slug": "delete-joblevel-operation",
+                "title": {
+                    "fa": "حذف سطح‌شغلی",
+                    "en": "Delete Job-Level"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "delete-joblevel"
+                ]
+            }
+        ]
+    },
+    {
+        "tool": "positions-management-tool",
+        "operations": [
+            {
+                "slug": "add-position-operation",
+                "title": {
+                    "fa": "درج سمت",
+                    "en": "Add Position"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "add-position"
+                ]
+            },
+            {
+                "slug": "view-position-operation",
+                "title": {
+                    "fa": "مشاهده مشخصات سمت",
+                    "en": "View Position"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "view-position"
+                ]
+            },
+            {
+                "slug": "edit-position-operation",
+                "title": {
+                    "fa": "ویرایش مشخصات سمت",
+                    "en": "Edit Position"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "edit-position"
+                ]
+            },
+            {
+                "slug": "delete-position-operation",
+                "title": {
+                    "fa": "حذف سمت",
+                    "en": "Delete Position"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "delete-position"
+                ]
+            }
+        ]
+    },
+    {
+        "tool": "staff-management-tool",
+        "operations": [
+            {
+                "slug": "add-staff-operation",
+                "title": {
+                    "fa": "درج کارکنان",
+                    "en": "Add Staff"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "perform-add-staff"
+                ]
+            },
+            {
+                "slug": "view-staff-operation",
+                "title": {
+                    "fa": "مشاهده مشخصات کارکنان",
+                    "en": "View Staff"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "perform-view-staff"
+                ]
+            },
+            {
+                "slug": "edit-staff-operation",
+                "title": {
+                    "fa": "ویرایش مشخصات کارکنان",
+                    "en": "Edit Staff"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "perform-edit-staff"
+                ]
+            },
+            {
+                "slug": "delete-staff-operation",
+                "title": {
+                    "fa": "حذف کارکنان",
+                    "en": "Delete Staff"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "perform-delete-staff"
+                ]
+            },
+            {
+                "slug": "suspend-staff-operation",
+                "title": {
+                    "fa": "تعلیق کارکنان",
+                    "en": "Suspend Staff"
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "perform-suspend-staff"
+                ]
+            }
+        ]
+    }
+]

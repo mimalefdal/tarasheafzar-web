@@ -13,7 +13,7 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicDepartments.json';
+        $path = base_path() . '/public/data/trial/basicDepartments.json';
         $basicDepartments = file_get_contents($path);
         $basicDepartments = json_decode($basicDepartments, true);
         foreach ($basicDepartments as $department) {

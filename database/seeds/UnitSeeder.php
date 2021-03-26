@@ -14,7 +14,7 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicUnits.json';
+        $path = base_path() . '/public/data/trial/basicUnits.json';
         $basicUnits = file_get_contents($path);
         $basicUnits = json_decode($basicUnits, true);
         foreach ($basicUnits as $unit) {

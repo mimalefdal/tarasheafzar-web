@@ -21,7 +21,7 @@ class InitializeController extends Controller
 
     public function status(Request $request)
     {
-        $path = base_path() . '/public/data/systemInitialize.json';
+        $path = base_path() . '/public/data/initialize/systemInitialize.json';
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
 
@@ -74,7 +74,7 @@ class InitializeController extends Controller
     {
 
         // TODO : these information must fetched from companue server via http request
-        $path = base_path() . '/public/data/systemInfo.json';
+        $path = base_path() . '/public/data/initialize/systemInfo.json';
         $systemInfo = file_get_contents($path);
         $systemInfo = json_decode($systemInfo, true);
 

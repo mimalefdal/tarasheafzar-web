@@ -24,7 +24,7 @@ Route::panelRoutes();
 Route::domain(env('APP_ENV') == 'local' ? 'localhost' : env('APP_URL'))->group(function () {
     Route::get('/', function () {
         // $path = Storage::disk('public')->path('company.json');
-        $path = base_path().'/public/data/company.json';
+        $path = base_path() . '/public/data/content/company.json';
 
         $companyData = file_get_contents($path);
         $companyData = json_decode($companyData, true);

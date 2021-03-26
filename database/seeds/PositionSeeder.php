@@ -16,7 +16,7 @@ class PositionSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicPositions.json';
+        $path = base_path() . '/public/data/system/Positions.json';
         $basicPositions = file_get_contents($path);
         $basicPositions = json_decode($basicPositions, true);
 

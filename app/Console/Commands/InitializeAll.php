@@ -42,16 +42,18 @@ class InitializeAll extends Command
      */
     public function handle()
     {
+        $this->info('Database reset ...');
         Artisan::call('init:reset');
-        $this->info('Database reset...');
 
-        $path = base_path() . '/public/data/systemInfoTest.json';
+        // TODO: create integrated Pack from json files from specific folder
+        //       means authomatic creation of progressPack.json (systemInfo to initialize)
+        $path = base_path() . '/public/data/initialize/devProgressPack.json';
         $systemInfo = file_get_contents($path);
         $systemInfo = json_decode($systemInfo, true);
 
         $this->initializeSystemInfo($systemInfo);
 
-        $path = base_path() . '/public/data/systemInitialize.json';
+        $path = base_path() . '/public/data/initialize/systemInitialize.json';
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
         foreach ($systemInitialize as $key => $value) {

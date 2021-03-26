@@ -42,13 +42,13 @@ class InitializeSystem extends Command
     public function handle()
     {
 
-        $path = base_path() . '/public/data/systemInfoTest.json';
+        $path = base_path() . '/public/data/initialize/devProgressPack.json';
         $systemInfo = file_get_contents($path);
         $systemInfo = json_decode($systemInfo, true);
 
         $this->initializeSystemInfo($systemInfo);
 
-        $path = base_path() . '/public/data/systemInitialize.json';
+        $path = base_path() . '/public/data/initialize/systemInitialize.json';
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
         foreach ($systemInitialize as $key => $value) {

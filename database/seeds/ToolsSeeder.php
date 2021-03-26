@@ -16,7 +16,7 @@ class ToolsSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicTools.json';
+        $path = base_path() . '/public/data/system/Tools.json';
         $items = file_get_contents($path);
         $items = json_decode($items, true);
 

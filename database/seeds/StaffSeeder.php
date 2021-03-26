@@ -17,7 +17,7 @@ class StaffSeeder extends Seeder
     public function run()
     {
         // $path = Storage::disk('public')->path('basicStaff.json');
-        $path = base_path() . '/public/data/basicStaff.json';
+        $path = base_path() . '/public/data/system/Staff.json';
 
         $basicStaff = file_get_contents($path);
         $basicStaff = json_decode($basicStaff, true);

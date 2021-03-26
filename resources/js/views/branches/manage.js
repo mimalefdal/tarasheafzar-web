@@ -4,13 +4,13 @@ import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
 import { BranchCard } from "../../view-components";
 import { ListTitle } from "../../components/list-controls";
-import { BranchsList, CardList } from "../../components/lists";
+import { BranchesList, CardList } from "../../components/lists";
 import StaffContext from "../../context/staffContext";
-import { DeleteBranch, GetBranchsList } from "../../services";
+import { DeleteBranch, GetBranchesList } from "../../services";
 import { t } from "../../utils";
 import { DeleteDialog } from "../../components/feedback";
 
-function manageBranchs(props) {
+function manageBranches(props) {
     let match = useRouteMatch();
     const history = useHistory();
     const [item, setItem] = useState({});
@@ -75,7 +75,7 @@ function manageBranchs(props) {
                 />
             </PageHeaderBar>
             <CardList
-                dataService={GetBranchsList}
+                dataService={GetBranchesList}
                 cardComponent={<BranchCard />}
                 entryOperations={entryOperations}
                 trigger={trigReload}
@@ -95,4 +95,4 @@ function manageBranchs(props) {
     );
 }
 
-export default manageBranchs;
+export default manageBranches;

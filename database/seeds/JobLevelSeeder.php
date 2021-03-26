@@ -17,7 +17,7 @@ class JoblevelSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicJoblevels.json';
+        $path = base_path() . '/public/data/system/Joblevels.json';
         $basicjoblevels = file_get_contents($path);
         $basicjoblevels = json_decode($basicjoblevels, true);
 

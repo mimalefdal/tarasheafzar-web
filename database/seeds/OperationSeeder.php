@@ -15,7 +15,7 @@ class OperationSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicOperations.json';
+        $path = base_path() . '/public/data/system/Operations.json';
         $items = file_get_contents($path);
         $items = json_decode($items, true);
 

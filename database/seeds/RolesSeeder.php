@@ -18,7 +18,7 @@ class RolesSeeder extends Seeder
     public function run()
     {
         // $path = Storage::disk('public')->path('basicRoles.json');
-        $path = base_path() . '/public/data/basicRoles.json';
+        $path = base_path() . '/public/data/system/Roles.json';
 
         $basicRoles = file_get_contents($path);
         $basicRoles = json_decode($basicRoles, true);

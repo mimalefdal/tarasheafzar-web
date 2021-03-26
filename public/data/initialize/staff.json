@@ -1,0 +1,32 @@
+[
+    {
+        "personnel_id": "5005",
+        "username": "ceo",
+        "password": "secret",
+        "firstname": "جیسون",
+        "nickname": "قاراپت",
+        "lastname": "قاراپتیان",
+        "national_id": "1000500500",
+        "idcert_no": "5005",
+        "gender": null,
+        "email": "ceo@tarasheafzar.ir",
+        "position": "executive-chief-officer",
+        "roles": [],
+        "rights": []
+    },
+    {
+        "personnel_id": "3578",
+        "username": "saba",
+        "password": "secret",
+        "firstname": "صبا",
+        "nickname": "صبا",
+        "lastname": "صادقی",
+        "national_id": "0457657713",
+        "idcert_no": "3578",
+        "gender": null,
+        "email": "saba@tarasheafzar.ir",
+        "position": "test-officer",
+        "roles": [],
+        "rights": []
+    }
+]

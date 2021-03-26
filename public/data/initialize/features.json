@@ -1,0 +1,35 @@
+[
+    {
+        "slug": "structure-management-panel",
+        "title": {
+            "fa": "پنل مدیریت ساختار",
+            "en": "Structure Management Panel"
+        },
+        "activation": true,
+        "requiredRights": [
+            "access-structure-panel"
+        ]
+    },
+    {
+        "slug": "access-management-panel",
+        "title": {
+            "fa": "پنل مدیریت دسترسی",
+            "en": "Access Management Panel"
+        },
+        "activation": true,
+        "requiredRights": [
+            "access-access-management-panel"
+        ]
+    },
+    {
+        "slug": "staff-management-panel",
+        "title": {
+            "fa": "پنل مدیریت کارکنان",
+            "en": "Staff Management Panel"
+        },
+        "activation": true,
+        "requiredRights": [
+            "access-staff-management-panel"
+        ]
+    }
+]

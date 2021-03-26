@@ -26,32 +26,39 @@ trait ControlsInitialize
     public function initializeSystemInfo($systemInfo)
     {
         // Define Rights
-        $this->createRights($systemInfo['Rights']);
+        if (isset($systemInfo['Rights']))
+            $this->createRights($systemInfo['Rights']);
 
         // Define Roles
-        $this->createRoles($systemInfo['Roles']);
+        if (isset($systemInfo['Roles']))
+            $this->createRoles($systemInfo['Roles']);
 
         // Add Features
-        $this->createFeatures($systemInfo['Features']);
+        if (isset($systemInfo['Features']))
+            $this->createFeatures($systemInfo['Features']);
 
         // Add Tools
-        $this->createTools($systemInfo['Tools']);
+        if (isset($systemInfo['Tools']))
+            $this->createTools($systemInfo['Tools']);
 
         // Add Operations
-        foreach ($systemInfo['Operations'] as $operationSet) {
-            $this->createOperations($operationSet['tool'], $operationSet['operations']);
-        }
+        if (isset($systemInfo['Operations']))
+            foreach ($systemInfo['Operations'] as $operationSet) {
+                $this->createOperations($operationSet['tool'], $operationSet['operations']);
+            }
 
         // Define Positions
-        $this->createPositions($systemInfo['Positions']);
+        if (isset($systemInfo['Positions']))
+            $this->createPositions($systemInfo['Positions']);
 
         // Define Staff
-        $this->createStaff($systemInfo['Staff']);
+        if (isset($systemInfo['Staff']))
+            $this->createStaff($systemInfo['Staff']);
     }
 
     public function updateInitializeStatus($status)
     {
-        // $path = base_path() . '/public/data/systemInitialize.json';
+        // $path = base_path() . '/public/data/initialize/systemInitialize.json';
         // $systemInitialize = file_get_contents($path);
         // $systemInitialize = json_decode($systemInitialize, true);
 
@@ -67,7 +74,7 @@ trait ControlsInitialize
 
     public function getSystemInitializeContent()
     {
-        $path = base_path() . '/public/data/systemInitialize.json';
+        $path = base_path() . '/public/data/initialize/systemInitialize.json';
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
 

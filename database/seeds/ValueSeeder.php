@@ -13,7 +13,7 @@ class ValueSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicValues.json';
+        $path = base_path() . '/public/data/system/Values.json';
         $basicValues = file_get_contents($path);
         $basicValues = json_decode($basicValues, true);
         foreach ($basicValues as $field => $values) {

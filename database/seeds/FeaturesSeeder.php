@@ -14,7 +14,7 @@ class FeaturesSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path() . '/public/data/basicFeatures.json';
+        $path = base_path() . '/public/data/system/Features.json';
         $items = file_get_contents($path);
         $items = json_decode($items, true);
 

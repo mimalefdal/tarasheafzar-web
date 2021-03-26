@@ -38,7 +38,7 @@ class InitializeReset extends Command
      */
     public function handle()
     {
-        $path = base_path() . '/public/data/systemInitialize.json';
+        $path = base_path() . '/public/data/initialize/systemInitialize.json';
         $systemInitialize = file_get_contents($path);
         $systemInitialize = json_decode($systemInitialize, true);
         foreach ($systemInitialize as $key => $value) {

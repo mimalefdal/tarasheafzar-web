@@ -1,0 +1,56 @@
+[
+    {
+        "slug": "structure-administrator",
+        "title": {
+            "fa": "مدیر ساختار شرکت",
+            "en": "Company Structure Management"
+        },
+        "activation": true,
+        "rights": [
+            "access-structure-panel",
+            "use-company-info-tool",
+            "use-branches-management-tool",
+            "perform-add-branches",
+            "perform-view-branches",
+            "perform-edit-branches",
+            "perform-delete-branches",
+            "use-departments-management-tool",
+            "perform-add-departments",
+            "perform-view-departments",
+            "perform-edit-departments",
+            "perform-delete-departments",
+            "use-units-management-tool",
+            "perform-add-units",
+            "perform-view-units",
+            "perform-edit-units",
+            "perform-delete-units",
+            "use-joblevels-management-tool",
+            "perform-add-joblevels",
+            "perform-view-joblevels",
+            "perform-edit-joblevels",
+            "perform-delete-joblevels",
+            "use-position-management-tool",
+            "perform-add-positions",
+            "perform-view-positions",
+            "perform-edit-positions",
+            "perform-delete-positions"
+        ],
+        "ownedRights": [
+            "test-right"
+        ],
+        "managedByRights": null
+    },
+    {
+        "slug": "access-administrator",
+        "title": {
+            "fa": "مدیر مختار حقوق دسترسی",
+            "en": "Head Access Adminstartor"
+        },
+        "activation": true,
+        "rights": [
+            "access-access-management-panel",
+            "access-rights-adminstration-tool",
+            "access-rights-management-tool"
+        ]
+    }
+]

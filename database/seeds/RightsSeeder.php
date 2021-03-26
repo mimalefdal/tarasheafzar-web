@@ -16,7 +16,7 @@ class RightsSeeder extends Seeder
     public function run()
     {
         // $path = Storage::disk('public')->path('basicRights.json');
-        $path = base_path() . '/public/data/basicRights.json';
+        $path = base_path() . '/public/data/system/Rights.json';
         $basicRights = file_get_contents($path);
         $basicRights = json_decode($basicRights, true);
 
