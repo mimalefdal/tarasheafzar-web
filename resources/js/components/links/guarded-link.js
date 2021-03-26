@@ -3,33 +3,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { DisabledPanelLink } from ".";
 import {
+    FeatureRequiredRights,
     getFeatureActivated,
     getFeatureInstalled,
     getIsAllowed
 } from "../../utils";
 
-function _link({ requiredRight, feature, to, label, right, ...props }) {
+function _link({ feature, requiredRights = null, to, label, right, ...props }) {
     // console.log("GuardedLink", feature);
-    if (getIsAllowed(requiredRight)) {
-        if (feature && !getFeatureInstalled(feature)) {
-            return (
-                <DisabledPanelLink
-                    className={props.className ? props.className : "panel-link"}
-                    label={label}
-                    preset="notinstalled"
-                    style={props.style}
-                />
-            );
-        } else if (feature && !getFeatureActivated(feature)) {
-            return (
-                <DisabledPanelLink
-                    className={props.className ? props.className : "panel-link"}
-                    label={label}
-                    preset="notactivated"
-                    style={props.style}
-                />
-            );
-        } else {
+
+    if (feature && !getFeatureInstalled(feature)) {
+        return (
+            <DisabledPanelLink
+                className={props.className ? props.className : "panel-link"}
+                label={label}
+                preset="notinstalled"
+                style={props.style}
+            />
+        );
+    } else if (feature && !getFeatureActivated(feature)) {
+        return (
+            <DisabledPanelLink
+                className={props.className ? props.className : "panel-link"}
+                label={label}
+                preset="notactivated"
+                style={props.style}
+            />
+        );
+    } else {
+        if (feature) requiredRights = FeatureRequiredRights(feature);
+        if (getIsAllowed(requiredRights))
             return (
                 <Link
                     className={props.className ? props.className : "panel-link"}
@@ -39,9 +42,8 @@ function _link({ requiredRight, feature, to, label, right, ...props }) {
                     {label}
                 </Link>
             );
-        }
+        return null;
     }
-    return null;
 }
 
 export default _link;

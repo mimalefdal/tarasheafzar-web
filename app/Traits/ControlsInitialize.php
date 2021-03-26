@@ -16,24 +16,31 @@ trait ControlsInitialize
 {
     use ControlsFeatures;
     use ControlsTools;
+    use ControlsOperations;
     use ControlsRights;
     use ControlsRoles;
     use ControlsPositions;
     use ControlsStaff;
 
+
     public function initializeSystemInfo($systemInfo)
     {
+        // Define Rights
+        $this->createRights($systemInfo['Rights']);
+
+        // Define Roles
+        $this->createRoles($systemInfo['Roles']);
+
         // Add Features
         $this->createFeatures($systemInfo['Features']);
 
         // Add Tools
         $this->createTools($systemInfo['Tools']);
 
-        // Define Rights
-        $this->createRights($systemInfo['Rights']);
-
-        // Define Roles
-        $this->createRoles($systemInfo['Roles']);
+        // Add Operations
+        foreach ($systemInfo['Operations'] as $operationSet) {
+            $this->createOperations($operationSet['tool'], $operationSet['operations']);
+        }
 
         // Define Positions
         $this->createPositions($systemInfo['Positions']);

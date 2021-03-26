@@ -17,11 +17,14 @@ trait ControlsOperations
         foreach ($operations as $operation) {
             Validator::make($operation, ['slug' => 'required|unique:operations'])->validate();
 
-            $newItem = new Operation($operation);
+            $newItem = new Operation(Arr::except($operation, ['requiredRights']));
             // $newItem = new Operation(Arr::only($operation, ['slug', 'title', 'activation', 'state']));
-            dump($toolSlug);
 
-            $newItem->setTool($toolSlug);
+            $newItem->setTool($toolSlug)->save();
+
+            if (isset($operation['requiredRights']))
+                $newItem->setRequiredRights($operation['requiredRights']);
+
             $newItem->save();
         }
     }

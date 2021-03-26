@@ -20,7 +20,7 @@
         "personnel_id": "admin",
         "username": "admin",
         "password": "secret",
-        "firstname": "Enterprise",
+        "firstname": "System",
         "nickname": null,
         "lastname": "Administrator",
         "national_id": null,
@@ -29,7 +29,7 @@
         "email": "admin@companydomain.com",
         "position": null,
         "roles": [
-            "enterprise-admin"
+            "system-admin"
         ],
         "rights": [
             "test-right"

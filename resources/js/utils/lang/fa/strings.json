@@ -85,7 +85,7 @@
         "welcomeCompanyManagement": "به پنل مدیریت ساختار خوش آمدید",
         "welcomeStaffManagement": "به پنل مدیریت کارکنان خوش آمدید",
         "welcomePanelHome": "به پنل کاری تراشه افزار خوش آمدید",
-        "welcomeEnterpriseManagement": "به پنل مدیریت سامانه نرم‌افزاری شرکت خوش آمدید",
+        "welcomeSystemManagement": "به پنل مدیریت سامانه نرم‌افزاری شرکت خوش آمدید",
         "welcomeHumanResources": "به پنل مدیریت منابع انسانی خوش آمدید",
         "defineRight": "ثبت حق دسترسی"
     },
@@ -105,7 +105,7 @@
     "panels": {
         "structure-management": "پنل مدیریت ساختار",
         "staff-management": "پنل مدیریت کارکنان",
-        "enterprise-management": "پنل مدیریت سامانه",
+        "system-management": "پنل مدیریت سامانه",
         "access-management": "پنل مدیریت دسترسی",
         "crm": "ارتباط با مشتریان",
         "hr": "منابع انسانی",

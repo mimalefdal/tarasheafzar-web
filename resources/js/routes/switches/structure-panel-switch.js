@@ -42,22 +42,18 @@ export default function _Switch() {
                 exact
                 path={match.path}
                 component={StructurePanelView}
+                meta={{
+                    [FEATURE_READY]: "structure-management-panel"
+                }}
             />
             <GuardedRoute
                 path={`${match.path}/company`}
                 component={CompanyInformation}
                 meta={{
-                    [FEATURE_READY]: "structure-management-panel"
+                    // [FEATURE_READY]: "structure-management-panel",
+                    [FEATURE_READY]: "company-info-tool"
                 }}
             />
-
-            {/* <GuardedRoute
-                path={`${match.path}/company/structure`}
-                component={CompanyStructure}
-                meta={{
-                    [FEATURE_READY]: "structure-management-panel"
-                }}
-            /> */}
 
             {/* Branches */}
             <GuardedRoute

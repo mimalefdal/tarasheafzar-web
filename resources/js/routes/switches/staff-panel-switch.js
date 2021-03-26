@@ -43,7 +43,7 @@ export default function _Switch() {
                 path={`${match.path}/list`}
                 component={ListStaff}
                 meta={{
-                    [FEATURE_READY]: "staff-management-tool"
+                    [FEATURE_READY]: "staff-list-tool"
                 }}
             />
             <GuardedRoute
@@ -67,8 +67,7 @@ export default function _Switch() {
                 path={`${match.path}/edit/:personnel_id`}
                 component={EditStaff}
                 meta={{
-                    [FEATURE_READY]: "staff-management-tool",
-                    [REQUIRED_RIGHT]: "edit-staff"
+                    [FEATURE_READY]: "staff-management-tool"
                 }}
             />
 

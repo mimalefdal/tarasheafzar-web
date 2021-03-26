@@ -23,3 +23,5 @@ export { _makeValueListObject as ValuesObject } from "./forms";
 export { _makeUpdatedValidValues as MakeUpdatedValidValues } from "./forms";
 
 export { _getDefineFormFor as DefineFormOf } from "./models";
+
+export { _getFeatureRequiredRights as FeatureRequiredRights } from "./requiredRights";

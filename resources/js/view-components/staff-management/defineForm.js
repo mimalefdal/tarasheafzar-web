@@ -99,7 +99,7 @@ export default function Form({ preset = "add", ...props }) {
             showAlert={props.showAlert}
             listedFields={["holdertypes", "gender"]}
             // redirectDelay={2000}
-            redirectTarget="/enterprise/initialize"
+            redirectTarget="/system/initialize"
         >
             {(presets[preset].fields.includes("all") ||
                 presets[preset].fields.includes("holderType")) && (

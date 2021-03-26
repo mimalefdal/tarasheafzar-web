@@ -11,8 +11,7 @@ export default function _View() {
                 <GuardedLink
                     className="tool-link horizontal"
                     to={`${match.url}/company`}
-                    // feature="company-management-tool"
-                    requiredRight="access-structure-panel"
+                    feature="company-info-tool"
                     label={t("tools.companyManagement")}
                     style={{ order: 1 }}
                 />
@@ -21,15 +20,13 @@ export default function _View() {
                     className="tool-link horizontal"
                     to={`${match.url}/branches`}
                     feature="branches-management-tool"
-                    requiredRight="access-structure-panel"
                     label={t("tools.branchesManagement")}
                     style={{ order: 1 }}
                 />
                 <GuardedLink
                     className="tool-link horizontal"
                     to={`${match.url}/departments`}
-                    // feature="departments-management-tool"
-                    requiredRight="access-structure-panel"
+                    feature="departments-management-tool"
                     label={t("tools.departmentsManagement")}
                     style={{ order: 1 }}
                 />
@@ -37,8 +34,7 @@ export default function _View() {
                 <GuardedLink
                     className="tool-link horizontal"
                     to={`${match.url}/units`}
-                    // feature="units-management-tool"
-                    requiredRight="access-structure-panel"
+                    feature="units-management-tool"
                     label={t("tools.unitsManagement")}
                     style={{ order: 3 }}
                 />
@@ -46,8 +42,7 @@ export default function _View() {
                 <GuardedLink
                     className="tool-link horizontal"
                     to={`${match.url}/joblevels`}
-                    // feature="joblevels-management-tool"
-                    requiredRight="access-structure-panel"
+                    feature="joblevels-management-tool"
                     label={t("tools.joblevelsManagement")}
                     style={{ order: 4 }}
                 />
@@ -55,8 +50,7 @@ export default function _View() {
                 <GuardedLink
                     className="tool-link horizontal"
                     to={`${match.url}/positions`}
-                    // feature="positions-management-tool"
-                    requiredRight="access-structure-panel"
+                    feature="positions-management-tool"
                     label={t("tools.positionsManagement")}
                     style={{ order: 5 }}
                 />

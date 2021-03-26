@@ -6,7 +6,10 @@
                 "fa": "پنل مدیریت ساختار",
                 "en": "Structure Management Panel"
             },
-            "activation": true
+            "activation": true,
+            "requiredRights": [
+                "access-structure-panel"
+            ]
         },
         {
             "slug": "access-management-panel",
@@ -14,7 +17,10 @@
                 "fa": "پنل مدیریت دسترسی",
                 "en": "Access Management Panel"
             },
-            "activation": false
+            "activation": true,
+            "requiredRights": [
+                "access-access-management-panel"
+            ]
         },
         {
             "slug": "staff-management-panel",
@@ -22,7 +28,10 @@
                 "fa": "پنل مدیریت کارکنان",
                 "en": "Staff Management Panel"
             },
-            "activation": true
+            "activation": true,
+            "requiredRights": [
+                "access-staff-management-panel"
+            ]
         }
     ],
     "Tools": [
@@ -33,8 +42,9 @@
                 "fa": "ابزار مدیریت حقوق دسترسی",
                 "en": "Rights Management Tool"
             },
-            "activation": false,
-            "state": "built-in"
+            "activation": true,
+            "state": "built-in",
+            "requiredRights": []
         },
         {
             "feature": "access-management-panel",
@@ -44,7 +54,21 @@
                 "en": "Rights Administration Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": []
+        },
+        {
+            "feature": "structure-management-panel",
+            "slug": "company-info-tool",
+            "title": {
+                "fa": "ابزار اطلاعات شرکت",
+                "en": "Company Information Tool"
+            },
+            "activation": true,
+            "state": "built-in",
+            "requiredRights": [
+                "use-company-info-tool"
+            ]
         },
         {
             "feature": "structure-management-panel",
@@ -54,7 +78,10 @@
                 "en": "Branches Management Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": [
+                "use-branches-management-tool"
+            ]
         },
         {
             "feature": "structure-management-panel",
@@ -64,17 +91,23 @@
                 "en": "Departments Management Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": [
+                "use-departments-management-tool"
+            ]
         },
         {
             "feature": "structure-management-panel",
             "slug": "units-management-tool",
             "title": {
                 "fa": "ابزار مدیریت واحدها",
-                "en": "َUnits Management Tool"
+                "en": "Units Management Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": [
+                "use-units-management-tool"
+            ]
         },
         {
             "feature": "structure-management-panel",
@@ -84,7 +117,10 @@
                 "en": "Joblevels Management Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": [
+                "use-joblevels-management-tool"
+            ]
         },
         {
             "feature": "structure-management-panel",
@@ -94,7 +130,10 @@
                 "en": "Positions Management Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": [
+                "use-positions-management-tool"
+            ]
         },
         {
             "feature": "staff-management-panel",
@@ -104,7 +143,355 @@
                 "en": "Staff Management Tool"
             },
             "activation": true,
-            "state": "built-in"
+            "state": "built-in",
+            "requiredRights": [
+                "use-staff-management-tool"
+            ]
+        },
+        {
+            "feature": "staff-management-panel",
+            "slug": "staff-list-tool",
+            "title": {
+                "fa": "ابزار لیست کارکنان",
+                "en": "Staff List Tool"
+            },
+            "activation": true,
+            "state": "built-in",
+            "requiredRights": [
+                "use-staff-list-tool"
+            ]
+        }
+    ],
+    "Operations": [
+        {
+            "tool": "branches-management-tool",
+            "operations": [
+                {
+                    "slug": "add-branch-operation",
+                    "title": {
+                        "fa": "درج شاخه",
+                        "en": "Add Branch"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "add-branch"
+                    ]
+                },
+                {
+                    "slug": "view-branch-operation",
+                    "title": {
+                        "fa": "مشاهده مشخصات شاخه",
+                        "en": "View Branch"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "view-branch"
+                    ]
+                },
+                {
+                    "slug": "edit-branch-operation",
+                    "title": {
+                        "fa": "ویرایش مشخصات شاخه",
+                        "en": "Edit Branch"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "edit-branch"
+                    ]
+                },
+                {
+                    "slug": "delete-branch-operation",
+                    "title": {
+                        "fa": "حذف شاخه",
+                        "en": "Delete Branch"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "delete-branch"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "departments-management-tool",
+            "operations": [
+                {
+                    "slug": "add-department-operation",
+                    "title": {
+                        "fa": "درج دپارتمان",
+                        "en": "Add Department"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "add-department"
+                    ]
+                },
+                {
+                    "slug": "view-department-operation",
+                    "title": {
+                        "fa": "مشاهده مشخصات دپارتمان",
+                        "en": "View Department"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "view-department"
+                    ]
+                },
+                {
+                    "slug": "edit-department-operation",
+                    "title": {
+                        "fa": "ویرایش مشخصات دپارتمان",
+                        "en": "Edit Department"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "edit-department"
+                    ]
+                },
+                {
+                    "slug": "delete-department-operation",
+                    "title": {
+                        "fa": "حذف دپارتمان",
+                        "en": "Delete Department"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "delete-department"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "units-management-tool",
+            "operations": [
+                {
+                    "slug": "add-unit-operation",
+                    "title": {
+                        "fa": "درج واحد",
+                        "en": "Add Unit"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "add-unit"
+                    ]
+                },
+                {
+                    "slug": "view-unit-operation",
+                    "title": {
+                        "fa": "مشاهده مشخصات واحد",
+                        "en": "View Unit"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "view-unit"
+                    ]
+                },
+                {
+                    "slug": "edit-unit-operation",
+                    "title": {
+                        "fa": "ویرایش مشخصات واحد",
+                        "en": "Edit Unit"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "edit-unit"
+                    ]
+                },
+                {
+                    "slug": "delete-unit-operation",
+                    "title": {
+                        "fa": "حذف واحد",
+                        "en": "Delete Unit"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "delete-unit"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "joblevels-management-tool",
+            "operations": [
+                {
+                    "slug": "add-joblevel-operation",
+                    "title": {
+                        "fa": "درج سطح‌شغلی",
+                        "en": "Add Job-Level"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "add-joblevel"
+                    ]
+                },
+                {
+                    "slug": "view-joblevel-operation",
+                    "title": {
+                        "fa": "مشاهده مشخصات سطح‌شغلی",
+                        "en": "View Job-Level"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "view-joblevel"
+                    ]
+                },
+                {
+                    "slug": "edit-joblevel-operation",
+                    "title": {
+                        "fa": "ویرایش مشخصات سطح‌شغلی",
+                        "en": "Edit Job-Level"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "edit-joblevel"
+                    ]
+                },
+                {
+                    "slug": "delete-joblevel-operation",
+                    "title": {
+                        "fa": "حذف سطح‌شغلی",
+                        "en": "Delete Job-Level"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "delete-joblevel"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "positions-management-tool",
+            "operations": [
+                {
+                    "slug": "add-position-operation",
+                    "title": {
+                        "fa": "درج سمت",
+                        "en": "Add Position"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "add-position"
+                    ]
+                },
+                {
+                    "slug": "view-position-operation",
+                    "title": {
+                        "fa": "مشاهده مشخصات سمت",
+                        "en": "View Position"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "view-position"
+                    ]
+                },
+                {
+                    "slug": "edit-position-operation",
+                    "title": {
+                        "fa": "ویرایش مشخصات سمت",
+                        "en": "Edit Position"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "edit-position"
+                    ]
+                },
+                {
+                    "slug": "delete-position-operation",
+                    "title": {
+                        "fa": "حذف سمت",
+                        "en": "Delete Position"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "delete-position"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "staff-management-tool",
+            "operations": [
+                {
+                    "slug": "add-staff-operation",
+                    "title": {
+                        "fa": "درج کارکنان",
+                        "en": "Add Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-add-staff"
+                    ]
+                },
+                {
+                    "slug": "view-staff-operation",
+                    "title": {
+                        "fa": "مشاهده مشخصات کارکنان",
+                        "en": "View Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-view-staff"
+                    ]
+                },
+                {
+                    "slug": "edit-staff-operation",
+                    "title": {
+                        "fa": "ویرایش مشخصات کارکنان",
+                        "en": "Edit Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-edit-staff"
+                    ]
+                },
+                {
+                    "slug": "delete-staff-operation",
+                    "title": {
+                        "fa": "حذف کارکنان",
+                        "en": "Delete Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-delete-staff"
+                    ]
+                },
+                {
+                    "slug": "suspend-staff-operation",
+                    "title": {
+                        "fa": "تعلیق کارکنان",
+                        "en": "Suspend Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-suspend-staff"
+                    ]
+                }
+            ]
         }
     ],
     "Rights": [
@@ -114,15 +501,273 @@
                 "fa": "دسترسی به پنل مدیریت شرکت",
                 "en": "Access Company Management Panel"
             },
-            "activation": true
+            "activation": true,
+            "childrights": [
+                {
+                    "slug": "use-company-info-tool",
+                    "title": {
+                        "fa": "کار با ابزار اطلاعات شرکت",
+                        "en": "Use Company Information Tool"
+                    },
+                    "activation": true
+                },
+                {
+                    "slug": "use-branches-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت شاخه‌ها",
+                        "en": "Use Branches Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": [
+                        {
+                            "slug": "perform-add-branch",
+                            "title": {
+                                "fa": "درج شاخه‌ها",
+                                "en": "Add Branches"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-branch",
+                            "title": {
+                                "fa": "مشاهده شاخه‌ها",
+                                "en": "View Branches"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-edit-branch",
+                            "title": {
+                                "fa": "ویرایش شاخه‌ها",
+                                "en": "Edit Branches"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-delete-branch",
+                            "title": {
+                                "fa": "حدف شاخه‌ها",
+                                "en": "Delete Branches"
+                            },
+                            "activation": true
+                        }
+                    ]
+                },
+                {
+                    "slug": "use-departments-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت دپارتمان‌ها",
+                        "en": "Use Departments Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": [
+                        {
+                            "slug": "perform-add-department",
+                            "title": {
+                                "fa": "درج دپارتمان‌ها",
+                                "en": "Add Departments"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-department",
+                            "title": {
+                                "fa": "مشاهده دپارتمان‌ها",
+                                "en": "View Departments"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-edit-department",
+                            "title": {
+                                "fa": "ویرایش دپارتمان‌ها",
+                                "en": "Edit Departments"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-delete-department",
+                            "title": {
+                                "fa": "حدف دپارتمان‌ها",
+                                "en": "Delete Departments"
+                            },
+                            "activation": true
+                        }
+                    ]
+                },
+                {
+                    "slug": "use-units-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت واحدها",
+                        "en": "Use Units Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": [
+                        {
+                            "slug": "perform-add-unit",
+                            "title": {
+                                "fa": "درج واحدها",
+                                "en": "Add Unit"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-unit",
+                            "title": {
+                                "fa": "مشاهده واحدها",
+                                "en": "View Unit"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-edit-unit",
+                            "title": {
+                                "fa": "ویرایش واحدها",
+                                "en": "Edit Unit"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-delete-unit",
+                            "title": {
+                                "fa": "حدف واحدها",
+                                "en": "Delete Unit"
+                            },
+                            "activation": true
+                        }
+                    ]
+                },
+                {
+                    "slug": "use-joblevels-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت سطوح شغلی",
+                        "en": "Use Job Levels Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": [
+                        {
+                            "slug": "perform-add-joblevel",
+                            "title": {
+                                "fa": "درج سطوح شغلی",
+                                "en": "Add Job Levels"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-joblevel",
+                            "title": {
+                                "fa": "مشاهده سطوح شغلی",
+                                "en": "View Job Levels"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-edit-joblevel",
+                            "title": {
+                                "fa": "ویرایش سطوح شغلی",
+                                "en": "Edit Job Levels"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-delete-joblevel",
+                            "title": {
+                                "fa": "حدف سطوح شغلی",
+                                "en": "Delete Job Levels"
+                            },
+                            "activation": true
+                        }
+                    ]
+                },
+                {
+                    "slug": "use-positions-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت سمت‌ها",
+                        "en": "Use Positions Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": [
+                        {
+                            "slug": "perform-add-position",
+                            "title": {
+                                "fa": "درج سمت",
+                                "en": "Add Positions"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-position",
+                            "title": {
+                                "fa": "مشاهده سمت",
+                                "en": "View Positions"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-edit-position",
+                            "title": {
+                                "fa": "ویرایش سمت",
+                                "en": "Edit Positions"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-delete-position",
+                            "title": {
+                                "fa": "حدف سمت",
+                                "en": "Delete Positions"
+                            },
+                            "activation": true
+                        }
+                    ]
+                }
+            ]
         },
         {
-            "slug": "access-access-panel",
+            "slug": "access-access-management-panel",
             "title": {
                 "fa": "دسترسی به پنل مدیریت دسترسی",
-                "en": "Access Enterprise Initialize Tool"
+                "en": "Access System Initialize Tool"
             },
-            "activation": true
+            "activation": true,
+            "childrights": [
+                {
+                    "slug": "use-rights-adminstration-tool",
+                    "title": {
+                        "fa": "کار با ابزار ادارهٔ حقوق دسترسی",
+                        "en": "Use Rights Administration Tool"
+                    },
+                    "activation": true,
+                    "childrights": []
+                },
+                {
+                    "slug": "use-rights-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت حقوق دسترسی",
+                        "en": "Use Rights Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": []
+                },
+                {
+                    "slug": "use-roles-adminstration-tool",
+                    "title": {
+                        "fa": "کار با ابزار ادارهٔ نقش‌ها",
+                        "en": "Use Roles Administration Tool"
+                    },
+                    "activation": true,
+                    "childrights": []
+                },
+                {
+                    "slug": "use-roles-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت نقش‌ها",
+                        "en": "Use Roles Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": []
+                }
+            ]
         },
         {
             "slug": "access-staff-management-panel",
@@ -130,52 +775,72 @@
                 "fa": "دسترسی به پنل مدیریت کارکنان",
                 "en": "Access Staff Management Panel"
             },
-            "activation": true
-        },
-        {
-            "slug": "access-staff-management-tool",
-            "title": {
-                "fa": "دسترسی به ابزار مدیریت کارکنان",
-                "en": "Access Staff Management Tool"
-            },
-            "activation": true
-        },
-        {
-            "slug": "access-rights-adminstration-tool",
-            "title": {
-                "fa": "دسترسی به ابزار ادارهٔ حقوق دسترسی",
-                "en": "Access Rights Administration Initialize Tool"
-            },
-            "activation": true
-        },
-        {
-            "slug": "access-rights-management-tool",
-            "title": {
-                "fa": "دسترسی به ابزار مدیریت  حقوق دسترسی",
-                "en": "Access Rights Management Tool"
-            },
-            "activation": true
-        },
-        {
-            "slug": "access-roles-adminstration-tool",
-            "title": {
-                "fa": "دسترسی به ابزار ادارهٔ نقش‌ها",
-                "en": "Access Roles Administration Tool"
-            },
-            "activation": true
-        },
-        {
-            "slug": "access-roles-management-tool",
-            "title": {
-                "fa": "دسترسی به ابزار مدیریت نقش‌ها",
-                "en": "Access Roles Management Tool"
-            },
-            "activation": true
+            "activation": true,
+            "childrights": [
+                {
+                    "slug": "use-staff-list-tool",
+                    "title": {
+                        "fa": "کار با ابزار لیست کارکنان",
+                        "en": "Use Staff «هسف Tool"
+                    },
+                    "activation": true
+                },
+                {
+                    "slug": "use-staff-management-tool",
+                    "title": {
+                        "fa": "کار با ابزار مدیریت کارکنان",
+                        "en": "Use Staff Management Tool"
+                    },
+                    "activation": true,
+                    "childrights": [
+                        {
+                            "slug": "perform-add-staff",
+                            "title": {
+                                "fa": "درج کارکنان",
+                                "en": "Add Staff"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-staff",
+                            "title": {
+                                "fa": "مشاهده کارکنان",
+                                "en": "View Staff"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-edit-staff",
+                            "title": {
+                                "fa": "ویرایش کارکنان",
+                                "en": "Edit Staff"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-delete-staff",
+                            "title": {
+                                "fa": "حدف کارکنان",
+                                "en": "Delete Staff"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-suspend-staff",
+                            "title": {
+                                "fa": "تعلیق کارکنان",
+                                "en": "Suspend Staff"
+                            },
+                            "activation": true
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "Roles": [
         {
-            "slug": "company-structure-manager",
+            "slug": "structure-administrator",
             "title": {
                 "fa": "مدیر ساختار شرکت",
                 "en": "Company Structure Management"
@@ -183,7 +848,32 @@
             "activation": true,
             "rights": [
                 "access-structure-panel",
-                "access-access-panel"
+                "use-company-info-tool",
+                "use-branches-management-tool",
+                "perform-add-branches",
+                "perform-view-branches",
+                "perform-edit-branches",
+                "perform-delete-branches",
+                "use-departments-management-tool",
+                "perform-add-departments",
+                "perform-view-departments",
+                "perform-edit-departments",
+                "perform-delete-departments",
+                "use-units-management-tool",
+                "perform-add-units",
+                "perform-view-units",
+                "perform-edit-units",
+                "perform-delete-units",
+                "use-joblevels-management-tool",
+                "perform-add-joblevels",
+                "perform-view-joblevels",
+                "perform-edit-joblevels",
+                "perform-delete-joblevels",
+                "use-position-management-tool",
+                "perform-add-positions",
+                "perform-view-positions",
+                "perform-edit-positions",
+                "perform-delete-positions"
             ],
             "ownedRights": [
                 "test-right"
@@ -191,14 +881,14 @@
             "managedByRights": null
         },
         {
-            "slug": "access-head-administrator",
+            "slug": "access-administrator",
             "title": {
                 "fa": "مدیر مختار حقوق دسترسی",
                 "en": "Head Access Adminstartor"
             },
             "activation": true,
             "rights": [
-                "access-access-panel",
+                "access-access-management-panel",
                 "access-rights-adminstration-tool",
                 "access-rights-management-tool"
             ]
@@ -220,18 +910,22 @@
             "holderType": "company",
             "holder": null,
             "roles": [
-                "company-structure-manager",
-                "access-head-administrator"
+                "structure-administrator",
+                "access-administrator"
             ],
             "rights": [
-                ""
+                "access-system-panel",
+                "use-features-management-tool",
+                "access-staff-management-panel",
+                "use-staff-list-tool",
+                "use-staff-management-tool"
             ],
             "ownedRights": [
-                "access-access-panel"
+                "access-access-management-panel"
             ],
             "managedByRights": [
                 "access-structure-panel",
-                "access-access-panel"
+                "access-access-management-panel"
             ]
         }
     ],
@@ -249,13 +943,22 @@
             "email": "ceo@tarasheafzar.ir",
             "position": "executive-chief-officer",
             "roles": [],
-            "rights": [
-                "access-enterprise-panel",
-                "access-features-management-tool",
-                "access-staff-management-panel",
-                "access-staff-management-tool",
-                "test-right"
-            ]
+            "rights": []
+        },
+        {
+            "personnel_id": "3578",
+            "username": "saba",
+            "password": "secret",
+            "firstname": "صبا",
+            "nickname": "صبا",
+            "lastname": "صادقی",
+            "national_id": "0457657713",
+            "idcert_no": "3578",
+            "gender": null,
+            "email": "saba@tarasheafzar.ir",
+            "position": "test-officer",
+            "roles": [],
+            "rights": []
         }
     ]
 }

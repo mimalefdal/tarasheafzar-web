@@ -1,33 +1,42 @@
 [
     {
-        "tool": "enterprise-initialize-tool",
+        "tool": "system-initialize-tool",
         "operations": [
             {
-                "slug": "install-licence",
+                "slug": "install-licence-operation",
                 "title": {
                     "fa": "نصب گواهی",
-                    "en": "Enterprise Initialize Tool"
+                    "en": "Install application licence"
                 },
                 "activation": true,
-                "state": "built-in"
+                "state": "built-in",
+                "requiredRights": [
+                    "use-system-initialize-tool"
+                ]
             },
             {
-                "slug": "initiate-system",
+                "slug": "initiate-system-operation",
                 "title": {
                     "fa": "راه‌اندازی امکانات نرم‌افزار",
-                    "en": "Enterprise Initialize Tool"
+                    "en": "Initialize features"
                 },
                 "activation": true,
-                "state": "built-in"
+                "state": "built-in",
+                "requiredRights": [
+                    "use-system-initialize-tool"
+                ]
             },
             {
-                "slug": "define-ceo",
+                "slug": "define-ceo-operation",
                 "title": {
                     "fa": "تعریف اکانت مدیراجرایی",
-                    "en": "Enterprise Initialize Tool"
+                    "en": "Define CEO Account"
                 },
                 "activation": true,
-                "state": "built-in"
+                "state": "built-in",
+                "requiredRights": [
+                    "use-system-initialize-tool"
+                ]
             }
         ]
     },

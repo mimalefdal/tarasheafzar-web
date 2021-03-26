@@ -26,6 +26,8 @@ class OperationItem extends JsonResource
         $item['state'] = $this->state;
         $item['activation'] = $this->activation;
 
+        $item['permissions'] = PermissionItem::collection($this->requiredRights);
+
         return $item;
     }
 }

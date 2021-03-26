@@ -1,11 +1,14 @@
 [
     {
-        "slug": "enterprise-administration-panel",
+        "slug": "system-panel",
         "title": {
-            "fa": "پنل مدیریت سامانه",
-            "en": "Enterprise Administration Panel"
+            "fa": "پنل سامانه",
+            "en": "System Panel"
         },
         "activation": true,
-        "state": "built-in"
+        "state": "built-in",
+        "requiredRights": [
+            "access-system-panel"
+        ]
     }
 ]

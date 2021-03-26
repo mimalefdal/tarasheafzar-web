@@ -81,7 +81,7 @@ function _list(props) {
                         <>
                             <GuardedAction
                                 action="add"
-                                requiredRight="create-staff"
+                                requiredRights="create-staff"
                                 className="header-operation-btn"
                                 target="/staff/define"
                             />

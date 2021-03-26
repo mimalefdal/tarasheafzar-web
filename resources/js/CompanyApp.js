@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
@@ -18,8 +18,12 @@ import store from "./utils/redux/store";
 function CompanyApp(props) {
     sessionStorage.clear();
     // const [ready, setReady] = useState(false);
-    // console.log("Companue App", JSON.parse(props.features));
-    // console.log("Companue App", JSON.parse(props.user).api_token);
+
+    useEffect(() => {
+        console.log("Companue App", JSON.parse(props.features));
+        // console.log("Companue App", JSON.parse(props.user));
+        // console.log("Companue App", JSON.parse(props.rights));
+    }, []);
 
     const appContextValue = {
         features: JSON.parse(props.features),
@@ -34,16 +38,40 @@ function CompanyApp(props) {
         token: JSON.parse(props.user).api_token
     };
 
-    sessionStorage.setItem("features", props.features);
-
     const features = JSON.parse(props.features);
     if (features != null) {
         let featuresArray = [];
+
         features.map(feature => {
-            // sessionStorage.setItem(right.slug, true);
+            let _reqRights_feature = feature.required_rights.map(
+                right => right.slug
+            );
             featuresArray.push({
                 slug: feature.slug,
-                activation: feature.activation
+                activation: feature.activation,
+                permissions: _reqRights_feature
+            });
+
+            feature.tools.map(tool => {
+                let _reqRights_tool = tool.required_rights.map(
+                    right => right.slug
+                );
+                featuresArray.push({
+                    slug: tool.slug,
+                    activation: tool.activation,
+                    permissions: _reqRights_tool
+                });
+
+                tool.operations.map(operation => {
+                    let _reqRights_operations = operation.required_rights.map(
+                        right => right.slug
+                    );
+                    featuresArray.push({
+                        slug: operation.slug,
+                        activation: operation.activation,
+                        permissions: _reqRights_operations
+                    });
+                });
             });
         });
         sessionStorage.setItem("features", JSON.stringify(featuresArray));

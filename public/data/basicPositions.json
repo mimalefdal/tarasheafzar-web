@@ -1,6 +1,6 @@
 [
     {
-        "slug": "test-officer-1",
+        "slug": "test-officer",
         "title": {
             "fa": "آزمون 1",
             "en": "Test 1"
@@ -9,7 +9,7 @@
             "fa": "تست 1",
             "en": "TEST 1"
         },
-        "job-level": "chief-officer",
+        "job-level": "officer",
         "recruit_capacity": 1,
         "holderType": "company",
         "holder": null,
@@ -33,7 +33,7 @@
         ]
     },
     {
-        "slug": "test-officer-2",
+        "slug": "test-chief-officer",
         "title": {
             "fa": "آزمون 2",
             "en": "Test 2"

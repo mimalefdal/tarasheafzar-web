@@ -5,7 +5,7 @@ import { BackButton, HomeButton } from "../../components/buttons";
 const _NotActivated = () => (
     <div>
         <h1>Feature Not Activated</h1>
-        <p>Please ask enterprise manager of your company</p>
+        <p>Please call system manager of your company</p>
         <Link to="/home">Home</Link>
     </div>
 );

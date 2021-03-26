@@ -1,0 +1,34 @@
+[
+    {
+        "slug": "perform-add-staff",
+        "title": {
+            "fa": "درج کارکنان",
+            "en": "Add Staff"
+        },
+        "activation": true
+    },
+    {
+        "slug": "perform-view-staff",
+        "title": {
+            "fa": "مشاهده سمت",
+            "en": "View Staff"
+        },
+        "activation": true
+    },
+    {
+        "slug": "perform-edit-staff",
+        "title": {
+            "fa": "ویرایش سمت",
+            "en": "Edit Staff"
+        },
+        "activation": true
+    },
+    {
+        "slug": "perform-delete-staff",
+        "title": {
+            "fa": "حدف سمت",
+            "en": "Delete Staff"
+        },
+        "activation": true
+    }
+]

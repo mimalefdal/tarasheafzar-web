@@ -19,6 +19,10 @@ trait ControlsRights
             $newItem = new Right(Arr::only($right, ['slug', 'title', 'activation']));
             // $newItem->title = json_encode($right['title']);
             $newItem->save();
+
+            // create deeper child rights
+            if (isset($right['childrights']))
+                $this->createRights($right['childrights']);
         }
     }
 }

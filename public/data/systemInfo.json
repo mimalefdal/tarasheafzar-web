@@ -20,10 +20,10 @@
             "activation": true
         },
         {
-            "slug": "access-access-panel",
+            "slug": "access-access-management-panel",
             "title": {
                 "fa": "دسترسی به پنل مدیریت دسترسی",
-                "en": "Access Enterprise Initialize Tool"
+                "en": "Access System Initialize Tool"
             },
             "activation": true
         }
@@ -38,7 +38,7 @@
             "activation": true,
             "rights": [
                 "access-structure-panel",
-                "access-access-panel"
+                "access-access-management-panel"
             ]
         }
     ],
@@ -61,16 +61,16 @@
                 "company-structure-manager"
             ],
             "rights": [
-                "access-access-panel"
+                "access-access-management-panel"
             ],
             "ownedRights": [
                 "test-right",
-                "access-access-panel"
+                "access-access-management-panel"
             ],
             "managedByRights": [
                 "test-right",
                 "access-structure-panel",
-                "access-access-panel"
+                "access-access-management-panel"
             ]
         }
     ],

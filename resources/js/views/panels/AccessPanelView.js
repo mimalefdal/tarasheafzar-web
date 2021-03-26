@@ -12,14 +12,12 @@ export default function _View(props) {
                 className="tool-link"
                 to={`${match.url}/rights_administration`}
                 feature="rights-administration-tool"
-                requiredRight="access-rights-adminstration-tool"
                 label={t("tools.rightsAdministration")}
             />
             <GuardedLink
                 className="tool-link"
                 to={`${match.url}/rights_management`}
                 feature="rights-management-tool"
-                requiredRight="access-rights-management-tool"
                 label={t("tools.rightsManagement")}
             />
         </div>

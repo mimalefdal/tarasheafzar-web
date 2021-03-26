@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\ManagesRequiredRights;
 use Illuminate\Database\Eloquent\Model;
 
 class Operation extends Model
 {
+
+    use ManagesRequiredRights;
+
     protected $fillable = [
         'title', 'slug', 'description', 'activation', 'state'
     ];

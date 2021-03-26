@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\FeatureToolsItem;
+use App\Http\Resources\FeatureItem;
 use App\Models\Feature;
 use Illuminate\Http\Request;
 
@@ -17,11 +17,11 @@ class FeatureController extends Controller
 
     public function index()
     {
-        $collection = FeatureToolsItem::collection(Feature::with('tools')->get());
+        $collection = FeatureItem::collection(Feature::with('tools')->get());
         $collection = $collection->sortBy('title');
         $collection = $collection->values()->all();
         return $collection;
 
-        return FeatureToolsItem::collection(Feature::with('tools.operations')->get());
+        return FeatureItem::collection(Feature::with('tools.operations')->get());
     }
 }

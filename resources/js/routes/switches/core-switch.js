@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { GuardedRoute } from "react-router-guards";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { StructurePanel, EnterprisePanel, StaffPanel, AccessPanel } from ".";
+import { StructurePanel, SystemPanel, StaffPanel, AccessPanel } from ".";
 import AppContext from "../../context/appContext";
 import StaffContext from "../../context/staffContext";
 import {
@@ -52,11 +52,10 @@ function _Switch(props) {
                     <Switch location={location}>
                         <Route exact path="/home" component={PanelsHome} />
                         <GuardedRoute
-                            path="/enterprise"
-                            component={EnterprisePanel}
+                            path="/system"
+                            component={SystemPanel}
                             meta={{
-                                [FEATURE_READY]:
-                                    "enterprise-administration-panel"
+                                [FEATURE_READY]: "system-panel"
                             }}
                         />
 

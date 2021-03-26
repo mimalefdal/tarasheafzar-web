@@ -1,34 +1,39 @@
 [
     {
-        "slug": "access-enterprise-panel",
+        "slug": "access-system-panel",
         "title": {
             "fa": "دسترسی به پنل مدیریت سامانه",
-            "en": "Access Enterprise Adminstration Panel"
+            "en": "Access System Adminstration Panel"
         },
-        "activation": true
-    },
-    {
-        "slug": "access-enterprise-initialize-tool",
-        "title": {
-            "fa": "دسترسی به ابزار راه‌اندازی سامانه",
-            "en": "Access Enterprise Initialize Tool"
-        },
-        "activation": true
-    },
-    {
-        "slug": "access-features-management-tool",
-        "title": {
-            "fa": "دسترسی به ابزار مدیریت امکانات سامانه",
-            "en": "Access Features Management Tool"
-        },
-        "activation": true
+        "activation": true,
+        "childrights": [
+            {
+                "slug": "use-system-initialize-tool",
+                "title": {
+                    "fa": "کار با ابزار راه‌اندازی سامانه",
+                    "en": "Use System Initialize Tool"
+                },
+                "activation": true,
+                "childrights": []
+            },
+            {
+                "slug": "use-features-management-tool",
+                "title": {
+                    "fa": "کار با ابزار مدیریت امکانات سامانه",
+                    "en": "Use Features Management Tool"
+                },
+                "activation": true,
+                "childrights": []
+            }
+        ]
     },
     {
         "slug": "test-right",
         "title": {
             "fa": "مجوز آزمون",
-            "en": "ُTest Right"
+            "en": "Test Right"
         },
-        "activation": true
+        "activation": true,
+        "childrights": []
     }
 ]

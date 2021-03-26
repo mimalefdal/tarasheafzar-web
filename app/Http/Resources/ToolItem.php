@@ -17,6 +17,8 @@ class ToolItem extends JsonResource
     {
         // return parent::toArray($request);
 
+        $item = [];
+
         $item['id'] = $this->id;
         $item['slug'] = $this->slug;
 
@@ -27,6 +29,8 @@ class ToolItem extends JsonResource
         $item['activation'] = $this->activation;
 
         $item['operations'] = OperationItem::collection($this->operations);
+        $item['permissions'] = PermissionItem::collection($this->requiredRights);
+
 
         return $item;
     }

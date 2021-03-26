@@ -319,6 +319,13 @@ button:hover {
     flex-basis: 20%;
 }
 
+.tool-link.horizontal > .link-tag {
+    width: 50%;
+    bottom: 1rem;
+    left: inherit;
+    right: inherit;
+}
+
 .panel-links::-webkit-scrollbar,
 .tool-links::-webkit-scrollbar {
     /* if scrollbar have a value problems will occured when mui modal opens   */

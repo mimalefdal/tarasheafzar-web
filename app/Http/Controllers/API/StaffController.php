@@ -82,7 +82,7 @@ class StaffController extends Controller
         // $newItem->setPosition($request->position);
 
         // TODO : this authorization must replaced by automated determinition of required right via feature/tool/operation structure
-        if (!$request->user()->can('edit-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
+        if (!$request->user()->can('perform-edit-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
 
         $item = Staff::find($request->item['id']);
 

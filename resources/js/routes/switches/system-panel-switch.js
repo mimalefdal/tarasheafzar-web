@@ -8,7 +8,7 @@ import { FEATURE_READY } from "../guards/types";
 import { ManageRights } from "../../views/rights";
 import { InitializeCeo, InitializeStart } from "../../views/initialize";
 import { Loading } from "../../components/feedback";
-import { EnterprisePanelView } from "../../views/panels";
+import { SystemPanelView } from "../../views/panels";
 import { ManageFeatures } from "../../views/features";
 import { NotFound } from "../../views/errors";
 
@@ -17,14 +17,14 @@ function _Switch(props) {
 
     return (
         <Switch>
-            <Route exact path={match.path} component={EnterprisePanelView} />
+            <Route exact path={match.path} component={SystemPanelView} />
             <GuardedRoute
                 // exact
                 path={`${match.path}/initialize`}
                 component={InitializeStart}
                 loading={Loading}
                 meta={{
-                    [FEATURE_READY]: "enterprise-initialize-tool"
+                    [FEATURE_READY]: "system-initialize-tool"
                 }}
             />
             <GuardedRoute
@@ -33,7 +33,7 @@ function _Switch(props) {
                 component={InitializeCeo}
                 loading={Loading}
                 meta={{
-                    [FEATURE_READY]: "enterprise-initialize-tool"
+                    [FEATURE_READY]: "system-initialize-tool"
                 }}
             />
             <GuardedRoute

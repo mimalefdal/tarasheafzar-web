@@ -11,15 +11,15 @@
         ]
     },
     {
-        "slug": "enterprise-admin",
+        "slug": "system-admin",
         "title": {
             "fa": "مدیریت سامانه",
-            "en": "Enterprise Adminstration"
+            "en": "System Adminstration"
         },
         "activation": true,
         "rights": [
-            "access-enterprise-panel",
-            "access-enterprise-initialize-tool"
+            "access-system-panel",
+            "use-system-initialize-tool"
         ]
     },
     {
@@ -30,8 +30,8 @@
         },
         "activation": true,
         "rights": [
-            "access-enterprise-panel",
-            "access-enterprise-initialize-tool"
+            "access-system-panel",
+            "use-system-initialize-tool"
         ]
     }
 ]

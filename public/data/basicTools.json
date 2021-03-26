@@ -1,22 +1,28 @@
 [
     {
-        "feature": "enterprise-administration-panel",
-        "slug": "enterprise-initialize-tool",
+        "feature": "system-panel",
+        "slug": "system-initialize-tool",
         "title": {
             "fa": "ابزار راه‌اندازی سامانه",
-            "en": "Enterprise Initialize Tool"
+            "en": "System Initialize Tool"
         },
         "activation": true,
-        "state": "built-in"
+        "state": "built-in",
+        "requiredRights": [
+            "use-system-initialize-tool"
+        ]
     },
     {
-        "feature": "enterprise-administration-panel",
+        "feature": "system-panel",
         "slug": "features-management-tool",
         "title": {
             "fa": "ابزار مدیریت امکانات سامانه",
             "en": "Features Management Tool"
         },
         "activation": true,
-        "state": "built-in"
+        "state": "built-in",
+        "requiredRights": [
+            "use-features-management-tool"
+        ]
     }
 ]

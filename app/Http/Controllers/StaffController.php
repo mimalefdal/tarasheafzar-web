@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FeatureItem;
+use App\Models\Feature;
 use App\Models\Right;
 use App\Models\Staff;
 use Illuminate\Http\Request;
@@ -28,9 +30,10 @@ class StaffController extends Controller
             $user->title = $titles[$lang];
         }
 
-        $user->rights = $user->rights;
+        $rights = $user->allRights();
+        $features = Feature::whereIn('state', ['installed', 'built-in'])->with('requiredRights', 'tools.requiredRights', 'tools.operations.requiredRights')->get();
 
-        return view('staff.home')->with('user', $user);
+        return view('staff.home')->with(compact('user', 'features', 'rights'));
     }
 
     /**

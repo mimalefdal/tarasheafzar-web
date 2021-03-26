@@ -29,4 +29,8 @@ class Right extends Model
     {
         return $this->morphedByMany(Position::class, 'right_holders');
     }
+
+    // public function isrequiredfor()
+    // {
+    // }
 }
