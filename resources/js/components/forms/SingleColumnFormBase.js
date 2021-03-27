@@ -70,7 +70,7 @@ function FormBase({
 
     useEffect(() => {
         const fields = listedFields;
-        // console.log(fields);
+        console.log(fields);
         GetValidValues(
             fields,
             response => {

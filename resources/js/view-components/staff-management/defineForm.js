@@ -30,7 +30,8 @@ export default function Form({ preset = "add", ...props }) {
             dataService: AddStaff,
             submitValue: t("labels.submit-add"),
             fields: ["all"],
-            inputProps: {}
+            inputProps: {},
+            listedFields: []
         },
         edit: preset == "edit" && {
             dataService: UpdateStaff,
@@ -68,10 +69,12 @@ export default function Form({ preset = "add", ...props }) {
                     initialValue: props.item.email
                 }
                 // holderType: {},
-            }
+            },
+            listedFields: []
         },
         ceo: {
             dataService: InitializeCEO,
+            listedFields: ["position"],
             submitValue: t("labels.submit-define-ceo"),
             fields: [
                 "gender",
@@ -85,7 +88,8 @@ export default function Form({ preset = "add", ...props }) {
             inputProps: {
                 position: {
                     disabled: true,
-                    initialValue: "executive-chief-officer"
+                    initialValue: "executive-chief-officer",
+                    options: "position"
                 }
             }
         }
@@ -97,7 +101,11 @@ export default function Form({ preset = "add", ...props }) {
             submitValue={presets[preset].submitValue}
             item={props.item}
             showAlert={props.showAlert}
-            listedFields={["holdertypes", "gender"]}
+            listedFields={[
+                "holdertypes",
+                "gender",
+                ...presets[preset].listedFields
+            ]}
             // redirectDelay={2000}
             redirectTarget="/system/initialize"
         >
@@ -142,7 +150,7 @@ export default function Form({ preset = "add", ...props }) {
                     options="positions"
                     {...presets["general"].inputProps["position"]}
                     {...presets[preset].inputProps["position"]}
-                    isDependent={true}
+                    isDependent={preset != "ceo" ? true : false}
                 />
             )}
             {(presets[preset].fields.includes("all") ||

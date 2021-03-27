@@ -432,18 +432,6 @@
             "tool": "staff-management-tool",
             "operations": [
                 {
-                    "slug": "add-staff-operation",
-                    "title": {
-                        "fa": "درج کارکنان",
-                        "en": "Add Staff"
-                    },
-                    "activation": true,
-                    "state": "built-in",
-                    "requiredRights": [
-                        "perform-add-staff"
-                    ]
-                },
-                {
                     "slug": "view-staff-operation",
                     "title": {
                         "fa": "مشاهده مشخصات کارکنان",
@@ -453,6 +441,35 @@
                     "state": "built-in",
                     "requiredRights": [
                         "perform-view-staff"
+                    ]
+                },
+                {
+                    "slug": "suspend-staff-operation",
+                    "title": {
+                        "fa": "تعلیق کارکنان",
+                        "en": "Suspend Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-suspend-staff"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "staff-list-tool",
+            "operations": [
+                {
+                    "slug": "add-staff-operation",
+                    "title": {
+                        "fa": "درج کارکنان",
+                        "en": "Add Staff"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-add-staff"
                     ]
                 },
                 {
@@ -477,18 +494,6 @@
                     "state": "built-in",
                     "requiredRights": [
                         "perform-delete-staff"
-                    ]
-                },
-                {
-                    "slug": "suspend-staff-operation",
-                    "title": {
-                        "fa": "تعلیق کارکنان",
-                        "en": "Suspend Staff"
-                    },
-                    "activation": true,
-                    "state": "built-in",
-                    "requiredRights": [
-                        "perform-suspend-staff"
                     ]
                 }
             ]
@@ -815,7 +820,25 @@
                                 "fa": "ویرایش کارکنان",
                                 "en": "Edit Staff"
                             },
-                            "activation": true
+                            "activation": true,
+                            "childrights": [
+                                {
+                                    "slug": "perform-edit-staff-personal-info",
+                                    "title": {
+                                        "fa": "ویرایش مشخصات فردی کارکنان",
+                                        "en": "Edit Staff Personal Info"
+                                    },
+                                    "activation": false
+                                },
+                                {
+                                    "slug": "perform-edit-staff-carrier-info",
+                                    "title": {
+                                        "fa": "ویرایش مشخصات شغلی کارکنان",
+                                        "en": "Edit Staff Carrier Info"
+                                    },
+                                    "activation": false
+                                }
+                            ]
                         },
                         {
                             "slug": "perform-delete-staff",
@@ -892,6 +915,35 @@
                 "access-rights-adminstration-tool",
                 "access-rights-management-tool"
             ]
+        },
+        {
+            "slug": "staff-administrator",
+            "title": {
+                "fa": "مسئول ادارهٔ کارکنان",
+                "en": "Staff Adminstartor"
+            },
+            "activation": true,
+            "rights": [
+                "access-staff-management-panel",
+                "use-staff-list-tool",
+                "perform-add-staff",
+                "perform-edit-staff",
+                "perform-delete-staff"
+            ]
+        },
+        {
+            "slug": "staff-manager",
+            "title": {
+                "fa": "مدیر کارکنان",
+                "en": "Staff Manager"
+            },
+            "activation": true,
+            "rights": [
+                "access-staff-management-panel",
+                "use-staff-management-tool",
+                "perform-suspend-staff",
+                "perform-view-staff"
+            ]
         }
     ],
     "Positions": [
@@ -911,7 +963,8 @@
             "holder": null,
             "roles": [
                 "structure-administrator",
-                "access-administrator"
+                "access-administrator",
+                "staff-manager"
             ],
             "rights": [
                 "access-system-panel",
@@ -957,7 +1010,9 @@
             "gender": null,
             "email": "saba@tarasheafzar.ir",
             "position": "test-officer",
-            "roles": [],
+            "roles": [
+                "staff-administrator"
+            ],
             "rights": []
         }
     ]

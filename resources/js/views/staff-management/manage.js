@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
-import { AddButton } from "../../components/buttons";
+import { AddButton, GuardedAction } from "../../components/buttons";
 import { ConfirmAndRunDialog, DeleteDialog } from "../../components/feedback";
 import { ListTitle } from "../../components/list-controls";
 import { TableList } from "../../components/lists";
@@ -34,18 +34,30 @@ function _manage(props) {
     };
 
     const entryOperations = [
-        { type: "view", actionType: "link", action: "/staff/:personnel_id" },
+        {
+            type: "view",
+            actionType: "link",
+            action: "/staff/:personnel_id",
+            feature: "view-staff-operation"
+        },
         {
             type: "edit",
             actionType: "callback",
-            action: handleEdit
+            action: handleEdit,
+            feature: "edit-staff-operation"
         },
         {
             type: "suspendToggle",
             actionType: "callback",
-            action: handleSuspend
+            action: handleSuspend,
+            feature: "suspend-staff-operation"
         },
-        { type: "delete", actionType: "callback", action: handleDelete }
+        {
+            type: "delete",
+            actionType: "callback",
+            action: handleDelete,
+            feature: "delete-staff-operation"
+        }
     ];
 
     function handleDelete(item) {
@@ -76,10 +88,14 @@ function _manage(props) {
                 <ListTitle
                     title={t("tools.staffManagement")}
                     btnSet={
-                        <AddButton
-                            className="header-operation-btn"
-                            target="/staff/define"
-                        />
+                        <>
+                            <GuardedAction
+                                action="add"
+                                feature="add-staff-operation"
+                                className="header-operation-btn"
+                                target="/staff/define"
+                            />
+                        </>
                     }
                     // options={
                     //     <>

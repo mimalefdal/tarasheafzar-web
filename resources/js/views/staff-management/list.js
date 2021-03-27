@@ -29,22 +29,27 @@ function _list(props) {
     };
 
     const entryOperations = [
-        { type: "view", actionType: "link", action: "/staff/:personnel_id" },
+        {
+            type: "view",
+            actionType: "link",
+            action: "/staff/:personnel_id",
+            feature: "view-staff-operation"
+        },
         {
             type: "edit",
-            requiredRight: "edit-staff",
+            feature: "edit-staff-operation",
             actionType: "callback",
             action: handleEdit
         },
         {
             type: "suspendToggle",
-            requiredRight: ["suspend-staff"],
+            feature: "suspend-staff-operation",
             actionType: "callback",
             action: handleSuspend
         },
         {
             type: "delete",
-            requiredRight: ["delete-staff"],
+            feature: "delete-staff-operation",
             actionType: "callback",
             action: handleDelete
         }
@@ -81,7 +86,7 @@ function _list(props) {
                         <>
                             <GuardedAction
                                 action="add"
-                                requiredRights="create-staff"
+                                feature="add-staff-operation"
                                 className="header-operation-btn"
                                 target="/staff/define"
                             />

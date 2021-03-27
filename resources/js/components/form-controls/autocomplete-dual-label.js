@@ -14,7 +14,6 @@ import {
 const Control = (
     {
         options = [],
-        // initialOptionIndex = null,
         initialValue = null,
         loadingData = false,
         validation = {},
@@ -38,6 +37,7 @@ const Control = (
     }, [loadingData]);
 
     useEffect(() => {
+        // console.log(initialValue, options);
         if (props.disabled & isDependent) setValue(props.multiple ? [] : null);
     }, [props.disabled]);
 

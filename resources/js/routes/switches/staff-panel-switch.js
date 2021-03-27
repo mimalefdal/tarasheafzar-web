@@ -51,7 +51,7 @@ export default function _Switch() {
                 path={`${match.path}/define`}
                 component={DefineStaff}
                 meta={{
-                    [FEATURE_READY]: "staff-management-tool"
+                    [FEATURE_READY]: "add-staff-operation"
                 }}
             />
             <GuardedRoute
@@ -59,7 +59,7 @@ export default function _Switch() {
                 path={`${match.path}/:personnel_id`}
                 component={ShowStaff}
                 meta={{
-                    [FEATURE_READY]: "staff-management-tool"
+                    [FEATURE_READY]: "view-staff-operation"
                 }}
             />
             <GuardedRoute
@@ -67,7 +67,7 @@ export default function _Switch() {
                 path={`${match.path}/edit/:personnel_id`}
                 component={EditStaff}
                 meta={{
-                    [FEATURE_READY]: "staff-management-tool"
+                    [FEATURE_READY]: "edit-staff-operation"
                 }}
             />
 

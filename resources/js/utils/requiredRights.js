@@ -11,7 +11,8 @@ export function _getFeatureRequiredRights(featureSlug) {
         // console.log("_featureRequiredRights", _rights);
         return _rights;
     }
-    return null;
+    console.log("_featureRequiredRights:unknown feature", featureSlug);
+    return ["unknown-feature"];
 }
 
 export function _getToolRequiredRights(toolSlug) {}

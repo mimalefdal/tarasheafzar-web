@@ -1,17 +1,26 @@
-import { getIsAllowed, selectActionComponent, setParamValue } from ".";
+import {
+    FeatureRequiredRights,
+    getIsAllowed,
+    selectActionComponent,
+    setParamValue
+} from ".";
 
 export default function utility(entryOperations, item, key) {
     let actions = Object.values(entryOperations).map((entry, key) => {
         let type = entry.type;
-        let requiredRight = entry.requiredRight;
+        let requiredRights = entry.requiredRights;
+        let feature = entry.feature;
         let actionType = entry.actionType;
         let action = entry.action;
         let attr = entry.props;
 
+        // console.log("renderActionComponent->feature", feature);
         // requiredRight &&
         //     console.log("renderActionComponent->requiredRight", requiredRight);
 
-        if (requiredRight && !getIsAllowed(requiredRight)) return null;
+        if (feature && !getIsAllowed(FeatureRequiredRights(feature)))
+            return null;
+        if (requiredRights && !getIsAllowed(requiredRights)) return null;
 
         switch (actionType) {
             case "link":

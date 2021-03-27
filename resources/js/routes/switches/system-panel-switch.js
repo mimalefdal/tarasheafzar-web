@@ -19,7 +19,7 @@ function _Switch(props) {
         <Switch>
             <Route exact path={match.path} component={SystemPanelView} />
             <GuardedRoute
-                // exact
+                exact
                 path={`${match.path}/initialize`}
                 component={InitializeStart}
                 loading={Loading}
@@ -33,7 +33,7 @@ function _Switch(props) {
                 component={InitializeCeo}
                 loading={Loading}
                 meta={{
-                    [FEATURE_READY]: "system-initialize-tool"
+                    [FEATURE_READY]: "define-ceo-operation"
                 }}
             />
             <GuardedRoute
