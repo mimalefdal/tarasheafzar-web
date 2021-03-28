@@ -8,13 +8,17 @@ use App\Http\Resources\StaffManageDisplayItem;
 use App\Http\Resources\StaffManageEditItem;
 use Illuminate\Http\Request;
 use App\Models\Staff;
-use Utility;
 
 class StaffController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:sanctum');
+        $this->middleware('allowed:perform-add-staff')->only('create');
+        $this->middleware('allowed:perform-view-staff')->only('show');
+        $this->middleware('allowed:perform-edit-staff')->only('update');
+        $this->middleware('allowed:perform-delete-staff')->only('delete');
+        $this->middleware('allowed:perform-suspend-staff')->only('suspend');
     }
 
     public function create(StoreStaffRequest $request)
@@ -82,7 +86,7 @@ class StaffController extends Controller
         // $newItem->setPosition($request->position);
 
         // TODO : this authorization must replaced by automated determinition of required right via feature/tool/operation structure
-        if (!$request->user()->can('perform-edit-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
+        // if (!$request->user()->can('perform-edit-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
 
         $item = Staff::find($request->item['id']);
 
@@ -101,7 +105,7 @@ class StaffController extends Controller
     public function delete(Request $request)
     {
         // TODO : this authorization must replaced by automated determinition of required right via feature/tool/operation structure
-        if (!$request->user()->can('delete-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
+        // if (!$request->user()->can('delete-staff')) return response(["message" => \Lang::get("messages.unathorized"), $request->all()], 403);
 
         $item = $request->item;
         $item = Staff::find($item['id']);

@@ -11,6 +11,15 @@ use Utility;
 
 class UnitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('allowed:perform-add-unit')->only('create');
+        $this->middleware('allowed:perform-view-unit')->only('show');
+        $this->middleware('allowed:perform-edit-unit')->only('update');
+        $this->middleware('allowed:perform-delete-unit')->only('delete');
+    }
+
     public function create(StoreUnitRequest $request)
     {
         $newItem = new Unit($request->all());

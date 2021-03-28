@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('title')
-    تراشه افزار | ورود همکاران
+    تراشه افزار | پنل سازمانی
 @endsection
 
 @push('styles')
@@ -34,15 +34,15 @@
                 <div id="company-name" class="large-title">
                     شرکت تراشه افزار سامانه ایرانیان
                 </div>
-                <div id='panel-name' class="">پنل ورود همکاران</div>
+                <div id='panel-name' class="">پنل سازمانی</div>
 
             </div>
             <div class="sub-container" style="flex-direction: row;">
 
             </div>
             <!-- <div class="sub-container" id="news">
-                            گزارش مالی هیئت مدیره مربوط به عملکر سال ۱۳۹۸ منتشر شد
-                        </div> -->
+                                گزارش مالی هیئت مدیره مربوط به عملکر سال ۱۳۹۸ منتشر شد
+                            </div> -->
         </div>
 
 

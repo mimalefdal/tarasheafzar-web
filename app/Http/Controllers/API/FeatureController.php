@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FeatureItem;
 use App\Models\Feature;
-use Illuminate\Http\Request;
 
 class FeatureController extends Controller
 

@@ -18,7 +18,7 @@ class RightController extends Controller
 
     public function index(Request $request)
     {
-        return $request->user()->allManagedByRights();
+        // return $request->user()->allManagedByRights();
         return Right::all();
     }
 }

@@ -13,6 +13,15 @@ use Utility;
 
 class DepartmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('allowed:perform-add-department')->only('create');
+        $this->middleware('allowed:perform-view-department')->only('show');
+        $this->middleware('allowed:perform-edit-department')->only('update');
+        $this->middleware('allowed:perform-delete-department')->only('delete');
+    }
+
     public function create(StoreDepartmentRequest $request)
     {
         $newItem = new Department($request->all());

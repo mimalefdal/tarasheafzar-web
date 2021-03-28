@@ -12,6 +12,15 @@ use Lang;
 
 class PositionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('allowed:perform-add-position')->only('create');
+        $this->middleware('allowed:perform-view-position')->only('show');
+        $this->middleware('allowed:perform-edit-position')->only('update');
+        $this->middleware('allowed:perform-delete-position')->only('delete');
+    }
+
     public function create(StorePositionRequest $request)
     {
         $newItem = new Position($request->all());

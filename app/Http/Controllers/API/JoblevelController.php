@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Lang;
 
 class JoblevelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('allowed:perform-add-joblevel')->only('create');
+        $this->middleware('allowed:perform-view-joblevel')->only('show');
+        $this->middleware('allowed:perform-edit-joblevel')->only('update');
+        $this->middleware('allowed:perform-delete-joblevel')->only('delete');
+    }
+
     public function create(StoreJoblevelRequest $request)
     {
         // return $request;
