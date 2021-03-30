@@ -1,15 +1,23 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 import { GuardedLink } from "../../components/links";
 import { t } from "../../utils";
+import { setTitle } from "../../utils/redux/navSlice";
 
 export default function _View() {
     let match = useRouteMatch();
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setTitle(t("panels.structure-management")));
+    }, []);
+
     return (
         <Fragment>
             <div className="tool-links horizontal">
                 <GuardedLink
-                    className="tool-link horizontal"
+                    className="tool-link"
                     to={`${match.url}/company`}
                     feature="company-info-tool"
                     label={t("tools.companyManagement")}
@@ -17,14 +25,14 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link horizontal"
+                    className="tool-link"
                     to={`${match.url}/branches`}
                     feature="branches-management-tool"
                     label={t("tools.branchesManagement")}
                     style={{ order: 1 }}
                 />
                 <GuardedLink
-                    className="tool-link horizontal"
+                    className="tool-link"
                     to={`${match.url}/departments`}
                     feature="departments-management-tool"
                     label={t("tools.departmentsManagement")}
@@ -32,7 +40,7 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link horizontal"
+                    className="tool-link"
                     to={`${match.url}/units`}
                     feature="units-management-tool"
                     label={t("tools.unitsManagement")}
@@ -40,7 +48,7 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link horizontal"
+                    className="tool-link"
                     to={`${match.url}/joblevels`}
                     feature="joblevels-management-tool"
                     label={t("tools.joblevelsManagement")}
@@ -48,7 +56,7 @@ export default function _View() {
                 />
 
                 <GuardedLink
-                    className="tool-link horizontal"
+                    className="tool-link"
                     to={`${match.url}/positions`}
                     feature="positions-management-tool"
                     label={t("tools.positionsManagement")}

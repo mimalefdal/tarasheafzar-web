@@ -12,9 +12,9 @@ export default function _View(props) {
 
     useEffect(() => {
         dispatch(setTitle(t("page-titles.welcome")));
-        return () => {
-            dispatch(clearTitle());
-        };
+        // return () => {
+        //     dispatch(clearTitle());
+        // };
     }, []);
 
     return (

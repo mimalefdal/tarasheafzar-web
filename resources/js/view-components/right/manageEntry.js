@@ -12,7 +12,8 @@ function Entry({ item, entryActions, ...props }) {
     }
     const id = item.id;
     const slug = item.slug;
-    const title = JSON.parse(item.title)[currentLang()];
+    // const title = JSON.parse(item.title)[currentLang()];
+    const title = item.title[currentLang()];
 
     const displayItem = {
         title: title,

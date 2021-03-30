@@ -147,10 +147,6 @@ button:hover {
 }
 
 .general-shadow {
-    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
 }
 
@@ -305,8 +301,8 @@ button:hover {
     justify-content: flex-start;
 }
 
-.panel-link.horizontal,
-.tool-link.horizontal {
+.panel-links.horizontal .panel-link,
+.tool-links.horizontal .tool-link {
     width: inherit;
     flex: 0 0 30%;
     box-shadow: inherit !important;
@@ -315,11 +311,11 @@ button:hover {
     /* border: 1px solid var(--titlebkg); */
 }
 
-.tool-link.horizontal {
+.tool-links.horizontal .tool-link {
     flex-basis: 20%;
 }
 
-.tool-link.horizontal > .link-tag {
+.tool-links.horizontal .tool-link > .link-tag {
     width: 50%;
     bottom: 1rem;
     left: inherit;
@@ -330,6 +326,7 @@ button:hover {
 .tool-links::-webkit-scrollbar {
     /* if scrollbar have a value problems will occured when mui modal opens   */
     /* height: 10px; */
+    display: none;
 }
 
 .panel-links::-webkit-scrollbar-track {
@@ -372,7 +369,7 @@ button:hover {
     margin: auto;
     flex-direction: row;
     padding: 0.5rem 1rem;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .nav-btn {
@@ -395,8 +392,8 @@ button:hover {
 }
 
 .nav-title {
-    font-size: 16px;
-    /* font-weight: bold; */
+    font-size: 0.8rem;
+    font-weight: bold;
     color: var(--primaryColor);
 }
 

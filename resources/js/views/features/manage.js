@@ -14,9 +14,9 @@ function _manage(props) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setTitle(t("tools.featuresManagement")));
-        return () => {
-            dispatch(clearTitle());
-        };
+        // return () => {
+        //     dispatch(clearTitle());
+        // };
     }, []);
 
     const [expandedItems, setExpandedItems] = useState([]);

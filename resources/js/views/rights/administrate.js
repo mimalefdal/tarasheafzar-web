@@ -9,7 +9,7 @@ import { OperationTable } from "../../components/tables";
 import { GetRightList } from "../../services";
 
 import { t } from "../../utils";
-import { clearTitle, setTitle } from "../../utils/redux/navSlice";
+import { addTitle, clearTitle, setTitle } from "../../utils/redux/navSlice";
 import { RightEntry } from "../../view-components";
 
 function _manage() {
@@ -23,9 +23,9 @@ function _manage() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setTitle(t("tools.rightsAdministration")));
-        return () => {
-            dispatch(clearTitle());
-        };
+        // return () => {
+        //     dispatch(clearTitle());
+        // };
     }, []);
 
     const entryOperations = [

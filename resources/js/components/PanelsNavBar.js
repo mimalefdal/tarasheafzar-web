@@ -13,7 +13,10 @@ function PanelsNavBar() {
             <div className="nav-bar-area responsive-inner-width">
                 {location.pathname != "/home" && <HomeButton />}
 
-                <div className="flex center" style={{ flexGrow: "1" }}>
+                <div
+                    className="flex"
+                    style={{ flexGrow: "1", marginInline: "1rem" }}
+                >
                     <p className="nav-title"> {title} </p>
                 </div>
                 {location.pathname != "/home" && <BackButton />}
