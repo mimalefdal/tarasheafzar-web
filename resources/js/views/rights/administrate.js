@@ -6,7 +6,7 @@ import { AddButton } from "../../components/buttons";
 import { ListTitle } from "../../components/list-controls";
 import { RightsList, TableList } from "../../components/lists";
 import { OperationTable } from "../../components/tables";
-import { GetRightList } from "../../services";
+import { GetOwnedRightList, GetRightList } from "../../services";
 
 import { t } from "../../utils";
 import { addTitle, clearTitle, setTitle } from "../../utils/redux/navSlice";
@@ -46,13 +46,13 @@ function _manage() {
             <PageHeaderBar>
                 <ListTitle title={t("lists.rightsListTitle")} />
             </PageHeaderBar>
-            {/* <TableList
-                dataService={GetRightList}
+            <TableList
+                dataService={GetOwnedRightList}
                 tableComponent={<OperationTable className="general-shadow" />}
                 entryComponent={<RightEntry />}
                 tableMap={rightsTableMap}
                 entryOperations={entryOperations}
-            /> */}
+            />
         </>
     );
 }

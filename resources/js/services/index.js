@@ -48,6 +48,8 @@ export { defineCeo as InitializeCEO } from "./initialize-service";
 
 export { tryAdd as AddRight } from "./right-service";
 export { getIndex as GetRightList } from "./right-service";
+export { getManagedBy as GetManagedByRightList } from "./right-service";
+export { getOwned as GetOwnedRightList } from "./right-service";
 
 export { getValues as GetValidValues } from "./values-service";
 

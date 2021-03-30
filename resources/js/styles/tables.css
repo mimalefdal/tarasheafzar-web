@@ -3,7 +3,7 @@
     --table-header-bkg: #efefef;
     --table-header-font: initial;
     --table-secondary-color: var(--blue);
-    --table-secondary-color-dark: var(--amber);
+    --table-secondary-color-dark: var(--teal);
 }
 
 table {
@@ -15,6 +15,8 @@ table {
 th,
 thead {
     background-color: var(--table-header-bkg);
+    background-color: var(--table-secondary-color-dark);
+    color: white;
 }
 
 thead {
@@ -37,7 +39,7 @@ th {
 
 tr {
     border-bottom: 1px solid #ddd;
-    border-bottom: 1px solid var(--table-secondary-color);
+    /* border-bottom: 1px solid var(--table-secondary-color); */
     height: 75px;
 }
 
