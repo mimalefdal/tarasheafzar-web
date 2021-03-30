@@ -2,8 +2,8 @@
     {
         "slug": "access-structure-panel",
         "title": {
-            "fa": "دسترسی به پنل مدیریت شرکت",
-            "en": "Access Company Management Panel"
+            "fa": "دسترسی به پنل ساختار",
+            "en": "Access Structure Panel"
         },
         "activation": true,
         "childrights": [

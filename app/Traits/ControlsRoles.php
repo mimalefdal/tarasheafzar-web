@@ -23,19 +23,29 @@ trait ControlsRoles
 
             if ($role['rights'] != null) {
                 if ($role['rights'][0] == "allRights") {
-                    $rights = Right::all()->pluck('slug')->all();
+                    $rights_ = Right::pluck('slug')->all();
                 } else {
-                    $rights = $role['rights'];
+                    $rights_ = $role['rights'];
                 }
-                $newItem->giveRightsTo($rights);
+                $newItem->giveRightsTo($rights_);
             }
 
             if (isset($role['ownedRights']) && $role['ownedRights'] != null) {
-                $newItem->setOwnerOfRights($role['ownedRights']);
+                if ($role['ownedRights'][0] == "allRights") {
+                    $ownedRights_ = Right::pluck('slug')->all();
+                } else {
+                    $ownedRights_ = $role['ownedRights'];
+                }
+                $newItem->setOwnerOfRights($ownedRights_);
             }
 
             if (isset($role['managedByRights']) && $role['managedByRights'] != null) {
-                $newItem->setOwnerOfRights($role['managedByRights']);
+                if ($role['managedByRights'][0] == "allRights") {
+                    $managedByRights_ = Right::pluck('slug')->all();
+                } else {
+                    $managedByRights_ = $role['managedByRights'];
+                }
+                $newItem->setOwnerOfRights($managedByRights_);
             }
         }
     }

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Right;
 use App\Models\Staff;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,7 +31,29 @@ trait ControlsStaff
             $newStaff->save();
 
             if ($staff['rights'] != null) {
-                $newStaff->giveRightsTo($staff['rights']);
+                if ($staff['rights'][0] == "allRights")
+                    $rights_ = Right::pluck('slug')->all();
+                else
+                    $rights_ = $staff['rights'];
+                $newStaff->giveRightsTo($rights_);
+            }
+
+            if (isset($staff['ownedRights']) && $staff['ownedRights'] != null) {
+                if ($staff['ownedRights'][0] == "allRights") {
+                    $ownedRights_ = Right::pluck('slug')->all();
+                } else {
+                    $ownedRights_ = $staff['ownedRights'];
+                }
+                $newStaff->setOwnerOfRights($ownedRights_);
+            }
+
+            if (isset($staff['managedByRights']) && $staff['managedByRights'] != null) {
+                if ($staff['managedByRights'][0] == "allRights") {
+                    $managedByRights_ = Right::pluck('slug')->all();
+                } else {
+                    $managedByRights_ = $staff['managedByRights'];
+                }
+                $newStaff->setOwnerOfRights($managedByRights_);
             }
 
             if ($staff['roles'] != null) {

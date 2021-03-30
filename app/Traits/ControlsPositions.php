@@ -6,6 +6,7 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Joblevel;
 use App\Models\Position;
+use App\Models\Right;
 use App\Models\Unit;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
@@ -53,15 +54,27 @@ trait ControlsPositions
             }
 
             if ($position['rights'] != null) {
-                $newItem->giveRightsTo($position['rights']);
+                if ($position['rights'][0] == "allRights")
+                    $rights_ = Right::pluck('slug')->all();
+                else
+                    $rights_ = $position['rights'];
+                $newItem->giveRightsTo($rights_);
             }
 
             if (isset($position['ownedRights']) && $position['ownedRights'] != null) {
-                $newItem->setOwnerOfRights($position['ownedRights']);
+                if ($position['ownedRights'][0] == "allRights")
+                    $ownedRights_ = Right::pluck('slug')->all();
+                else
+                    $ownedRights_ = $position['ownedRights'];
+                $newItem->setOwnerOfRights($ownedRights_);
             }
 
             if (isset($position['managedByRights']) && $position['managedByRights'] != null) {
-                $newItem->setManagerOfRights($position['managedByRights']);
+                if ($position['managedByRights'][0] == "allRights")
+                    $managedByRights_ = Right::pluck('slug')->all();
+                else
+                    $managedByRights_ = $position['managedByRights'];
+                $newItem->setManagerOfRights($managedByRights_);
             }
 
             if ($position['roles'] != null) {

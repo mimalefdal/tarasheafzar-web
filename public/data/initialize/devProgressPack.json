@@ -974,7 +974,7 @@
                 "use-staff-management-tool"
             ],
             "ownedRights": [
-                "access-access-management-panel"
+                "allRights"
             ],
             "managedByRights": [
                 "access-structure-panel",
