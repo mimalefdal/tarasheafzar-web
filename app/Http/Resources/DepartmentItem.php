@@ -48,7 +48,7 @@ class DepartmentItem extends JsonResource
             $item['positions'] =  PositionSimpleItem::collection($this->positions);
 
         $item['directcrew'] = StaffManageDisplayItem::collection($this->directcrew());
-        $item['subsetcrew'] = StaffManageDisplayItem::collection($this->subsetcrew());
+        $item['subsetCrew'] = StaffManageDisplayItem::collection($this->subsetCrew());
 
         $item['deleted'] = $this->trashed();
         if ($item['deleted'])

@@ -3,11 +3,27 @@
     /* --main-bkg: rgb(52, 76, 98); */
 
     --link-bkg: rgb(255, 255, 255, 0.6);
+    --link-bkg-hover: rgb(0, 24, 173, 1);
 
-    --titlebkg: var(--blue);
+    /* --titlebkg: var(--blue); */
+    --titlebkg: linear-gradient(
+        90deg,
+        rgba(0, 24, 173, 1) 0%,
+        rgba(2, 20, 105, 1) 100%
+    );
+
+    /* --titlebkg: linear-gradient(
+        90deg,
+        rgba(255, 207, 27, 1) 0%,
+        rgba(242, 193, 10, 1) 100%
+    ); */
+
     --formtitlebkg: var(--indigo);
-    --showtitlebkg: #000080;
-    --managecardbkg: #000080;
+
+    /* --showtitlebkg: #000080; */
+    --showtitlebkg: var(--titlebkg);
+
+    --managecardColor: #000080;
 
     --primaryColor: var(--blue);
     --primaryBkgColor: #eee;
@@ -137,7 +153,7 @@ button:hover {
 
 .panel-side-area {
     flex: 1;
-    z-index: 99;
+    z-index: 98;
     /* background-color: var(--main-bkg); */
 }
 .layout-content {
@@ -182,7 +198,6 @@ button:hover {
     height: 15vh;
     padding: 15px;
     color: grey;
-    /* border: 2px solid var(--titlebkg); */
     /* font-weight: bold; */
     font-weight: 300;
     border-radius: 5px;
@@ -192,10 +207,13 @@ button:hover {
     justify-content: center;
     align-items: center;
     /* background-color: transparent; */
-    background-color: var(--link-bkg);
+    background: var(--link-bkg);
 
-    color: var(--titlebkg);
+    color: var(--primaryColor);
     box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
+    box-shadow: 2px 5px 15px rgb(125 125 125 / 18%) !important;
+
+    /* transition: all 0.5s linear; */
 }
 
 .disabled {
@@ -226,7 +244,8 @@ button:hover {
 .panel-link:hover {
     /* flex: 1; */
     color: whitesmoke;
-    background-color: var(--titlebkg);
+    background: var(--link-bkg-hover);
+    font-weight: bold;
     /* font-size: calc(100% + 1px); */
 }
 
@@ -257,14 +276,15 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--titlebkg);
-    background-color: var(--link-bkg);
+    color: var(--primaryColor);
+    background: var(--link-bkg);
+    box-shadow: 2px 2px 6px rgb(125 125 125 / 18%) !important;
 }
 
 .tool-link:hover {
     /* flex: 1; */
     color: whitesmoke;
-    background-color: var(--titlebkg);
+    background: var(--link-bkg-hover);
     /* font-size: calc(100% + 1px); */
 }
 
@@ -305,10 +325,8 @@ button:hover {
 .tool-links.horizontal .tool-link {
     width: inherit;
     flex: 0 0 30%;
-    box-shadow: inherit !important;
-    /* background-color: var(--link-bkg); */
     height: 90%;
-    /* border: 1px solid var(--titlebkg); */
+    /* background: var(--titlebkg); */
 }
 
 .tool-links.horizontal .tool-link {
@@ -326,7 +344,7 @@ button:hover {
 .tool-links::-webkit-scrollbar {
     /* if scrollbar have a value problems will occured when mui modal opens   */
     /* height: 10px; */
-    display: none;
+    /* display: none; */
 }
 
 .panel-links::-webkit-scrollbar-track {
@@ -373,8 +391,8 @@ button:hover {
 }
 
 .nav-btn {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     padding: 2px;
     background: none;
     border: none;
@@ -386,7 +404,7 @@ button:hover {
     outline: none;
     /* fill: lightskyblue; */
     fill: #21255d;
-    fill: var(--titlebkg);
+    fill: var(--primaryColor);
     /* fill: salmon; */
     /* fill: white; */
 }
@@ -409,7 +427,7 @@ button:hover {
 .title-text {
     font-size: 21px;
     /* font-weight: bold; */
-    color: var(--titlebkg);
+    color: var(--primaryColor);
     color: #24c239;
     color: white;
 }
@@ -433,6 +451,7 @@ button:hover {
     z-index: 50;
     width: 100%;
     font-size: 21px;
+    text-align: start;
     display: flex;
     flex-direction: row;
     padding: 1rem;

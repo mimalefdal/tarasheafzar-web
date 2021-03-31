@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Models\Position;
 use App\Models\Staff;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -11,8 +10,9 @@ use Illuminate\Database\Eloquent\Builder;
  */
 trait HandlesCrew
 {
-    public function crew()
+    public function wholeCrew()
     {
+        return $this->directCrew()->merge($this->subsetCrew());
     }
 
     public function directCrew()
@@ -31,13 +31,14 @@ trait HandlesCrew
         return $crew;
     }
 
-    public function subsetcrew(int $deep = 0)
+    public function subsetCrew(int $deep = 0)
     {
         $crew = collect();
 
         if (method_exists($this, 'childBlocks')) {
             $crew = collect();
-            $childBlocks = $this->flatted($this->childblocks());
+            if ($deep == 0)
+                $childBlocks = $this->flatted($this->childblocks());
             foreach ($childBlocks as $block) {
                 $crew = $crew->merge($block->directCrew());
             }

@@ -7,11 +7,7 @@
 .card-container {
     width: 100%;
     padding: 2rem;
-    /* border-radius: 5px; */
-    /* border: 1px solid var(--titlebkg); */
-    border-bottom: 1px solid var(--showtitlebkg);
-    /* background-color: var(--managecardbkg); */
-    /* background-color: var(--showtitlebkg); */
+    border-bottom: 1px solid var(--managecardColor);
     color: white;
     color: inherit;
     margin-bottom: 1rem;
@@ -71,7 +67,7 @@
     font-weight: bold;
     font-size: 16px;
     align-self: flex-start;
-    color: var(--showtitlebkg);
+    color: var(--managecardColor);
     margin: 0;
 }
 .card-title.basic {
@@ -91,7 +87,7 @@
 }
 
 .card-operation-btn svg {
-    fill: var(--showtitlebkg);
+    fill: var(--managecardColor);
     opacity: 0.8;
     transition: all 100ms linear;
 }

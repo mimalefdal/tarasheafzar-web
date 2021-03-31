@@ -25,8 +25,8 @@ class CompanyGeneralInfo extends JsonResource
         $item['positions'] = PositionSimpleItem::collection($this->positions());
 
         $item['directcrew'] = StaffManageDisplayItem::collection($this->directcrew());
-        $item['subsetcrew'] = StaffManageDisplayItem::collection($this->subsetcrew());
-        // $item['sag'] = $this->subsetcrew();
+        $item['subsetCrew'] = StaffManageDisplayItem::collection($this->subsetCrew());
+        // $item['sag'] = $this->subsetCrew();
 
         return $item;
     }

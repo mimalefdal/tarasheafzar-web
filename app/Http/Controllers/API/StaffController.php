@@ -45,7 +45,7 @@ class StaffController extends Controller
 
     public function getManageable(Request $request)
     {
-        return StaffManageDisplayItem::collection($request->user()->manageableCrew('all'));
+        return StaffManageDisplayItem::collection($request->user()->crewScope('all'));
         return response(["message" => "Not Implemented"], 400);
     }
 

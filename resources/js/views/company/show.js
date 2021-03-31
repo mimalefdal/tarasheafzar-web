@@ -39,7 +39,7 @@ function show(props) {
 
     return (
         <>
-            <PageHeaderBar className="view-header">
+            <PageHeaderBar>
                 {ready ? (
                     <Title
                         className="view-title"
@@ -103,7 +103,7 @@ function show(props) {
                         title={t("labels.staffof", {
                             block: t("labels.subset")
                         })}
-                        items={item.subsetcrew}
+                        items={item.subsetCrew}
                         dataField="fullname"
                         itemType="staff_s"
                         linkPattern="/staff/:personnel_id"

@@ -53,11 +53,13 @@ class Staff extends Authenticatable
         return $this->position->hasposition;
     }
 
-    public function manageableCrew($mode = 'all')
+    public function crewScope($mode = 'all')
     {
         switch ($mode) {
             case 'all':
-                $targetCrew = $this->holder()->directCrew()->merge($this->holder()->subsetCrew());
+                // $targetCrew = $this->holder()->directCrew()->merge($this->holder()->subsetCrew());
+                $targetCrew = $this->holder()->wholeCrew();
+                $targetCrew = $targetCrew->sortBy('idcert_no');
                 break;
 
             case 'direct':
@@ -72,9 +74,11 @@ class Staff extends Authenticatable
                 break;
         }
         // return $targetCrew;
-        $manageableCrew = $targetCrew->filter(function ($value, $key) {
+        $crewScope = $targetCrew->filter(function ($value, $key) {
             return $value->position->joblevel->priority > $this->position->joblevel->priority;
         });
-        return $manageableCrew;
+
+
+        return $crewScope;
     }
 }

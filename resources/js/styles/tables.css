@@ -1,9 +1,13 @@
 :root {
     --table-bkg: rgb(255, 255, 255, 0.4);
-    --table-header-bkg: #efefef;
+    --table-header-bkg: linear-gradient(
+        90deg,
+        rgba(56, 173, 0, 1) 0%,
+        rgba(40, 156, 88, 1) 100%
+    );
     --table-header-font: initial;
     --table-secondary-color: var(--blue);
-    --table-secondary-color-dark: var(--teal);
+    --table-secondary-color-dark: ;
 }
 
 table {
@@ -14,13 +18,11 @@ table {
 
 th,
 thead {
-    background-color: var(--table-header-bkg);
-    background-color: var(--table-secondary-color-dark);
     color: white;
 }
 
 thead {
-    /* border-bottom: 2px solid var(--table-secondary-color); */
+    background: var(--table-header-bkg);
 }
 
 th,

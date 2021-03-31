@@ -40,7 +40,7 @@ class BranchItem extends JsonResource
         $item['title'] = Bilang::getLocalTitle($this->title, true);
 
         $item['directcrew'] = StaffManageDisplayItem::collection($this->directcrew());
-        $item['subsetcrew'] = StaffManageDisplayItem::collection($this->subsetcrew());
+        $item['subsetCrew'] = StaffManageDisplayItem::collection($this->subsetCrew());
 
         if (isset($this->departments))
             $item['departments'] = BlockItem::collection($this->departments);
