@@ -154,11 +154,11 @@ button:hover {
 .panel-side-area {
     flex: 1;
     z-index: 98;
-    /* background-color: var(--main-bkg); */
+    /* background: var(--main-bkg); */
 }
 .layout-content {
     min-height: 84vh;
-    background-color: var(--main-bkg);
+    background: var(--main-bkg);
     /* margin: auto; */
 }
 

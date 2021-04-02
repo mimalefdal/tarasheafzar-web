@@ -9,7 +9,7 @@ import { TableList } from "../../components/lists";
 import { OperationEntry, OperationTable } from "../../components/tables";
 import {
     DeleteStaff,
-    GetManagebleStaffList,
+    GetCrewScope,
     GetStaffList,
     ToggleSuspendStaff
 } from "../../services";
@@ -26,7 +26,7 @@ function _manage(props) {
     const [trigReload, setTrigReload] = useState(false);
 
     const staffTableMap = {
-        index: "id",
+        id: "id",
         personnel_id: "personnel_id",
         name: "name",
         position: "position",
@@ -97,17 +97,18 @@ function _manage(props) {
                             />
                         </>
                     }
-                    // options={
-                    //     <>
-                    //         <p className="list-option">حوزه عملیاتی</p>
-                    //         <p className="list-option">همه</p>
-                    //         <p className="list-option">فعال</p>
-                    //     </>
-                    // }
+                    options={
+                        <>
+                            <p className="list-option">بلوک</p>
+                            <p className="list-option">زیرشاخه</p>
+                            <p className="list-option">همه</p>
+                        </>
+                    }
                 />
             </PageHeaderBar>
             <TableList
-                dataService={GetManagebleStaffList}
+                dataService={GetCrewScope}
+                dataRequestParams={{ mode: "all", sortBy: "joblevel_priority" }}
                 tableComponent={<OperationTable className="" />}
                 entryComponent={<StaffEntry />}
                 tableMap={staffTableMap}

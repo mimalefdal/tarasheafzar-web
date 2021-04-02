@@ -21,7 +21,7 @@ function _list(props) {
     const [trigReload, setTrigReload] = useState(false);
 
     const staffTableMap = {
-        index: "id",
+        id: "id",
         personnel_id: "personnel_id",
         name: "name",
         position: "position",

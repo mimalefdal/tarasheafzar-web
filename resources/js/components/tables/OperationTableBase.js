@@ -21,6 +21,7 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
         <table className={props.className}>
             <thead>
                 <tr>
+                    <th className="index"> {t("labels.index")} </th>
                     {Object.keys(tableMap).map(key => (
                         <th key={key}>
                             {key.charAt(0) == "_" ? "" : t("labels." + key)}{" "}
@@ -55,7 +56,8 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
                                 item: item,
                                 key: index,
                                 tableMap: tableMap,
-                                entryActions: entryActions
+                                entryActions: entryActions,
+                                index: index + 1
                             },
                             null
                         );

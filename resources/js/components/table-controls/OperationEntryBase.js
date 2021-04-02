@@ -2,11 +2,12 @@ import React, { Component, useEffect } from "react";
 import { currentLang, t, transformByPattern } from "../../utils";
 import { DeleteButton, EditButton, ViewButton } from "../buttons";
 
-function EntryBase({ item, tableMap = null, entryActions, ...props }) {
+function EntryBase({ item, tableMap = null, entryActions, index, ...props }) {
     //validate and transform data from item to match tablemap keys
     let displayData = transformByPattern(tableMap, item);
     return (
         <tr className="">
+            <td>{index}</td>
             {Object.values(displayData).map((value, index) => (
                 <td key={index}>{value}</td>
             ))}

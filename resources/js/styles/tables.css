@@ -1,10 +1,13 @@
 :root {
     --table-bkg: rgb(255, 255, 255, 0.4);
-    --table-header-bkg: linear-gradient(
+    /* --table-header-bkg: linear-gradient(
         90deg,
         rgba(56, 173, 0, 1) 0%,
         rgba(40, 156, 88, 1) 100%
-    );
+    ); */
+    --table-header-bkg: #14b225;
+    --table-header-bkg: #0a9218;
+
     --table-header-font: initial;
     --table-secondary-color: var(--blue);
     --table-secondary-color-dark: ;
@@ -33,10 +36,11 @@ td {
 
 th {
     /* padding: 1em; */
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     position: sticky;
     top: 23vh;
+    background: var(--table-header-bkg);
 }
 
 tr {

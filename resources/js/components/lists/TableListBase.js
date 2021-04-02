@@ -13,6 +13,7 @@ import { OperationEntry } from "../tables";
 function TableListBase({
     type = "basic",
     dataService,
+    dataRequestParams = null,
     tableComponent,
     entryComponent = null,
     tableMap,
@@ -32,15 +33,16 @@ function TableListBase({
         if (trigger != null) {
             setLoading(true);
             dataService(
+                dataRequestParams != null && dataRequestParams,
                 token,
                 response => {
-                    // console.log("TableListBase", response.data);
+                    console.log("TableListBase", response.data);
                     if (response.data.data) setItems(response.data.data);
                     else setItems(response.data);
                     setLoading(false);
                 },
                 error => {
-                    console.log(error.response);
+                    console.log(error);
                     setLoading(false);
                 }
             );

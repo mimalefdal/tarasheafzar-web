@@ -3,7 +3,7 @@ import { EditButton, DeleteButton, ViewButton } from "../../components/buttons";
 import { OperationEntry } from "../../components/tables";
 import { currentLang, t } from "../../utils";
 
-function Entry({ item, entryActions, ...props }) {
+function Entry({ item, entryActions, index, ...props }) {
     // console.log(entryActions);
     //transform item data to displayable format
 
@@ -26,7 +26,7 @@ function Entry({ item, entryActions, ...props }) {
     const holder = item.holder ? item.holder.short_title : "NA";
 
     const displayItem = {
-        index: id,
+        id: id,
         personnel_id: personnel_id,
         name: name,
         position: position,
@@ -37,6 +37,7 @@ function Entry({ item, entryActions, ...props }) {
             item={displayItem}
             entryActions={entryActions}
             tableMap={props.tableMap}
+            index={index}
         />
     );
 }
