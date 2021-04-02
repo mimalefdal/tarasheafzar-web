@@ -18,7 +18,7 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
         });
 };
 
-export const getIndex = (token, successCallback, failureCallback) => {
+export const getIndex = (params, token, successCallback, failureCallback) => {
     ApiClient.get("/staff/index", {
         headers: {
             Accept: "application/json",
@@ -30,24 +30,30 @@ export const getIndex = (token, successCallback, failureCallback) => {
             successCallback(response);
         })
         .catch(error => {
-            console.log("StaffIndex Service", error);
-            failureCallback(error.response);
+            // console.log("StaffIndex Service", error);
+            failureCallback(error);
         });
 };
 
-export const getManageble = (token, successCallback, failureCallback) => {
+export const _getCrewScope = (
+    params,
+    token,
+    successCallback,
+    failureCallback
+) => {
     ApiClient.get("/staff", {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token
-        }
+        },
+        params: params
     })
         .then(response => {
             // console.log("StaffIndex Service", response);
             successCallback(response);
         })
         .catch(error => {
-            console.log("StaffIndex Service", error);
+            // console.log("StaffIndex Service", error);
             failureCallback(error.response);
         });
 };
@@ -66,7 +72,7 @@ export const getItem = (params, token, successCallback, failureCallback) => {
         })
         .catch(error => {
             // console.log("StaffShow Service", error.response);
-            failureCallback(error.response);
+            failureCallback(error);
         });
 };
 

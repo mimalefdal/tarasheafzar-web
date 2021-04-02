@@ -27,6 +27,7 @@ class StaffManageDisplayItem extends JsonResource
         $item['lastname'] = $this->lastname;
         $item['fullname'] = $this->getFullNameAttribute();
         $item['position'] = PositionSimpleItem::make($this->position);
+        $item['joblevel_priority'] = $this->position->joblevel->priority;
         $item['suspended'] = $this->suspended;
         $item['deleted'] = $this->trashed();
         $item['holder'] = BlockItem::make($this->holder());

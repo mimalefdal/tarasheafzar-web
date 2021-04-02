@@ -36,42 +36,6 @@ export const getIndex = (params, token, successCallback, failureCallback) => {
         });
 };
 
-export const getManagedBy = (token, successCallback, failureCallback) => {
-    ApiClient.get("/rights", {
-        headers: {
-            Accept: "application/json",
-            Authorization: "Bearer " + token
-        },
-        params: { group: "managed" }
-    })
-        .then(response => {
-            // console.log("RightIndex Service", response);
-            successCallback(response);
-        })
-        .catch(error => {
-            // console.log("RightIndex Service",error.response);
-            failureCallback(error.response);
-        });
-};
-
-export const getOwned = (token, successCallback, failureCallback) => {
-    ApiClient.get("/rights", {
-        headers: {
-            Accept: "application/json",
-            Authorization: "Bearer " + token
-        },
-        params: { group: "owned" }
-    })
-        .then(response => {
-            // console.log("RightIndex Service", response);
-            successCallback(response);
-        })
-        .catch(error => {
-            // console.log("RightIndex Service",error.response);
-            failureCallback(error.response);
-        });
-};
-
 export const getItem = (params, token, successCallback, failureCallback) => {
     ApiClient.get("/right", {
         headers: {

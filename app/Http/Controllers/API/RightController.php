@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Right;
-use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RightController extends Controller
@@ -25,7 +23,7 @@ class RightController extends Controller
                 return $request->user()->allOwnedRights();
                 break;
 
-            case 'managed':
+            case 'managedby':
                 return $request->user()->allManagedByRights();
                 break;
 

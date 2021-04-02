@@ -34,7 +34,7 @@ export { tryDelete as DeletePosition } from "./position-service";
 
 export { tryAdd as AddStaff } from "./staff-service";
 export { getIndex as GetStaffList } from "./staff-service";
-export { getManageble as GetManagebleStaffList } from "./staff-service";
+export { _getCrewScope as GetCrewScope } from "./staff-service";
 export { getItem as GetStaff } from "./staff-service";
 export { tryUpdate as UpdateStaff } from "./staff-service";
 export { tryDelete as DeleteStaff } from "./staff-service";
@@ -48,8 +48,6 @@ export { defineCeo as InitializeCEO } from "./initialize-service";
 
 export { tryAdd as AddRight } from "./right-service";
 export { getIndex as GetRightList } from "./right-service";
-export { getManagedBy as GetManagedByRightList } from "./right-service";
-export { getOwned as GetOwnedRightList } from "./right-service";
 
 export { getValues as GetValidValues } from "./values-service";
 

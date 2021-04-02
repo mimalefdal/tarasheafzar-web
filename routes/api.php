@@ -57,7 +57,7 @@ Route::post('staff/update', 'API\StaffController@update');
 Route::post('staff/remove', 'API\StaffController@delete');
 Route::post('staff/restore', 'API\StaffController@restore');
 Route::post('staff/suspend', 'API\StaffController@toggleSuspend');
-Route::get('staff', 'API\StaffController@getManageable');
+Route::get('staff', 'API\StaffController@getCrewScope');
 Route::get('staff/index', 'API\StaffController@index');
 Route::get('anstaff', 'API\StaffController@show');
 // Route::get('scope', 'API\DirtyController@scope');
