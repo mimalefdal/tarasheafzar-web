@@ -27,8 +27,25 @@
 }
 
 .list-option {
+    /* font-weight: bold; */
     margin-inline-end: 1rem;
     text-align: start;
+    cursor: pointer;
+    transition: all 200ms linear;
+}
+
+.list-option:hover {
+    color: var(--managecardColor);
+}
+
+.list-option.active {
+    font-weight: bold;
+}
+
+.list-filter-box {
+    background: transparent;
+    padding: 1rem;
+    margin-top: -1rem !important;
 }
 
 .items-ribbon {

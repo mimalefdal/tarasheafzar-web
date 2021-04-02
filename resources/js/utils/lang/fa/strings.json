@@ -95,6 +95,11 @@
         "staffListTitle": "لیست کارکنان",
         "rightsListTitle": "لیست مجوزها"
     },
+    "filters": {
+        "all": "همه",
+        "direct": "هم‌بلوک",
+        "subsets": "زیرمجموعه‌ها"
+    },
     "buttons": {
         "Home": "خانه",
         "Back": "بازگشت",

@@ -92,3 +92,11 @@ td {
     flex-direction: row;
     justify-content: center;
 }
+
+.table-filter {
+    color: var(--table-header-bkg);
+}
+
+.table-filter .list-option:hover {
+    /* color: red; */
+}

@@ -4,7 +4,7 @@ import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton, GuardedAction } from "../../components/buttons";
 import { ConfirmAndRunDialog, DeleteDialog } from "../../components/feedback";
-import { ListTitle } from "../../components/list-controls";
+import { ListFilter, ListTitle } from "../../components/list-controls";
 import { TableList } from "../../components/lists";
 import { OperationEntry, OperationTable } from "../../components/tables";
 import {
@@ -24,6 +24,11 @@ function _manage(props) {
     const [deleteRequest, setDeleteRequest] = useState(false);
     const [suspendRequest, setSuspendRequest] = useState(false);
     const [trigReload, setTrigReload] = useState(false);
+
+    const [dataParams, setDataParams] = useState({
+        mode: "all",
+        sortBy: "joblevel_priority"
+    });
 
     const staffTableMap = {
         id: "id",
@@ -81,6 +86,14 @@ function _manage(props) {
         setItem(item);
         setSuspendRequest(true);
     }
+    function handleFilter(info) {
+        console.log("handleFilter called", info);
+        setDataParams({
+            ...dataParams,
+            mode: info.value
+        });
+        setTrigReload(!trigReload);
+    }
 
     return (
         <div className="">
@@ -97,18 +110,22 @@ function _manage(props) {
                             />
                         </>
                     }
-                    options={
-                        <>
-                            <p className="list-option">بلوک</p>
-                            <p className="list-option">زیرشاخه</p>
-                            <p className="list-option">همه</p>
-                        </>
-                    }
+                    // options={<></>}
                 />
             </PageHeaderBar>
+            <ListFilter
+                className="table-filter"
+                options={[
+                    { value: "direct", label: t("filters.direct") },
+                    { value: "subset", label: t("filters.subsets") },
+                    { value: "all", label: t("filters.all") }
+                ]}
+                defaultOptionIndex={2}
+                callback={handleFilter}
+            />
             <TableList
                 dataService={GetCrewScope}
-                dataRequestParams={{ mode: "all", sortBy: "joblevel_priority" }}
+                dataRequestParams={dataParams}
                 tableComponent={<OperationTable className="" />}
                 entryComponent={<StaffEntry />}
                 tableMap={staffTableMap}
