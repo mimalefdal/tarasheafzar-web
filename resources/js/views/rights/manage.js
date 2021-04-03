@@ -14,7 +14,7 @@ import { RightEntry } from "../../view-components";
 
 function _manage() {
     const rightsTableMap = {
-        index: "id",
+        id: "id",
         title: "title",
         slug: "slug",
         status: "activation"

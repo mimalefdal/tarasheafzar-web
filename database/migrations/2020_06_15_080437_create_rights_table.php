@@ -17,6 +17,7 @@ class CreateRightsTable extends Migration
             $table->id();
 
             $table->json('title'); // Display Name like Create User
+            $table->bigInteger('parent_id')->nullable();
 
             $table->string('slug')->unique(); // System-slug lige create-user
             $table->string('description')->nullable(); // Description for right

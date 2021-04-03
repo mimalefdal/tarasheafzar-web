@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { PageHeaderBar } from "../../components";
@@ -13,8 +13,10 @@ import { addTitle, clearTitle, setTitle } from "../../utils/redux/navSlice";
 import { RightEntry } from "../../view-components";
 
 function _manage() {
+    const [expandedItems, setExpandedItems] = useState([]);
+
     const rightsTableMap = {
-        index: "id",
+        id: "id",
         title: "title",
         slug: "slug",
         status: "activation"
@@ -29,7 +31,17 @@ function _manage() {
     }, []);
 
     const entryOperations = [
-        { type: "view", actionType: "link", action: "right/:slug/" }
+        { type: "view", actionType: "link", action: "right/:slug/" },
+        {
+            type: "expand",
+            actionType: "callback",
+            action: handleExpand,
+            props: {
+                expanded: expandedItems,
+                offset: -300
+            },
+            subsetField: "childs"
+        }
         // { type: "edit", actionType: "callback", action: handleEdit },
     ];
 
@@ -41,6 +53,16 @@ function _manage() {
         console.log("handle EDIT called", item);
     }
 
+    function handleExpand(item) {
+        console.log("handle EXPAND called", item);
+        if (expandedItems.indexOf(item.id) == -1)
+            setExpandedItems([...expandedItems, item.id]);
+        // setExpandedItems([item.id]);
+        else {
+            setExpandedItems(expandedItems.filter(value => item.id != value));
+        }
+    }
+
     return (
         <>
             <PageHeaderBar>
@@ -49,8 +71,14 @@ function _manage() {
             <TableList
                 dataService={GetRightList}
                 dataRequestParams={{ group: "owned" }}
+                dataDisplayCondition={{ field: "parent_id", value: null }}
                 tableComponent={<OperationTable className="general-shadow" />}
-                entryComponent={<RightEntry />}
+                entryComponent={
+                    <RightEntry
+                        expandedItems={expandedItems}
+                        entryOperations={entryOperations}
+                    />
+                }
                 tableMap={rightsTableMap}
                 entryOperations={entryOperations}
             />

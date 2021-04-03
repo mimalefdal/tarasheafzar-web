@@ -8,9 +8,6 @@ use App\Models\Unit;
 
 class Utility
 {
-
-
-
     public static function getHolderType($holderClass)
     {
         switch ($holderClass) {
@@ -75,5 +72,15 @@ class Utility
     public static function getAllRoles(array $roles)
     {
         return Role::whereIn('slug', $roles)->get();
+    }
+
+    public static function performParentChildStructure($data, $parentId = null)
+    {
+        $dataCollection = collect($data);
+        $restructured = $dataCollection->where('parent_id', $parentId)->values()->all();
+        foreach ($restructured as $key => $item) {
+            $item['childs'] = self::performParentChildStructure($data, $item->id);
+        }
+        return $restructured;
     }
 }

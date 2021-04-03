@@ -5,8 +5,15 @@ import { DeleteButton, EditButton, ViewButton } from "../buttons";
 function EntryBase({ item, tableMap = null, entryActions, index, ...props }) {
     //validate and transform data from item to match tablemap keys
     let displayData = transformByPattern(tableMap, item);
+    // console.log("OperationEntryBase", props.className);
     return (
-        <tr className="">
+        <tr
+            id={props.id}
+            style={{ visibility: props.collapse && "collapse" }}
+            className={
+                props.className + (props.expanded == true ? " expanded" : "")
+            }
+        >
             <td>{index}</td>
             {Object.values(displayData).map((value, index) => (
                 <td key={index}>{value}</td>

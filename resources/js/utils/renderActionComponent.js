@@ -6,6 +6,7 @@ import {
 } from ".";
 
 export default function utility(entryOperations, item, key) {
+    // console.log(entryOperations, item, key);
     let actions = Object.values(entryOperations).map((entry, key) => {
         let type = entry.type;
         let requiredRights = entry.requiredRights;
@@ -13,14 +14,15 @@ export default function utility(entryOperations, item, key) {
         let actionType = entry.actionType;
         let action = entry.action;
         let attr = entry.props;
+        let subsetField = entry.subsetField;
 
         // console.log("renderActionComponent->feature", feature);
-        // requiredRight &&
-        //     console.log("renderActionComponent->requiredRight", requiredRight);
 
         if (feature && !getIsAllowed(FeatureRequiredRights(feature)))
             return null;
         if (requiredRights && !getIsAllowed(requiredRights)) return null;
+        if (subsetField && item[subsetField].length == 0)
+            attr = { ...attr, className: attr.classname + " disabled" };
 
         switch (actionType) {
             case "link":

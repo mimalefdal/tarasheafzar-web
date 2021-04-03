@@ -30,6 +30,20 @@ class Right extends Model
         return $this->morphedByMany(Position::class, 'right_holders');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(Right::class, 'parent_id');
+    }
+
+    public function isParent()
+    {
+        return (bool) $this->parent_id == null;
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Right::class, 'parent_id');
+    }
     // public function isrequiredfor()
     // {
     // }

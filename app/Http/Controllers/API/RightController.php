@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Utility;
 
 class RightController extends Controller
 
@@ -20,7 +21,8 @@ class RightController extends Controller
         // return response($group);
         switch ($group) {
             case 'owned':
-                return $request->user()->allOwnedRights();
+                return Utility::performParentChildStructure($request->user()->allOwnedRights());
+                // return $request->user()->allOwnedRights();
                 break;
 
             case 'managedby':

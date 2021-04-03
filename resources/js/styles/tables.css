@@ -47,6 +47,31 @@ tr {
     border-bottom: 1px solid #ddd;
     /* border-bottom: 1px solid var(--table-secondary-color); */
     height: 75px;
+    transition: all 400ms linear;
+}
+tr.expanded {
+    color: var(--table-header-bkg);
+    border-top: 2px solid var(--table-header-bkg);
+    height: 100px;
+    font-weight: bold;
+}
+
+tr.child-row {
+    background: #eee;
+    border-bottom: 1px solid #fff;
+}
+
+tr.child-row.last-row {
+    border-bottom: 2px solid var(--table-header-bkg);
+}
+
+tr.child-row.expanded {
+    /* color: steelblue; */
+    /* border-top: 1px solid var(--table-header-bkg); */
+}
+
+tr.child-row.expanded.last-row {
+    border-bottom: 1px solid #fff;
 }
 
 td {
