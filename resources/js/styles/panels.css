@@ -3,7 +3,9 @@
     /* --main-bkg: rgb(52, 76, 98); */
 
     --link-bkg: rgb(255, 255, 255, 0.6);
-    --link-bkg-hover: rgb(0, 24, 173, 1);
+
+    /* --link-bkg-hover: rgb(0, 24, 173, 1); */
+    --link-bkg-hover: var(--primaryColor);
 
     /* --titlebkg: var(--blue); */
     --titlebkg: linear-gradient(
@@ -12,11 +14,11 @@
         rgba(2, 20, 105, 1) 100%
     );
 
-    /* --titlebkg: linear-gradient(
+    --formbkg: linear-gradient(
         90deg,
         rgba(255, 207, 27, 1) 0%,
         rgba(242, 193, 10, 1) 100%
-    ); */
+    );
 
     --formtitlebkg: var(--indigo);
 
@@ -171,6 +173,16 @@ button:hover {
         0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
         0 22.3px 17.9px rgba(0, 0, 0, 0.072),
         0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12) !important;
+}
+.main-content {
+    background: var(--formbkg);
+}
+.btn-shadowed {
+    background: rgba(255 255 255 / 25%) !important;
+    padding: 0.5rem !important;
+    align-items: center;
+    box-shadow: 0px 0px 4px white;
+    margin-right: 10px;
 }
 
 .global {
@@ -497,6 +509,9 @@ button:hover {
     color: inherit;
     padding: 0;
     transition: all 500ms linear;
+}
+.operation-icon-btn.disabled svg {
+    fill: #ddd;
 }
 .header-operation-btn {
     display: flex;

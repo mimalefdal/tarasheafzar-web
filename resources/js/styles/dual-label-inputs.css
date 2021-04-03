@@ -41,7 +41,7 @@
     /* min-height: 40px; */
     height: 40px;
     /* border-color: var(--titlebkg); */
-    border-bottom: 1px solid var(--titlebkg);
+    border-bottom: 1px solid var(--taDark);
     /* width: 100%; */
 }
 

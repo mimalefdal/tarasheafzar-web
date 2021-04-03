@@ -26,11 +26,6 @@ function _manageCard(props) {
 
     return (
         <>
-            {/* <BasicCard expanded={expanded} {...props}>
-                <p>نصب : {props.item.state}</p>
-                <p>حالت : {props.item.activation}</p>
-                <p>ابزار : {props.item.tools.length}</p>
-            </BasicCard> */}
             <SimpleCard expanded={expanded} {...props} />
             <Collapse in={expanded} style={{ width: "100%" }} timeout={900}>
                 <div className="sub-cards-list">
@@ -46,22 +41,6 @@ function _manageCard(props) {
                                       />
                                   ))}
                         </TitledCollapse>
-
-                        // <>
-                        //     <SimpleCard
-                        //         className="sub-card"
-                        //         key={tool.slug}
-                        //         item={tool}
-                        //     />
-                        //     {tool.operations.map(operation => (
-
-                        //         <SimpleCard
-                        //             className="sub-card"
-                        //             key={operation.slug}
-                        //             item={operation}
-                        //         />
-                        //     ))}
-                        // </>
                     ))}
                 </div>
             </Collapse>

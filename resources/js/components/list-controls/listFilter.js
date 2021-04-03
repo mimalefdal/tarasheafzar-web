@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 function _control({ options, callback, defaultOptionIndex, ...props }) {
     const [activeIndex, setActiveIndex] = useState(defaultOptionIndex);
@@ -10,6 +11,8 @@ function _control({ options, callback, defaultOptionIndex, ...props }) {
                 (props.className && " " + props.className)
             }
         >
+            <FilterListIcon />
+
             <div className="filler"></div>
             {options.map((option, index) => (
                 <div

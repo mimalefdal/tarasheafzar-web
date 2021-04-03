@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
+import { RightEntry } from "..";
 import { OperationEntry } from "../../components/tables";
-import { currentLang, t } from "../../utils";
+import { currentLang, renderActionComponent, t } from "../../utils";
 
-function Entry({ item, entryActions, ...props }) {
+function _entry({ item, entryActions, index, ...props }) {
     //transform item data to displayable format
     let activation;
     if (item.activation) {
@@ -17,18 +18,66 @@ function Entry({ item, entryActions, ...props }) {
 
     const displayItem = {
         title: title,
-        index: id,
+        id: id,
         slug: slug,
         status: activation
     };
 
+    const [expanded, setExpanded] = useState(false);
+
+    useEffect(() => {
+        if (props.expandedItems) {
+            // console.log("_entry expanded: ", props.expandedItems);
+            if (props.expandedItems.indexOf(item.id) != -1) {
+                setExpanded(true);
+            } else {
+                setExpanded(false);
+            }
+        }
+    }, [props.expandedItems]);
+
     return (
-        <OperationEntry
-            item={displayItem}
-            entryActions={entryActions}
-            tableMap={props.tableMap}
-        />
+        <>
+            <OperationEntry
+                id={props.id}
+                index={index}
+                item={displayItem}
+                entryActions={entryActions}
+                tableMap={props.tableMap}
+                expanded={expanded}
+                className={props.className}
+            />
+            {expanded &&
+                item.childs &&
+                item.childs.length > 0 &&
+                item.childs.map((child, _index) => {
+                    console.log(item.childs.length - 1 == _index);
+
+                    return (
+                        <RightEntry
+                            className={
+                                "child-row" +
+                                (item.childs.length - 1 == _index
+                                    ? " last-row"
+                                    : "")
+                            }
+                            id={child.slug}
+                            // index={index}
+                            item={child}
+                            key={child.slug}
+                            tableMap={props.tableMap}
+                            expandedItems={props.expandedItems}
+                            entryOperations={props.entryOperations}
+                            entryActions={renderActionComponent(
+                                props.entryOperations,
+                                child,
+                                _index
+                            )}
+                        />
+                    );
+                })}
+        </>
     );
 }
 
-export default Entry;
+export default _entry;
