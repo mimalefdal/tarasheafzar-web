@@ -86,7 +86,7 @@ function _CardListBase({
                     return cloneElement(
                         cardComponent,
                         {
-                            id: item.slug,
+                            id: item.id,
                             key: item.id,
                             item: item,
                             entryActions: entryActions

@@ -8,6 +8,7 @@ use App\Http\Resources\StaffManageDisplayItem;
 use App\Http\Resources\StaffManageEditItem;
 use Illuminate\Http\Request;
 use App\Models\Staff;
+use Utility;
 
 class StaffController extends Controller
 {
@@ -86,6 +87,8 @@ class StaffController extends Controller
         };
 
         $staff = $staffQuery->with(['position.hasposition'])->firstOrFail();
+        $staff['rights'] = $staff->allRights();
+        // $staff['rights'] = Utility::performParentChildStructure($staff->allRights());
         if ($resourceClass == null)
             return $staff;
         return $resourceClass::make($staff);

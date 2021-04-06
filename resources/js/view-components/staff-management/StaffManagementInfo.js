@@ -61,14 +61,24 @@ function _component({
             );
             break;
 
+        case "access":
+            specCards = (
+                <div style={{ textAlign: "right" }}>
+                    {staff.rights.map((right, index) => (
+                        <div key={index}>{right.title}</div>
+                    ))}
+                </div>
+            );
+            break;
+
         case "crew":
             displayTitle = t("labels.managebleCrew");
             specCards = (
-                <>
+                <div style={{ textAlign: "right" }}>
                     {staff.crewScope.map(staff => {
                         return <div key={staff.id}>{staff.fullname}</div>;
                     })}
-                </>
+                </div>
             );
             break;
         default:

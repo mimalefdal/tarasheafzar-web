@@ -12,14 +12,11 @@ function _entry({ item, entryActions, index, ...props }) {
         activation = t("labels.deactive");
     }
     const id = item.id;
-    const slug = item.slug;
-    // const title = JSON.parse(item.title)[currentLang()];
-    const title = item.title[currentLang()];
+    const title = item.title;
 
     const displayItem = {
         title: title,
         id: id,
-        slug: slug,
         status: activation
     };
 
@@ -51,7 +48,7 @@ function _entry({ item, entryActions, index, ...props }) {
                 item.childs &&
                 item.childs.length > 0 &&
                 item.childs.map((child, _index) => {
-                    console.log(item.childs.length - 1 == _index);
+                    // console.log(item.childs.length - 1 == _index);
 
                     return (
                         <RightEntry
@@ -61,10 +58,10 @@ function _entry({ item, entryActions, index, ...props }) {
                                     ? " last-row"
                                     : "")
                             }
-                            id={child.slug}
+                            id={child.id}
                             // index={index}
                             item={child}
-                            key={child.slug}
+                            key={child.id}
                             tableMap={props.tableMap}
                             expandedItems={props.expandedItems}
                             entryOperations={props.entryOperations}

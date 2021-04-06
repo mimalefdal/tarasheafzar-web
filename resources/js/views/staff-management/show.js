@@ -35,7 +35,7 @@ function _show(props) {
             { mode: "viewByManager", personnel_id: personnel_id },
             token,
             response => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 if (response.data.data) setItem(response.data.data);
                 else setItem(response.data);
                 setReady(true);
@@ -123,7 +123,11 @@ function _show(props) {
                         staff={item}
                         title={t("labels.access_p")}
                     />
-                    <StaffManagementInformation preset="crew" staff={item} />
+                    <StaffManagementInformation
+                        preset="crew"
+                        staff={item}
+                        initialState={item.crewScope.length}
+                    />
                     <ConfirmAndRunDialog
                         dataService={ToggleSuspendStaff}
                         request={suspendRequest}

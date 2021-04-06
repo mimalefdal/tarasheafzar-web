@@ -3,7 +3,7 @@ import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import { Link as Scroll } from "react-scroll";
 
 function _button({ expandIcon = <MenuOpenIcon />, ...props }) {
-    // console.log("expandedButton:expanded", props.offset);
+    // console.log("expandedButton:expanded", props.scrollTarget);
 
     const [expanded, setExpanded] = useState(false);
 

@@ -25,7 +25,9 @@ export default function utility(type, props) {
             return <DeleteButton {...props} />;
             break;
         case "expand":
-            return <ExpandButton {...props} scrollTarget={props.item.slug} />;
+            return (
+                <ExpandButton {...props} scrollTarget={`${props.item.id}`} />
+            );
             break;
 
         case "suspendToggle":

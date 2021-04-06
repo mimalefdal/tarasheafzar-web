@@ -18,7 +18,7 @@ function _manage() {
     const rightsTableMap = {
         id: "id",
         title: "title",
-        slug: "slug",
+        // slug: "slug",
         status: "activation"
     };
 
@@ -31,7 +31,7 @@ function _manage() {
     }, []);
 
     const entryOperations = [
-        { type: "view", actionType: "link", action: "right/:slug/" },
+        { type: "view", actionType: "link", action: "right/:id" },
         {
             type: "expand",
             actionType: "callback",
@@ -54,7 +54,7 @@ function _manage() {
     }
 
     function handleExpand(item) {
-        console.log("handle EXPAND called", item);
+        // console.log("handle EXPAND called", item);
         if (expandedItems.indexOf(item.id) == -1)
             setExpandedItems([...expandedItems, item.id]);
         // setExpandedItems([item.id]);
@@ -71,7 +71,7 @@ function _manage() {
             <TableList
                 dataService={GetRightList}
                 dataRequestParams={{ group: "owned" }}
-                dataDisplayCondition={{ field: "parent_id", value: null }}
+                // dataDisplayCondition={{ field: "parent_id", value: null }}
                 tableComponent={<OperationTable className="general-shadow" />}
                 entryComponent={
                     <RightEntry

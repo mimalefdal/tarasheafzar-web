@@ -3,9 +3,11 @@ import { currentLang, t, transformByPattern } from "../../utils";
 import { DeleteButton, EditButton, ViewButton } from "../buttons";
 
 function EntryBase({ item, tableMap = null, entryActions, index, ...props }) {
+    // console.log("OperationEntryBase", entryActions);
+
     //validate and transform data from item to match tablemap keys
     let displayData = transformByPattern(tableMap, item);
-    // console.log("OperationEntryBase", props.className);
+
     return (
         <tr
             id={props.id}

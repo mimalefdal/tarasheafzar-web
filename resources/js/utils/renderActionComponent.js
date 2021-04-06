@@ -35,7 +35,6 @@ export default function utility(entryOperations, item, key) {
                 break;
             case "callback":
                 let onClick = action;
-
                 return selectActionComponent(type, {
                     onClick: () => onClick(item),
                     key: key,

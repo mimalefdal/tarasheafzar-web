@@ -53,7 +53,7 @@ function Table({ items, entryComponent, tableMap, entryOperations, ...props }) {
                         return cloneElement(
                             entryComponent,
                             {
-                                id: item.slug,
+                                id: item.id,
                                 item: item,
                                 key: index,
                                 tableMap: tableMap,

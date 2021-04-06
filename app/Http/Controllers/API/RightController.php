@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RightDisplayItem;
 use Illuminate\Http\Request;
 use Utility;
 
@@ -21,12 +22,12 @@ class RightController extends Controller
         // return response($group);
         switch ($group) {
             case 'owned':
-                return Utility::performParentChildStructure($request->user()->allOwnedRights());
-                // return $request->user()->allOwnedRights();
+                // return RightDisplayItem::collection($request->user()->allOwnedRights());
+                return RightDisplayItem::collection(Utility::performParentChildStructure($request->user()->allOwnedRights()));
                 break;
 
             case 'managedby':
-                return $request->user()->allManagedByRights();
+                return RightDisplayItem::collection($request->user()->allManagedByRights());
                 break;
 
             default:

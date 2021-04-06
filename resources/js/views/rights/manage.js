@@ -16,7 +16,6 @@ function _manage() {
     const rightsTableMap = {
         id: "id",
         title: "title",
-        slug: "slug",
         status: "activation"
     };
 

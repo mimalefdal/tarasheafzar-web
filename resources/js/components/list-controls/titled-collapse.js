@@ -10,7 +10,8 @@ function _control({ title, initialState = true, btnSet, ...props }) {
 
     useState(() => {
         // console.log(props);
-        // console.log(props.children);
+        // props.children && console.log(props.children.length);
+
         !props.children && setState(false);
     }, []);
 

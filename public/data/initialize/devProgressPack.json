@@ -44,7 +44,9 @@
             },
             "activation": true,
             "state": "built-in",
-            "requiredRights": []
+            "requiredRights": [
+                "use-rights-management-tool"
+            ]
         },
         {
             "feature": "access-management-panel",
@@ -55,7 +57,9 @@
             },
             "activation": true,
             "state": "built-in",
-            "requiredRights": []
+            "requiredRights": [
+                "use-rights-administration-tool"
+            ]
         },
         {
             "feature": "structure-management-panel",
@@ -737,7 +741,7 @@
             "activation": true,
             "childrights": [
                 {
-                    "slug": "use-rights-adminstration-tool",
+                    "slug": "use-rights-administration-tool",
                     "title": {
                         "fa": "کار با ابزار ادارهٔ حقوق دسترسی",
                         "en": "Use Rights Administration Tool"
@@ -912,8 +916,8 @@
             "activation": true,
             "rights": [
                 "access-access-management-panel",
-                "access-rights-adminstration-tool",
-                "access-rights-management-tool"
+                "use-rights-administration-tool",
+                "use-rights-management-tool"
             ]
         },
         {
