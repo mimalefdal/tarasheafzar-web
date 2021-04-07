@@ -126,7 +126,7 @@ function _show(props) {
                     <StaffManagementInformation
                         preset="crew"
                         staff={item}
-                        initialState={item.crewScope.length}
+                        initialState={item.staffCrew.length}
                     />
                     <ConfirmAndRunDialog
                         dataService={ToggleSuspendStaff}

@@ -44,21 +44,21 @@ class StaffController extends Controller
         return response(["message" => "Not Implemented"], 400);
     }
 
-    public function getCrewScope(Request $request)
+    public function getStaffCrew(Request $request)
     {
         $mode = $request->get('mode');
         if (!$mode) return response(["message" => "Scope : mode not set"], 400);
-        $crewScope = StaffManageDisplayItem::collection($request->user()->crewScope($mode));
-        // return $crewScope;
+        $staffCrew = StaffManageDisplayItem::collection($request->user()->staffCrew($mode));
+        // return $staffCrew;
 
         $sortBy = $request->get('sortBy');
         if (!$sortBy || $sortBy == '') {
-            $crewScope = collect($crewScope);
-            $sorted =  $crewScope->sortBy('id');
+            $staffCrew = collect($staffCrew);
+            $sorted =  $staffCrew->sortBy('id');
             return $sorted->values()->all();
         }
-        $crewScope = collect($crewScope);
-        $sorted =  $crewScope->sortBy($sortBy);
+        $staffCrew = collect($staffCrew);
+        $sorted =  $staffCrew->sortBy($sortBy);
         return $sorted->values()->all();
 
         return response(["message" => "Not Implemented"], 400);

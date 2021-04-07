@@ -31,7 +31,7 @@ class StaffManageDisplayItem extends JsonResource
         $item['suspended'] = $this->suspended;
         $item['deleted'] = $this->trashed();
         $item['holder'] = BlockItem::make($this->holder());
-        $item['crewScope'] = StaffSimpleItem::collection($this->crewScope());
+        $item['staffCrew'] = StaffSimpleItem::collection($this->staffCrew());
         $item['rights'] = RightDisplayItem::collection($this->rights);
 
         return $item;

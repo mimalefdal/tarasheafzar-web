@@ -75,7 +75,7 @@ function _component({
             displayTitle = t("labels.managebleCrew");
             specCards = (
                 <div style={{ textAlign: "right" }}>
-                    {staff.crewScope.map(staff => {
+                    {staff.staffCrew.map(staff => {
                         return <div key={staff.id}>{staff.fullname}</div>;
                     })}
                 </div>

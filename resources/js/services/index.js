@@ -34,7 +34,7 @@ export { tryDelete as DeletePosition } from "./position-service";
 
 export { tryAdd as AddStaff } from "./staff-service";
 export { getIndex as GetStaffList } from "./staff-service";
-export { _getCrewScope as GetCrewScope } from "./staff-service";
+export { _getStaffCrew as GetCrewScope } from "./staff-service";
 export { getItem as GetStaff } from "./staff-service";
 export { tryUpdate as UpdateStaff } from "./staff-service";
 export { tryDelete as DeleteStaff } from "./staff-service";

@@ -53,7 +53,7 @@ class Staff extends Authenticatable
         return $this->position->hasposition;
     }
 
-    public function crewScope($mode = 'all')
+    public function staffCrew($mode = 'all')
     {
         switch ($mode) {
             case null:

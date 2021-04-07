@@ -35,7 +35,7 @@ export const getIndex = (params, token, successCallback, failureCallback) => {
         });
 };
 
-export const _getCrewScope = (
+export const _getStaffCrew = (
     params,
     token,
     successCallback,
