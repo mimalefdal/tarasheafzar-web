@@ -31,6 +31,13 @@
     --primaryBkgColor: #eee;
 
     --secondaryColor: darkCyan;
+    --secondaryColor: #296f1b;
+
+    --secondaryGradient: linear-gradient(
+        90deg,
+        rgba(6, 176, 0, 1) 0%,
+        rgba(41, 111, 27, 1) 100%
+    );
 
     --linkedTagColor: lightcoral;
     /* --hoverColor: lightcoral; */
@@ -593,7 +600,7 @@ button:hover {
 .expandable-group-title {
     text-align: start;
     font-weight: 200;
-    background-color: var(--secondaryColor);
+    background: var(--secondaryGradient);
     color: white;
     padding: 0.8rem;
     font-size: 1rem;
@@ -604,7 +611,7 @@ button:hover {
 }
 
 .expandable-group-title.disabled {
-    background-color: #aaa;
+    background: #aaa;
 }
 
 @media screen and (max-width: 1281px) {

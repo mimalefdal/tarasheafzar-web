@@ -61,7 +61,6 @@ class Staff extends Authenticatable
                 break;
 
             case 'all':
-                // $targetCrew = $this->holder()->directCrew()->merge($this->holder()->subsetCrew());
                 $targetCrew = $this->holder()->wholeCrew();
                 // $targetCrew = $targetCrew->sortBy('idcert_no');
                 break;
