@@ -7,7 +7,7 @@
 .card-container {
     width: 100%;
     padding: 2rem;
-    border-bottom: 1px solid var(--managecardColor);
+    border-bottom: 1px solid var(--primaryDarkColor);
     color: white;
     color: inherit;
     margin-bottom: 1rem;
@@ -67,7 +67,7 @@
     font-weight: bold;
     font-size: 16px;
     align-self: flex-start;
-    color: var(--managecardColor);
+    color: var(--primaryDarkColor);
     margin: 0;
 }
 .card-title.basic {
@@ -87,9 +87,9 @@
 }
 
 .card-operation-btn svg {
-    fill: var(--managecardColor);
+    fill: var(--primaryDarkColor);
     opacity: 0.8;
-    transition: all 100ms linear;
+    transition: transform 400ms linear !important;
 }
 
 .card-operation-btn:hover svg {
@@ -109,6 +109,7 @@
     transform: rotate(180deg);
     transition: all 500ms linear;
 }
+
 .basic-card-title-tail {
     font-weight: normal;
 }

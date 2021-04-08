@@ -5,8 +5,8 @@
         rgba(56, 173, 0, 1) 0%,
         rgba(40, 156, 88, 1) 100%
     ); */
-    --table-header-bkg: #14b225;
-    --table-header-bkg: #0a9218;
+    --table-header-bkg: var(--secondaryLightColor);
+    --table-header-bkg: var(--secondaryColor);
 
     --table-header-font: initial;
     --table-secondary-color: var(--blue);

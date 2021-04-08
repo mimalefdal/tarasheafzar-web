@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FilterListIcon from "@material-ui/icons/FilterList";
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
 
 function _control({ options, callback, defaultOptionIndex, ...props }) {
     const [activeIndex, setActiveIndex] = useState(defaultOptionIndex);
@@ -11,8 +11,10 @@ function _control({ options, callback, defaultOptionIndex, ...props }) {
                 (props.className && " " + props.className)
             }
         >
-            <FilterListIcon />
-
+            <div className="list-options-title-box">
+                <ViewModuleIcon />
+                <div className="list-options-title">شیوه نمایش</div>
+            </div>
             <div className="filler"></div>
             {options.map((option, index) => (
                 <div
@@ -25,7 +27,7 @@ function _control({ options, callback, defaultOptionIndex, ...props }) {
                         callback({ value: option.value, index: index });
                     }}
                 >
-                    {option.label}
+                    {option.icon ? option.icon : option.label}
                 </div>
             ))}
         </div>

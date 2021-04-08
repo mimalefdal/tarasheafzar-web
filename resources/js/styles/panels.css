@@ -20,18 +20,18 @@
         rgba(242, 193, 10, 1) 100%
     );
 
-    --formtitlebkg: var(--indigo);
-
     /* --showtitlebkg: #000080; */
     --showtitlebkg: var(--titlebkg);
-
-    --managecardColor: #000080;
+    --formtitlebkg: var(--indigo);
 
     --primaryColor: var(--blue);
+    --primaryDarkColor: #000080;
+    --primaryLightColor: grey;
     --primaryBkgColor: #eee;
 
-    --secondaryColor: darkCyan;
-    --secondaryColor: #296f1b;
+    /* --secondaryColor: darkCyan; */
+    --secondaryColor: #0a9218;
+    --secondaryLightColor: #14b225;
 
     --secondaryGradient: linear-gradient(
         90deg,

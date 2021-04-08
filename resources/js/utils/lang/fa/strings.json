@@ -95,6 +95,10 @@
         "staffListTitle": "لیست کارکنان",
         "rightsListTitle": "لیست مجوزها"
     },
+    "display": {
+        "card": "مربعی",
+        "table": "جدولی"
+    },
     "filters": {
         "all": "همه",
         "direct": "هم‌بلوک",
