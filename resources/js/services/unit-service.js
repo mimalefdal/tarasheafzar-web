@@ -18,7 +18,7 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
         });
 };
 
-export const getIndex = (token, successCallback, failureCallback) => {
+export const getIndex = (params, token, successCallback, failureCallback) => {
     ApiClient.get("/units", {
         headers: {
             Accept: "application/json",

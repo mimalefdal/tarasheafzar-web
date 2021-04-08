@@ -1,6 +1,6 @@
 import { ApiClient } from ".";
 
-export const getIndex = (token, successCallback, failureCallback) => {
+export const getIndex = (params, token, successCallback, failureCallback) => {
     ApiClient.get("/features", {
         headers: {
             Accept: "application/json",

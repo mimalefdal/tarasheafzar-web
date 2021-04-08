@@ -12,6 +12,7 @@ _CardListBase.propTypes = {};
 function _CardListBase({
     type = "basic",
     dataService,
+    dataRequestParams = null,
     cardComponent = <BasicCard />,
     entryOperations = [],
     trigger = true,
@@ -40,6 +41,7 @@ function _CardListBase({
         if (trigger != null) {
             setLoading(true);
             dataService(
+                dataRequestParams != null && dataRequestParams,
                 token,
                 response => {
                     console.log(
