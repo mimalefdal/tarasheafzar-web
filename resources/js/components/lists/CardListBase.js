@@ -91,7 +91,8 @@ function _CardListBase({
                             id: item.id,
                             key: item.id,
                             item: item,
-                            entryActions: entryActions
+                            entryActions: entryActions,
+                            entryOperations: entryOperations
                         },
                         null
                     );

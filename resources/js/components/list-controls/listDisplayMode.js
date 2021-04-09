@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ViewModuleIcon from "@material-ui/icons/ViewModule";
 
-function _control({ options, callback, defaultOptionIndex, ...props }) {
+function _control({ options, callback, defaultOptionIndex = 0, ...props }) {
     const [activeIndex, setActiveIndex] = useState(defaultOptionIndex);
 
+    // console.log("listDisplayMode", options);
     return (
         <div
             className={

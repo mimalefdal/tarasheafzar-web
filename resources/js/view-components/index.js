@@ -6,6 +6,7 @@ export { default as StaffEntry } from "./staff-management/StaffEntry";
 export { default as StaffManagementInformation } from "./staff-management/StaffManagementInfo";
 
 export { default as RightEntry } from "./right/manageEntry";
+export { default as RightManageCard } from "./right/manageCard";
 
 export { default as BranchForm } from "./branch/defineForm";
 export { default as BranchCard } from "./branch/manageCard";

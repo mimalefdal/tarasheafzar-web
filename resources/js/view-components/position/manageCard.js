@@ -39,7 +39,9 @@ function Card({ item, entryActions, ...props }) {
             title_tail_local={localDisplayTitle}
             title_tail_global={globalDisplayTitle}
         >
-            <div className="card-info-box">{item.recruit_capacity}</div>
+            <div className="card-info-box">
+                ظرفیت استخدام {item.recruit_capacity}
+            </div>
         </BasicCard>
     );
 }

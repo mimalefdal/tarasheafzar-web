@@ -21,6 +21,7 @@ class RightDisplayItem extends JsonResource
         $item['id'] = $this->id;
         $item['activation'] = $this->activation;
         $item['title'] = Bilang::getLocalTitle($this->title, true);
+        $item['title_en'] = Bilang::getEnTitle($this->title);
         if (isset($this->childs))
             $item['childs'] = RightDisplayItem::collection($this->childs);
         return $item;

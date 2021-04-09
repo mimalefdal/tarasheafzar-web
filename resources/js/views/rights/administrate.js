@@ -3,17 +3,21 @@ import { useDispatch } from "react-redux";
 
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
-import { ListTitle } from "../../components/list-controls";
-import { RightsList, TableList } from "../../components/lists";
+import { ListDisplayMode, ListTitle } from "../../components/list-controls";
+import { CardList, RightsList, TableList } from "../../components/lists";
 import { OperationTable } from "../../components/tables";
 import { GetRightList } from "../../services";
 
 import { t } from "../../utils";
 import { addTitle, clearTitle, setTitle } from "../../utils/redux/navSlice";
-import { RightEntry } from "../../view-components";
+import { RightEntry, RightManageCard } from "../../view-components";
+
+import ViewListIcon from "@material-ui/icons/ViewList";
+import ViewStreamIcon from "@material-ui/icons/ViewStream";
 
 function _manage() {
     const [expandedItems, setExpandedItems] = useState([]);
+    const [displayMode, setDisplayMode] = useState("card");
 
     const rightsTableMap = {
         id: "id",
@@ -31,18 +35,37 @@ function _manage() {
     }, []);
 
     const entryOperations = [
-        { type: "view", actionType: "link", action: "right/:id" },
         {
             type: "expand",
             actionType: "callback",
             action: handleExpand,
             props: {
                 expanded: expandedItems,
-                offset: -300
+                offset: -200,
+                className: "card-operation-btn"
             },
             subsetField: "childs"
+        },
+        {
+            type: "view",
+            actionType: "link",
+            action: "right/:id",
+            props: { className: "card-operation-btn" }
         }
         // { type: "edit", actionType: "callback", action: handleEdit },
+    ];
+
+    const displayModes = [
+        {
+            value: "card",
+            label: t("display.card"),
+            icon: <ViewStreamIcon />
+        },
+        {
+            value: "table",
+            label: t("display.table"),
+            icon: <ViewListIcon />
+        }
     ];
 
     function handleDelete(item) {
@@ -63,25 +86,51 @@ function _manage() {
         }
     }
 
+    function handleDisplayMode(mode) {
+        console.log("handleDisplayMode called with ", mode);
+        setDisplayMode(mode.value);
+    }
+
     return (
         <>
             <PageHeaderBar>
                 <ListTitle title={t("lists.rightsListTitle")} />
             </PageHeaderBar>
-            <TableList
-                dataService={GetRightList}
-                dataRequestParams={{ group: "owned" }}
-                // dataDisplayCondition={{ field: "parent_id", value: null }}
-                tableComponent={<OperationTable className="general-shadow" />}
-                entryComponent={
-                    <RightEntry
-                        expandedItems={expandedItems}
-                        entryOperations={entryOperations}
-                    />
-                }
-                tableMap={rightsTableMap}
-                entryOperations={entryOperations}
+            <ListDisplayMode
+                className="list-options"
+                options={displayModes}
+                callback={handleDisplayMode}
             />
+
+            {displayMode == "card" && (
+                <CardList
+                    dataService={GetRightList}
+                    dataRequestParams={{ group: "owned" }}
+                    cardComponent={
+                        <RightManageCard expandedItems={expandedItems} />
+                    }
+                    entryOperations={entryOperations}
+                />
+            )}
+
+            {displayMode == "table" && (
+                <TableList
+                    dataService={GetRightList}
+                    dataRequestParams={{ group: "owned" }}
+                    // dataDisplayCondition={{ field: "parent_id", value: null }}
+                    tableComponent={
+                        <OperationTable className="general-shadow" />
+                    }
+                    entryComponent={
+                        <RightEntry
+                            expandedItems={expandedItems}
+                            entryOperations={entryOperations}
+                        />
+                    }
+                    tableMap={rightsTableMap}
+                    entryOperations={entryOperations}
+                />
+            )}
         </>
     );
 }

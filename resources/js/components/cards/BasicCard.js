@@ -26,8 +26,7 @@ function _card({
         <div
             className={
                 "card-container basic flex row " +
-                props.className +
-                " " +
+                (props.className ? props.className + " " : "") +
                 (props.expanded == true ? " expanded" : "")
             }
             id={props.id}
@@ -75,6 +74,12 @@ function _card({
                 </div>
                 <div className="btn-set card-btn-set basic">{entryActions}</div>
             </div>
+
+            {!props.expanded && (
+                <div className="filler" id="basic-card-free-fill-area">
+                    {props.children}
+                </div>
+            )}
 
             <div className="filler" id="basic-card-free-fill-area">
                 {props.children}

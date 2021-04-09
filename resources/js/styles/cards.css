@@ -19,6 +19,7 @@
 .card-container.basic {
     min-height: 15vh;
     align-items: normal;
+    transition: all 200ms linear;
 }
 
 .card-container.expanded {
@@ -32,6 +33,7 @@
 
 .card-container.expanded .card-title {
     color: var(--secondaryColor);
+    margin-bottom: 1rem;
 }
 .card-container.sub-card {
     /* background-color: #efefef; */
@@ -118,6 +120,21 @@
     font-weight: normal;
     margin-bottom: 0.5rem;
     color: var(--linkedTagColor);
+}
+
+[class*="child-card"] {
+    border-bottom: 1px solid var(--secondaryColor);
+}
+
+.child-card0 {
+    width: 90%;
+}
+.child-card1 {
+    width: 80%;
+}
+
+.last-row {
+    border-bottom: 2px solid salmon;
 }
 
 #basic-card-free-fill-area {
