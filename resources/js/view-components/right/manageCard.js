@@ -37,33 +37,33 @@ function _card({ item, entryActions, ...props }) {
                 id={props.id}
             >
                 {/* <div className="card-info-box"></div> */}
-                {expanded &&
-                    item.childs &&
-                    item.childs.length > 0 &&
-                    item.childs.map((child, _index) => {
-                        return (
-                            <RightManageCard
-                                className={
-                                    "child-card" +
-                                    childDepth +
-                                    (item.childs.length - 1 == _index
-                                        ? " last-row"
-                                        : "")
-                                }
-                                item={child}
-                                id={child.id}
-                                key={_index}
-                                expandedItems={props.expandedItems}
-                                entryOperations={props.entryOperations}
-                                entryActions={renderActionComponent(
-                                    props.entryOperations,
-                                    child,
-                                    _index
-                                )}
-                            />
-                        );
-                    })}
             </BasicCard>
+            {expanded &&
+                item.childs &&
+                item.childs.length > 0 &&
+                item.childs.map((child, _index) => {
+                    return (
+                        <RightManageCard
+                            className={
+                                "child-card" +
+                                childDepth +
+                                (item.childs.length - 1 == _index
+                                    ? " last-row"
+                                    : "")
+                            }
+                            item={child}
+                            id={child.id}
+                            key={_index}
+                            expandedItems={props.expandedItems}
+                            entryOperations={props.entryOperations}
+                            entryActions={renderActionComponent(
+                                props.entryOperations,
+                                child,
+                                _index
+                            )}
+                        />
+                    );
+                })}
         </>
     );
 }

@@ -67,11 +67,7 @@ function _CardListBase({
     }, [trigger]);
 
     return (
-        <div
-            className={
-                "flex column vertical-center card-list-base " + classesByType
-            }
-        >
+        <div className={"flex column card-list-base " + classesByType}>
             {loading ? (
                 <Loading />
             ) : !emptyMessage ? (
