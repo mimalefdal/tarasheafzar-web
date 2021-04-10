@@ -6,6 +6,14 @@ import { renderActionComponent } from "../../utils";
 import { Loading } from "../feedback";
 import { BasicCard } from "../cards";
 import { NoItems } from "../list-controls";
+import {
+    MULTIPLE_SELECTION_MODE,
+    SINGLE_SELECTION_MODE
+} from "../../utils/constants";
+import {
+    existsInArray,
+    getIndexOfMatchInsideArray
+} from "../../utils/findObject";
 
 _CardListBase.propTypes = {};
 
@@ -15,6 +23,7 @@ function _CardListBase({
     dataRequestParams = null,
     cardComponent = <BasicCard />,
     entryOperations = [],
+    selectionMode = null,
     trigger = true,
     ...props
 }) {
@@ -24,6 +33,8 @@ function _CardListBase({
     const [emptyMessage, setEmptyMessage] = useState(null);
     const [loading, setLoading] = useState(true);
     const token = useContext(StaffContext).token;
+
+    const [selectedItems, setSelectedItems] = useState([]);
 
     let classesByType;
     switch (type) {
@@ -37,17 +48,20 @@ function _CardListBase({
     }
 
     useEffect(() => {
-        // console.log("_CardListBase->useEffect(trigger)", trigger);
+        console.log(
+            "_CardListBase->useEffect(trigger)->Selection Mode:",
+            selectionMode
+        );
         if (trigger != null) {
             setLoading(true);
             dataService(
                 dataRequestParams != null && dataRequestParams,
                 token,
                 response => {
-                    console.log(
-                        "_CardListBase:[trigger]:response:",
-                        response.data
-                    );
+                    // console.log(
+                    //     "_CardListBase:[trigger]:response:",
+                    //     response.data
+                    // );
                     if (response.status == 203) {
                         setEmptyMessage(response.data.message);
                     } else {
@@ -65,6 +79,28 @@ function _CardListBase({
             );
         }
     }, [trigger]);
+
+    useEffect(() => {
+        console.log("selectedItems changes", selectedItems);
+    }, [selectedItems]);
+
+    function handleSelect(item) {
+        // console.log("handle select called for", item);
+
+        switch (selectionMode) {
+            case SINGLE_SELECTION_MODE:
+                if (existsInArray(selectedItems, "id", item.id))
+                    setSelectedItems([]);
+                else setSelectedItems([item]);
+                break;
+
+            case MULTIPLE_SELECTION_MODE:
+                break;
+
+            default:
+                break;
+        }
+    }
 
     return (
         <div className={"flex column card-list-base " + classesByType}>
@@ -88,7 +124,15 @@ function _CardListBase({
                             key: item.id,
                             item: item,
                             entryActions: entryActions,
-                            entryOperations: entryOperations
+                            entryOperations: entryOperations,
+                            handleSelect: selectionMode
+                                ? handleSelect
+                                : undefined,
+                            selected: existsInArray(
+                                selectedItems,
+                                "id",
+                                item.id
+                            )
                         },
                         null
                     );

@@ -14,6 +14,7 @@ import { RightEntry, RightManageCard } from "../../view-components";
 
 import ViewListIcon from "@material-ui/icons/ViewList";
 import ViewStreamIcon from "@material-ui/icons/ViewStream";
+import { SINGLE_SELECTION_MODE } from "../../utils/constants";
 
 function _manage() {
     const [expandedItems, setExpandedItems] = useState([]);
@@ -110,6 +111,7 @@ function _manage() {
                         <RightManageCard expandedItems={expandedItems} />
                     }
                     entryOperations={entryOperations}
+                    selectionMode={SINGLE_SELECTION_MODE}
                 />
             )}
 

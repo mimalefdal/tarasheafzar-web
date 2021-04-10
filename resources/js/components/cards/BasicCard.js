@@ -16,6 +16,7 @@ function _card({
     title_tail_global = null,
     title_field_local = "full_title",
     title_field_global = "full_title_en",
+    handleClick = null,
     ...props
 }) {
     // console.log("BasicCard", item.slug);
@@ -30,6 +31,7 @@ function _card({
                 (props.expanded == true ? " expanded" : "")
             }
             id={props.id}
+            onClick={handleClick}
         >
             <div className="card-title-box basic flex column">
                 <div className="card-title basic">
