@@ -14,15 +14,12 @@ export default function utility(entryOperations, item, key) {
         let actionType = entry.actionType;
         let action = entry.action;
         let attr = entry.props;
-        let subsetField = entry.subsetField;
 
         // console.log("renderActionComponent->feature", feature);
 
         if (feature && !getIsAllowed(FeatureRequiredRights(feature)))
             return null;
         if (requiredRights && !getIsAllowed(requiredRights)) return null;
-        if (subsetField && item[subsetField].length == 0)
-            attr = { ...attr, className: attr.classname + " disabled" };
 
         switch (actionType) {
             case "link":

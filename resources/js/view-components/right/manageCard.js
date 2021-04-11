@@ -4,21 +4,22 @@ import { BasicCard } from "../../components/cards";
 import { renderActionComponent } from "../../utils";
 
 function _card({ item, entryActions, ...props }) {
-    // console.log("RightManageCard", props.handleSelect);
+    // console.log("RightManageCard", props.childItems);
+
     const [expanded, setExpanded] = useState(false);
     const [selected, setSelected] = useState(false);
     const [childDepth, setChildDepth] = useState(0);
 
-    useEffect(() => {
-        if (props.expandedItems) {
-            // console.log("RightManageCard expanded: ", props.id, expanded);
-            if (props.expandedItems.indexOf(item.id) != -1) {
-                setExpanded(true);
-            } else {
-                setExpanded(false);
-            }
-        }
-    }, [props.expandedItems]);
+    // useEffect(() => {
+    //     if (props.expandedItems) {
+    //         // console.log("RightManageCard expanded: ", props.id, expanded);
+    //         if (props.expandedItems.indexOf(item.id) != -1) {
+    //             setExpanded(true);
+    //         } else {
+    //             setExpanded(false);
+    //         }
+    //     }
+    // }, [props.expandedItems]);
 
     useEffect(() => {
         if (props.className) {
@@ -29,7 +30,11 @@ function _card({ item, entryActions, ...props }) {
     }, []);
 
     useEffect(() => {
-        console.log(props.selected, item.title, props.selected);
+        setExpanded(props.expanded);
+    }, [props.expanded]);
+
+    useEffect(() => {
+        // console.log(props.selected, item.title, props.selected);
         props.selected != undefined && setSelected(props.selected);
     }, [props.selected]);
 
@@ -49,33 +54,7 @@ function _card({ item, entryActions, ...props }) {
             >
                 {/* <div className="card-info-box"></div> */}
             </BasicCard>
-            {expanded &&
-                item.childs &&
-                item.childs.length > 0 &&
-                item.childs.map((child, _index) => {
-                    return (
-                        <RightManageCard
-                            className={
-                                "child-card" +
-                                childDepth +
-                                (item.childs.length - 1 == _index
-                                    ? " last-row"
-                                    : "")
-                            }
-                            item={child}
-                            id={child.id}
-                            handleSelect={props.handleSelect}
-                            key={_index}
-                            expandedItems={props.expandedItems}
-                            entryOperations={props.entryOperations}
-                            entryActions={renderActionComponent(
-                                props.entryOperations,
-                                child,
-                                _index
-                            )}
-                        />
-                    );
-                })}
+            {expanded && props.childItems}
         </>
     );
 }

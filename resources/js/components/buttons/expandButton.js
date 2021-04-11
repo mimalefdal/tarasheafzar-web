@@ -3,22 +3,14 @@ import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import { Link as Scroll } from "react-scroll";
 
 function _button({ expandIcon = <MenuOpenIcon />, ...props }) {
-    // console.log("expandedButton:expanded", props.scrollTarget);
+    console.log("expandedButton:expanded", props.expandable);
 
+    const [expandable, setExpandable] = useState(props.expandable(props.item));
     const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
-        // console.log(props.expanded, props.item);
-        if (props.expanded.indexOf(props.item.id) != -1) {
-            setExpanded(true);
-        } else {
-            setExpanded(false);
-        }
+        props.expanded && setExpanded(props.expanded(props.item));
     }, [props.expanded]);
-
-    useEffect(() => {
-        // console.log(expanded, props.item.id);
-    }, [expanded]);
 
     return (
         <Scroll
@@ -31,6 +23,7 @@ function _button({ expandIcon = <MenuOpenIcon />, ...props }) {
                 className={
                     "operation-icon-btn " +
                     props.className +
+                    (expandable ? "" : " disabled") +
                     (expanded ? " active" : "")
                 }
                 style={props.style}

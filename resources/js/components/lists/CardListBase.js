@@ -23,15 +23,17 @@ function _CardListBase({
     dataRequestParams = null,
     cardComponent = <BasicCard />,
     entryOperations = [],
-    selectionMode = null,
+    selectionMode = undefined,
+    expansion = undefined,
     trigger = true,
     ...props
 }) {
-    // console.log("CardListBase", entryOperations);
+    // console.log("CardListBase rendered", entryOperations);
 
     const [items, setItems] = useState([]);
     const [emptyMessage, setEmptyMessage] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [operations, setOperations] = useState(entryOperations);
     const token = useContext(StaffContext).token;
 
     const [selectedItems, setSelectedItems] = useState([]);
@@ -48,10 +50,34 @@ function _CardListBase({
     }
 
     useEffect(() => {
-        console.log(
-            "_CardListBase->useEffect(trigger)->Selection Mode:",
-            selectionMode
-        );
+        if (expansion != undefined) {
+            // console.log("_CardListBase->useEffect()->expansion", expansion);
+            entryOperations.push({
+                type: "expand",
+                actionType: "callback",
+                action: expansion.handler,
+                props: {
+                    expandable: isExpandable,
+                    expanded: isExpanded,
+                    offset: -200,
+                    className:
+                        " " + (expansion.className ? expansion.className : "")
+                },
+                subsetField: expansion.expandableItemsField
+                    ? expansion.expandableItemsField
+                    : "childs"
+            });
+
+            setOperations(entryOperations);
+        }
+    }, [entryOperations]);
+
+    useEffect(() => {
+        // console.log(
+        //     "_CardListBase->useEffect(trigger)->Selection Mode:",
+        //     selectionMode
+        // );
+
         if (trigger != null) {
             setLoading(true);
             dataService(
@@ -81,7 +107,11 @@ function _CardListBase({
     }, [trigger]);
 
     useEffect(() => {
-        console.log("selectedItems changes", selectedItems);
+        // console.log("_CardListBase:[operations]", operations);
+    }, [operations]);
+
+    useEffect(() => {
+        // console.log("selectedItems changes", selectedItems);
     }, [selectedItems]);
 
     function handleSelect(item) {
@@ -102,6 +132,59 @@ function _CardListBase({
         }
     }
 
+    function isExpanded(item) {
+        if (expansion.data.indexOf(item.id) != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isExpandable(item) {
+        return !(
+            item[expansion.expandableItemsField] &&
+            item[expansion.expandableItemsField].length == 0
+        );
+    }
+
+    function renderChildsOf(item, depth) {
+        var childItems = null;
+        if (item[expansion.expandableItemsField])
+            var childItems = item[expansion.expandableItemsField].map(
+                (childItem, _index) => {
+                    // console.log(childItem);
+                    var _entryActions = renderActionComponent(
+                        operations,
+                        childItem,
+                        _index
+                    );
+                    return cloneElement(
+                        cardComponent,
+                        {
+                            className: "child-card" + depth,
+                            id: childItem.id,
+                            key: childItem.id,
+                            item: childItem,
+                            childItems: renderChildsOf(childItem, depth + 1),
+                            entryActions: _entryActions,
+                            expanded: isExpanded(childItem),
+                            handleSelect: selectionMode
+                                ? handleSelect
+                                : undefined,
+                            selected: existsInArray(
+                                selectedItems,
+                                "id",
+                                childItem.id
+                            )
+                        },
+                        null
+                    );
+                }
+            );
+
+        return childItems;
+    }
+
     return (
         <div className={"flex column card-list-base " + classesByType}>
             {loading ? (
@@ -109,14 +192,13 @@ function _CardListBase({
             ) : !emptyMessage ? (
                 items.map((item, index) => {
                     // console.log(item);
-                    if (!loading) {
-                        // build entryActions Here
-                        var entryActions = renderActionComponent(
-                            entryOperations,
-                            item,
-                            index
-                        );
-                    }
+                    // build entryActions Here
+                    var entryActions = renderActionComponent(
+                        operations,
+                        item,
+                        index
+                    );
+
                     return cloneElement(
                         cardComponent,
                         {
@@ -124,7 +206,8 @@ function _CardListBase({
                             key: item.id,
                             item: item,
                             entryActions: entryActions,
-                            entryOperations: entryOperations,
+                            childItems: expansion && renderChildsOf(item, 0),
+                            expanded: expansion && isExpanded(item),
                             handleSelect: selectionMode
                                 ? handleSelect
                                 : undefined,

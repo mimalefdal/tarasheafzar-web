@@ -59,7 +59,7 @@
 
 .list-option {
     /* font-weight: bold; */
-    margin-inline-end: 1rem;
+    margin-inline-end: 0.5rem;
     text-align: start;
     cursor: pointer;
     transition: transition 200ms linear;

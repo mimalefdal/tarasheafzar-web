@@ -16,9 +16,10 @@ import ViewListIcon from "@material-ui/icons/ViewList";
 import ViewStreamIcon from "@material-ui/icons/ViewStream";
 import { SINGLE_SELECTION_MODE } from "../../utils/constants";
 
-function _manage() {
-    const [expandedItems, setExpandedItems] = useState([]);
+function _administrate() {
     const [displayMode, setDisplayMode] = useState("card");
+    const [expandedItems, setExpandedItems] = useState([]);
+    const [selectedItems, setSelectedItems] = useState([]);
 
     const rightsTableMap = {
         id: "id",
@@ -36,17 +37,6 @@ function _manage() {
     }, []);
 
     const entryOperations = [
-        {
-            type: "expand",
-            actionType: "callback",
-            action: handleExpand,
-            props: {
-                expanded: expandedItems,
-                offset: -200,
-                className: "card-operation-btn"
-            },
-            subsetField: "childs"
-        },
         {
             type: "view",
             actionType: "link",
@@ -77,6 +67,11 @@ function _manage() {
         console.log("handle EDIT called", item);
     }
 
+    function handleDisplayMode(mode) {
+        console.log("handleDisplayMode called with ", mode);
+        setDisplayMode(mode.value);
+    }
+
     function handleExpand(item) {
         // console.log("handle EXPAND called", item);
         if (expandedItems.indexOf(item.id) == -1)
@@ -87,9 +82,22 @@ function _manage() {
         }
     }
 
-    function handleDisplayMode(mode) {
-        console.log("handleDisplayMode called with ", mode);
-        setDisplayMode(mode.value);
+    function handleSelect(item) {
+        console.log("handle select called for", item);
+
+        switch (selectionMode) {
+            case SINGLE_SELECTION_MODE:
+                if (existsInArray(selectedItems, "id", item.id))
+                    setSelectedItems([]);
+                else setSelectedItems([item]);
+                break;
+
+            case MULTIPLE_SELECTION_MODE:
+                break;
+
+            default:
+                break;
+        }
     }
 
     return (
@@ -107,11 +115,15 @@ function _manage() {
                 <CardList
                     dataService={GetRightList}
                     dataRequestParams={{ group: "owned" }}
-                    cardComponent={
-                        <RightManageCard expandedItems={expandedItems} />
-                    }
+                    cardComponent={<RightManageCard />}
                     entryOperations={entryOperations}
                     selectionMode={SINGLE_SELECTION_MODE}
+                    expansion={{
+                        handler: handleExpand,
+                        data: expandedItems,
+                        expandableItemsField: "childs",
+                        className: "card-operation-btn"
+                    }}
                 />
             )}
 
@@ -124,10 +136,7 @@ function _manage() {
                         <OperationTable className="general-shadow" />
                     }
                     entryComponent={
-                        <RightEntry
-                            expandedItems={expandedItems}
-                            entryOperations={entryOperations}
-                        />
+                        <RightEntry entryOperations={entryOperations} />
                     }
                     tableMap={rightsTableMap}
                     entryOperations={entryOperations}
@@ -137,4 +146,4 @@ function _manage() {
     );
 }
 
-export default _manage;
+export default _administrate;
