@@ -13,3 +13,12 @@ export const existsInArray = (array, attr, targetValue) => {
         return false;
     return true;
 };
+
+export const removeFromArray = (array, attr, targetValues) => {
+    // console.log(array, targetValues);
+    targetValues.forEach(value => {
+        array = array.filter(item => item[attr] != value);
+    });
+    // console.log(array);
+    return array;
+};

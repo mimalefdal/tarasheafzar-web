@@ -9,7 +9,7 @@ import { t } from "../../utils";
 import {
     findObjectInsideArray,
     getIndexOfMatchInsideArray
-} from "../../utils/findObject";
+} from "../../utils/objectArray";
 
 const Control = (
     {

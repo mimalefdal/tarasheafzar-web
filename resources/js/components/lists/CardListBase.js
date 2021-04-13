@@ -13,7 +13,7 @@ import {
 import {
     existsInArray,
     getIndexOfMatchInsideArray
-} from "../../utils/findObject";
+} from "../../utils/objectArray";
 
 _CardListBase.propTypes = {};
 
@@ -23,7 +23,7 @@ function _CardListBase({
     dataRequestParams = null,
     cardComponent = <BasicCard />,
     entryOperations = [],
-    selectionMode = undefined,
+    selection = undefined,
     expansion = undefined,
     trigger = true,
     ...props
@@ -35,8 +35,6 @@ function _CardListBase({
     const [loading, setLoading] = useState(true);
     const [operations, setOperations] = useState(entryOperations);
     const token = useContext(StaffContext).token;
-
-    const [selectedItems, setSelectedItems] = useState([]);
 
     let classesByType;
     switch (type) {
@@ -73,6 +71,14 @@ function _CardListBase({
     }, [entryOperations]);
 
     useEffect(() => {
+        selection && console.log("Selected", selection.data);
+    }, [selection && selection.data]);
+
+    useEffect(() => {
+        // console.log("Expanded", expansion.data);
+    }, [expansion && expansion.data]);
+
+    useEffect(() => {
         // console.log(
         //     "_CardListBase->useEffect(trigger)->Selection Mode:",
         //     selectionMode
@@ -106,38 +112,12 @@ function _CardListBase({
         }
     }, [trigger]);
 
-    useEffect(() => {
-        // console.log("_CardListBase:[operations]", operations);
-    }, [operations]);
-
-    useEffect(() => {
-        // console.log("selectedItems changes", selectedItems);
-    }, [selectedItems]);
-
-    function handleSelect(item) {
-        // console.log("handle select called for", item);
-
-        switch (selectionMode) {
-            case SINGLE_SELECTION_MODE:
-                if (existsInArray(selectedItems, "id", item.id))
-                    setSelectedItems([]);
-                else setSelectedItems([item]);
-                break;
-
-            case MULTIPLE_SELECTION_MODE:
-                break;
-
-            default:
-                break;
-        }
+    function isSelected(item) {
+        return existsInArray(selection.data, "id", item.id);
     }
 
     function isExpanded(item) {
-        if (expansion.data.indexOf(item.id) != -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return existsInArray(expansion.data, "id", item.id);
     }
 
     function isExpandable(item) {
@@ -153,6 +133,7 @@ function _CardListBase({
             var childItems = item[expansion.expandableItemsField].map(
                 (childItem, _index) => {
                     // console.log(childItem);
+                    childItem["parent"] = item;
                     var _entryActions = renderActionComponent(
                         operations,
                         childItem,
@@ -167,15 +148,11 @@ function _CardListBase({
                             item: childItem,
                             childItems: renderChildsOf(childItem, depth + 1),
                             entryActions: _entryActions,
-                            expanded: isExpanded(childItem),
-                            handleSelect: selectionMode
-                                ? handleSelect
+                            expanded: expansion && isExpanded(childItem),
+                            handleSelect: selection
+                                ? selection.handler
                                 : undefined,
-                            selected: existsInArray(
-                                selectedItems,
-                                "id",
-                                childItem.id
-                            )
+                            selected: selection && isSelected(childItem)
                         },
                         null
                     );
@@ -208,14 +185,10 @@ function _CardListBase({
                             entryActions: entryActions,
                             childItems: expansion && renderChildsOf(item, 0),
                             expanded: expansion && isExpanded(item),
-                            handleSelect: selectionMode
-                                ? handleSelect
+                            handleSelect: selection
+                                ? selection.handler
                                 : undefined,
-                            selected: existsInArray(
-                                selectedItems,
-                                "id",
-                                item.id
-                            )
+                            selected: selection && isSelected(item)
                         },
                         null
                     );

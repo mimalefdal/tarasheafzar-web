@@ -30,6 +30,7 @@ function _card({ item, entryActions, ...props }) {
     }, []);
 
     useEffect(() => {
+        // console.log(item.id, expanded);
         setExpanded(props.expanded);
     }, [props.expanded]);
 

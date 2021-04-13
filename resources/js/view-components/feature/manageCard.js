@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { ExpandButton } from "../../components/buttons";
 import { BasicCard, SimpleCard } from "../../components/cards";
 import { TitledCollapse } from "../../components/list-controls";
-import { findObjectInsideArray } from "../../utils/findObject";
+import { findObjectInsideArray } from "../../utils/objectArray";
 
 function _manageCard(props) {
     // console.log("_featureCard", props, props.key);

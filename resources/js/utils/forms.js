@@ -1,4 +1,4 @@
-import { getIndexOfMatchInsideArray } from "./findObject";
+import { getIndexOfMatchInsideArray } from "./objectArray";
 
 export const _makeUpdatedValidValues = (
     currentLists,

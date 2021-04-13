@@ -74,7 +74,7 @@ function _card({
                         </div>
                     )}
                 </div>
-                <div className="btn-set card-btn-set basic">{entryActions}</div>
+                <div className="card-btn-set basic">{entryActions}</div>
             </div>
 
             {!props.expanded && props.children && (

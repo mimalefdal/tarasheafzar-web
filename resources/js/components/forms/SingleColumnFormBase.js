@@ -20,7 +20,7 @@ import {
 import { ApiClient, GetValidValues } from "../../services";
 import StaffContext from "../../context/staffContext";
 import { useHistory } from "react-router-dom";
-import { getIndexOfMatchInsideArray } from "../../utils/findObject";
+import { getIndexOfMatchInsideArray } from "../../utils/objectArray";
 import { EMPTY_LIST } from "../../utils/constants";
 
 // TODO : must Documented
