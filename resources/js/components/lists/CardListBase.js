@@ -55,6 +55,7 @@ function _CardListBase({
                 actionType: "callback",
                 action: expansion.handler,
                 props: {
+                    expandIcon: expansion.icon && expansion.icon,
                     expandable: isExpandable,
                     expanded: isExpanded,
                     offset: -200,

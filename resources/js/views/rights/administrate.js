@@ -22,6 +22,9 @@ import {
 } from "../../utils/constants";
 import { existsInArray, removeFromArray } from "../../utils/objectArray";
 
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MenuIcon from "@material-ui/icons/Menu";
+
 function _administrate() {
     const [displayMode, setDisplayMode] = useState("card");
     const [expandedItems, setExpandedItems] = useState([]);
@@ -230,7 +233,8 @@ function _administrate() {
                         handler: handleExpand,
                         data: expandedItems,
                         expandableItemsField: "childs",
-                        className: "card-operation-btn"
+                        className: "card-operation-btn",
+                        icon: <MenuIcon />
                     }}
                 />
             )}
