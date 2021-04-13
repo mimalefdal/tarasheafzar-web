@@ -72,11 +72,19 @@ function _CardListBase({
     }, [entryOperations]);
 
     useEffect(() => {
-        selection && console.log("Selected", selection.data);
+        // selection &&
+        //     console.log(
+        //         "CardListBase[selection.data]->Selected",
+        //         selection.data
+        //     );
     }, [selection && selection.data]);
 
     useEffect(() => {
-        // console.log("Expanded", expansion.data);
+        // expansion &&
+        //     console.log(
+        //         "CardListBase[expansion.data]->Expanded",
+        //         expansion.data
+        //     );
     }, [expansion && expansion.data]);
 
     useEffect(() => {
