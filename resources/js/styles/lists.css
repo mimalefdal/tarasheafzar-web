@@ -40,10 +40,15 @@
 }
 
 .list-options-box {
-    background: transparent;
+    background: var(--main-bkg);
+    /* background: transparent; */
     padding: 1rem;
     margin-top: -1rem !important;
     color: var(--secondaryColor);
+
+    /* position: sticky;
+    top: 23vh; */
+    z-index: 97;
 }
 
 .list-options-title-box {

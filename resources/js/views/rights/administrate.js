@@ -130,7 +130,7 @@ function _administrate() {
                         data: expandedItems,
                         expandableItemsField: "childs",
                         className: "card-operation-btn",
-                        icon: <MenuIcon />
+                        icon: <ExpandMoreIcon />
                     }}
                 />
             )}

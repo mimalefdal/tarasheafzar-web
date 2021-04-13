@@ -156,6 +156,11 @@
     padding: 1rem;
 }
 
+.child-card2 {
+    width: 70%;
+    padding: 1rem;
+}
+
 .last-row {
     border-bottom: 2px solid var(--secondaryColor);
 }
