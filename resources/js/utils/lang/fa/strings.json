@@ -35,8 +35,8 @@
         "status": "وضعیت",
         "comments": "توضیحات",
         "type": "نوع",
-        "holderType": "نوع دارنده",
-        "holder": "دارنده",
+        "holderType": "نوع بلوک",
+        "holder": "بلوک",
         "block": "بلوک",
         "branchType": "نوع شاخه",
         "branch": "شاخه",
@@ -145,7 +145,8 @@
         "defineUnit": "درج واحد جدید",
         "defineJoblevel": "درج سطح شغلی جدید",
         "definePosition": "درج سمت جدید",
-        "editStaff": "ویرایش کارکنان"
+        "editStaff": "ویرایش کارکنان",
+        "selectRights": "انتخاب حقوق دسترسی"
     },
     "alerts": {
         "success": "موفقیت",

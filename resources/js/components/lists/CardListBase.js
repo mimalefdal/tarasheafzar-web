@@ -69,7 +69,7 @@ function _CardListBase({
 
             setOperations(entryOperations);
         }
-    }, [entryOperations]);
+    }, [entryOperations && entryOperations]);
 
     useEffect(() => {
         // selection &&

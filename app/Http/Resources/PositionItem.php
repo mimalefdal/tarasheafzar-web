@@ -40,6 +40,8 @@ class PositionItem extends JsonResource
         $item['full_title'] = $this->fullTitle();
         $item['full_title_en'] = $this->fullTitle('en');
 
+        $item['rights'] = RightDisplayItem::collection($this->allRights());
+
         if ($this->display_title != null) {
 
             if (Bilang::getLocalTitle($this->display_title) <> "") {
