@@ -25,7 +25,11 @@ function feedback({
     return (
         <Dialog
             open={show}
-            maxWidth="md"
+            maxWidth={
+                props.dialogProps && props.dialogProps.maxWidth
+                    ? props.dialogProps.maxWidth
+                    : "md"
+            }
             fullWidth={true}
             TransitionComponent={Transition}
         >
@@ -33,7 +37,7 @@ function feedback({
                 style={{
                     display: "flex",
                     flexDirection: "row",
-                    width: "50%",
+                    width: "90%",
                     margin: "auto"
                 }}
             >

@@ -26,14 +26,14 @@ function _card({
     return (
         <div
             className={
-                "card-container basic flex row " +
+                "card-container flex column basic " +
                 (props.className ? props.className + " " : "") +
                 (props.expanded == true ? " expanded" : "")
             }
             id={props.id}
             onClick={handleClick}
         >
-            <div className="card-title-box basic flex column">
+            <div className="card-title-box basic flex row">
                 <div className="card-title basic">
                     <div className="card-name-box">
                         {item[title_field_local]
@@ -74,6 +74,7 @@ function _card({
                         </div>
                     )}
                 </div>
+                <div className="filler"></div>
                 <div className="card-btn-set basic">{entryActions}</div>
             </div>
 
