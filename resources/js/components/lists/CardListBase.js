@@ -15,9 +15,9 @@ import {
     getIndexOfMatchInsideArray
 } from "../../utils/objectArray";
 
-_CardListBase.propTypes = {};
+CardList.propTypes = {};
 
-function _CardListBase({
+function CardList({
     type = "basic",
     dataService,
     dataRequestParams = null,
@@ -49,7 +49,7 @@ function _CardListBase({
 
     useEffect(() => {
         if (expansion != undefined) {
-            // console.log("_CardListBase->useEffect()->expansion", expansion);
+            // console.log("CardList->useEffect()->expansion", expansion);
             entryOperations.push({
                 type: "expand",
                 actionType: "callback",
@@ -89,7 +89,7 @@ function _CardListBase({
 
     useEffect(() => {
         // console.log(
-        //     "_CardListBase->useEffect(trigger)->Selection Mode:",
+        //     "CardList->useEffect(trigger)->Selection Mode:",
         //     selectionMode
         // );
 
@@ -99,10 +99,7 @@ function _CardListBase({
                 dataRequestParams != null && dataRequestParams,
                 token,
                 response => {
-                    // console.log(
-                    //     "_CardListBase:[trigger]:response:",
-                    //     response.data
-                    // );
+                    console.log("CardList:[trigger]:response:", response.data);
                     if (response.status == 203) {
                         setEmptyMessage(response.data.message);
                     } else {
@@ -114,7 +111,7 @@ function _CardListBase({
                     setLoading(false);
                 },
                 error => {
-                    console.log("_CardListBase:[trigger]:ERROR", error);
+                    console.log("CardList:[trigger]:ERROR", error);
                     setLoading(false);
                 }
             );
@@ -209,4 +206,4 @@ function _CardListBase({
     );
 }
 
-export default _CardListBase;
+export default CardList;

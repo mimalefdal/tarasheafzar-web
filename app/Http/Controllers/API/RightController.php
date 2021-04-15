@@ -27,7 +27,7 @@ class RightController extends Controller
                 break;
 
             case 'managedby':
-                return RightDisplayItem::collection($request->user()->allManagedByRights());
+                return RightDisplayItem::collection(Utility::performParentChildStructure($request->user()->allManagedByRights()));
                 break;
 
             default:

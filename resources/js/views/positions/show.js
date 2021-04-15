@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
-import { EditButton } from "../../components/buttons";
+import { EditButton, GuardedAction } from "../../components/buttons";
 import { Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog, Loading } from "../../components/feedback";

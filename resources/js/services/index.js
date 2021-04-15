@@ -46,7 +46,6 @@ export { _installLicence as InitializeLicence } from "./initialize-service";
 export { _initiateSystem as InitiateSystem } from "./initialize-service";
 export { defineCeo as InitializeCEO } from "./initialize-service";
 
-export { tryAdd as AddRight } from "./right-service";
 export { getIndex as GetRightList } from "./right-service";
 
 export { getValues as GetValidValues } from "./values-service";

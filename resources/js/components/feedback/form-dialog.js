@@ -38,7 +38,8 @@ function feedback({
                     display: "flex",
                     flexDirection: "row",
                     width: "90%",
-                    margin: "auto"
+                    margin: "auto",
+                    minHeight: "6vh"
                 }}
             >
                 <DialogTitle>{title}</DialogTitle>
@@ -51,6 +52,15 @@ function feedback({
             </div>
 
             <DialogContent>{formComponent}</DialogContent>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    width: "90%",
+                    margin: "auto",
+                    minHeight: "6vh"
+                }}
+            ></div>
         </Dialog>
     );
 }

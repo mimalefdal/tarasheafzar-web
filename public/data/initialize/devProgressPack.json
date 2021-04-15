@@ -982,6 +982,7 @@
             ],
             "managedByRights": [
                 "access-structure-panel",
+                "use-company-info-tool",
                 "access-access-management-panel"
             ]
         }
