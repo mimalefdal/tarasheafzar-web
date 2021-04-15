@@ -7,6 +7,7 @@ import { StaffManagementMDashboard } from "../../view-components";
 import { GuardedLink } from "../../components/links";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../utils/redux/navSlice";
+import { HorizontalOperationBar } from "../../components/view-controls";
 
 export default function StaffManagement() {
     let match = useRouteMatch();
@@ -18,7 +19,7 @@ export default function StaffManagement() {
 
     return (
         <>
-            <div className="tool-links horizontal ">
+            <HorizontalOperationBar className="tool-links">
                 <GuardedLink
                     className="tool-link"
                     to={`${match.url}/manage`}
@@ -33,7 +34,7 @@ export default function StaffManagement() {
                     label={t("tools.staffList")}
                     style={{ order: 1 }}
                 />
-            </div>
+            </HorizontalOperationBar>
             {/* <StaffManagementMDashboard /> */}
         </>
     );

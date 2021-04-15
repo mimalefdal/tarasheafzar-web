@@ -148,6 +148,11 @@
         "editStaff": "ویرایش کارکنان",
         "selectRights": "انتخاب حقوق دسترسی"
     },
+    "operations": {
+        "modifyRights": "ویرایش دسترسی‌ها",
+        "modifyManagedbyRights": "ویرایش حقوق دسترسی قابل مدیریت",
+        "modifyOwnedRights": "ویرایش حقوق دسترسی قابل سازمانداری"
+    },
     "alerts": {
         "success": "موفقیت",
         "error": "خطا",

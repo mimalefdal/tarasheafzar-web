@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
-import { EditButton, GuardedAction } from "../../components/buttons";
-import { Title } from "../../components/view-controls";
+import { EditButton, GuardedButton } from "../../components/buttons";
+import { HorizontalOperationBar, Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog, Loading } from "../../components/feedback";
-import { ApiClient, GetPosition, GetRightList } from "../../services";
-import { Badge } from "@material-ui/core";
+import { GetPosition, GetRightList } from "../../services";
 import StaffContext from "../../context/staffContext";
-import { PositionForm, RightManageCard, UnitForm } from "../../view-components";
 import AppContext from "../../context/appContext";
+import { PositionForm, RightManageCard, UnitForm } from "../../view-components";
 import { CardList } from "../../components/lists";
 import { MULTIPLE_NESTED_SELECTION_MODE } from "../../utils/constants";
 import { existsInArray, removeFromArray } from "../../utils/objectArray";
@@ -80,10 +79,6 @@ function show(props) {
                         }
                         btnSet={
                             item.deleted ? (
-                                // <Badge
-                                //     badgeContent={t("alerts.deleted")}
-                                //     color="error"
-                                // />
                                 <div className="tag" style={{}}>
                                     {t("alerts.deleted")}
                                 </div>
@@ -104,18 +99,42 @@ function show(props) {
                     />
                 )}
             </PageHeaderBar>
-            <div className="tool-links horizontal">
-                <button
+            <HorizontalOperationBar className="tool-links">
+                <GuardedButton
                     className="tool-link"
                     onClick={() => {
                         setSelectedRights([...item.rights]);
                         setExpandedRights([]);
                         setShowRights(true);
                     }}
-                >
-                    {t("tools.rightsManagement")}
-                </button>
-            </div>
+                    title={t("operations.modifyRights")}
+                    requiredRights={["use-rights-management-tool"]}
+                    // requiredRights={["perform-manage-rights"]}
+                    // TODO : write-fown correct right
+                />
+
+                <GuardedButton
+                    className="tool-link"
+                    onClick={() => {
+                        console.log("modifyManagedbyRights Pressed");
+                    }}
+                    title={t("operations.modifyManagedbyRights")}
+                    requiredRights={["use-rights-management-tool"]}
+                    // requiredRights={["perform-administrate-rights"]}
+                    // TODO : write-fown correct right
+                />
+
+                <GuardedButton
+                    className="tool-link"
+                    onClick={() => {
+                        console.log("modifyOwnedRights Pressed");
+                    }}
+                    title={t("operations.modifyOwnedRights")}
+                    requiredRights={["use-rights-management-tool"]}
+                    // requiredRights={["perform-administrate-rights"]}
+                    // TODO : write-fown correct right
+                />
+            </HorizontalOperationBar>
             <FormDialog
                 show={showRights}
                 onClose={closeRightsDialog}
