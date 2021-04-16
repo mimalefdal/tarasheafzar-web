@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cloneElement, useState } from "react";
 import {
     Button,
     Dialog,
@@ -20,8 +20,14 @@ function feedback({
     onClose,
     title = "please set a title",
     formComponent,
+    confirmation = null,
     ...props
 }) {
+    const [showConfirm, setShowConfirm] = useState(
+        confirmation && confirmation.show && confirmation.show
+    );
+    const [data, setData] = useState([]);
+
     return (
         <Dialog
             open={show}
@@ -45,13 +51,33 @@ function feedback({
                 <DialogTitle>{title}</DialogTitle>
                 <div style={{ flexGrow: 1 }} />
                 <DialogActions>
+                    {((confirmation && confirmation.show) || showConfirm) && (
+                        <Button
+                            classes={confirmation.classes}
+                            onClick={() => confirmation.onConfirm(data)}
+                        >
+                            {confirmation.icon}
+                        </Button>
+                    )}
                     <Button onClick={onClose}>
                         <CloseIcon />
                     </Button>
                 </DialogActions>
             </div>
 
-            <DialogContent>{formComponent}</DialogContent>
+            <DialogContent>
+                {cloneElement(
+                    formComponent,
+                    {
+                        changesHandler: data => {
+                            // console.log(data);
+                            setShowConfirm(data.isChanged);
+                            data.isChanged && setData(data.data);
+                        }
+                    },
+                    null
+                )}
+            </DialogContent>
             <div
                 style={{
                     display: "flex",
