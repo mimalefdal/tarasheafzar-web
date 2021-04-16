@@ -22,3 +22,12 @@ export const removeFromArray = (array, attr, targetValues) => {
     // console.log(array);
     return array;
 };
+
+export const equals = (a, b) => {
+    // console.log(a, b);
+    // return a.length === b.length && a.every((v, i) => v === b[i]);
+    return (
+        a.length === b.length &&
+        a.every((v, i) => getIndexOfMatchInsideArray(b, "id", v.id) != -1)
+    );
+};

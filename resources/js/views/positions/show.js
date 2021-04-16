@@ -8,12 +8,17 @@ import { FormDialog, Loading } from "../../components/feedback";
 import { GetPosition, GetRightList } from "../../services";
 import StaffContext from "../../context/staffContext";
 import AppContext from "../../context/appContext";
-import { PositionForm, RightManageCard, UnitForm } from "../../view-components";
+import {
+    PositionForm,
+    RightManageCard,
+    RightsSelectList,
+    UnitForm
+} from "../../view-components";
 import { CardList } from "../../components/lists";
 import { MULTIPLE_NESTED_SELECTION_MODE } from "../../utils/constants";
 import { existsInArray, removeFromArray } from "../../utils/objectArray";
 import { updateSelection } from "../../utils/itemsSelections";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import DoneIcon from "@material-ui/icons/Done";
 
 function show(props) {
     const { slug } = useParams();
@@ -25,11 +30,7 @@ function show(props) {
     const [showEdit, setShowEdit] = useState(false);
     const [showRights, setShowRights] = useState(false);
 
-    const [expandedRights, setExpandedRights] = useState([]);
-    const [selectedRights, setSelectedRights] = useState([]);
-    const [rightsSelectionMode, setRightsSelectionMode] = useState(
-        MULTIPLE_NESTED_SELECTION_MODE
-    );
+    const [targetRightsGroup, setTargetRightsGroup] = useState();
 
     const token = useContext(StaffContext).token;
     const locale = useContext(AppContext).locale;
@@ -103,8 +104,7 @@ function show(props) {
                 <GuardedButton
                     className="tool-link"
                     onClick={() => {
-                        setSelectedRights([...item.rights]);
-                        setExpandedRights([]);
+                        setTargetRightsGroup("managedby");
                         setShowRights(true);
                     }}
                     title={t("operations.modifyRights")}
@@ -116,10 +116,11 @@ function show(props) {
                 <GuardedButton
                     className="tool-link"
                     onClick={() => {
-                        console.log("modifyManagedbyRights Pressed");
+                        setTargetRightsGroup("owned");
+                        setShowRights(true);
                     }}
                     title={t("operations.modifyManagedbyRights")}
-                    requiredRights={["use-rights-management-tool"]}
+                    requiredRights={["use-rights-administration-tool"]}
                     // requiredRights={["perform-administrate-rights"]}
                     // TODO : write-fown correct right
                 />
@@ -130,39 +131,35 @@ function show(props) {
                         console.log("modifyOwnedRights Pressed");
                     }}
                     title={t("operations.modifyOwnedRights")}
-                    requiredRights={["use-rights-management-tool"]}
+                    requiredRights={["use-rights-administration-tool"]}
                     // requiredRights={["perform-administrate-rights"]}
                     // TODO : write-fown correct right
                 />
             </HorizontalOperationBar>
-            <FormDialog
-                show={showRights}
-                onClose={closeRightsDialog}
-                title={t("forms.selectRights")}
-                dialogProps={{
-                    maxWidth: "sm"
-                }}
-                formComponent={
-                    <CardList
-                        dataService={GetRightList}
-                        dataRequestParams={{ group: "owned" }}
-                        cardComponent={<RightManageCard />}
-                        entryOperations={[]}
-                        selection={{
-                            handler: handleRightsSelect,
-                            data: selectedRights,
-                            className: ""
-                        }}
-                        expansion={{
-                            handler: handleRightsExpand,
-                            data: expandedRights,
-                            expandableItemsField: "childs",
-                            className: "card-operation-btn",
-                            icon: <ExpandMoreIcon />
-                        }}
-                    />
-                }
-            />
+            {ready && (
+                <FormDialog
+                    show={showRights}
+                    onClose={closeRightsDialog}
+                    title={t("forms.selectRights")}
+                    confirmation={{
+                        classes: { root: "btn-confirm" },
+                        icon: <DoneIcon />,
+                        show: false,
+                        onConfirm: data => {
+                            console.log("confirm Clicked", data);
+                        }
+                    }}
+                    dialogProps={{
+                        maxWidth: "sm"
+                    }}
+                    formComponent={
+                        <RightsSelectList
+                            prevRights={item.rights}
+                            targetGroup={targetRightsGroup}
+                        />
+                    }
+                />
+            )}
             <FormDialog
                 show={showEdit}
                 onClose={closeEditForm}
@@ -183,28 +180,7 @@ function show(props) {
     }
 
     function closeRightsDialog() {
-        setSelectedRights([]);
         setShowRights(false);
-    }
-
-    function handleRightsExpand(item) {
-        // console.log("handle EXPAND called", item);
-        if (existsInArray(expandedRights, "id", item.id))
-            setExpandedRights(
-                // expandedRights.filter(value => item.id != value.id)
-                removeFromArray(expandedRights, "id", [item.id])
-            );
-        else {
-            setExpandedRights([...expandedRights, item]);
-            // setExpandedItems([item.id]);
-        }
-    }
-
-    function handleRightsSelect(item) {
-        // console.log("handle select called for", item);
-        setSelectedRights(
-            updateSelection(selectedRights, item, rightsSelectionMode)
-        );
     }
 
     function getResponse(response) {
