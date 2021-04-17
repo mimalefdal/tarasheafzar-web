@@ -178,7 +178,8 @@
         "noItemsSetFor": "هیچ :typeی ثبت نشده است.",
         "noOptionsToSelect": "انتخابی وجود ندارد",
         "noOptionsDefined": "برای فیلد :field، انتخابی تعریف نشده است",
-        "suggestDialogDefaultTitle": "پیشنهاد سامانه"
+        "suggestDialogDefaultTitle": "پیشنهاد سامانه",
+        "sureAboutChanges": "آیا از ثبت تغییرات اطمینان دارید؟"
     },
     "itemTypes": {
         "Branch": "شاخه"

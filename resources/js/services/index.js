@@ -47,6 +47,7 @@ export { _initiateSystem as InitiateSystem } from "./initialize-service";
 export { defineCeo as InitializeCEO } from "./initialize-service";
 
 export { getIndex as GetRightList } from "./right-service";
+export { updateAccessRights as UpdateAccessRights } from "./right-service";
 
 export { getValues as GetValidValues } from "./values-service";
 

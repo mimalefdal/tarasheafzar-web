@@ -28,6 +28,7 @@ function _feedback({
     const [waitForExecution, setWaitForExecution] = useState(false);
     const [executionState, setExecutionState] = useState(null);
     const [responseMessage, setResponseMessage] = useState(null);
+    const [response, setResponse] = useState(null);
 
     useEffect(() => {
         if ((item != null) & request) setAskToConfirm(true);
@@ -45,7 +46,8 @@ function _feedback({
                     item,
                     token,
                     response => {
-                        // console.log(response);
+                        console.log(response);
+                        setResponse(response.data);
                         setResponseMessage(response.data.message);
                         setExecutionState(EXECUTION_DONE_SUCCESS);
                     },
@@ -65,7 +67,7 @@ function _feedback({
         // console.log("deleteDialog->reset", mustUpdate);
         setWaitForExecution(false);
         setAskToConfirm(false);
-        onClose(mustUpdate);
+        onClose(mustUpdate, mustUpdate && response);
     }
 
     function retry() {
@@ -78,6 +80,10 @@ function _feedback({
                 show={askToConfirm}
                 onClose={onRun}
                 title={t("alerts.confirm")}
+                dialogProps={{
+                    maxWidth: "sm",
+                    classes: { paperFullWidth: "confirm-dialog" }
+                }}
                 content={
                     confirmMessageAction
                         ? confirmMessageAction
@@ -98,6 +104,7 @@ function _feedback({
                 state={executionState}
                 onClose={reset}
                 onRetry={retry}
+                dialogProps={{ maxWidth: "xs" }}
             />
         </>
     );

@@ -11,7 +11,13 @@ import {
 } from "../../utils/objectArray";
 import { updateSelection } from "../../utils/itemsSelections";
 
-function _list({ prevRights, targetGroup, changesHandler = null, ...props }) {
+function _list({
+    prevRights,
+    targetGroup,
+    targetScope,
+    changesHandler = null,
+    ...props
+}) {
     const [rightsGroup, setRightsGroup] = useState(targetGroup);
     const [expandedRights, setExpandedRights] = useState([]);
     const [selectedRights, setSelectedRights] = useState(prevRights);
@@ -47,7 +53,7 @@ function _list({ prevRights, targetGroup, changesHandler = null, ...props }) {
         changesHandler &&
             changesHandler({
                 isChanged: !equals(selectedRights, prevRights),
-                data: selectedRights
+                data: { rights: selectedRights, scope: targetScope }
             });
     }, [selectedRights]);
 

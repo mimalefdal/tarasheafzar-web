@@ -14,7 +14,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function dialog({
+function _dialog({
     show,
     onClose,
     title = "please set a title",
@@ -28,10 +28,11 @@ function dialog({
             open={show}
             onClose={onClose}
             TransitionComponent={Transition}
-            maxWidth="sm"
             fullWidth={true}
             disableBackdropClick
             disableEscapeKeyDown
+            classes={{ paperFullWidth: "confirm-dialog" }}
+            {...props.dialogProps}
         >
             <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
             <DialogContent>
@@ -53,7 +54,12 @@ function dialog({
                 <Button onClick={() => onClose(false)} color="primary">
                     خیر
                 </Button>
-                <Button onClick={() => onClose(true)} color="primary" autoFocus>
+                <Button
+                    onClick={() => onClose(true)}
+                    color="primary"
+                    autoFocus
+                    classes={{ root: "general-shadow" }}
+                >
                     بلی
                 </Button>
             </DialogActions>
@@ -61,4 +67,4 @@ function dialog({
     );
 }
 
-export default dialog;
+export default _dialog;

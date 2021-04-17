@@ -19,6 +19,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function feedback({
     show,
     onClose,
+    onUpdate,
     title = "please set a title",
     formComponent,
     confirmation = null,
@@ -31,12 +32,17 @@ function feedback({
     const [confirmRequest, setConfirmRequest] = useState(false);
 
     function confirmClicked() {
-        console.log("formDialog->confirmClicked:data", data);
+        // console.log("formDialog->confirmClicked:data", data);
         setConfirmRequest(true);
     }
 
-    function handleConfirmClose(mustUpdate) {
-        console.log("handleConfirmClose", mustUpdate);
+    function handleConfirmClose(mustUpdate, data) {
+        console.log("handleConfirmClose", mustUpdate, data);
+        if (mustUpdate) {
+            setShowConfirm(false);
+            onUpdate && onUpdate({ data: data });
+        } else {
+        }
         setConfirmRequest(false);
     }
 
@@ -44,13 +50,10 @@ function feedback({
         <>
             <Dialog
                 open={show}
-                maxWidth={
-                    props.dialogProps && props.dialogProps.maxWidth
-                        ? props.dialogProps.maxWidth
-                        : "md"
-                }
+                maxWidth="md"
                 fullWidth={true}
                 TransitionComponent={Transition}
+                {...props.dialogProps}
             >
                 <div
                     style={{
@@ -86,7 +89,7 @@ function feedback({
                             changesHandler: data => {
                                 // console.log(data);
                                 setShowConfirm(data.isChanged);
-                                data.isChanged && setData([...data.data]);
+                                data.isChanged && setData(data.data);
                             }
                         },
                         null
@@ -120,6 +123,7 @@ function feedback({
                     item={data}
                     request={confirmRequest}
                     onClose={handleConfirmClose}
+                    {...props.confirmDialogProps}
                 />
             )}
         </>

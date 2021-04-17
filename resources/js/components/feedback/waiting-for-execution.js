@@ -65,6 +65,7 @@ function WaitingFeedback({
             fullWidth={true}
             disableBackdropClick
             disableEscapeKeyDown
+            {...props.dialogProps}
         >
             <FixedAlert
                 show={runState == WAIT_FOR_EXECUTION}

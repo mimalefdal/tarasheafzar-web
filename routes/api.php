@@ -68,6 +68,7 @@ Route::post('/initialize/initiateSystem', 'API\InitializeController@initiateSyst
 Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');
 
 Route::get('rights', 'API\RightController@index');
+Route::post('rights/updateAccessRights', 'API\RightController@updateAccessRights');
 
 Route::get('features', 'API\FeatureController@index');
 

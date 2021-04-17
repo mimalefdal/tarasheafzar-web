@@ -36,4 +36,9 @@ class RightController extends Controller
         }
         // return  Right::all();
     }
+
+    public function updateAccessRights(Request $request)
+    {
+        return response()->json(['message' => 'marhaba', 'rights' => $request->rights]);
+    }
 }
