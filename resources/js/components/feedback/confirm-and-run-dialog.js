@@ -10,9 +10,10 @@ import {
 
 function _feedback({
     dataService,
+    runCallback,
     request,
     item,
-    confirmMassageAction = null,
+    confirmMessageAction = null,
     confirmMessageData = null,
     confirmPreContent = null,
     runProgressMessage = t("expressions.executing"),
@@ -34,33 +35,37 @@ function _feedback({
 
     function onRun(confirm) {
         if (confirm) {
-            setWaitForExecution(true);
-            setExecutionState(WAIT_FOR_EXECUTION);
-
-            dataService(
-                item,
-                token,
-                response => {
-                    // console.log(response);
-                    setResponseMessage(response.data.message);
-                    setExecutionState(EXECUTION_DONE_SUCCESS);
-                },
-                error => {
-                    console.log(error);
-                    setResponseMessage(error.data.message);
-                    setExecutionState(EXECUTION_DONE_FAILURE);
-                }
-            );
+            if (runCallback) {
+                runCallback();
+                reset(false);
+            } else {
+                setWaitForExecution(true);
+                setExecutionState(WAIT_FOR_EXECUTION);
+                dataService(
+                    item,
+                    token,
+                    response => {
+                        // console.log(response);
+                        setResponseMessage(response.data.message);
+                        setExecutionState(EXECUTION_DONE_SUCCESS);
+                    },
+                    error => {
+                        console.log(error);
+                        setResponseMessage(error.data.message);
+                        setExecutionState(EXECUTION_DONE_FAILURE);
+                    }
+                );
+            }
         } else {
             reset(false);
         }
     }
 
-    function reset(update) {
-        // console.log("deleteDialog->reset", update);
+    function reset(mustUpdate) {
+        // console.log("deleteDialog->reset", mustUpdate);
         setWaitForExecution(false);
         setAskToConfirm(false);
-        onClose(update);
+        onClose(mustUpdate);
     }
 
     function retry() {
@@ -74,8 +79,8 @@ function _feedback({
                 onClose={onRun}
                 title={t("alerts.confirm")}
                 content={
-                    confirmMassageAction
-                        ? confirmMassageAction
+                    confirmMessageAction
+                        ? confirmMessageAction
                         : t("expressions.sureRun")
                 }
                 preContent={confirmPreContent}

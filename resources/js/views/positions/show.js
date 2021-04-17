@@ -4,7 +4,7 @@ import { PageHeaderBar } from "../../components";
 import { EditButton, GuardedButton } from "../../components/buttons";
 import { HorizontalOperationBar, Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
-import { FormDialog, Loading } from "../../components/feedback";
+import { FormDialog, Loading, SelectDialog } from "../../components/feedback";
 import { GetPosition, GetRightList } from "../../services";
 import StaffContext from "../../context/staffContext";
 import AppContext from "../../context/appContext";
@@ -105,7 +105,7 @@ function show(props) {
                     className="tool-link"
                     onClick={() => {
                         setTargetRightsGroup("managedby");
-                        setShowRights(true);
+                        displayRightSelctor();
                     }}
                     title={t("operations.modifyRights")}
                     requiredRights={["use-rights-management-tool"]}
@@ -137,16 +137,21 @@ function show(props) {
                 />
             </HorizontalOperationBar>
             {ready && (
-                <FormDialog
+                <SelectDialog
                     show={showRights}
-                    onClose={closeRightsDialog}
+                    onClose={closeRightSelctor}
                     title={t("forms.selectRights")}
                     confirmation={{
                         classes: { root: "btn-confirm" },
                         icon: <DoneIcon />,
                         show: false,
-                        onConfirm: data => {
-                            console.log("confirm Clicked", data);
+                        onConfirm: data => handleConfirmRights(data),
+                        runCallback: (...params) => {
+                            console.log(
+                                "show->SelectDialog->runCallback()",
+                                params
+                            );
+                            setShowRights(false);
                         }
                     }}
                     dialogProps={{
@@ -179,8 +184,16 @@ function show(props) {
         GetPosition({ id: item.id }, token, getResponse, getError);
     }
 
-    function closeRightsDialog() {
+    function displayRightSelctor() {
+        setShowRights(true);
+    }
+
+    function closeRightSelctor() {
         setShowRights(false);
+    }
+
+    function handleConfirmRights(data) {
+        console.log("show->handleConfirmRights", data);
     }
 
     function getResponse(response) {

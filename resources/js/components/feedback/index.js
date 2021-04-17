@@ -4,6 +4,7 @@ export { default as LineProgress } from "./linear-progress";
 export { default as DeterminateProgress } from "./linear-determinate-progress";
 export { default as RedirectBar } from "./redirect-bar";
 export { default as FormDialog } from "./form-dialog";
+export { default as SelectDialog } from "./select-dialog";
 export { default as ConfirmDialog } from "./confirm-dialog";
 export { default as Loading } from "./loading";
 export { default as WaitingDialog } from "./waiting-for-execution";

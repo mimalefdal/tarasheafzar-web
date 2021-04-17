@@ -132,7 +132,7 @@ function _show(props) {
                         dataService={ToggleSuspendStaff}
                         request={suspendRequest}
                         item={item}
-                        confirmMassageAction={t("expressions.sureToggle")}
+                        confirmMessageAction={t("expressions.sureToggle")}
                         confirmMessageData={item && item.fullname}
                         confirmPreContent={
                             t("labels.status") + " " + t("attr.staffAccount")
