@@ -72,10 +72,15 @@ function CardList({
     }, [entryOperations && entryOperations]);
 
     useEffect(() => {
+        console.log("CardListBase[items]->items", items);
+    }, [items]);
+
+    useEffect(() => {
         // selection &&
         //     console.log(
         //         "CardListBase[selection.data]->Selected",
-        //         selection.data
+        //         selection.data,
+        //         items
         //     );
     }, [selection && selection.data]);
 
@@ -99,7 +104,7 @@ function CardList({
                 dataRequestParams != null && dataRequestParams,
                 token,
                 response => {
-                    console.log("CardList:[trigger]:response:", response.data);
+                    // console.log("CardList:[trigger]:response:", response.data);
                     if (response.status == 203) {
                         setEmptyMessage(response.data.message);
                     } else {

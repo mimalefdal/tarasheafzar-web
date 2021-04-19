@@ -2,12 +2,28 @@
 
 use App\Models\Branch;
 use App\Models\Department;
+use App\Models\Position;
 use App\Models\Right;
 use App\Models\Role;
 use App\Models\Unit;
 
 class Utility
 {
+
+    public static function getModel($type)
+    {
+        switch ($type) {
+            case 'position':
+            case 'positions':
+                return Position::class;
+                break;
+
+            default:
+                # code...
+                break;
+        }
+    }
+
     public static function getHolderType($holderClass)
     {
         switch ($holderClass) {

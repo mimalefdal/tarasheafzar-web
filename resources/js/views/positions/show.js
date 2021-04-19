@@ -176,7 +176,7 @@ function show(props) {
                     formComponent={
                         <RightsSelectList
                             prevRights={item.rights}
-                            targetScope={item}
+                            targetScope={{ positions: [item] }}
                             targetGroup={rightsOperationInfo.targetGroup}
                         />
                     }

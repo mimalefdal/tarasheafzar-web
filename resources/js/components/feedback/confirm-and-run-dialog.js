@@ -40,6 +40,8 @@ function _feedback({
                 runCallback();
                 reset(false);
             } else {
+                // console.log("confirm&run", item);
+
                 setWaitForExecution(true);
                 setExecutionState(WAIT_FOR_EXECUTION);
                 dataService(
@@ -47,13 +49,18 @@ function _feedback({
                     token,
                     response => {
                         console.log(response);
-                        setResponse(response.data);
-                        setResponseMessage(response.data.message);
+                        response.data && setResponse(response.data);
+                        response.data &&
+                            response.data.message &&
+                            setResponseMessage(response.data.message);
                         setExecutionState(EXECUTION_DONE_SUCCESS);
                     },
                     error => {
                         console.log(error);
-                        setResponseMessage(error.data.message);
+                        error.response && console.log(error.response);
+                        error.data &&
+                            error.data.message &&
+                            setResponseMessage(error.data.message);
                         setExecutionState(EXECUTION_DONE_FAILURE);
                     }
                 );

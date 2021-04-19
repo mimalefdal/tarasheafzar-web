@@ -31,3 +31,9 @@ export const equals = (a, b) => {
         a.every((v, i) => getIndexOfMatchInsideArray(b, "id", v.id) != -1)
     );
 };
+
+export const pluckSet = (items, attr = "id") => {
+    return items.map(item => {
+        return { [attr]: item[attr] };
+    });
+};

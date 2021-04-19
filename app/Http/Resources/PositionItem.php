@@ -40,7 +40,7 @@ class PositionItem extends JsonResource
         $item['full_title'] = $this->fullTitle();
         $item['full_title_en'] = $this->fullTitle('en');
 
-        $item['rights'] = RightDisplayItem::collection($this->allRights());
+        $item['rights'] = RightDisplayItem::collection($this->rights);
 
         if ($this->display_title != null) {
 

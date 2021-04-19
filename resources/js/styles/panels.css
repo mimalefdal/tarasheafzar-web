@@ -620,6 +620,12 @@ button:hover {
     /* background-color: var(--warning) !important; */
 }
 
+.select-dialog-title {
+    background: var(--formbkg);
+    border-radius: 0px 0px 5px 5px;
+    color: white;
+}
+
 @media screen and (max-width: 1281px) {
     .panel-side-area {
         display: none;

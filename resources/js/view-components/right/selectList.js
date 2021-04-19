@@ -7,6 +7,7 @@ import { RightManageCard } from "..";
 import {
     equals,
     existsInArray,
+    pluckSet,
     removeFromArray
 } from "../../utils/objectArray";
 import { updateSelection } from "../../utils/itemsSelections";
@@ -20,7 +21,7 @@ function _list({
 }) {
     const [rightsGroup, setRightsGroup] = useState(targetGroup);
     const [expandedRights, setExpandedRights] = useState([]);
-    const [selectedRights, setSelectedRights] = useState(prevRights);
+    const [selectedRights, setSelectedRights] = useState(pluckSet(prevRights));
     const [rightsSelectionMode, setRightsSelectionMode] = useState(
         MULTIPLE_NESTED_SELECTION_MODE
     );
@@ -50,10 +51,14 @@ function _list({
     }
 
     useEffect(() => {
+        console.log("SelectList[selectedRights]", selectedRights);
         changesHandler &&
             changesHandler({
                 isChanged: !equals(selectedRights, prevRights),
-                data: { rights: selectedRights, scope: targetScope }
+                data: {
+                    rights: selectedRights,
+                    scope: targetScope
+                }
             });
     }, [selectedRights]);
 

@@ -64,7 +64,9 @@ function feedback({
                         minHeight: "6vh"
                     }}
                 >
-                    <DialogTitle>{title}</DialogTitle>
+                    <DialogTitle classes={{ root: "select-dialog-title" }}>
+                        {title}
+                    </DialogTitle>
                     <div style={{ flexGrow: 1 }} />
                     <DialogActions>
                         {((confirmation && confirmation.show) ||

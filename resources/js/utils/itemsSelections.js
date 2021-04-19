@@ -4,7 +4,7 @@ import {
     SINGLE_NESTED_SELECTION_MODE,
     SINGLE_SELECTION_MODE
 } from "./constants";
-import { existsInArray, removeFromArray } from "./objectArray";
+import { existsInArray, pluckSet, removeFromArray } from "./objectArray";
 
 export const updateSelection = (
     prevItems,
@@ -46,11 +46,11 @@ function performSelection(
 
     switch (selectionMode) {
         case SINGLE_SELECTION_MODE:
-            return [item];
+            itemsToAdd = [item];
             break;
 
         case MULTIPLE_SELECTION_MODE:
-            return [...prevItems, item];
+            itemsToAdd = [...prevItems, item];
 
             break;
         case SINGLE_NESTED_SELECTION_MODE:
@@ -89,7 +89,7 @@ function performSelection(
                     ...getDeepChildsOf(item, childAttr)
                 ];
             }
-            return [...itemsToAdd];
+            itemsToAdd = [...itemsToAdd];
             break;
 
         case MULTIPLE_NESTED_SELECTION_MODE:
@@ -108,13 +108,15 @@ function performSelection(
                     ...getDeepChildsOf(item, childAttr)
                 ];
             }
-            return [...prevItems, ...itemsToAdd];
+            itemsToAdd = [...prevItems, ...itemsToAdd];
 
             break;
 
         default:
             break;
     }
+
+    return pluckSet(itemsToAdd);
 }
 
 function performDeselection(

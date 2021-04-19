@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RightDisplayItem;
+use App\Models\Right;
 use Illuminate\Http\Request;
 use Utility;
 
@@ -39,6 +40,27 @@ class RightController extends Controller
 
     public function updateAccessRights(Request $request)
     {
-        return response()->json(['message' => 'marhaba', 'rights' => $request->rights]);
+        // build right set
+        $righIds = collect($request->get('rights'))->pluck('id');
+        $rights = Right::whereIn('id', $righIds)->get();
+        $rights = collect($rights)->pluck('slug')->toArray();
+
+        // buid target objects
+        $scope = $request->get('scope');
+        $targetObjects = [];
+        foreach ($scope as $item => $value) {
+            $class = Utility::getModel($item);
+            $ids = collect($value)->pluck('id');
+            $objects = $class::whereIn('id', $ids)->get();
+            array_push($targetObjects, ...$objects);
+        }
+
+        // attach rights for each object
+        foreach ($targetObjects as $object) {
+            $object->refreshRights($rights);
+        }
+
+        // send response
+        return response()->json(['message' => 'marhaba', 'rights' => $request->get('rights')]);
     }
 }

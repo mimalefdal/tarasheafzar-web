@@ -37,6 +37,6 @@ export const updateAccessRights = (
         })
         .catch(error => {
             // console.log('BranchAdd Service,error.response);
-            failureCallback(error.response);
+            failureCallback(error);
         });
 };
