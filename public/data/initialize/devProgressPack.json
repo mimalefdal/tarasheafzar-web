@@ -934,7 +934,7 @@
             "managedByRights": null
         },
         {
-            "slug": "access-administrator",
+            "slug": "head-access-administrator",
             "title": {
                 "fa": "مدیر مختار حقوق دسترسی",
                 "en": "Head Access Adminstartor"
@@ -944,6 +944,7 @@
                 "access-access-management-panel",
                 "use-rights-administration-tool",
                 "perform-administrate-managedby-rights",
+                "perform-administrate-ownedby-rights",
                 "use-rights-management-tool",
                 "perform-manage-access-rights"
             ]
@@ -995,7 +996,7 @@
             "holder": null,
             "roles": [
                 "structure-administrator",
-                "access-administrator",
+                "head-access-administrator",
                 "staff-manager"
             ],
             "rights": [
