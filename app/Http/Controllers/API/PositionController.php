@@ -58,7 +58,7 @@ class PositionController extends Controller
             return PositionItem::make(Position::withTrashed()->find($request->id));
         }
         return response('Bad Request', 404);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function update(StorePositionRequest $request)
@@ -95,7 +95,7 @@ class PositionController extends Controller
         $data = ['message' => $message, 'item' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
 
-        // return response(["message" => "Not Implemented", $request->all()], 400);
+        // return Utility::notImplementedResponse($request);
     }
 
     public function delete(Request $request)
@@ -109,6 +109,6 @@ class PositionController extends Controller
         $data = ['message' => $message, 'position' => $resourceItem];
 
         return response($data);
-        return response(["message" => "Not Implemented", $request->all()], 400);
+        return Utility::notImplementedResponse($request);
     }
 }

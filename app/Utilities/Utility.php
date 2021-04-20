@@ -6,6 +6,8 @@ use App\Models\Position;
 use App\Models\Right;
 use App\Models\Role;
 use App\Models\Unit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class Utility
 {
@@ -73,12 +75,7 @@ class Utility
         return $holder;
     }
 
-    public static function noItemResponse($type, $anyy = false)
-    {
-        if ($anyy)
-            return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.anyy')])], 203);
-        return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.any')])], 203);
-    }
+
 
     public static function getAllRights(array $rights)
     {
@@ -98,5 +95,20 @@ class Utility
             $item['childs'] = self::performParentChildStructure($data, $item->id);
         }
         return $restructured;
+    }
+
+
+    public static function noItemResponse($type, $anyy = false)
+    {
+        if ($anyy)
+            return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.anyy')])], 203);
+        return response()->json(['message' => Lang::get('messages.noRecordsExists', ['type' => Lang::get('values.' . $type) . Lang::get('values.any')])], 203);
+    }
+
+    public static function notImplementedResponse(Request $request = null)
+    {
+        if ($request)
+            return response(["message" => Lang::get('messages.notImplemented'), $request->all()], 400);
+        return response(["message" => Lang::get('messages.notImplemented')], 400);
     }
 }

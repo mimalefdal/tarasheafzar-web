@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'notImplemented' => 'روال مورد نظر، پیاده‌سازی نشده است.',
     'generalsuccess' => 'درخواست با موفقیت انجام شد',
     'generalfailure' => 'درخواست قابل انجام نیست.',
     'licenceInstalled' => 'لایسنس شما با موفقیت ثبت شد.',

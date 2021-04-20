@@ -34,7 +34,7 @@ class JoblevelController extends Controller
 
 
         return response(["message" => $message, 'joblevel' => $newItem], 200);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function index()
@@ -52,7 +52,7 @@ class JoblevelController extends Controller
             return JoblevelItem::make(Joblevel::withTrashed()->find($request->id));
         }
         return response('Bad Request', 404);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function update(StoreJoblevelRequest $request)
@@ -87,7 +87,7 @@ class JoblevelController extends Controller
         $data = ['message' => $message, 'item' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
 
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function delete(Request $request)
@@ -101,6 +101,6 @@ class JoblevelController extends Controller
         $data = ['message' => $message, 'joblevel' => $resourceItem];
 
         return response($data);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 }

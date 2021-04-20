@@ -40,7 +40,7 @@ class DepartmentController extends Controller
         $data = ['message' => $message, 'department' => $resourceItem];
         return response()->json($data, 200);
 
-        // return response(["message" => "Not Implemented", $request], 400);
+        // return Utility::notImplementedResponse($request);
     }
 
     public function index()
@@ -62,7 +62,7 @@ class DepartmentController extends Controller
             return new DepartmentItem(Department::withTrashed()->find($request->id));
         }
         return response('Bad Request', 404);
-        // return response(["message" => "Not Implemented", $request], 400);
+        // return Utility::notImplementedResponse($request);
     }
 
     public function update(StoreDepartmentRequest $request)
@@ -104,7 +104,7 @@ class DepartmentController extends Controller
         $data = ['message' => $message, 'department' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
 
-        // return response(["message" => "Not Implemented", $request->all()], 400);
+        // return Utility::notImplementedResponse($request);
     }
 
     public function delete(Request $request)
@@ -119,6 +119,6 @@ class DepartmentController extends Controller
 
         return response($data);
 
-        // return response(["message" => "Not Implemented", $request], 400);
+        // return Utility::notImplementedResponse($request);
     }
 }

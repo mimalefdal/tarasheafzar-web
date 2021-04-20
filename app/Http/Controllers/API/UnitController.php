@@ -59,7 +59,7 @@ class UnitController extends Controller
             return new UnitItem(Unit::withTrashed()->find($request->id));
         }
         return response('Bad Request', 404);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function update(StoreUnitRequest $request)
@@ -96,7 +96,7 @@ class UnitController extends Controller
         $data = ['message' => $message, 'item' => $resourceItem, 'relations update' => $flagRelated];
         return response($data);
 
-        // return response(["message" => "Not Implemented", $request->all()], 400);
+        // return Utility::notImplementedResponse($request);
 
     }
 
@@ -111,6 +111,6 @@ class UnitController extends Controller
         $data = ['message' => $message, 'unit' => $resourceItem];
 
         return response($data);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 }

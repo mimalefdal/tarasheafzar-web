@@ -93,7 +93,7 @@ class StaffController extends Controller
             return $staff;
         return $resourceClass::make($staff);
 
-        return response(["message" => "Not Implemented", $request->all()], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function update(StoreStaffRequest $request)
@@ -132,7 +132,7 @@ class StaffController extends Controller
         $data = ['message' => $message];
 
         return response($data);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function restore(Request $request)
@@ -144,7 +144,7 @@ class StaffController extends Controller
         // $data = ['message' => $message];
 
         // return response($data);
-        return response(["message" => "Not Implemented", $request], 400);
+        return Utility::notImplementedResponse($request);
     }
 
     public function toggleSuspend(Request $request)
@@ -161,6 +161,6 @@ class StaffController extends Controller
         $data = ['message' => $message, 'staff' => $resourceItem];
 
         return response($data);
-        return response(["message" => "Not Implemented", $request->all()], 400);
+        return Utility::notImplementedResponse($request);
     }
 }
