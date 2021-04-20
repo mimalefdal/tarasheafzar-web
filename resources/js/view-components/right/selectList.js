@@ -51,7 +51,7 @@ function _list({
     }
 
     useEffect(() => {
-        console.log("SelectList[selectedRights]", selectedRights);
+        // console.log("SelectList[selectedRights]", selectedRights);
         changesHandler &&
             changesHandler({
                 isChanged: !equals(selectedRights, prevRights),

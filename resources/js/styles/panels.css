@@ -618,6 +618,7 @@ button:hover {
 
 .confirm-dialog {
     /* background-color: var(--warning) !important; */
+    background: var(--formbkg);
 }
 
 .dialog-header-bar {
@@ -630,7 +631,9 @@ button:hover {
     background: var(--formbkg);
     padding: 1rem;
     border-radius: 0px 0px 5px 5px;
-    color: white;
+    color: var(--gray-dark);
+    font-weight: 900;
+    font-size: 15px;
 }
 
 @media screen and (max-width: 1281px) {

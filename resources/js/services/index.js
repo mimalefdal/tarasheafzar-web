@@ -46,8 +46,10 @@ export { _installLicence as InitializeLicence } from "./initialize-service";
 export { _initiateSystem as InitiateSystem } from "./initialize-service";
 export { defineCeo as InitializeCEO } from "./initialize-service";
 
-export { getIndex as GetRightList } from "./right-service";
-export { updateAccessRights as UpdateAccessRights } from "./right-service";
+export { _getIndex as GetRightList } from "./right-service";
+export { _updateAccessRights as UpdateAccessRights } from "./right-service";
+export { _updateManagedbyRights as UpdateManagedbyRights } from "./right-service";
+export { _updateOwnedbyRights as UpdateOwnedbyRights } from "./right-service";
 
 export { getValues as GetValidValues } from "./values-service";
 

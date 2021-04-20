@@ -49,4 +49,14 @@ trait CanManageRights
         $this->managedByRights()->attach($rights);
         return $this;
     }
+
+    public function unsetManagerOfRights($rights)
+    {
+        $rights = Utility::getAllRights($rights);
+        if ($rights === null) {
+            return $this;
+        }
+        $this->managedByRights()->detach($rights);
+        return $this;
+    }
 }

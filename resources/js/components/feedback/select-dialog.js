@@ -37,7 +37,7 @@ function feedback({
     }
 
     function handleConfirmClose(mustUpdate, data) {
-        console.log("handleConfirmClose", mustUpdate, data);
+        // console.log("handleConfirmClose", mustUpdate, data);
         if (mustUpdate) {
             setShowConfirm(false);
             onUpdate && onUpdate({ data: data });
@@ -62,7 +62,8 @@ function feedback({
                     <div className="flex center select-dialog-title">
                         {title}
                     </div>
-                    <div style={{ flexGrow: 1 }} />
+
+                    <div className="filler" />
                     <DialogActions>
                         {((confirmation && confirmation.show) ||
                             showConfirm) && (

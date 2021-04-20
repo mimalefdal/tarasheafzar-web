@@ -1,7 +1,7 @@
 import React from "react";
 import { ApiClient } from ".";
 
-export const getIndex = (params, token, successCallback, failureCallback) => {
+export const _getIndex = (params, token, successCallback, failureCallback) => {
     ApiClient.get("/rights", {
         headers: {
             Accept: "application/json",
@@ -19,13 +19,57 @@ export const getIndex = (params, token, successCallback, failureCallback) => {
         });
 };
 
-export const updateAccessRights = (
+export const _updateAccessRights = (
     data,
     token,
     successCallback,
     failureCallback
 ) => {
     ApiClient.post("/rights/updateAccessRights", data, {
+        headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+        }
+    })
+        .then(response => {
+            // console.log('BranchAdd Service,response);
+            successCallback(response);
+        })
+        .catch(error => {
+            // console.log('BranchAdd Service,error.response);
+            failureCallback(error);
+        });
+};
+
+export const _updateManagedbyRights = (
+    data,
+    token,
+    successCallback,
+    failureCallback
+) => {
+    ApiClient.post("/rights/updateManagedbyRights", data, {
+        headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+        }
+    })
+        .then(response => {
+            // console.log('BranchAdd Service,response);
+            successCallback(response);
+        })
+        .catch(error => {
+            // console.log('BranchAdd Service,error.response);
+            failureCallback(error);
+        });
+};
+
+export const _updateOwnedbyRights = (
+    data,
+    token,
+    successCallback,
+    failureCallback
+) => {
+    ApiClient.post("/rights/updateOwnedbyRights", data, {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token

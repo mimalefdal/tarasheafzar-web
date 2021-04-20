@@ -58,9 +58,10 @@ function _feedback({
                     error => {
                         console.log(error);
                         error.response && console.log(error.response);
-                        error.data &&
-                            error.data.message &&
-                            setResponseMessage(error.data.message);
+                        error.response.data &&
+                            error.response.data.message &&
+                            setResponseMessage(error.response.data.message);
+
                         setExecutionState(EXECUTION_DONE_FAILURE);
                     }
                 );

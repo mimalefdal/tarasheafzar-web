@@ -67,8 +67,12 @@ Route::post('/initialize/setlicence', 'API\InitializeController@installLicence')
 Route::post('/initialize/initiateSystem', 'API\InitializeController@initiateSystem');
 Route::post('/initialize/defineceo', 'API\InitializeController@defineceo');
 
-Route::get('rights', 'API\RightController@index');
-Route::post('rights/updateAccessRights', 'API\RightController@updateAccessRights');
+Route::prefix('rights')->group(function () {
+    Route::get('/', 'API\RightController@index');
+    Route::post('/updateAccessRights', 'API\RightController@updateAccessRights');
+    Route::post('/updateManagedbyRights', 'API\RightController@updateManagedbyRights');
+    Route::post('/updateOwnedbyRights', 'API\RightController@updateOwnedbyRights');
+});
 
 Route::get('features', 'API\FeatureController@index');
 

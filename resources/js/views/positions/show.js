@@ -5,7 +5,13 @@ import { EditButton, GuardedButton } from "../../components/buttons";
 import { HorizontalOperationBar, Title } from "../../components/view-controls";
 import { swapUrlTail, t } from "../../utils";
 import { FormDialog, Loading, SelectDialog } from "../../components/feedback";
-import { GetPosition, GetRightList } from "../../services";
+import {
+    GetPosition,
+    GetRightList,
+    UpdateAccessRights,
+    UpdateManagedbyRights,
+    UpdateOwnedbyRights
+} from "../../services";
 import StaffContext from "../../context/staffContext";
 import AppContext from "../../context/appContext";
 import {
@@ -111,7 +117,9 @@ function show(props) {
                     onClick={() => {
                         displayRightSelector({
                             targetGroup: "managedby",
-                            dataService: updateAccessRights
+                            rights: item.rights,
+                            operation: t("operations.modifyRights"),
+                            dataService: UpdateAccessRights
                         });
                     }}
                     title={t("operations.modifyRights")}
@@ -123,7 +131,9 @@ function show(props) {
                     onClick={() => {
                         displayRightSelector({
                             targetGroup: "owned",
-                            dataService: "updateManagedbyRights"
+                            rights: item.rights_managedby,
+                            operation: t("operations.modifyManagedbyRights"),
+                            dataService: UpdateManagedbyRights
                         });
                     }}
                     title={t("operations.modifyManagedbyRights")}
@@ -135,7 +145,10 @@ function show(props) {
                     onClick={() => {
                         displayRightSelector({
                             targetGroup: "owned",
-                            dataService: "updateOwnedbyRights"
+                            rights: item.rights_ownedby,
+                            operation: t("operations.modifyOwnedRights"),
+
+                            dataService: UpdateOwnedbyRights
                         });
                     }}
                     title={t("operations.modifyOwnedRights")}
@@ -147,10 +160,11 @@ function show(props) {
                     show={showRights}
                     onClose={closeRightSelctor}
                     onUpdate={data => {
-                        console.log(data);
+                        // console.log(data);
                         handleRightsUpdate(data.data.rights);
                     }}
-                    title={t("forms.selectRights")}
+                    // title={t("forms.selectRights")}
+                    title={rightsOperationInfo.operation}
                     confirmation={{
                         classes: { root: "btn-confirm" },
                         icon: <DoneIcon />,
@@ -172,7 +186,7 @@ function show(props) {
                     }}
                     formComponent={
                         <RightsSelectList
-                            prevRights={item.rights}
+                            prevRights={rightsOperationInfo.rights}
                             targetScope={{ positions: [item] }}
                             targetGroup={rightsOperationInfo.targetGroup}
                         />
@@ -208,7 +222,7 @@ function show(props) {
     }
 
     function handleRightsUpdate(rights) {
-        console.log("show->handleRightsUpdate", rights);
+        // console.log("show->handleRightsUpdate", rights);
         setItem({ ...item, rights: [...rights] });
     }
 

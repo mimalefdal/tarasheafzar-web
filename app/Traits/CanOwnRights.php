@@ -51,4 +51,14 @@ trait CanOwnRights
         $this->ownedRights()->attach($rights);
         return $this;
     }
+
+    public function unsetOwnerOfRights($rights)
+    {
+        $rights = Utility::getAllRights($rights);
+        if ($rights === null) {
+            return $this;
+        }
+        $this->ownedRights()->detach($rights);
+        return $this;
+    }
 }

@@ -72,7 +72,7 @@ function CardList({
     }, [entryOperations && entryOperations]);
 
     useEffect(() => {
-        console.log("CardListBase[items]->items", items);
+        // console.log("CardListBase[items]->items", items);
     }, [items]);
 
     useEffect(() => {
