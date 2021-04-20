@@ -55,18 +55,13 @@ function feedback({
                 TransitionComponent={Transition}
                 {...props.dialogProps}
             >
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        width: "90%",
-                        margin: "auto",
-                        minHeight: "6vh"
-                    }}
-                >
-                    <DialogTitle classes={{ root: "select-dialog-title" }}>
+                <div className="flex row dialog-header-bar">
+                    {/* <DialogTitle classes={{ root: "select-dialog-title" }}>
                         {title}
-                    </DialogTitle>
+                    </DialogTitle> */}
+                    <div className="flex center select-dialog-title">
+                        {title}
+                    </div>
                     <div style={{ flexGrow: 1 }} />
                     <DialogActions>
                         {((confirmation && confirmation.show) ||
@@ -97,15 +92,7 @@ function feedback({
                         null
                     )}
                 </DialogContent>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        width: "90%",
-                        margin: "auto",
-                        minHeight: "6vh"
-                    }}
-                ></div>
+                <div className="dialog-header-bar"></div>
             </Dialog>
             {confirmation && (
                 <ConfirmAndRunDialog

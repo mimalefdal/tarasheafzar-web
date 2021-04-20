@@ -620,8 +620,15 @@ button:hover {
     /* background-color: var(--warning) !important; */
 }
 
+.dialog-header-bar {
+    width: 90%;
+    margin: auto !important;
+    min-height: 6vh;
+}
+
 .select-dialog-title {
     background: var(--formbkg);
+    padding: 1rem;
     border-radius: 0px 0px 5px 5px;
     color: white;
 }
