@@ -1,0 +1,12 @@
+{
+    "Rights": [
+        {
+            "slug": "use-...-tool",
+            "title": {
+                "fa": "کار با ابزار ...",
+                "en": "Use ... Tool"
+            },
+            "activation": true
+        }
+    ]
+}

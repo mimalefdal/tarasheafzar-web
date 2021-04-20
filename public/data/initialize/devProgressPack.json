@@ -747,7 +747,24 @@
                         "en": "Use Rights Administration Tool"
                     },
                     "activation": true,
-                    "childrights": []
+                    "childrights": [
+                        {
+                            "slug": "perform-administrate-managedby-rights",
+                            "title": {
+                                "fa": "سازمانداری حقوق قابل مدیریت",
+                                "en": "Administrate Managed-By Rights"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-administrate-ownedby-rights",
+                            "title": {
+                                "fa": "سازمانداری حقوق قابل سازمانداری",
+                                "en": "Administrate Owned-By Rights"
+                            },
+                            "activation": true
+                        }
+                    ]
                 },
                 {
                     "slug": "use-rights-management-tool",
@@ -756,7 +773,16 @@
                         "en": "Use Rights Management Tool"
                     },
                     "activation": true,
-                    "childrights": []
+                    "childrights": [
+                        {
+                            "slug": "perform-manage-access-rights",
+                            "title": {
+                                "fa": "مدیریت حقوق دسترسی",
+                                "en": "Manage Access Rights"
+                            },
+                            "activation": true
+                        }
+                    ]
                 },
                 {
                     "slug": "use-roles-adminstration-tool",
@@ -917,7 +943,9 @@
             "rights": [
                 "access-access-management-panel",
                 "use-rights-administration-tool",
-                "use-rights-management-tool"
+                "perform-administrate-managedby-rights",
+                "use-rights-management-tool",
+                "perform-manage-access-rights"
             ]
         },
         {

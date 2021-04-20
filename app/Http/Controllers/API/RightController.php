@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\RightDisplayItem;
 use App\Models\Right;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Utility;
 
 class RightController extends Controller
@@ -35,17 +36,26 @@ class RightController extends Controller
                 return [];
                 break;
         }
-        // return  Right::all();
+        // return Right::all();
     }
 
     public function updateAccessRights(Request $request)
     {
-        // build right set
-        $righIds = collect($request->get('rights'))->pluck('id');
-        $rights = Right::whereIn('id', $righIds)->get();
-        $rights = collect($rights)->pluck('slug')->toArray();
+        // TDOD : check if requesting user has permission to manage rights
 
-        // buid target objects
+        // build requested right set
+        $righIds = collect($request->get('rights'))->pluck('id');
+        $requested_rights = collect(Right::whereIn('id', $righIds)->get());
+        // $requested_rights = collect($requested_rights);
+
+        // filter requested_rights
+        // to restrict affected items from fake or wrong requests
+        $manageable_rights = $request->user()->allManagedByRights()->pluck('slug')->toArray();
+        $target_rights = $requested_rights->whereIn('slug', $manageable_rights)->pluck('slug')->toArray();
+        $notAffected_rights = RightDisplayItem::collection($requested_rights->whereNotIn('slug', $manageable_rights));
+        // return response()->json(['message' => 'developer Created error.please check console', 'manageable_rights' => $manageable_rights, 'requested_rights' => $requested_rights, 'target_rights' => $target_rights, 'notAffected_rights' => $notAffected_rights], 500);
+
+        // set target objects
         $scope = $request->get('scope');
         $targetObjects = [];
         foreach ($scope as $item => $value) {
@@ -57,10 +67,13 @@ class RightController extends Controller
 
         // attach rights for each object
         foreach ($targetObjects as $object) {
-            $object->refreshRights($rights);
+            $object->withdrawRightsTo($manageable_rights);
+            $object->giveRightsTo($target_rights);
+            // TODO : above command squence has to implement as atomic function
+            // $object->save();
         }
 
         // send response
-        return response()->json(['message' => 'marhaba', 'rights' => $request->get('rights')]);
+        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => $request->get('rights'), 'notAffected_rights' => $notAffected_rights]);
     }
 }

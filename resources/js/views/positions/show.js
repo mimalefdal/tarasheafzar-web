@@ -115,9 +115,7 @@ function show(props) {
                         });
                     }}
                     title={t("operations.modifyRights")}
-                    requiredRights={["use-rights-management-tool"]}
-                    // requiredRights={["perform-manage-rights"]}
-                    // TODO : write-fown correct right
+                    requiredRights={["perform-manage-access-rights"]}
                 />
 
                 <GuardedButton
@@ -129,20 +127,19 @@ function show(props) {
                         });
                     }}
                     title={t("operations.modifyManagedbyRights")}
-                    requiredRights={["use-rights-administration-tool"]}
-                    // requiredRights={["perform-administrate-rights"]}
-                    // TODO : write-fown correct right
+                    requiredRights={["perform-administrate-managedby-rights"]}
                 />
 
                 <GuardedButton
                     className="tool-link"
                     onClick={() => {
-                        console.log("modifyOwnedRights Pressed");
+                        displayRightSelector({
+                            targetGroup: "owned",
+                            dataService: "updateOwnedbyRights"
+                        });
                     }}
                     title={t("operations.modifyOwnedRights")}
-                    requiredRights={["use-rights-administration-tool"]}
-                    // requiredRights={["perform-administrate-rights"]}
-                    // TODO : write-fown correct right
+                    requiredRights={["perform-administrate-ownedby-rights"]}
                 />
             </HorizontalOperationBar>
             {ready && (
