@@ -168,6 +168,52 @@
     ],
     "Operations": [
         {
+            "tool": "rights-management-tool",
+            "operations": [
+                {
+                    "slug": "modify-access-rights-operation",
+                    "title": {
+                        "fa": "تغییر دادن حقوق دسترسی",
+                        "en": "Modify Access Rights"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-manage-access-rights"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "rights-administration-tool",
+            "operations": [
+                {
+                    "slug": "modify-managedby-rights-operation",
+                    "title": {
+                        "fa": "تغییر حقوق دسترسی قابل مدیریت",
+                        "en": "Modify ManagedBy Rights"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-administrate-managedby-rights"
+                    ]
+                },
+                {
+                    "slug": "modify-ownedby-rights-operation",
+                    "title": {
+                        "fa": "تغییر حقوق دسترسی قابل سازمانداری",
+                        "en": "Modify OwnedBy Rights"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-administrate-ownedby-rights"
+                    ]
+                }
+            ]
+        },
+        {
             "tool": "branches-management-tool",
             "operations": [
                 {
@@ -507,8 +553,8 @@
         {
             "slug": "access-structure-panel",
             "title": {
-                "fa": "دسترسی به پنل مدیریت شرکت",
-                "en": "Access Company Management Panel"
+                "fa": "دسترسی به پنل مدیریت ساختار",
+                "en": "Access Structure Management Panel"
             },
             "activation": true,
             "childrights": [

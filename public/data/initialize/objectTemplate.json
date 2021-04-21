@@ -8,5 +8,24 @@
             },
             "activation": true
         }
-    ]
+    ],
+    "Operations": {
+        "tool": "...-tool",
+        "operations": [
+            {
+                "slug": "...-operation",
+                "title": {
+                    "fa": "...",
+                    "en": "..."
+                },
+                "activation": true,
+                "state": "built-in",
+                "requiredRights": [
+                    "..."
+                ]
+            },
+            {}
+        ]
+    },
+    "operations": []
 }
