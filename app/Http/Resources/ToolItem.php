@@ -28,6 +28,7 @@ class ToolItem extends JsonResource
         $item['state'] = $this->state;
         $item['activation'] = $this->activation;
 
+        $item['childs'] = OperationItem::collection($this->operations);
         $item['operations'] = OperationItem::collection($this->operations);
         $item['permissions'] = PermissionItem::collection($this->requiredRights);
 

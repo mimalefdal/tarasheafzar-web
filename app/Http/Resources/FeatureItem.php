@@ -28,6 +28,7 @@ class FeatureItem extends JsonResource
         $item['activation'] = $this->activation ? 'active' : 'inactive';
 
         $item['tools'] = ToolItem::collection($this->tools);
+        $item['childs'] = ToolItem::collection($this->tools);
 
         $item['permissions'] = PermissionItem::collection($this->requiredRights);
 

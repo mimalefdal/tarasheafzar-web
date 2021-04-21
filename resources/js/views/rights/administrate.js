@@ -81,7 +81,7 @@ function _administrate() {
     }
 
     function handleDisplayMode(mode) {
-        console.log("handleDisplayMode called with ", mode);
+        // console.log("handleDisplayMode called with ", mode);
         setDisplayMode(mode.value);
     }
 

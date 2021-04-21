@@ -74,7 +74,7 @@ function _card({
                     )}
                 </div>
             </div>
-            <div className="btn-set card-btn-set">{entryActions}</div>
+            <div className="card-btn-set">{entryActions}</div>
 
             {/* <div className="filler" id="basic-card-free-fill-area">
                 {props.children}

@@ -106,7 +106,7 @@
 .card-operation-btn svg {
     fill: currentColor;
     opacity: 0.8;
-    transition: transform 400ms linear !important;
+    transition: transform 100ms linear !important;
 }
 
 .card-operation-btn:hover svg {

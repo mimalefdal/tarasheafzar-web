@@ -9,6 +9,7 @@ import { t } from "../../utils";
 import { clearTitle, setTitle } from "../../utils/redux/navSlice";
 import { FeatureCard } from "../../view-components";
 import { NewPage } from "../errors";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 function _manage(props) {
     const dispatch = useDispatch();
@@ -27,12 +28,6 @@ function _manage(props) {
             actionType: "callback",
             action: handleShow,
             props: { className: "card-operation-btn" }
-        },
-        {
-            type: "expand",
-            actionType: "callback",
-            action: handleExpand,
-            props: { className: "card-operation-btn", expanded: expandedItems }
         }
     ];
 
@@ -58,6 +53,13 @@ function _manage(props) {
                 cardComponent={<FeatureCard expandedItems={expandedItems} />}
                 entryOperations={entryOperations}
                 // trigger={trigReload}
+                expansion={{
+                    handler: handleExpand,
+                    data: expandedItems,
+                    expandableItemsField: "childs",
+                    className: "card-operation-btn",
+                    icon: <ExpandMoreIcon />
+                }}
             />
         </>
     );
