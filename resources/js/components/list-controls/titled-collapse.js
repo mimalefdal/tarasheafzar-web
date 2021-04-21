@@ -25,7 +25,6 @@ function _control({ title, initialState = true, btnSet, ...props }) {
                 className={
                     "expandable-group-title flex row " + (!state && "disabled")
                 }
-                onClick={toggleExpand}
             >
                 <div
                     style={{
@@ -36,8 +35,8 @@ function _control({ title, initialState = true, btnSet, ...props }) {
                 >
                     <ExpanderIcon isExpanded={open} />
                 </div>
-                <div>{title}</div>
-                <div className="flex-filler"></div>
+                <div onClick={toggleExpand}>{title}</div>
+                <div className="flex-filler" onClick={toggleExpand}></div>
                 <div id="actions">{btnSet && btnSet}</div>
             </div>
             <Collapse in={open} timeout={600}>

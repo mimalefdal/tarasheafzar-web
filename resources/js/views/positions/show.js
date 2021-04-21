@@ -18,13 +18,13 @@ import {
     PositionForm,
     RightManageCard,
     RightsSelectList,
+    SelectRightDialog,
     UnitForm
 } from "../../view-components";
 import { CardList } from "../../components/lists";
 import { MULTIPLE_NESTED_SELECTION_MODE } from "../../utils/constants";
 import { existsInArray, removeFromArray } from "../../utils/objectArray";
 import { updateSelection } from "../../utils/itemsSelections";
-import DoneIcon from "@material-ui/icons/Done";
 import { Update } from "@material-ui/icons";
 import { updateAccessRights } from "../../services/right-service";
 
@@ -40,7 +40,10 @@ function show(props) {
 
     const [rightsOperationInfo, setRightsOperationInfo] = useState({
         targetGroup: null,
-        targetAction: null
+        targetScope: null,
+        rights: null,
+        operation: null,
+        dataService: null
     });
 
     const token = useContext(StaffContext).token;
@@ -115,8 +118,9 @@ function show(props) {
                 <GuardedButton
                     className="tool-link"
                     onClick={() => {
-                        displayRightSelector({
+                        displayRightsDialog({
                             targetGroup: "managedby",
+                            targetScope: { position: [item] },
                             rights: item.rights,
                             operation: t("operations.modifyRights"),
                             dataService: UpdateAccessRights
@@ -129,8 +133,9 @@ function show(props) {
                 <GuardedButton
                     className="tool-link"
                     onClick={() => {
-                        displayRightSelector({
+                        displayRightsDialog({
                             targetGroup: "owned",
+                            targetScope: { position: [item] },
                             rights: item.rights_managedby,
                             operation: t("operations.modifyManagedbyRights"),
                             dataService: UpdateManagedbyRights
@@ -143,8 +148,9 @@ function show(props) {
                 <GuardedButton
                     className="tool-link"
                     onClick={() => {
-                        displayRightSelector({
+                        displayRightsDialog({
                             targetGroup: "owned",
+                            targetScope: { position: [item] },
                             rights: item.rights_ownedby,
                             operation: t("operations.modifyOwnedRights"),
 
@@ -156,41 +162,12 @@ function show(props) {
                 />
             </HorizontalOperationBar>
             {ready && (
-                <SelectDialog
+                <SelectRightDialog
                     show={showRights}
-                    onClose={closeRightSelctor}
-                    onUpdate={data => {
-                        // console.log(data);
-                        handleRightsUpdate(data.data.rights);
-                    }}
-                    // title={t("forms.selectRights")}
-                    title={rightsOperationInfo.operation}
-                    confirmation={{
-                        classes: { root: "btn-confirm" },
-                        icon: <DoneIcon />,
-                        show: false,
-                        dataService: rightsOperationInfo.dataService
-                        // runCallback: (...params) => {
-                        //     console.log(
-                        //         "show->SelectDialog->runCallback()",
-                        //         params
-                        //     );
-                        //     setShowRights(false);
-                        // }
-                    }}
-                    dialogProps={{
-                        maxWidth: "md"
-                    }}
-                    confirmDialogProps={{
-                        confirmMessageAction: t("expressions.sureAboutChanges")
-                    }}
-                    formComponent={
-                        <RightsSelectList
-                            prevRights={rightsOperationInfo.rights}
-                            targetScope={{ positions: [item] }}
-                            targetGroup={rightsOperationInfo.targetGroup}
-                        />
-                    }
+                    onClose={closeRightDialog}
+                    onUpdate={handleRightsUpdate}
+                    operationData={rightsOperationInfo}
+                    item={item}
                 />
             )}
             <FormDialog
@@ -212,12 +189,12 @@ function show(props) {
         GetPosition({ id: item.id }, token, getResponse, getError);
     }
 
-    function displayRightSelector(operationInfo) {
+    function displayRightsDialog(operationInfo) {
         setRightsOperationInfo(operationInfo);
         setShowRights(true);
     }
 
-    function closeRightSelctor() {
+    function closeRightDialog() {
         setShowRights(false);
     }
 

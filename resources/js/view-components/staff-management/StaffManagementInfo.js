@@ -64,7 +64,7 @@ function _component({
         case "access":
             specCards = (
                 <div style={{ textAlign: "right" }}>
-                    {staff.rights.map((right, index) => (
+                    {staff.access_rights.map((right, index) => (
                         <div key={index}>{right.title}</div>
                     ))}
                 </div>

@@ -66,7 +66,7 @@ class RightController extends Controller
         }
 
         // send response
-        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => $request->get('rights'), 'notAffected_rights' => RightDisplayItem::collection($notAffected_rights)]);
+        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => RightDisplayItem::collection($requested_rights), 'notAffected_rights' => RightDisplayItem::collection($notAffected_rights)]);
     }
 
     public function updateManagedbyRights(Request $request)
@@ -92,7 +92,7 @@ class RightController extends Controller
         }
 
         // send response
-        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => $request->get('rights'), 'notAffected_rights' => RightDisplayItem::collection($notAffected_rights)]);
+        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => RightDisplayItem::collection($requested_rights), 'notAffected_rights' => RightDisplayItem::collection($notAffected_rights)]);
         return Utility::notImplementedResponse($request);
     }
 
@@ -119,7 +119,7 @@ class RightController extends Controller
         }
 
         // send response
-        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => $request->get('rights'), 'notAffected_rights' => RightDisplayItem::collection($notAffected_rights)]);
+        return response()->json(['message' => Lang::get('messages.generalsuccess'), 'rights' => RightDisplayItem::collection($requested_rights), 'notAffected_rights' => RightDisplayItem::collection($notAffected_rights)]);
         return Utility::notImplementedResponse($request);
     }
 

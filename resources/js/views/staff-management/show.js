@@ -1,15 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router";
 import { PageHeaderBar } from "../../components";
-import { EditButton, SuspenseTogglerButton } from "../../components/buttons";
+import {
+    EditButton,
+    GuardedAction,
+    SuspenseTogglerButton
+} from "../../components/buttons";
 import { SpecCard } from "../../components/cards";
 import { ConfirmAndRunDialog, Loading } from "../../components/feedback";
 import { Title } from "../../components/view-controls";
 import AppContext from "../../context/appContext";
 import StaffContext from "../../context/staffContext";
-import { GetStaff, ToggleSuspendStaff } from "../../services";
+import {
+    GetStaff,
+    ToggleSuspendStaff,
+    UpdateAccessRights
+} from "../../services";
 import { t } from "../../utils";
-import { StaffManagementInformation } from "../../view-components";
+import {
+    SelectRightDialog,
+    StaffManagementInformation
+} from "../../view-components";
 
 function _show(props) {
     const { personnel_id } = useParams();
@@ -23,6 +34,16 @@ function _show(props) {
 
     const [suspendRequest, setSuspendRequest] = useState(false);
     const [trigReload, setTrigReload] = useState(false);
+
+    const [showRights, setShowRights] = useState(false);
+
+    const [rightsOperationInfo, setRightsOperationInfo] = useState({
+        targetGroup: null,
+        targetScope: null,
+        rights: null,
+        operation: null,
+        dataService: null
+    });
 
     useEffect(() => {
         // if (location.state) {
@@ -50,13 +71,31 @@ function _show(props) {
     }, [trigReload]);
 
     useEffect(() => {
-        // item && console.log("edit", item);
+        item && console.log("show", item);
     }, [item]);
 
     function handleSuspend() {
         // console.log("handle SUSPEND called", item);
         // setItem(item);
         setSuspendRequest(true);
+    }
+
+    function handleEditAccessRights() {}
+
+    function displayRightsDialog(operationInfo) {
+        console.log("displayRightsDialog", operationInfo);
+        setRightsOperationInfo(operationInfo);
+        setShowRights(true);
+    }
+
+    function closeRightDialog() {
+        // setTrigReload(!trigReload);
+        setShowRights(false);
+    }
+
+    function handleRightsUpdate(rights) {
+        // console.log("show->handleRightsUpdate", rights);
+        setItem({ ...item, rights: [...rights] });
     }
     return (
         <>
@@ -122,6 +161,26 @@ function _show(props) {
                         preset="access"
                         staff={item}
                         title={t("labels.access_p")}
+                        btnSet={
+                            <>
+                                <GuardedAction
+                                    action="edit"
+                                    // feature="add-staff-operation"
+                                    className="header-operation-btn"
+                                    onClick={() =>
+                                        displayRightsDialog({
+                                            targetGroup: "managedby",
+                                            targetScope: { staff: [item] },
+                                            rights: item.rights,
+                                            operation: t(
+                                                "operations.modifyRights"
+                                            ),
+                                            dataService: UpdateAccessRights
+                                        })
+                                    }
+                                />
+                            </>
+                        }
                     />
                     <StaffManagementInformation
                         preset="crew"
@@ -143,6 +202,14 @@ function _show(props) {
                             setSuspendRequest(false);
                             // setItem({});
                         }}
+                    />
+
+                    <SelectRightDialog
+                        show={showRights}
+                        onClose={closeRightDialog}
+                        onUpdate={handleRightsUpdate}
+                        operationData={rightsOperationInfo}
+                        item={item}
                     />
                 </>
             )}

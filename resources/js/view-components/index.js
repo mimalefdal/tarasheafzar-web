@@ -8,6 +8,7 @@ export { default as StaffManagementInformation } from "./staff-management/StaffM
 export { default as RightEntry } from "./right/manageEntry";
 export { default as RightManageCard } from "./right/manageCard";
 export { default as RightsSelectList } from "./right/selectList";
+export { default as SelectRightDialog } from "./right/selectDialog";
 
 export { default as BranchForm } from "./branch/defineForm";
 export { default as BranchCard } from "./branch/manageCard";

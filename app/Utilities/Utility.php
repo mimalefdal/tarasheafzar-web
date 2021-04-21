@@ -5,6 +5,7 @@ use App\Models\Department;
 use App\Models\Position;
 use App\Models\Right;
 use App\Models\Role;
+use App\Models\Staff;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
@@ -19,6 +20,11 @@ class Utility
             case 'positions':
                 return Position::class;
                 break;
+
+            case 'staff':
+                return Staff::class;
+                break;
+
 
             default:
                 # code...

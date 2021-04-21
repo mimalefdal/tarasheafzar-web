@@ -36,10 +36,12 @@ trait ManagesRights
         return collect([]);
     }
 
-    public function allRights()
+    public function allRights($seperated = false)
     {
         return $this->rights->merge($this->rightsThroughPosition())->merge($this->rightsThroughRoles());
     }
+
+
 
     // Manage Rights
     public function giveRightsTo($rights)

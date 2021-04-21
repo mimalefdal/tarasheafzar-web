@@ -87,8 +87,9 @@ class StaffController extends Controller
         };
 
         $staff = $staffQuery->with(['position.hasposition'])->firstOrFail();
-        $staff['rights'] = $staff->allRights();
+        // $staff['rights'] = $staff->allRights();
         // $staff['rights'] = Utility::performParentChildStructure($staff->allRights());
+
         if ($resourceClass == null)
             return $staff;
         return $resourceClass::make($staff);
