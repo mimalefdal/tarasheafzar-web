@@ -30,8 +30,8 @@ export default function StaffManagement() {
                 <GuardedLink
                     className="tool-link"
                     to={`${match.url}/list`}
-                    feature="staff-list-tool"
-                    label={t("tools.staffList")}
+                    feature="staff-administration-tool"
+                    label={t("tools.staffAdministration")}
                     style={{ order: 1 }}
                 />
             </HorizontalOperationBar>

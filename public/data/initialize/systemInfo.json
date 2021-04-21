@@ -150,7 +150,7 @@
         },
         {
             "feature": "staff-management-panel",
-            "slug": "staff-list-tool",
+            "slug": "staff-administration-tool",
             "title": {
                 "fa": "ابزار لیست کارکنان",
                 "en": "Staff List Tool"
@@ -158,7 +158,7 @@
             "activation": true,
             "state": "built-in",
             "requiredRights": [
-                "use-staff-list-tool"
+                "use-staff-administration-tool"
             ]
         }
     ],
@@ -778,7 +778,7 @@
             "activation": true,
             "childrights": [
                 {
-                    "slug": "use-staff-list-tool",
+                    "slug": "use-staff-administration-tool",
                     "title": {
                         "fa": "کار با ابزار لیست کارکنان",
                         "en": "Use Staff «هسف Tool"
@@ -920,7 +920,7 @@
             "activation": true,
             "rights": [
                 "access-staff-management-panel",
-                "use-staff-list-tool",
+                "use-staff-administration-tool",
                 "perform-add-staff",
                 "perform-edit-staff",
                 "perform-delete-staff"
@@ -965,7 +965,7 @@
                 "access-system-panel",
                 "use-features-management-tool",
                 "access-staff-management-panel",
-                "use-staff-list-tool",
+                "use-staff-administration-tool",
                 "use-staff-management-tool"
             ],
             "ownedRights": [

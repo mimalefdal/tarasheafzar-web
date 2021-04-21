@@ -46,7 +46,7 @@ function _manage(props) {
     return (
         <>
             <PageHeaderBar>
-                <ListTitle title={t("tools.featuresManagement")} />
+                <ListTitle title={t("lists.features")} />
             </PageHeaderBar>
             <CardList
                 dataService={GetFeaturesList}

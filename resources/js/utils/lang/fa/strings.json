@@ -91,6 +91,7 @@
         "defineRight": "ثبت حق دسترسی"
     },
     "lists": {
+        "features": "لیست امکانات سامانه",
         "initializeChecklistTitle": "چک لیست راه‌اندازی سامانه",
         "staffListTitle": "لیست کارکنان",
         "rightsListTitle": "لیست مجوزها"
@@ -134,7 +135,7 @@
         "rightsManagement": "مدیریت حقوق دسترسی",
         "rightsAdministration": "سازمانداری حقوق دسترسی",
         "staffManagement": "مدیریت کارکنان",
-        "staffList": "لیست کارکنان",
+        "staffAdministration": "سازمانداری کارکنان",
         "featuresManagement": "مدیریت امکانات سامانه"
     },
     "forms": {

@@ -5,6 +5,7 @@ import "../../styles/panels.css";
 import { t } from "../../utils";
 import { GuardedLink } from "../../components/links";
 import { clearTitle, setTitle } from "../../utils/redux/navSlice";
+import { HorizontalOperationBar } from "../../components/view-controls";
 
 export default function _View(props) {
     const location = useLocation();
@@ -18,7 +19,7 @@ export default function _View(props) {
     }, []);
 
     return (
-        <div className="panel-links  ">
+        <HorizontalOperationBar className="panel-links">
             <GuardedLink
                 className="panel-link  "
                 to={{
@@ -28,6 +29,7 @@ export default function _View(props) {
                 feature="structure-management-panel"
                 // requiredRights="access-structure-panel"
                 label={t("panels.structure-management")}
+                style={{ order: 1 }}
             />
 
             <GuardedLink
@@ -36,6 +38,7 @@ export default function _View(props) {
                 feature="system-panel"
                 // requiredRights="access-system-panel"
                 label={t("panels.system-management")}
+                style={{ order: 99 }}
             />
 
             <GuardedLink
@@ -44,6 +47,7 @@ export default function _View(props) {
                 feature="access-management-panel"
                 // requiredRights="access-access-management-panel"
                 label={t("panels.access-management")}
+                style={{ order: 3 }}
             />
             <GuardedLink
                 className="panel-link  "
@@ -51,7 +55,8 @@ export default function _View(props) {
                 feature="staff-management-panel"
                 // requiredRights="access-staff-management-panel"
                 label={t("panels.staff-management")}
+                style={{ order: 2 }}
             />
-        </div>
+        </HorizontalOperationBar>
     );
 }

@@ -282,7 +282,7 @@
         "activation": true,
         "childrights": [
             {
-                "slug": "use-staff-list-tool",
+                "slug": "use-staff-administration-tool",
                 "title": {
                     "fa": "کار با ابزار لیست کارکنان",
                     "en": "Use Staff «هسف Tool"

@@ -154,15 +154,15 @@
         },
         {
             "feature": "staff-management-panel",
-            "slug": "staff-list-tool",
+            "slug": "staff-administration-tool",
             "title": {
-                "fa": "ابزار لیست کارکنان",
-                "en": "Staff List Tool"
+                "fa": "ابزار سازماندهی کارکنان",
+                "en": "Staff Administrate Tool"
             },
             "activation": true,
             "state": "built-in",
             "requiredRights": [
-                "use-staff-list-tool"
+                "use-staff-administration-tool"
             ]
         }
     ],
@@ -508,7 +508,7 @@
             ]
         },
         {
-            "tool": "staff-list-tool",
+            "tool": "staff-administration-tool",
             "operations": [
                 {
                     "slug": "add-staff-operation",
@@ -859,10 +859,10 @@
             "activation": true,
             "childrights": [
                 {
-                    "slug": "use-staff-list-tool",
+                    "slug": "use-staff-administration-tool",
                     "title": {
-                        "fa": "کار با ابزار لیست کارکنان",
-                        "en": "Use Staff List Tool"
+                        "fa": "کار با ابزار سازماندهی کارکنان",
+                        "en": "Use Staff Administrate Tool"
                     },
                     "activation": true
                 },
@@ -1004,7 +1004,7 @@
             "activation": true,
             "rights": [
                 "access-staff-management-panel",
-                "use-staff-list-tool",
+                "use-staff-administration-tool",
                 "perform-add-staff",
                 "perform-edit-staff",
                 "perform-delete-staff"
@@ -1049,7 +1049,7 @@
                 "access-system-panel",
                 "use-features-management-tool",
                 "access-staff-management-panel",
-                "use-staff-list-tool",
+                "use-staff-administration-tool",
                 "use-staff-management-tool"
             ],
             "ownedRights": [

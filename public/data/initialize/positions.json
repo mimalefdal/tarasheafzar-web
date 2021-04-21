@@ -21,7 +21,7 @@
             "access-system-panel",
             "use-features-management-tool",
             "access-staff-management-panel",
-            "use-staff-list-tool",
+            "use-staff-administration-tool",
             "use-staff-management-tool"
         ],
         "ownedRights": [
