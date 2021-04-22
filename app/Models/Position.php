@@ -87,7 +87,7 @@ class Position extends Model
     {
         if ($this->display_title != null) {
             if (!$lang) $lang = Lang::getLocale();
-            return Bilang::grammertize(Bilang::getLocalTitle($this->display_title, false, $lang), $this->holderTitle($lang), $lang);
+            return Bilang::grammertize(Bilang::getLocalTitle($this->display_title, true, $lang), $this->holderTitle($lang), $lang);
         }
         return null;
     }

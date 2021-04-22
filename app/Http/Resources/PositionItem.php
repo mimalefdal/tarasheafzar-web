@@ -47,11 +47,11 @@ class PositionItem extends JsonResource
         if ($this->display_title != null) {
 
             if (Bilang::getLocalTitle($this->display_title) <> "") {
-                $item['display_title'] = Bilang::getLocalTitle($this->display_title);
+                $item['display_title'] = Bilang::getLocalTitle($this->display_title, true);
                 $item['display_fulltitle'] = $this->displayTitle();
             }
             if (Bilang::getLocalTitle($this->display_title, false, 'en') <> "") {
-                $item['display_title_en'] = Bilang::getLocalTitle($this->display_title, false, 'en');
+                $item['display_title_en'] = Bilang::getLocalTitle($this->display_title, true, 'en');
                 $item['display_fulltitle_en'] = $this->displayTitle('en');
             }
         }
