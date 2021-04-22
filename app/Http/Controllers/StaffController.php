@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\FeatureItem;
 use App\Models\Feature;
-use App\Models\Right;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +21,10 @@ class StaffController extends Controller
 
         $user = Auth::user();
         if ($user->position != null) {
-            $user->title = $user->position->title[$lang];
+            if (isset($user->position->display_title[$lang]) && $user->position->display_title[$lang] != '')
+                $user->title = $user->position->display_title[$lang];
+            else
+                $user->title = $user->position->levelTitle();
         } else {
             // $titles = json_decode($user->roles->first()->title);
             $titles = $user->roles->first()->title;

@@ -17,8 +17,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-
     @stack('scripts')
     @stack('styles')
 </head>
@@ -55,18 +53,18 @@
     @endauth
 
     {{-- <div class="flex-center position-ref "> --}}
-        <div class="position-ref ">
-            <!--
+    <div class="position-ref ">
+        <!--
             <div class="panel-title">
                 <p class="panel-title-text">@yield('panel-title')</p>
             </div> -->
 
-            @yield('pre-content')
-            <div class="content">
-                @yield('content')
-            </div>
-
+        @yield('pre-content')
+        <div class="content">
+            @yield('content')
         </div>
+
+    </div>
 
 
 </body>
