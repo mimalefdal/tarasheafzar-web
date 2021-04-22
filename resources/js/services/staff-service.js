@@ -35,12 +35,7 @@ export const getIndex = (params, token, successCallback, failureCallback) => {
         });
 };
 
-export const _getStaffCrew = (
-    params,
-    token,
-    successCallback,
-    failureCallback
-) => {
+export const _getZone = (params, token, successCallback, failureCallback) => {
     ApiClient.get("/staff", {
         headers: {
             Accept: "application/json",
@@ -71,7 +66,7 @@ export const getItem = (params, token, successCallback, failureCallback) => {
             successCallback(response);
         })
         .catch(error => {
-            // console.log("StaffShow Service", error.response);
+            console.log("StaffShow Service", error.response);
             failureCallback(error);
         });
 };

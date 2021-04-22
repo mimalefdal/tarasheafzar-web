@@ -31,6 +31,7 @@ class PositionItem extends JsonResource
         $item['recruit_capacity'] = $this->recruit_capacity;
 
         $item['joblevel'] = $this->joblevel->slug;
+        $item['joblevel_priority'] = $this->joblevel->priority;
         $item['joblevel_title'] = Bilang::getLocalTitle($this->joblevel->title);
         $item['joblevel_title_en'] = Bilang::getEnTitle($this->joblevel->title);
 

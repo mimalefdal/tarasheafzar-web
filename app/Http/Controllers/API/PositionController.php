@@ -5,10 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Resources\PositionItem;
+use App\Http\Resources\PositionSimpleItem;
 use App\Models\Joblevel;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Lang;
+use Utility;
 
 class PositionController extends Controller
 {
@@ -46,7 +48,26 @@ class PositionController extends Controller
     public function index()
     {
         return PositionItem::collection(Position::with(['hasposition', 'joblevel'])->get());
-        return response(["message" => "Not Implemented"], 400);
+        return Utility::notImplementedResponse();
+    }
+
+
+    public function zone(Request $request)
+    {
+
+        $mode = $request->get('mode');
+        // if (!$mode) return response(["message" => "Scope : mode not set"], 400);
+
+        $position_keys = collect($request->user()->positionsZone($mode))->pluck('slug')->toArray();
+        $positions = Position::whereIn('slug', $position_keys)->with(['hasposition', 'joblevel'])->get();
+        // return response()->json(['keys' => $position_keys, 'items' => $positions], 400);
+        $items = PositionItem::collection($positions);
+
+        // perform sort
+        $items = Utility::sortedObjectArray($items, $request->get('sortBy', 'id'));
+
+        return response($items);
+        return Utility::notImplementedResponse($request);
     }
 
     public function show(Request $request)

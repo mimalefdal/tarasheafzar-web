@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Http\Resources\UnitItem;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ChecksUniqueness;
-use App\Traits\AdministratesPositions;
+use App\Traits\HandlesPositions;
 use App\Traits\HandlesCrew;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Lang;
@@ -13,7 +13,7 @@ use Bilang;
 
 class Unit extends Model
 {
-    use AdministratesPositions;
+    use HandlesPositions;
     use SoftDeletes;
     use ChecksUniqueness;
 

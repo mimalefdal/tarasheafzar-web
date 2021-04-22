@@ -8,6 +8,7 @@ use App\Http\Resources\StaffManageDisplayItem;
 use App\Http\Resources\StaffManageEditItem;
 use Illuminate\Http\Request;
 use App\Models\Staff;
+use Hamcrest\Util;
 use Utility;
 
 class StaffController extends Controller
@@ -44,24 +45,18 @@ class StaffController extends Controller
         return response(["message" => "Not Implemented"], 400);
     }
 
-    public function getStaffCrew(Request $request)
+    public function zone(Request $request)
     {
         $mode = $request->get('mode');
         if (!$mode) return response(["message" => "Scope : mode not set"], 400);
-        $staffCrew = StaffManageDisplayItem::collection($request->user()->staffCrew($mode));
-        // return $staffCrew;
 
-        $sortBy = $request->get('sortBy');
-        if (!$sortBy || $sortBy == '') {
-            $staffCrew = collect($staffCrew);
-            $sorted =  $staffCrew->sortBy('id');
-            return $sorted->values()->all();
-        }
-        $staffCrew = collect($staffCrew);
-        $sorted =  $staffCrew->sortBy($sortBy);
-        return $sorted->values()->all();
+        $items = StaffManageDisplayItem::collection($request->user()->staffZone($mode));
+        // perform sort
+        $items = Utility::sortedObjectArray($items, $request->get('sortBy', 'id'));
 
-        return response(["message" => "Not Implemented"], 400);
+        return $items;
+
+        return Utility::notImplementedResponse($request);
     }
 
     public function show(Request $request)

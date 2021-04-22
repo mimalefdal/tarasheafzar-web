@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Http\Resources\DepartmentItem;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\AdministratesPositions;
+use App\Traits\HandlesPositions;
 use App\Models\Branch;
 use App\Traits\ChecksUniqueness;
 use App\Traits\HandlesChildBlocks;
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Lang;
 
 class Department extends Model
 {
-    use AdministratesPositions;
+    use HandlesPositions;
     use ManagesUnits;
     use SoftDeletes;
     use ChecksUniqueness;

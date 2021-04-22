@@ -28,13 +28,14 @@ export { tryDelete as DeleteJoblevel } from "./joblevel-service";
 
 export { tryAdd as AddPosition } from "./position-service";
 export { getIndex as GetPositionsList } from "./position-service";
+export { _getZone as GetPositionsZone } from "./position-service";
 export { getItem as GetPosition } from "./position-service";
 export { tryUpdate as UpdatePosition } from "./position-service";
 export { tryDelete as DeletePosition } from "./position-service";
 
 export { tryAdd as AddStaff } from "./staff-service";
 export { getIndex as GetStaffList } from "./staff-service";
-export { _getStaffCrew as GetCrewScope } from "./staff-service";
+export { _getZone as GetStaffZone } from "./staff-service";
 export { getItem as GetStaff } from "./staff-service";
 export { tryUpdate as UpdateStaff } from "./staff-service";
 export { tryDelete as DeleteStaff } from "./staff-service";

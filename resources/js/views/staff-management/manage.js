@@ -9,7 +9,7 @@ import { TableList } from "../../components/lists";
 import { OperationEntry, OperationTable } from "../../components/tables";
 import {
     DeleteStaff,
-    GetCrewScope,
+    GetStaffZone,
     GetStaffList,
     ToggleSuspendStaff
 } from "../../services";
@@ -87,7 +87,7 @@ function _manage(props) {
         setSuspendRequest(true);
     }
     function handleFilter(info) {
-        console.log("handleFilter called", info);
+        // console.log("handleFilter called", info);
         setDataParams({
             ...dataParams,
             mode: info.value
@@ -124,7 +124,7 @@ function _manage(props) {
                 callback={handleFilter}
             />
             <TableList
-                dataService={GetCrewScope}
+                dataService={GetStaffZone}
                 dataRequestParams={dataParams}
                 tableComponent={<OperationTable className="" />}
                 entryComponent={<StaffEntry />}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\HandlesChildBlocks;
 use App\Traits\HandlesCrew;
+use App\Traits\HandlesPositions;
 use Bilang;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -14,6 +15,7 @@ class Company extends Model
 
     use HandlesChildBlocks;
     use HandlesCrew;
+    use HandlesPositions;
 
     protected $name;
     protected $shortName;

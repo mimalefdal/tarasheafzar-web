@@ -10,11 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 trait HandlesCrew
 {
-    public function wholeCrew()
-    {
-        return $this->directCrew()->merge($this->subsetCrew());
-    }
-
     public function directCrew()
     {
         if (get_class($this) == 'App\Models\Company')
@@ -44,5 +39,10 @@ trait HandlesCrew
             }
         }
         return $crew;
+    }
+
+    public function deepCrew(int $deep = 0)
+    {
+        return $this->directCrew()->merge($this->subsetCrew($deep));
     }
 }

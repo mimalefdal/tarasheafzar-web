@@ -3,9 +3,13 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
 import { DeleteDialog } from "../../components/feedback";
-import { ListTitle } from "../../components/list-controls";
+import { ListFilter, ListTitle } from "../../components/list-controls";
 import { CardList } from "../../components/lists";
-import { DeletePosition, GetPositionsList } from "../../services";
+import {
+    DeletePosition,
+    GetPositionsList,
+    GetPositionsZone
+} from "../../services";
 import { t } from "../../utils";
 import { PositionCard } from "../../view-components";
 
@@ -15,6 +19,11 @@ function ManagePositions(props) {
     const [item, setItem] = useState(null);
     const [deleteRequest, setDeleteRequest] = useState(false);
     const [trigReload, setTrigReload] = useState(false);
+
+    const [dataParams, setDataParams] = useState({
+        mode: "all",
+        sortBy: "joblevel_priority"
+    });
 
     const entryOperations = [
         {
@@ -47,6 +56,15 @@ function ManagePositions(props) {
         });
     }
 
+    function handleFilter(info) {
+        // console.log("handleFilter called", info);
+        setDataParams({
+            ...dataParams,
+            mode: info.value
+        });
+        setTrigReload(!trigReload);
+    }
+
     return (
         <>
             <PageHeaderBar>
@@ -60,8 +78,19 @@ function ManagePositions(props) {
                     }
                 />
             </PageHeaderBar>
+            <ListFilter
+                className="table-filter"
+                options={[
+                    { value: "direct", label: t("filters.direct") },
+                    { value: "subset", label: t("filters.subsets") },
+                    { value: "all", label: t("filters.all") }
+                ]}
+                defaultOptionIndex={2}
+                callback={handleFilter}
+            />
             <CardList
-                dataService={GetPositionsList}
+                dataService={GetPositionsZone}
+                dataRequestParams={dataParams}
                 cardComponent={<PositionCard />}
                 entryOperations={entryOperations}
                 trigger={trigReload}

@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Lang;
 class Utility
 {
 
+    public static function sortedObjectArray($array, string $attr, string $order = 'asc')
+    {
+        $array = collect($array);
+        $sorted =  $array->sortBy($attr);
+        return $sorted->values()->all();
+    }
+
     public static function getModel($type)
     {
         switch ($type) {
@@ -80,8 +87,6 @@ class Utility
         }
         return $holder;
     }
-
-
 
     public static function getAllRights(array $rights)
     {

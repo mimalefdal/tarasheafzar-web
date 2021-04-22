@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Resources\BranchItem;
 use App\Models\Department;
-use App\Traits\AdministratesPositions;
+use App\Traits\HandlesPositions;
 use App\Traits\ChecksUniqueness;
 use App\Traits\HandlesChildBlocks;
 use App\Traits\HandlesCrew;
@@ -16,7 +16,7 @@ use App\Traits\ManagesUnits;
 
 class Branch extends Model
 {
-    use AdministratesPositions;
+    use HandlesPositions;
     use ManagesUnits;
     use ChecksUniqueness;
     use SoftDeletes;

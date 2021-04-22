@@ -19,7 +19,7 @@ export const tryAdd = (data, token, successCallback, failureCallback) => {
 };
 
 export const getIndex = (params, token, successCallback, failureCallback) => {
-    ApiClient.get("/positions", {
+    ApiClient.get("/positions/index", {
         headers: {
             Accept: "application/json",
             Authorization: "Bearer " + token
@@ -31,6 +31,24 @@ export const getIndex = (params, token, successCallback, failureCallback) => {
         })
         .catch(error => {
             // console.log("PositionIndex Service",error.response);
+            failureCallback(error.response);
+        });
+};
+
+export const _getZone = (params, token, successCallback, failureCallback) => {
+    ApiClient.get("/positions", {
+        headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+        },
+        params: params
+    })
+        .then(response => {
+            // console.log("StaffIndex Service", response);
+            successCallback(response);
+        })
+        .catch(error => {
+            // console.log("StaffIndex Service", error);
             failureCallback(error.response);
         });
 };

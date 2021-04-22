@@ -8,7 +8,7 @@ use App\Traits\ManagesAccess;
 use App\Traits\ManagesRoles;
 use App\Traits\ManagesPosition;
 use App\Traits\ManagesRights;
-use Auth;
+use App\Traits\RetrievesZones;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,6 +25,7 @@ class Staff extends Authenticatable
     use CanOwnRights;
     use CanManageRights;
     use SoftDeletes;
+    use RetrievesZones;
 
     protected $guard = 'staff';
 
@@ -51,37 +52,5 @@ class Staff extends Authenticatable
         if ($this->position->hasposition == null)
             return resolve('Company');
         return $this->position->hasposition;
-    }
-
-    public function staffCrew($mode = 'all')
-    {
-        switch ($mode) {
-            case null:
-                $targetCrew = collect([]);
-                break;
-
-            case 'all':
-                $targetCrew = $this->holder()->wholeCrew();
-                // $targetCrew = $targetCrew->sortBy('idcert_no');
-                break;
-
-            case 'direct':
-                $targetCrew = $this->holder()->directCrew();
-                break;
-
-            case 'subset':
-                $targetCrew = $this->holder()->subsetCrew();
-                break;
-            default:
-                # code...
-                break;
-        }
-        // return $targetCrew;
-        $crewScope = $targetCrew->filter(function ($value, $key) {
-            return $value->position->joblevel->priority > $this->position->joblevel->priority;
-        });
-
-
-        return $crewScope;
     }
 }
