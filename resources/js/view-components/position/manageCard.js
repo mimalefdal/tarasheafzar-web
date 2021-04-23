@@ -39,7 +39,7 @@ function Card({ item, entryActions, ...props }) {
             title_tail_local={localDisplayTitle}
             title_tail_global={globalDisplayTitle}
         >
-            <div className="card-info-box">
+            <div className="flex card-info-box">
                 ظرفیت استخدام {item.recruit_capacity}
             </div>
         </BasicCard>

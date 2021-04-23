@@ -64,14 +64,21 @@
 
 .list-option {
     /* font-weight: bold; */
-    margin-inline-end: 0.5rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
     text-align: start;
+    font-size: 0.8rem;
     cursor: pointer;
-    transition: transition 200ms linear;
+    transition: all 400ms linear;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid transparent;
 }
 
 .list-option:hover {
-    color: var(--primaryDarkColor);
+    color: var(--table-header-bkg);
+    /* background: #ddd; */
+    border: 1px solid currentColor;
 }
 
 .list-option:hover svg {
@@ -81,8 +88,10 @@
 
 .list-option.active {
     pointer-events: none;
-    font-weight: bold;
-    color: var(--primaryLightColor);
+    /* color: var(--primaryLightColor); */
+    background: var(--table-header-bkg);
+    color: white;
+    font-weight: normal;
 }
 
 .list-option-box .active svg {
