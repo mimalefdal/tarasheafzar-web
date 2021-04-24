@@ -16,10 +16,10 @@ use App\Traits\ManagesUnits;
 
 class Branch extends Model
 {
-    use HandlesPositions;
-    use ManagesUnits;
     use ChecksUniqueness;
     use SoftDeletes;
+    use ManagesUnits;
+    use HandlesPositions;
     use HandlesChildBlocks;
     use HandlesCrew;
 

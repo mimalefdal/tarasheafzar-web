@@ -13,10 +13,9 @@ use Bilang;
 
 class Unit extends Model
 {
-    use HandlesPositions;
-    use SoftDeletes;
     use ChecksUniqueness;
-
+    use SoftDeletes;
+    use HandlesPositions;
     use HandlesCrew;
 
     protected $type = 'Unit';

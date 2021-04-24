@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Lang;
 
 class Department extends Model
 {
-    use HandlesPositions;
-    use ManagesUnits;
-    use SoftDeletes;
     use ChecksUniqueness;
+    use SoftDeletes;
+    use ManagesUnits;
+    use HandlesPositions;
     use HandlesChildBlocks;
     use HandlesCrew;
 
