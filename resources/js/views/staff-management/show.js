@@ -18,7 +18,7 @@ import {
 } from "../../services";
 import { t } from "../../utils";
 import {
-    SelectRightDialog,
+    RightSelectDialog,
     StaffManagementInformation
 } from "../../view-components";
 
@@ -204,7 +204,7 @@ function _show(props) {
                         }}
                     />
 
-                    <SelectRightDialog
+                    <RightSelectDialog
                         show={showRights}
                         onClose={closeRightDialog}
                         onUpdate={handleRightsUpdate}

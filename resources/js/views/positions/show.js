@@ -17,8 +17,8 @@ import AppContext from "../../context/appContext";
 import {
     PositionForm,
     RightManageCard,
-    RightsSelectList,
-    SelectRightDialog,
+    RightSelectList,
+    RightSelectDialog,
     UnitForm
 } from "../../view-components";
 import { CardList } from "../../components/lists";
@@ -41,7 +41,7 @@ function show(props) {
     const [rightsOperationInfo, setRightsOperationInfo] = useState({
         targetGroup: null,
         targetScope: null,
-        rights: null,
+        rightsField: null,
         operation: null,
         dataService: null
     });
@@ -121,7 +121,7 @@ function show(props) {
                         displayRightsDialog({
                             targetGroup: "managedby",
                             targetScope: { position: [item] },
-                            rights: item.rights,
+                            rightsField: "rights",
                             operation: t("operations.modifyRights"),
                             dataService: UpdateAccessRights
                         });
@@ -136,7 +136,7 @@ function show(props) {
                         displayRightsDialog({
                             targetGroup: "owned",
                             targetScope: { position: [item] },
-                            rights: item.rights_managedby,
+                            rightsField: "rights_managedby",
                             operation: t("operations.modifyManagedbyRights"),
                             dataService: UpdateManagedbyRights
                         });
@@ -151,9 +151,8 @@ function show(props) {
                         displayRightsDialog({
                             targetGroup: "owned",
                             targetScope: { position: [item] },
-                            rights: item.rights_ownedby,
+                            rightsField: "rights_ownedby",
                             operation: t("operations.modifyOwnedRights"),
-
                             dataService: UpdateOwnedbyRights
                         });
                     }}
@@ -162,7 +161,7 @@ function show(props) {
                 />
             </HorizontalOperationBar>
             {ready && (
-                <SelectRightDialog
+                <RightSelectDialog
                     show={showRights}
                     onClose={closeRightDialog}
                     onUpdate={handleRightsUpdate}
@@ -199,8 +198,12 @@ function show(props) {
     }
 
     function handleRightsUpdate(rights) {
-        // console.log("show->handleRightsUpdate", rights);
-        setItem({ ...item, rights: [...rights] });
+        console.log(
+            "show->handleRightsUpdate",
+            rightsOperationInfo.rightsField,
+            rights
+        );
+        setItem({ ...item, [rightsOperationInfo.rightsField]: [...rights] });
     }
 
     function getResponse(response) {

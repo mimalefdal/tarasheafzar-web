@@ -1,5 +1,5 @@
 import React from "react";
-import { RightsSelectList } from "..";
+import { RightSelectList } from "..";
 import { SelectDialog } from "../../components/feedback";
 import { t } from "../../utils";
 import DoneIcon from "@material-ui/icons/Done";
@@ -42,8 +42,8 @@ function _selectDialog({
                 confirmMessageAction: t("expressions.sureAboutChanges")
             }}
             formComponent={
-                <RightsSelectList
-                    prevRights={operationData.rights}
+                <RightSelectList
+                    prevRights={item[operationData.rightsField]}
                     targetScope={operationData.targetScope}
                     targetGroup={operationData.targetGroup}
                 />

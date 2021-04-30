@@ -18,16 +18,16 @@ import ViewStreamIcon from "@material-ui/icons/ViewStream";
 function _manage() {
     const [displayMode, setDisplayMode] = useState("card");
 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setTitle(t("tools.rightsManagement")));
+    }, []);
+
     const rightsTableMap = {
         id: "id",
         title: "title",
         status: "activation"
     };
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setTitle(t("tools.rightsManagement")));
-    }, []);
 
     const entryOperations = [
         {

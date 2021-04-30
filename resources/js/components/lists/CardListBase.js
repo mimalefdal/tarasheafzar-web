@@ -34,6 +34,7 @@ function CardList({
     const [emptyMessage, setEmptyMessage] = useState(null);
     const [loading, setLoading] = useState(true);
     const [operations, setOperations] = useState(entryOperations);
+
     const token = useContext(StaffContext).token;
 
     let classesByType;
@@ -48,28 +49,33 @@ function CardList({
     }
 
     useEffect(() => {
+        // console.log(
+        //     "CardList[entryOperations]->entryOperations",
+        //     entryOperations
+        // );
         if (expansion != undefined) {
-            // console.log("CardList->useEffect()->expansion", expansion);
-            entryOperations.push({
-                type: "expand",
-                actionType: "callback",
-                action: expansion.handler,
-                props: {
-                    expandIcon: expansion.icon && expansion.icon,
-                    expandable: isExpandable,
-                    expanded: isExpanded,
-                    offset: -200,
-                    className:
-                        " " + (expansion.className ? expansion.className : "")
-                },
-                subsetField: expansion.expandableItemsField
-                    ? expansion.expandableItemsField
-                    : "childs"
-            });
-
-            setOperations(entryOperations);
+            setOperations([
+                ...entryOperations,
+                {
+                    type: "expand",
+                    actionType: "callback",
+                    action: expansion.handler,
+                    props: {
+                        expandIcon: expansion.icon && expansion.icon,
+                        expandable: isExpandable,
+                        expanded: isExpanded,
+                        offset: -200,
+                        className:
+                            " " +
+                            (expansion.className ? expansion.className : "")
+                    },
+                    subsetField: expansion.expandableItemsField
+                        ? expansion.expandableItemsField
+                        : "childs"
+                }
+            ]);
         }
-    }, [entryOperations && entryOperations]);
+    }, [expansion.data]);
 
     useEffect(() => {
         // console.log("CardListBase[items]->items", items);
@@ -124,10 +130,13 @@ function CardList({
     }, [trigger]);
 
     function isSelected(item) {
+        // console.log("isSelected", selection.data, item.id);
         return existsInArray(selection.data, "id", item.id);
     }
 
     function isExpanded(item) {
+        // console.log("isExpanded", expansion.data, item.id);
+        // console.log("isExpanded", expandedItems, item.title);
         return existsInArray(expansion.data, "id", item.id);
     }
 

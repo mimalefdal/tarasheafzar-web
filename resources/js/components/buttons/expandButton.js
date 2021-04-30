@@ -9,6 +9,7 @@ function _button({ expandIcon = <MenuOpenIcon />, ...props }) {
     const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
+        // console.log(props.expanded(props.item));
         props.expanded && setExpanded(props.expanded(props.item));
     }, [props.expanded]);
 

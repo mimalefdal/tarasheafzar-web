@@ -5,9 +5,9 @@ import {
     setParamValue
 } from ".";
 
-export default function utility(entryOperations, item, key) {
-    // console.log(entryOperations, item, key);
-    let actions = Object.values(entryOperations).map((entry, key) => {
+export default function utility(_operations, item, key) {
+    // console.log(_operations, item, key);
+    let actions = Object.values(_operations).map((entry, key) => {
         let type = entry.type;
         let requiredRights = entry.requiredRights;
         let feature = entry.feature;
