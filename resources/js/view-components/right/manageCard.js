@@ -1,3 +1,4 @@
+import { Collapse } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { RightManageCard } from "..";
 import { BasicCard } from "../../components/cards";
@@ -8,26 +9,6 @@ function _card({ item, entryActions, ...props }) {
 
     const [expanded, setExpanded] = useState(false);
     const [selected, setSelected] = useState(false);
-    const [childDepth, setChildDepth] = useState(0);
-
-    // useEffect(() => {
-    //     if (props.expandedItems) {
-    //         // console.log("RightManageCard expanded: ", props.id, expanded);
-    //         if (props.expandedItems.indexOf(item.id) != -1) {
-    //             setExpanded(true);
-    //         } else {
-    //             setExpanded(false);
-    //         }
-    //     }
-    // }, [props.expandedItems]);
-
-    useEffect(() => {
-        if (props.className) {
-            // console.log("RightManageCard", props.className);
-            let n = props.className.match(/child-card/g);
-            if (n) setChildDepth(n.length);
-        }
-    }, []);
 
     useEffect(() => {
         // console.log(item.id, expanded);
@@ -55,7 +36,17 @@ function _card({ item, entryActions, ...props }) {
             >
                 {/* <div className="card-info-box"></div> */}
             </BasicCard>
-            {expanded && props.childItems}
+            <Collapse
+                in={expanded}
+                style={{
+                    width: "100%"
+                }}
+                timeout={900}
+                classes={{ wrapperInner: "flex column end" }}
+            >
+                {props.childItems}
+            </Collapse>
+            {/* {expanded && props.childItems} */}
         </>
     );
 }

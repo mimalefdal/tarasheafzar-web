@@ -12,22 +12,28 @@ import { TitledCollapse } from "../../components/list-controls";
 import { findObjectInsideArray } from "../../utils/objectArray";
 
 function _manageCard(props) {
-    // console.log("_featureCard", props, props.key);
-    const [expanded, setExpanded] = useState(false);
+    // console.log("_featureCard", props.childItems);
+    const [expanded, setExpanded] = useState(props.expanded);
 
     useEffect(() => {
-        // console.log("_featureCard expanded: ", props.id);
-        if (props.expandedItems.indexOf(props.item.id) != -1) {
-            setExpanded(true);
-        } else {
-            setExpanded(false);
-        }
-    }, [props.expandedItems]);
+        // console.log(item.id, expanded);
+        setExpanded(props.expanded);
+    }, [props.expanded]);
 
     return (
         <>
             <SimpleCard expanded={expanded} {...props} />
-            <Collapse in={expanded} style={{ width: "100%" }} timeout={900}>
+            <Collapse
+                in={expanded}
+                style={{
+                    width: "100%"
+                }}
+                timeout={900}
+                classes={{ wrapperInner: "flex column end" }}
+            >
+                {props.childItems}
+            </Collapse>
+            {/* <Collapse in={expanded} style={{ width: "100%" }} timeout={900}>
                 <div className="sub-cards-list">
                     {props.item.tools.map(tool => (
                         <TitledCollapse key={tool.slug} title={tool.title}>
@@ -43,7 +49,7 @@ function _manageCard(props) {
                         </TitledCollapse>
                     ))}
                 </div>
-            </Collapse>
+            </Collapse> */}
         </>
     );
 }

@@ -4,32 +4,41 @@ import { Collapse } from "@material-ui/core";
 import { ExpanderIcon, Title } from "../view-controls";
 import { EditButton, ExpandButton } from "../buttons";
 
-function _control({ title, initialState = true, btnSet, ...props }) {
+function _control({
+    title,
+    initialState = true,
+    btnSet,
+    timeout = 400,
+    ...props
+}) {
     const [open, setOpen] = useState(false);
-    const [state, setState] = useState(initialState);
+    const [enabled, setEnabled] = useState(initialState);
 
     useState(() => {
-        // console.log(props);
+        // console.log(title, props.itemsCount);
         // props.children && console.log(props.children.length);
 
-        !props.children && setState(false);
+        (!props.children ||
+            (props.itemsCount != undefined && props.itemsCount == 0)) &&
+            setEnabled(false);
     }, []);
 
     const toggleExpand = () => {
-        state && setOpen(!open);
+        enabled && setOpen(!open);
     };
 
     return (
         <div style={{ marginBottom: "1rem" }}>
             <div
                 className={
-                    "expandable-group-title flex row " + (!state && "disabled")
+                    "expandable-group-title flex row " +
+                    (!enabled && "disabled")
                 }
             >
                 <div
                     style={{
                         marginInlineEnd: "0.5rem",
-                        visibility: state ? "visible" : "hidden"
+                        visibility: enabled ? "visible" : "hidden"
                     }}
                     onClick={toggleExpand}
                 >
@@ -37,9 +46,9 @@ function _control({ title, initialState = true, btnSet, ...props }) {
                 </div>
                 <div onClick={toggleExpand}>{title}</div>
                 <div className="flex-filler" onClick={toggleExpand}></div>
-                <div id="actions">{btnSet && btnSet}</div>
+                <div id="actions">{btnSet && enabled && open && btnSet}</div>
             </div>
-            <Collapse in={open} timeout={600}>
+            <Collapse in={open} timeout={timeout}>
                 <div className="expandable-area flex row ">
                     {props.children}
                 </div>

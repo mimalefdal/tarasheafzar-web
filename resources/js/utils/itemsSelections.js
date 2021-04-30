@@ -10,13 +10,15 @@ export const updateSelection = (
     prevItems,
     item,
     selectionMode,
+    selectionAttr = "id",
     childAttr = "childs",
     parentAttr = "parent"
 ) => {
     let targetAction = "select";
-    if (existsInArray(prevItems, "id", item.id)) targetAction = "deselect";
+    if (existsInArray(prevItems, selectionAttr, item[selectionAttr]))
+        targetAction = "deselect";
 
-    // console.log(prevItems, item, selectionMode);
+    // console.log("itemSelectionUtility->updateSelection", selectionAttr);
 
     switch (targetAction) {
         case "select":
@@ -24,13 +26,19 @@ export const updateSelection = (
                 prevItems,
                 item,
                 selectionMode,
+                selectionAttr,
                 childAttr,
                 parentAttr
             );
             break;
 
         case "deselect":
-            return performDeselection(prevItems, item, selectionMode);
+            return performDeselection(
+                prevItems,
+                item,
+                selectionMode,
+                selectionAttr
+            );
             break;
     }
 };
@@ -39,6 +47,7 @@ function performSelection(
     prevItems,
     item,
     selectionMode,
+    selectionAttr,
     childAttr,
     parentAttr
 ) {
@@ -56,17 +65,24 @@ function performSelection(
         case SINGLE_NESTED_SELECTION_MODE:
             if (item.hasOwnProperty("parent")) {
                 console.log(getHighestParentOf(item, parentAttr));
-                if (!existsInArray(prevItems, "id", item.parent.id)) {
+                if (
+                    !existsInArray(
+                        prevItems,
+                        selectionAttr,
+                        item.parent[selectionAttr]
+                    )
+                ) {
                     if (
                         existsInArray(
                             prevItems,
-                            "id",
-                            getHighestParentOf(item, parentAttr).id
+                            selectionAttr,
+                            getHighestParentOf(item, parentAttr)[selectionAttr]
                         )
                     ) {
                         let parentsToAdd = filterAdded(
                             getHighParentsOf(item, parentAttr),
-                            prevItems
+                            prevItems,
+                            selectionAttr
                         );
                         itemsToAdd = [
                             ...prevItems,
@@ -94,10 +110,17 @@ function performSelection(
 
         case MULTIPLE_NESTED_SELECTION_MODE:
             if (item.hasOwnProperty("parent")) {
-                if (!existsInArray(prevItems, "id", item.parent.id)) {
+                if (
+                    !existsInArray(
+                        prevItems,
+                        selectionAttr,
+                        item.parent[selectionAttr]
+                    )
+                ) {
                     let parentsToAdd = filterAdded(
                         getHighParentsOf(item, parentAttr),
-                        prevItems
+                        prevItems,
+                        selectionAttr
                     );
                     itemsToAdd = [...itemsToAdd, ...parentsToAdd];
                 }
@@ -116,13 +139,14 @@ function performSelection(
             break;
     }
 
-    return pluckSet(itemsToAdd);
+    return pluckSet(itemsToAdd, selectionAttr);
 }
 
 function performDeselection(
     prevItems,
     item,
     selectionMode,
+    selectionAttr,
     childAttr,
     parentAttr
 ) {
@@ -131,16 +155,28 @@ function performDeselection(
             return [];
             break;
         case MULTIPLE_SELECTION_MODE:
-            return prevItems.filter(value => item.id != value.id);
+            return prevItems.filter(
+                value => item[selectionAttr] != value[selectionAttr]
+            );
 
             break;
 
         case SINGLE_NESTED_SELECTION_MODE:
         case MULTIPLE_NESTED_SELECTION_MODE:
             if (item.childs) {
-                let childIds = getDeepChildAttrOf(item, "id", childAttr);
-                return removeFromArray(prevItems, "id", [item.id, ...childIds]);
-            } else return removeFromArray(prevItems, "id", [item.id]);
+                let childIds = getDeepChildAttrOf(
+                    item,
+                    selectionAttr,
+                    childAttr
+                );
+                return removeFromArray(prevItems, selectionAttr, [
+                    item[selectionAttr],
+                    ...childIds
+                ]);
+            } else
+                return removeFromArray(prevItems, selectionAttr, [
+                    item[selectionAttr]
+                ]);
             break;
 
         default:
@@ -202,6 +238,8 @@ function getHighestParentOf(item, parentAttr = "parent") {
     } else return item;
 }
 
-function filterAdded(items, prevItems) {
-    return items.filter(item => !existsInArray(prevItems, "id", item.id));
+function filterAdded(items, prevItems, selectionAttr) {
+    return items.filter(
+        item => !existsInArray(prevItems, selectionAttr, item[selectionAttr])
+    );
 }

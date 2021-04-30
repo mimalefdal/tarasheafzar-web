@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { PageHeaderBar } from "../../components";
 import { AddButton } from "../../components/buttons";
 import { ListTitle } from "../../components/list-controls";
-import { CardList } from "../../components/lists";
+import { CardList, ExpandableCardList } from "../../components/lists";
 import { GetFeaturesList } from "../../services";
 import { t } from "../../utils";
 import { clearTitle, setTitle } from "../../utils/redux/navSlice";
@@ -48,18 +48,11 @@ function _manage(props) {
             <PageHeaderBar>
                 <ListTitle title={t("lists.features")} />
             </PageHeaderBar>
-            <CardList
+            <ExpandableCardList
                 dataService={GetFeaturesList}
-                cardComponent={<FeatureCard expandedItems={expandedItems} />}
+                cardComponent={<FeatureCard />}
                 entryOperations={entryOperations}
-                // trigger={trigReload}
-                expansion={{
-                    handler: handleExpand,
-                    data: expandedItems,
-                    expandableItemsField: "childs",
-                    className: "card-operation-btn",
-                    icon: <ExpandMoreIcon />
-                }}
+                expansionAttr="slug"
             />
         </>
     );

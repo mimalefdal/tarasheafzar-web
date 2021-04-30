@@ -23,10 +23,12 @@
 .flex.column {
     flex-direction: column;
 }
-
+.flex.end {
+    align-items: flex-end;
+}
 .flex.row {
     flex-direction: row;
-    margin: 0; /* force appfa.css row class */
+    margin: 0; /* force appfa.css row class TODO appfa class must improved */
 }
 
 .filler,

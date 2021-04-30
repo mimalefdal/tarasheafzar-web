@@ -12,6 +12,7 @@ function _selectList({
     targetGroup,
     targetScope,
     changesHandler = null,
+    selectionMode = MULTIPLE_NESTED_SELECTION_MODE,
     ...props
 }) {
     useEffect(() => {
@@ -33,13 +34,14 @@ function _selectList({
                         }
                     });
             }}
-            selectionMode={MULTIPLE_NESTED_SELECTION_MODE}
+            selectionMode={selectionMode}
+            selectionAttr="id"
             itemsComponent={
                 <ExpandableCardList
                     dataService={GetRightList}
                     dataRequestParams={{ group: targetGroup }}
                     cardComponent={<RightManageCard />}
-                    // entryOperations={[]}
+                    expansionAttr="slug"
                 />
             }
         />

@@ -3,7 +3,7 @@ import { existsInArray, removeFromArray } from "../../utils/objectArray";
 import CardList from "./CardListBase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-function _list(props) {
+function _list({ expansionMode, expansionAttr = "slug", ...props }) {
     // TODO: expansion mode and hanler utilities must implement
 
     const [expandedItems, setExpandedItems] = useState([]);
@@ -13,11 +13,13 @@ function _list(props) {
     }, []);
 
     function handleItemsExpand(item) {
-        // console.log("handle EXPAND called", expandedItems, item.title);
-        if (existsInArray(expandedItems, "id", item.id)) {
+        // console.log("handle EXPAND called", item.title);
+        if (existsInArray(expandedItems, expansionAttr, item[expansionAttr])) {
             setExpandedItems(
                 // expandedItems.filter(value => item.id != value.id)
-                removeFromArray(expandedItems, "id", [item.id])
+                removeFromArray(expandedItems, expansionAttr, [
+                    item[expansionAttr]
+                ])
             );
         } else {
             setExpandedItems([...expandedItems, item]);
@@ -35,6 +37,7 @@ function _list(props) {
                 handler: handleItemsExpand,
                 data: expandedItems,
                 expandableItemsField: "childs",
+                expansionAttr: expansionAttr,
                 className: "card-operation-btn",
                 icon: <ExpandMoreIcon />
             }}

@@ -19,6 +19,7 @@ class RightDisplayItem extends JsonResource
         $item = [];
 
         $item['id'] = $this->id;
+        $item['slug'] = 'right-' . $this->id; // for scroll targetting usage
         $item['activation'] = $this->activation;
         $item['title'] = Bilang::getLocalTitle($this->title, true);
         $item['title_en'] = Bilang::getEnTitle($this->title);

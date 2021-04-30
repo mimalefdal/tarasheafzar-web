@@ -5,22 +5,25 @@ import { pluckSet } from "../../utils/objectArray";
 
 function feedback({
     itemsComponent,
-    prevItems,
+    prevItems = [],
     targetGroup,
-    targetScope,
+    targetScope = {},
     onSelectionChange,
     selectionMode = SINGLE_SELECTION_MODE,
+    selectionAttr = "slug",
     ...props
 }) {
     const [selectedItems, setSelectedItems] = useState(pluckSet(prevItems));
 
     useEffect(() => {
-        // console.log("ItemSelectList", selectedItems);
+        // console.log("ItemSelectList", selectionAttr);
     }, []);
 
     function handleItemsSelect(item) {
         // console.log("handle select called for", selectedItems);
-        setSelectedItems(updateSelection(selectedItems, item, selectionMode));
+        setSelectedItems(
+            updateSelection(selectedItems, item, selectionMode, selectionAttr)
+        );
     }
 
     useEffect(() => {
@@ -34,7 +37,8 @@ function feedback({
             selection: {
                 handler: handleItemsSelect,
                 data: selectedItems,
-                className: ""
+                className: "",
+                selectionAttr: selectionAttr
             }
         },
         null

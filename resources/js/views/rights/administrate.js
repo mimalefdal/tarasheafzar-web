@@ -10,7 +10,11 @@ import { GetRightList } from "../../services";
 
 import { t } from "../../utils";
 import { addTitle, clearTitle, setTitle } from "../../utils/redux/navSlice";
-import { RightEntry, RightManageCard } from "../../view-components";
+import {
+    RightEntry,
+    RightManageCard,
+    RightSelectList
+} from "../../view-components";
 
 import ViewListIcon from "@material-ui/icons/ViewList";
 import ViewStreamIcon from "@material-ui/icons/ViewStream";
@@ -85,24 +89,6 @@ function _administrate() {
         setDisplayMode(mode.value);
     }
 
-    function handleExpand(item) {
-        // console.log("handle EXPAND called", item);
-        if (existsInArray(expandedItems, "id", item.id))
-            setExpandedItems(
-                // expandedItems.filter(value => item.id != value.id)
-                removeFromArray(expandedItems, "id", [item.id])
-            );
-        else {
-            setExpandedItems([...expandedItems, item]);
-            // setExpandedItems([item.id]);
-        }
-    }
-
-    function handleSelect(item) {
-        // console.log("handle select called for", item);
-        setSelectedItems(updateSelection(selectedItems, item, selectionMode));
-    }
-
     return (
         <>
             <PageHeaderBar>
@@ -115,23 +101,10 @@ function _administrate() {
             />
 
             {displayMode == "card" && (
-                <CardList
-                    dataService={GetRightList}
-                    dataRequestParams={{ group: "owned" }}
-                    cardComponent={<RightManageCard />}
-                    entryOperations={entryOperations}
-                    selection={{
-                        handler: handleSelect,
-                        data: selectedItems,
-                        className: ""
-                    }}
-                    expansion={{
-                        handler: handleExpand,
-                        data: expandedItems,
-                        expandableItemsField: "childs",
-                        className: "card-operation-btn",
-                        icon: <ExpandMoreIcon />
-                    }}
+                <RightSelectList
+                    prevRights={[]}
+                    targetGroup="owned"
+                    targetScope={{}}
                 />
             )}
 

@@ -34,6 +34,7 @@ function CardList({
     const [emptyMessage, setEmptyMessage] = useState(null);
     const [loading, setLoading] = useState(true);
     const [operations, setOperations] = useState(entryOperations);
+    const [idAttribute, setIdAttribute] = useState("slug");
 
     const token = useContext(StaffContext).token;
 
@@ -50,7 +51,40 @@ function CardList({
 
     useEffect(() => {
         // console.log(
-        //     "CardList[entryOperations]->entryOperations",
+        //     "CardList->useEffect(trigger)->Selection Mode:",
+        //     selectionMode
+        // );
+
+        if (trigger != null) {
+            setLoading(true);
+            dataService(
+                dataRequestParams != null && dataRequestParams,
+                token,
+                response => {
+                    console.log("CardList:[trigger]:response:", response.data);
+                    if (response.status == 203) {
+                        setEmptyMessage(response.data.message);
+                    } else {
+                        setEmptyMessage(null);
+                        if (response.data.data) setItems(response.data.data);
+                        else setItems(response.data);
+                    }
+
+                    setLoading(false);
+                    expansion != undefined &&
+                        setIdAttribute(expansion.expansionAttr);
+                },
+                error => {
+                    console.log("CardList:[trigger]:ERROR", error);
+                    setLoading(false);
+                }
+            );
+        }
+    }, [trigger]);
+
+    useEffect(() => {
+        // console.log(
+        //     "CardList[expansion.data]->entryOperations",
         //     entryOperations
         // );
         if (expansion != undefined) {
@@ -61,6 +95,7 @@ function CardList({
                     actionType: "callback",
                     action: expansion.handler,
                     props: {
+                        expansionAttr: expansion.expansionAttr,
                         expandIcon: expansion.icon && expansion.icon,
                         expandable: isExpandable,
                         expanded: isExpanded,
@@ -75,7 +110,7 @@ function CardList({
                 }
             ]);
         }
-    }, [expansion.data]);
+    }, [expansion && expansion.data]);
 
     useEffect(() => {
         // console.log("CardListBase[items]->items", items);
@@ -90,60 +125,34 @@ function CardList({
         //     );
     }, [selection && selection.data]);
 
-    useEffect(() => {
-        // expansion &&
-        //     console.log(
-        //         "CardListBase[expansion.data]->Expanded",
-        //         expansion.data
-        //     );
-    }, [expansion && expansion.data]);
-
-    useEffect(() => {
-        // console.log(
-        //     "CardList->useEffect(trigger)->Selection Mode:",
-        //     selectionMode
-        // );
-
-        if (trigger != null) {
-            setLoading(true);
-            dataService(
-                dataRequestParams != null && dataRequestParams,
-                token,
-                response => {
-                    // console.log("CardList:[trigger]:response:", response.data);
-                    if (response.status == 203) {
-                        setEmptyMessage(response.data.message);
-                    } else {
-                        setEmptyMessage(null);
-                        if (response.data.data) setItems(response.data.data);
-                        else setItems(response.data);
-                    }
-
-                    setLoading(false);
-                },
-                error => {
-                    console.log("CardList:[trigger]:ERROR", error);
-                    setLoading(false);
-                }
-            );
-        }
-    }, [trigger]);
-
     function isSelected(item) {
         // console.log("isSelected", selection.data, item.id);
-        return existsInArray(selection.data, "id", item.id);
+        return existsInArray(
+            selection.data,
+            selection.selectionAttr,
+            item[selection.selectionAttr]
+        );
     }
 
     function isExpanded(item) {
         // console.log("isExpanded", expansion.data, item.id);
         // console.log("isExpanded", expandedItems, item.title);
-        return existsInArray(expansion.data, "id", item.id);
+        return existsInArray(
+            expansion.data,
+            expansion.expansionAttr,
+            item[expansion.expansionAttr]
+        );
     }
 
     function isExpandable(item) {
-        return !(
+        // console.log(
+        //     "isExpandable",
+        //     item.slug,
+        //     item[expansion.expandableItemsField]
+        // );
+        return (
             item[expansion.expandableItemsField] &&
-            item[expansion.expandableItemsField].length == 0
+            !item[expansion.expandableItemsField].length == 0
         );
     }
 
@@ -163,8 +172,8 @@ function CardList({
                         cardComponent,
                         {
                             className: "child-card" + depth,
-                            id: childItem.id,
-                            key: childItem.id,
+                            id: childItem[idAttribute],
+                            key: childItem[idAttribute] + _index,
                             item: childItem,
                             childItems: renderChildsOf(childItem, depth + 1),
                             entryActions: _entryActions,
@@ -199,8 +208,8 @@ function CardList({
                     return cloneElement(
                         cardComponent,
                         {
-                            id: item.id,
-                            key: item.id,
+                            id: item[idAttribute],
+                            key: item[idAttribute] + index,
                             item: item,
                             entryActions: entryActions,
                             childItems: expansion && renderChildsOf(item, 0),

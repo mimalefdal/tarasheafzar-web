@@ -30,6 +30,7 @@ function Card({ item, entryActions, ...props }) {
 
     return (
         <BasicCard
+            id={props.id}
             item={item}
             entryActions={entryActions}
             title_complements_local={localTitleCompliment}

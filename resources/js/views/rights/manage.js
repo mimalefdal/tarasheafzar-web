@@ -10,10 +10,15 @@ import { GetRightList } from "../../services";
 
 import { t } from "../../utils";
 import { clearTitle, setTitle, addTitle } from "../../utils/redux/navSlice";
-import { RightEntry, RightManageCard } from "../../view-components";
+import {
+    RightEntry,
+    RightManageCard,
+    RightSelectList
+} from "../../view-components";
 
 import ViewListIcon from "@material-ui/icons/ViewList";
 import ViewStreamIcon from "@material-ui/icons/ViewStream";
+import { SINGLE_SELECTION_MODE } from "../../utils/constants";
 
 function _manage() {
     const [displayMode, setDisplayMode] = useState("card");
@@ -74,12 +79,7 @@ function _manage() {
                 callback={handleDisplayMode}
             />
             {displayMode == "card" && (
-                <CardList
-                    dataService={GetRightList}
-                    dataRequestParams={{ group: "managedby" }}
-                    entryOperations={entryOperations}
-                    cardComponent={<RightManageCard />}
-                />
+                <RightSelectList targetGroup="managedby" />
             )}
 
             {displayMode == "table" && (
