@@ -26,7 +26,10 @@ export default function utility(type, props) {
             break;
         case "expand":
             return (
-                <ExpandButton {...props} scrollTarget={`${props.item.id}`} />
+                <ExpandButton
+                    {...props}
+                    scrollTarget={`${props.item[props.expansionAttr]}`}
+                />
             );
             break;
 

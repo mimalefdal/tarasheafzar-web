@@ -8,6 +8,7 @@ import {
     Slide
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+import DoneIcon from "@material-ui/icons/Done";
 import { ConfirmAndRunDialog } from ".";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -21,10 +22,13 @@ function feedback({
     onClose,
     onUpdate,
     title = "please set a title",
-    formComponent,
+    itemTitle = null,
+    selectionList,
     confirmation = null,
     ...props
 }) {
+    // console.log("select-dialog", confirmation);
+
     const [showConfirm, setShowConfirm] = useState(
         confirmation && confirmation.show && confirmation.show
     );
@@ -59,19 +63,28 @@ function feedback({
                     {/* <DialogTitle classes={{ root: "select-dialog-title" }}>
                         {title}
                     </DialogTitle> */}
-                    <div className="flex center select-dialog-title">
+                    <div className="flex end select-dialog-title">
                         {title}
+                        {itemTitle && (
+                            <div className="select-dialog-item-title">
+                                {itemTitle}
+                            </div>
+                        )}
                     </div>
 
                     <div className="filler" />
                     <DialogActions>
-                        {((confirmation && confirmation.show) ||
-                            showConfirm) && (
+                        {confirmation && (confirmation.show || showConfirm) && (
                             <Button
-                                classes={confirmation.classes}
+                                classes={confirmation && confirmation.classes}
                                 onClick={confirmClicked}
                             >
-                                {confirmation.icon}
+                                {confirmation &&
+                                    (confirmation.icon ? (
+                                        confirmation.icon
+                                    ) : (
+                                        <DoneIcon />
+                                    ))}
                             </Button>
                         )}
                         <Button onClick={onClose}>
@@ -82,7 +95,7 @@ function feedback({
 
                 <DialogContent>
                     {cloneElement(
-                        formComponent,
+                        selectionList,
                         {
                             changesHandler: data => {
                                 // console.log(data);

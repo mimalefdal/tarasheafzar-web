@@ -22,6 +22,7 @@ function _selectDialog({
             }}
             // title={t("forms.selectRights")}
             title={operationData.operation}
+            itemTitle={item.title}
             confirmation={{
                 classes: { root: "btn-confirm" },
                 icon: <DoneIcon />,
@@ -41,7 +42,7 @@ function _selectDialog({
             confirmDialogProps={{
                 confirmMessageAction: t("expressions.sureAboutChanges")
             }}
-            formComponent={
+            selectionList={
                 <RightSelectList
                     prevRights={item[operationData.rightsField]}
                     targetScope={operationData.targetScope}
