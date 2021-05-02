@@ -25,6 +25,7 @@ export { default as JoblevelForm } from "./joblevel/defineForm";
 
 export { default as PositionForm } from "./position/defineForm";
 export { default as PositionCard } from "./position/manageCard";
+export { default as PositionSelectCard } from "./position/selectCard";
 export { default as PositionSelectList } from "./position/selectList";
 export { default as PositionSelectDialog } from "./position/selectDialog";
 
