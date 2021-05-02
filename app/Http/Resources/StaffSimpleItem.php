@@ -28,6 +28,8 @@ class StaffSimpleItem extends JsonResource
         $item['suspended'] = $this->suspended;
         $item['deleted'] = $this->trashed();
 
+        $item['liststitle'] = $item['fullname'];
+
         return $item;
     }
 }

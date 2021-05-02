@@ -73,6 +73,15 @@ Route::prefix('rights')->group(function () {
     Route::post('/updateOwnedbyRights', 'API\RightController@updateOwnedbyRights');
 });
 
+Route::prefix('roles')->group(function () {
+    Route::get('/', 'API\RoleController@index');
+    Route::post('/add', 'API\RoleController@create');
+    Route::post('/update', 'API\RoleController@update');
+    Route::post('/updateholders', 'API\RoleController@updateHolders');
+    Route::post('/delete', 'API\RoleController@delete');
+});
+Route::get('/role', 'API\RoleController@show');
+
 Route::get('features', 'API\FeatureController@index');
 
 Route::get('/valuelist', 'API\ValuelistController@index');

@@ -2,7 +2,7 @@
     {
         "slug": "super-admin",
         "title": {
-            "fa": "مدیریت ویژه سامانه",
+            "fa": "مدیر ویژه سامانه",
             "en": "System Super Administrator"
         },
         "activation": true,
@@ -13,7 +13,7 @@
     {
         "slug": "system-admin",
         "title": {
-            "fa": "مدیریت سامانه",
+            "fa": "مدیر سامانه",
             "en": "System Adminstration"
         },
         "activation": true,

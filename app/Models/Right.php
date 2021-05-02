@@ -17,17 +17,17 @@ class Right extends Model
 
     public function roles()
     {
-        return $this->morphedByMany(Role::class, 'role_holders');
+        return $this->morphedByMany(Role::class, 'role_holder');
     }
 
     public function staff()
     {
-        return $this->morphedByMany(Staff::class, 'right_holders');
+        return $this->morphedByMany(Staff::class, 'right_holder');
     }
 
     public function positions()
     {
-        return $this->morphedByMany(Position::class, 'right_holders');
+        return $this->morphedByMany(Position::class, 'right_holder');
     }
 
     public function parent()
@@ -44,7 +44,4 @@ class Right extends Model
     {
         return $this->hasMany(Right::class, 'parent_id');
     }
-    // public function isrequiredfor()
-    // {
-    // }
 }

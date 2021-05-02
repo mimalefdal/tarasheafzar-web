@@ -32,6 +32,10 @@ class Utility
                 return Staff::class;
                 break;
 
+            case 'role':
+            case 'roles':
+                return Role::class;
+                break;
 
             default:
                 # code...

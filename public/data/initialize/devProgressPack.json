@@ -62,6 +62,20 @@
             ]
         },
         {
+            "feature": "access-management-panel",
+            "slug": "roles-management-tool",
+            "title": {
+                "fa": "ابزار مدیریت نقش‌ها",
+                "en": "Roles Management Tool"
+            },
+            "activation": true,
+            "state": "built-in",
+            "requiredRights": [
+                "use-roles-management-tool",
+                "use-rights-management-tool"
+            ]
+        },
+        {
             "feature": "structure-management-panel",
             "slug": "company-info-tool",
             "title": {
@@ -209,6 +223,97 @@
                     "state": "built-in",
                     "requiredRights": [
                         "perform-administrate-ownedby-rights"
+                    ]
+                }
+            ]
+        },
+        {
+            "tool": "roles-management-tool",
+            "operations": [
+                {
+                    "slug": "add-role-operation",
+                    "title": {
+                        "fa": "درج نقش",
+                        "en": "Add Role"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-add-role",
+                        "perform-manage-rights"
+                    ]
+                },
+                {
+                    "slug": "view-role-operation",
+                    "title": {
+                        "fa": "مشاهده نقش",
+                        "en": "View Role"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-view-role"
+                    ]
+                },
+                {
+                    "slug": "edit-role-operation",
+                    "title": {
+                        "fa": "ویرایش نقش",
+                        "en": "Edit Role"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-edit-role"
+                    ]
+                },
+                {
+                    "slug": "manage-roles-operation",
+                    "title": {
+                        "fa": "مدیریت نقش",
+                        "en": "Manage Role"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-manage-roles"
+                    ]
+                },
+                {
+                    "slug": "modify-role-rights-operation",
+                    "title": {
+                        "fa": "تغییر حقوق دسترسی نقش",
+                        "en": "Modify Role Rights"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-modify-role-rights",
+                        "perform-manage-rights"
+                    ]
+                },
+                {
+                    "slug": "modify-role-managers-operation",
+                    "title": {
+                        "fa": "تغییر مدیران نقش",
+                        "en": "Modify Role Managers"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-modify-role-managers"
+                    ]
+                },
+                {
+                    "slug": "modify-role-owners-operation",
+                    "title": {
+                        "fa": "تغییر دارندگان نقش",
+                        "en": "Modify Role Owners"
+                    },
+                    "activation": true,
+                    "state": "built-in",
+                    "requiredRights": [
+                        "perform-modify-role-owners"
                     ]
                 }
             ]
@@ -831,22 +936,62 @@
                     ]
                 },
                 {
-                    "slug": "use-roles-adminstration-tool",
-                    "title": {
-                        "fa": "کار با ابزار ادارهٔ نقش‌ها",
-                        "en": "Use Roles Administration Tool"
-                    },
-                    "activation": true,
-                    "childrights": []
-                },
-                {
                     "slug": "use-roles-management-tool",
                     "title": {
                         "fa": "کار با ابزار مدیریت نقش‌ها",
                         "en": "Use Roles Management Tool"
                     },
                     "activation": true,
-                    "childrights": []
+                    "childrights": [
+                        {
+                            "slug": "perform-add-role",
+                            "title": {
+                                "fa": "درج نقش",
+                                "en": "Add Role"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-view-role",
+                            "title": {
+                                "fa": "مشاهده جزئیات نقش‌ها",
+                                "en": "View Roles"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-manage-roles",
+                            "title": {
+                                "fa": "مدیریت نقش‌ها",
+                                "en": "Manage Roles"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-modify-role-rights",
+                            "title": {
+                                "fa": "تغییر حقوق دسترسی نقش",
+                                "en": "Modify Role Rights"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-modify-role-managers",
+                            "title": {
+                                "fa": "تغییر مدیران نقش",
+                                "en": "Modify Role Managers"
+                            },
+                            "activation": true
+                        },
+                        {
+                            "slug": "perform-modify-role-owners",
+                            "title": {
+                                "fa": "تغییر دارندگان نقش",
+                                "en": "Modify Role Owners"
+                            },
+                            "activation": true
+                        }
+                    ]
                 }
             ]
         },
@@ -982,8 +1127,8 @@
         {
             "slug": "head-access-administrator",
             "title": {
-                "fa": "مدیر مختار حقوق دسترسی",
-                "en": "Head Access Adminstartor"
+                "fa": "مدیر مختار دسترسی‌ها",
+                "en": "Head Access Administartor"
             },
             "activation": true,
             "rights": [
@@ -993,6 +1138,25 @@
                 "perform-administrate-ownedby-rights",
                 "use-rights-management-tool",
                 "perform-manage-access-rights"
+            ]
+        },
+        {
+            "slug": "head-role-manager",
+            "title": {
+                "fa": "مدیر مختار نقش‌ها",
+                "en": "Head Role Manager"
+            },
+            "activation": true,
+            "rights": [
+                "access-access-management-panel",
+                "use-rights-management-tool",
+                "use-roles-management-tool",
+                "perform-add-role",
+                "perform-view-role",
+                "perform-manage-roles",
+                "perform-modify-role-rights",
+                "perform-modify-role-managers",
+                "perform-modify-role-owners"
             ]
         },
         {
@@ -1043,6 +1207,7 @@
             "roles": [
                 "structure-administrator",
                 "head-access-administrator",
+                "head-role-manager",
                 "staff-manager"
             ],
             "rights": [

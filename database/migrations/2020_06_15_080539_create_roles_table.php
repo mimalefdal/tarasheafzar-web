@@ -22,6 +22,7 @@ class CreateRolesTable extends Migration
             $table->string('description')->nullable();
             $table->string('activation')->nullable(); // activation state of role
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

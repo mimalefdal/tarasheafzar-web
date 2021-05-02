@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Traits\CanManageRights;
+use App\Traits\CanManageRoles;
 use App\Traits\CanOwnRights;
+use App\Traits\CanOwnRoles;
 use App\Traits\ManagesAccess;
 use App\Traits\ManagesRoles;
 use App\Traits\ManagesPosition;
@@ -24,6 +26,8 @@ class Staff extends Authenticatable
     use ManagesAccess;
     use CanOwnRights;
     use CanManageRights;
+    use CanOwnRoles;
+    use CanManageRoles;
     use SoftDeletes;
     use RetrievesZones;
 

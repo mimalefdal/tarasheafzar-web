@@ -36,6 +36,9 @@ class PositionSimpleItem extends JsonResource
         $item['full_title'] = $this->fullTitle();
         $item['full_title_en'] = $this->fullTitle('en');
 
+        $item['liststitle'] = $item['full_title'];
+
+
         return $item;
     }
 }
