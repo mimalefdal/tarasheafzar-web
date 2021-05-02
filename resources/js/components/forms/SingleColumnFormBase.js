@@ -71,28 +71,30 @@ function FormBase({
     useEffect(() => {
         const fields = listedFields;
         console.log(fields);
-        GetValidValues(
-            fields,
-            response => {
-                // console.log(response.data);
-                setValidValues(response.data);
+        listedFields.length > 0
+            ? GetValidValues(
+                  fields,
+                  response => {
+                      // console.log(response.data);
+                      setValidValues(response.data);
 
-                if (props.item) {
-                    // edit mode
-                    setTriggerEditMode(true);
-                } else {
-                    // mode others than edit
-                    setReady(true);
-                }
-            },
-            error => {
-                console.error(
-                    "SingleColumnFormBase GetValidValues ResponseERROR",
-                    error
-                );
-                setReady(true);
-            }
-        );
+                      if (props.item) {
+                          // edit mode
+                          setTriggerEditMode(true);
+                      } else {
+                          // mode others than edit
+                          setReady(true);
+                      }
+                  },
+                  error => {
+                      console.error(
+                          "SingleColumnFormBase GetValidValues ResponseERROR",
+                          error
+                      );
+                      setReady(true);
+                  }
+              )
+            : setReady(true);
     }, []);
 
     useEffect(() => {

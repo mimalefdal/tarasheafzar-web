@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { GuardedLink } from "../../components/links";
 import { HorizontalOperationBar } from "../../components/view-controls";
 import { t } from "../../utils";
@@ -11,7 +11,9 @@ export default function _View(props) {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setTitle(t("panels.access-management")));
+        dispatch(
+            setTitle({ text: t("panels.access-management"), link: match.url })
+        );
         // return () => {
         //     dispatch(clearTitle());
         // };
@@ -31,6 +33,12 @@ export default function _View(props) {
                     to={`${match.url}/rights_management`}
                     feature="rights-management-tool"
                     label={t("tools.rightsManagement")}
+                />
+                <GuardedLink
+                    className="tool-link"
+                    to={`${match.url}/roles`}
+                    feature="roles-management-tool"
+                    label={t("tools.rolesManagement")}
                 />
             </HorizontalOperationBar>
         </>

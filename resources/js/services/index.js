@@ -52,6 +52,13 @@ export { _updateAccessRights as UpdateAccessRights } from "./right-service";
 export { _updateManagedbyRights as UpdateManagedbyRights } from "./right-service";
 export { _updateOwnedbyRights as UpdateOwnedbyRights } from "./right-service";
 
+export { _getIndex as GetRoleList } from "./role-service";
+export { tryAdd as AddRole } from "./role-service";
+export { getItem as GetRole } from "./role-service";
+export { tryUpdate as UpdateRole } from "./role-service";
+export { _tryUpdateHolders as UpdateRoleHolders } from "./role-service";
+export { tryDelete as DeleteRole } from "./role-service";
+
 export { getValues as GetValidValues } from "./values-service";
 
 export { getIndex as GetFeaturesList } from "./feature-service";

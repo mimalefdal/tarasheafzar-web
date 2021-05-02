@@ -28,7 +28,7 @@ function CardList({
     trigger = true,
     ...props
 }) {
-    // console.log("CardListBase rendered", entryOperations);
+    // console.log("CardListBase rendered", selection);
 
     const [items, setItems] = useState([]);
     const [emptyMessage, setEmptyMessage] = useState(null);
