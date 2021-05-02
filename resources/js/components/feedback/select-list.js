@@ -20,7 +20,7 @@ function feedback({
     }, []);
 
     function handleItemsSelect(item) {
-        // console.log("handle select called for", selectedItems);
+        // console.log("handle select called for", item);
         setSelectedItems(
             updateSelection(selectedItems, item, selectionMode, selectionAttr)
         );
