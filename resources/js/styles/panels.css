@@ -628,12 +628,18 @@ button:hover {
 }
 
 .select-dialog-title {
+    flex-direction: column;
     background: var(--formbkg);
     padding: 1rem;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 8px 8px;
     color: var(--gray-dark);
     font-weight: 900;
-    font-size: 15px;
+    font-size: 1rem;
+}
+
+.select-dialog-item-title {
+    font-weight: 600;
+    font-size: 0.8rem;
 }
 
 @media screen and (max-width: 1281px) {
